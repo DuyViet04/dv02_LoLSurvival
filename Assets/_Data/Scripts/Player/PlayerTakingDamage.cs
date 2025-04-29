@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PlayerTakingDamage : MonoBehaviour
 {
     [SerializeField] private Image hpImage;
+    [SerializeField] private Animator playerAnimator;
     [SerializeField] private float maxHp = 100f;
     private float currentHp;
 
@@ -18,6 +19,7 @@ public class PlayerTakingDamage : MonoBehaviour
     public void TakeDamage(float damage)
     {
         this.currentHp -= damage;
+        this.playerAnimator.SetTrigger("isTakeDamage");
         if (this.currentHp <= 0f)
         {
             this.currentHp = 0f;

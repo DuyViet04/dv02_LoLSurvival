@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerMoving : MonoBehaviour
 {
     [SerializeField] private Rigidbody playerRigid;
+    [SerializeField] private Animator playerAnimator;
     [SerializeField] private float moveSpeed = 7f;
 
     private void Update()
@@ -18,7 +19,8 @@ public class PlayerMoving : MonoBehaviour
         float xDir = Input.GetAxis("Horizontal");
         float zDir = Input.GetAxis("Vertical");
         Vector3 moveDir = new Vector3(xDir, 0, zDir);
-        
+
         this.playerRigid.velocity = moveDir * this.moveSpeed;
+        playerAnimator.SetFloat("isRun", this.playerRigid.velocity.magnitude);
     }
 }
