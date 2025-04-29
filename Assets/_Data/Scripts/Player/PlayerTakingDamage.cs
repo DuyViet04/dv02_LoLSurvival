@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerTakingDamage : MonoBehaviour
 {
+    [SerializeField] private Image hpImage;
     [SerializeField] private float maxHp = 100f;
     private float currentHp;
 
@@ -15,10 +17,15 @@ public class PlayerTakingDamage : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        currentHp -= damage;
-        if (currentHp <= 0f)
+        this.currentHp -= damage;
+        if (this.currentHp <= 0f)
         {
-            currentHp = 0f;
+            this.currentHp = 0f;
+            this.hpImage.fillAmount = 0f;
+        }
+        else
+        {
+            this.hpImage.fillAmount = this.currentHp / maxHp;
         }
         Debug.Log(currentHp);
     }
