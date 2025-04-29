@@ -29,6 +29,7 @@ public class PlayerTakingDamage : MonoBehaviour
         {
             this.hpImage.fillAmount = this.currentHp / maxHp;
         }
+
         Debug.Log(currentHp);
     }
 
