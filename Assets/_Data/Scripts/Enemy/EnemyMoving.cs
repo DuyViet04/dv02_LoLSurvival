@@ -15,6 +15,7 @@ public class EnemyMoving : MonoBehaviour
 
     void MoveToTarget()
     {
-        this.transform.parent.position = Vector3.MoveTowards(this.transform.parent.position, this.target.position, this.moveSpeed * Time.deltaTime);
+        this.transform.parent.position = Vector3.MoveTowards(this.transform.parent.position, this.target.position,
+            this.moveSpeed * Time.deltaTime);
     }
 }
