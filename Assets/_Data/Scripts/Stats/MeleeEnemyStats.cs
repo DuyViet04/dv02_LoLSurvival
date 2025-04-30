@@ -12,6 +12,5 @@ public class MeleeEnemyStats : MainStats
         this.hp = 10;
         this.damage = 3;
         this.moveSpeed = 3;
-        this.attackSpeed = 1;
     }
 }
