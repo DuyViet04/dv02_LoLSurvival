@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyDealingDamage : MonoBehaviour
 {
-    [SerializeField] private float damage = 7f;
+    [SerializeField] private MeleeEnemyStats stats;
 
     public void DealDamage(Transform target)
     {
@@ -15,6 +15,6 @@ public class EnemyDealingDamage : MonoBehaviour
 
     public void DealDamage(PlayerTakingDamage playerTakingDamage)
     {
-        playerTakingDamage.TakeDamage(damage);
+        playerTakingDamage.TakeDamage(this.stats.damage);
     }
 }
