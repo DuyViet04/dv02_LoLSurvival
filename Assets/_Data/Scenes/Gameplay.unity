@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dfcccb6d78e64f44ab9f25acba4e7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
+  stats: {fileID: 11400000, guid: 8f4567748d0534846b22d4440a553d0b, type: 2}
   target: {fileID: 779784615}
 --- !u!1 &332849394
 GameObject:

@@ -13,6 +13,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float spawnTime = 1f;
     [SerializeField] private float spawnRange = 5f;
     private float spawnTimer = 0f;
+    private string meleeEnemy = "MeleeEnemy";
 
     private void Awake()
     {
@@ -24,7 +25,7 @@ public class Spawner : MonoBehaviour
         this.spawnTimer += Time.deltaTime;
         if (this.spawnTimer < this.spawnTime) return;
         this.spawnTimer = 0f;
-        Spawn("Enemy", this.GetRandomPosition(), Quaternion.identity);
+        Spawn(this.meleeEnemy, this.GetRandomPosition(), Quaternion.identity);
     }
 
     Transform GetObjectFromPool(Transform prefab)
