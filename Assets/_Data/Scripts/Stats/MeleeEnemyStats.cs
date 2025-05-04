@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MeleeEnemyStats", menuName = "Stats/MeleeEnemy")]
-public class MeleeEnemyStats : MainStats
+public class MeleeEnemyStats : MainEnemyStats
 {
     private void Awake()
     {
