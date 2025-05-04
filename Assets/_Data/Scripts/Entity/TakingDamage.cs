@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class TakingDamage : MonoBehaviour
 {
-    [SerializeField] protected float maxHp = 2f;
+    protected float maxHp = 2f;
     protected float currentHp;
-
-    private void Start()
-    {
-        this.currentHp = this.maxHp;
-    }
 
     public virtual void TakeDamage(float damage)
     {

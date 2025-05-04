@@ -6,12 +6,13 @@ using UnityEngine.UI;
 
 public class PlayerTakingDamage : TakingDamage
 {
+    [SerializeField] private YasuoStats stats;
     [SerializeField] private Image hpImage;
     [SerializeField] private Animator playerAnimator;
 
     private void Start()
     {
-        base.maxHp = 100f;
+        base.maxHp = this.stats.health;
         base.currentHp = this.maxHp;
     }
 
