@@ -8,7 +8,6 @@ public class PlayerAttacking : MonoBehaviour
     [SerializeField] private YasuoStats stats;
     [SerializeField] private Animator animator;
     [SerializeField] private Transform model;
-    public PlayerLooking playerLooking;
     private float attackTimer = 0f;
 
     private void Update()
