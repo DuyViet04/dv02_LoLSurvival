@@ -5,7 +5,7 @@ using UnityEngine;
 public class MainEnemyStats : ScriptableObject
 {
     public string enemyName;
-    public float hp;
+    public float health;
     public float damage;
     public float moveSpeed;
 }

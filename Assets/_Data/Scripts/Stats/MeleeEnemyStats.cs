@@ -9,7 +9,7 @@ public class MeleeEnemyStats : MainEnemyStats
     private void Awake()
     {
         this.enemyName = "MeleeEnemy";
-        this.hp = 10;
+        this.health = 10;
         this.damage = 3;
         this.moveSpeed = 3;
     }
