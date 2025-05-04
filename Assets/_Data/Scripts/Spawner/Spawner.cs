@@ -5,40 +5,18 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-public class Spawner : MonoBehaviour
+public abstract class Spawner : MonoBehaviour
 {
-    private static Spawner instance;
-
-    public static Spawner Instance
-    {
-        get { return instance; }
-    }
-
     [SerializeField] private Transform holder;
     [SerializeField] private List<Transform> prefabs;
     [SerializeField] private List<Transform> prefabsPool;
-    [SerializeField] private float spawnTime = 1f;
-    [SerializeField] private float spawnRange = 5f;
-    private float spawnTimer = 0f;
-    private string meleeEnemy = "MeleeEnemy";
 
     private void Awake()
     {
-        if (instance != null) Debug.LogError("There is more than one Spawner in the scene!");
-        instance = this;
-
         this.LoadPrefabs();
     }
 
-    private void Update()
-    {
-        this.spawnTimer += Time.deltaTime;
-        if (this.spawnTimer < this.spawnTime) return;
-        this.spawnTimer = 0f;
-        Spawn(this.meleeEnemy, this.GetRandomPosition(), Quaternion.identity);
-    }
-
-    Transform GetObjectFromPool(Transform prefab)
+    protected Transform GetObjectFromPool(Transform prefab)
     {
         foreach (Transform obj in this.prefabsPool)
         {
@@ -54,7 +32,7 @@ public class Spawner : MonoBehaviour
         return newObj;
     }
 
-    Transform Spawn(string prefabName, Vector3 position, Quaternion rotation)
+    protected Transform Spawn(string prefabName, Vector3 position, Quaternion rotation)
     {
         Transform prefab = GetPrefabByName(prefabName);
         if (prefab == null)
@@ -66,7 +44,7 @@ public class Spawner : MonoBehaviour
         return Spawn(prefab, position, rotation);
     }
 
-    Transform Spawn(Transform prefab, Vector3 position, Quaternion rotation)
+    protected Transform Spawn(Transform prefab, Vector3 position, Quaternion rotation)
     {
         Transform newObj = this.GetObjectFromPool(prefab);
         newObj.SetPositionAndRotation(position, rotation);
@@ -75,7 +53,7 @@ public class Spawner : MonoBehaviour
         return newObj;
     }
 
-    Transform GetPrefabByName(string prefabName)
+    protected Transform GetPrefabByName(string prefabName)
     {
         foreach (Transform prefab in this.prefabs)
         {
@@ -88,20 +66,13 @@ public class Spawner : MonoBehaviour
         return null;
     }
 
-    Vector3 GetRandomPosition()
-    {
-        float x = Random.Range(this.spawnRange, -this.spawnRange);
-        float z = Random.Range(this.spawnRange, -this.spawnRange);
-        return new Vector3(x, 0, z);
-    }
-
     public void Despawn(Transform prefab)
     {
         prefab.gameObject.SetActive(false);
         this.prefabsPool.Add(prefab);
     }
 
-    void LoadPrefabs()
+    protected void LoadPrefabs()
     {
         Transform prefabs = this.transform.Find("Prefabs");
 

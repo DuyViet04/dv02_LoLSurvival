@@ -22,7 +22,7 @@ public class EnemyTakingDamage : TakingDamage
 
     public override void Despawn()
     {
-        Spawner.Instance.Despawn(this.transform.parent);
+        EnemySpawner.Instance.Despawn(this.transform.parent);
     }
 
     private void OnTriggerEnter(Collider other)
