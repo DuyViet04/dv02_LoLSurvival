@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class PlayerMoving : MonoBehaviour
 {
+    [SerializeField] private YasuoStats stats;
     [SerializeField] private Rigidbody playerRigid;
     [SerializeField] private Animator playerAnimator;
-    [SerializeField] private float moveSpeed = 7f;
 
     private void Update()
     {
@@ -20,7 +20,7 @@ public class PlayerMoving : MonoBehaviour
         float zDir = Input.GetAxis("Vertical");
         Vector3 moveDir = new Vector3(xDir, 0, zDir);
 
-        this.playerRigid.velocity = moveDir * this.moveSpeed;
+        this.playerRigid.velocity = moveDir * this.stats.moveSpeed;
         playerAnimator.SetFloat("isRun", this.playerRigid.velocity.magnitude);
     }
 }
