@@ -1,20 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDealingDamage : MonoBehaviour
+public class EnemyDealingDamage : DealingDamage
 {
     [SerializeField] private MeleeEnemyStats stats;
 
-    public void DealDamage(Transform target)
+    private void Start()
     {
-        PlayerTakingDamage playerTakingDamage = target.GetComponentInChildren<PlayerTakingDamage>();
-        if (playerTakingDamage == null) return;
-        this.DealDamage(playerTakingDamage);
+        base.damage = this.stats.damage;
     }
 
-    public void DealDamage(PlayerTakingDamage playerTakingDamage)
+    public override void DealDamage(TakingDamage takingDamage)
     {
-        playerTakingDamage.TakeDamage(this.stats.damage);
+        base.DealDamage(takingDamage);
     }
 }
