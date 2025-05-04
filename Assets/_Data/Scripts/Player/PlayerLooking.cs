@@ -13,6 +13,17 @@ public class PlayerLooking : LookingTarget
         this.LookAtTarget(this.transform.parent, closestTarget.transform);
     }
 
+    protected override void LookAtTarget(Transform currentTrans, Transform target)
+    {
+        Vector3 direction = target.position - currentTrans.position;
+        direction.y = 0f;
+
+        if (direction == Vector3.zero) return;
+        Quaternion targetRot = Quaternion.LookRotation(direction);
+
+        currentTrans.rotation = Quaternion.RotateTowards(currentTrans.rotation, targetRot, Time.deltaTime * 180f);
+    }
+
     GameObject FindClosestTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
