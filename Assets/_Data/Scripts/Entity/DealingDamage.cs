@@ -4,14 +4,13 @@ using UnityEngine;
 
 public abstract class DealingDamage : MonoBehaviour
 {
-    [SerializeField] protected float damage = 1f;
-    
+    protected float damage = 1f;
+
     public virtual void DealDamage(Transform target)
     {
         TakingDamage takingDamage = target.GetComponentInChildren<TakingDamage>();
         if (takingDamage == null) return;
         this.DealDamage(takingDamage);
-        
     }
 
     public virtual void DealDamage(TakingDamage takingDamage)

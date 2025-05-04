@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TakingDamage : MonoBehaviour
+public abstract class TakingDamage : MonoBehaviour
 {
     protected float maxHp = 2f;
     protected float currentHp;
@@ -14,5 +14,20 @@ public class TakingDamage : MonoBehaviour
         {
             this.currentHp = 0f;
         }
+        OnDead();
     }
+
+    public virtual bool IsDead()
+    {
+        if (this.currentHp > 0f) return false;
+        return true;
+    }
+
+    public virtual void OnDead()
+    {
+        if (!IsDead()) return;
+        this.Despawn();
+    }
+
+    public abstract void Despawn();
 }

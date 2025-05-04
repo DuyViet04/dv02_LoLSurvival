@@ -7,6 +7,13 @@ using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
+    private static Spawner instance;
+
+    public static Spawner Instance
+    {
+        get { return instance; }
+    }
+
     [SerializeField] private Transform holder;
     [SerializeField] private List<Transform> prefabs;
     [SerializeField] private List<Transform> prefabsPool;
@@ -17,6 +24,9 @@ public class Spawner : MonoBehaviour
 
     private void Awake()
     {
+        if (instance != null) Debug.LogError("There is more than one Spawner in the scene!");
+        instance = this;
+
         this.LoadPrefabs();
     }
 
@@ -83,6 +93,12 @@ public class Spawner : MonoBehaviour
         float x = Random.Range(this.spawnRange, -this.spawnRange);
         float z = Random.Range(this.spawnRange, -this.spawnRange);
         return new Vector3(x, 0, z);
+    }
+
+    public void Despawn(Transform prefab)
+    {
+        prefab.gameObject.SetActive(false);
+        this.prefabsPool.Add(prefab);
     }
 
     void LoadPrefabs()

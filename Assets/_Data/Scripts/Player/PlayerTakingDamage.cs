@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,13 +33,18 @@ public class PlayerTakingDamage : TakingDamage
         Debug.Log(currentHp);
     }
 
+    public override void Despawn()
+    {
+        //
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Transform parent = other.transform.parent;
 
         if (parent != null && parent.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyDealingDamage>().DealDamage(this.transform);
+            parent.GetComponentInChildren<EnemyDealingDamage>().DealDamage(this.transform);
             Debug.Log("Take Damage");
         }
     }
