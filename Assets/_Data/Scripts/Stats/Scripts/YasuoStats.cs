@@ -12,5 +12,7 @@ public class YasuoStats : MainCharacterStats
         this.characterName = "Yasuo";
         this.health = 100f;
         this.moveSpeed = 7f;
+        this.attackDamage = 10f;
+        this.attackSpeed = 1f;
     }
 }
