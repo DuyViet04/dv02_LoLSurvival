@@ -14,5 +14,6 @@ public class YasuoStats : MainCharacterStats
         this.moveSpeed = 7f;
         this.attackDamage = 10f;
         this.attackSpeed = 1f;
+        this.pickUpRange = 1f;
     }
 }
