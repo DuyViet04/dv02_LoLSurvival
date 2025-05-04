@@ -19,7 +19,7 @@ public class Collecting : MonoBehaviour
 
         if (parent != null && parent.CompareTag("Item"))
         {
-            other.GetComponent<PickedUp>().StartMove();
+            other.GetComponent<ItemBehaviour>().StartMove();
         }
     }
 }
