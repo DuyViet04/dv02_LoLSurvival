@@ -20,9 +20,20 @@ public class EnemyTakingDamage : TakingDamage
         Debug.Log(currentHp);
     }
 
+    public override void OnDead()
+    {
+        base.OnDead();
+        this.CreateExp();
+    }
+
     public override void Despawn()
     {
         EnemySpawner.Instance.Despawn(this.transform.parent);
+    }
+
+    void CreateExp()
+    {
+        ExpSpawner.Instance.Spawn("Exp", this.transform.parent.position, Quaternion.identity);
     }
 
     private void OnTriggerEnter(Collider other)

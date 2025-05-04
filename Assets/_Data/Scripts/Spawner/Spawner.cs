@@ -16,7 +16,7 @@ public abstract class Spawner : MonoBehaviour
         this.LoadPrefabs();
     }
 
-    protected Transform GetObjectFromPool(Transform prefab)
+    public Transform GetObjectFromPool(Transform prefab)
     {
         foreach (Transform obj in this.prefabsPool)
         {
@@ -32,7 +32,7 @@ public abstract class Spawner : MonoBehaviour
         return newObj;
     }
 
-    protected Transform Spawn(string prefabName, Vector3 position, Quaternion rotation)
+    public Transform Spawn(string prefabName, Vector3 position, Quaternion rotation)
     {
         Transform prefab = GetPrefabByName(prefabName);
         if (prefab == null)
