@@ -16,7 +16,9 @@ public class ItemBehaviour : MonoBehaviour
 
     public void PickUp()
     {
+        LevelUp levelUp = GameObject.FindObjectOfType<LevelUp>();
         ExpSpawner.Instance.Despawn(this.transform.parent);
+        levelUp.IncreaseExp();
     }
 
     public void MoveToTarget(Transform target)

@@ -134,7 +134,7 @@ TextureImporter:
         width: 459
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,7 +155,7 @@ TextureImporter:
         width: 459
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -163,6 +163,48 @@ TextureImporter:
       bones: []
       spriteID: 99d7d8e69c6019842b53bb9f127e64b3
       internalID: 1266691831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avatar and Level
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 205
+        width: 155
+        height: 155
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c5f05d08396a61478144dff3cc44df0
+      internalID: 265712829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exp Bar
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 35
+        width: 47
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53d4b3c49d94e884d8f10762cb3e8916
+      internalID: 636920509
       vertices: []
       indices: 
       edges: []
@@ -180,6 +222,8 @@ TextureImporter:
     nameFileIdTable:
       HP, MP Bar and Skill: 1248718709
       HPBackground: -1360782465
+      Avatar and Level: 265712829
+      Exp Bar: 636920509
       HP: 1266691831
   spritePackingTag: 
   pSDRemoveMatte: 0
