@@ -17,7 +17,7 @@ MonoBehaviour:
   healthRegen: 0
   attackDamage: 10
   abilityPower: 0
-  attackSpeed: 0.5
+  attackSpeed: 1
   armor: 0
   magicResistance: 0
   moveSpeed: 7
@@ -29,3 +29,4 @@ MonoBehaviour:
   omnivamp: 0
   haste: 0
   healingPower: 0
+  pickUpRange: 1
