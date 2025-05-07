@@ -14,7 +14,6 @@ public class MainCharacterStats : ScriptableObject
     public float armor;
     public float magicResistance;
     public float moveSpeed;
-    [Header("Secondary Stats")]
     public float criticalChance;
     public float criticalDamage;
     public float armorPenetration;
@@ -23,5 +22,6 @@ public class MainCharacterStats : ScriptableObject
     public float omnivamp;
     public float haste;
     public float healingPower;
+    [Header("Secondary Stats")]
     public float pickUpRange;
 }

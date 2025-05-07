@@ -40,4 +40,9 @@ public class LevelUp : MonoBehaviour
         this.expBar.fillAmount = this.currentExp / maxExp;
         this.levelText.SetText(this.currentLv.ToString());
     }
+
+    public float GetCurrentLevel()
+    {
+        return this.currentLv;
+    }
 }
