@@ -32,6 +32,12 @@ public class PauseManager : MonoBehaviour
         this.UpdateData();
     }
 
+    public void ContinueGame()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
+    }
+
     void UpdateData()
     {
         FieldInfo[] fieldInfo = this.GetYasuoStatFields();
