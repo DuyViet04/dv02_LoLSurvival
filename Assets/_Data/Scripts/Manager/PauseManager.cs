@@ -6,9 +6,11 @@ using UnityEngine;
 
 public class PauseManager : MonoBehaviour
 {
+    [SerializeField] private GameObject levelUpPanel;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private YasuoStats stats;
-    LevelUp levelUp;
+    private LevelUp levelUp;
+    private bool isLevelUp;
 
     private void Start()
     {
@@ -27,6 +29,9 @@ public class PauseManager : MonoBehaviour
 
     void PauseGame()
     {
+        this.isLevelUp = this.levelUpPanel.activeSelf;
+
+        if (this.isLevelUp) this.levelUpPanel.SetActive(false);
         pauseMenu.SetActive(true);
         Time.timeScale = 0;
         this.UpdateData();
@@ -36,6 +41,12 @@ public class PauseManager : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
+
+        if (this.isLevelUp)
+        {
+            this.levelUpPanel.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     void UpdateData()
