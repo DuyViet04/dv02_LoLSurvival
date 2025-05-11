@@ -26,7 +26,7 @@ MonoBehaviour:
     name: "S\u1EE9c m\u1EA1nh ph\xE9p thu\u1EADt:"
     value: 7
   - type: 4
-    name: "T\u1ED1c \u0111\u1ED9 \u0111\xE1nh:"
+    name: "T\u1ED1c \u0111\u1ED9 \u0111\xE1nh(%):"
     value: 7
   - type: 5
     name: "Gi\xE1p:"
@@ -35,13 +35,13 @@ MonoBehaviour:
     name: "Kh\xE1ng ph\xE9p:"
     value: 9
   - type: 7
-    name: "T\u1ED1c \u0111\u1ED9 di chuy\u1EC3n:"
+    name: "T\u1ED1c \u0111\u1ED9 di chuy\u1EC3n(%):"
     value: 4
   - type: 8
-    name: "T\u1EC9 l\u1EC7 ch\xED m\u1EA1ng:"
+    name: "T\u1EC9 l\u1EC7 ch\xED m\u1EA1ng(%):"
     value: 5
   - type: 9
-    name: "S\xE1t th\u01B0\u01A1ng ch\xED m\u1EA1ng:"
+    name: "S\xE1t th\u01B0\u01A1ng ch\xED m\u1EA1ng(%):"
     value: 5
   - type: 10
     name: "Xuy\xEAn gi\xE1p:"
@@ -50,14 +50,14 @@ MonoBehaviour:
     name: "Xuy\xEAn kh\xE1ng ph\xE9p:"
     value: 4
   - type: 12
-    name: "H\xFAt m\xE1u:"
+    name: "H\xFAt m\xE1u(%):"
     value: 3
   - type: 13
-    name: "H\xFAt m\xE1u to\xE0n ph\u1EA7n:"
+    name: "H\xFAt m\xE1u to\xE0n ph\u1EA7n(%):"
     value: 5
   - type: 14
     name: "H\u1ED3i chi\xEAu:"
     value: 7
   - type: 15
-    name: "S\u1EE9c m\u1EA1nh h\xF4\xEC ph\xFAc:"
+    name: "S\u1EE9c m\u1EA1nh h\xF4\xEC ph\u1EE5c(%):"
     value: 5
