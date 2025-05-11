@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class LevelUp : MonoBehaviour
 {
+    [SerializeField] private LevelUpManager levelUpManager;
+    [SerializeField] private GameObject levelUpPanel;
     [SerializeField] private Image expBar;
     [SerializeField] private TMP_Text levelText;
     private float currentLv = 1;
@@ -34,6 +36,10 @@ public class LevelUp : MonoBehaviour
 
     void IncreaseLevel()
     {
+        this.levelUpPanel.SetActive(true);
+        Time.timeScale = 0;
+        LevelUpManager.Instance.ShowUpgradeChoices();
+
         this.currentLv++;
         this.maxExp = Mathf.Pow(currentLv + 1, 2);
         this.currentExp = 0;

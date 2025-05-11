@@ -1,0 +1,19 @@
+public enum UpgradeType
+{
+    Health,
+    HealthRegen,
+    AttackDamage,
+    AbilityPower,
+    AttackSpeed,
+    Armor,
+    MagicResistance,
+    MoveSpeed,
+    CriticalChance,
+    CriticalDamage,
+    ArmorPenetration,
+    MagicPenetration,
+    LifeSteal,
+    Omnivamp,
+    Haste,
+    HealingPower
+}
