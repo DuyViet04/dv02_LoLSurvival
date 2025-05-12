@@ -28,27 +28,27 @@ public abstract class TakingDamage : MonoBehaviour
     public virtual void RegenHealth(float value)
     {
         this.currentHp += value;
-        if (this.currentHp >= maxHp)
+        if (this.currentHp >= this.maxHp)
         {
-            this.currentHp = maxHp;
+            this.currentHp = this.maxHp;
         }
     }
 
     public virtual void LifeSteal(float value)
     {
         this.currentHp += value;
-        if (this.currentHp >= maxHp)
+        if (this.currentHp >= this.maxHp)
         {
-            this.currentHp = maxHp;
+            this.currentHp = this.maxHp;
         }
     }
 
     public virtual void Omnivamp(float value)
     {
         this.currentHp += value;
-        if (this.currentHp >= maxHp)
+        if (this.currentHp >= this.maxHp)
         {
-            this.currentHp = maxHp;
+            this.currentHp = this.maxHp;
         }
     }
 

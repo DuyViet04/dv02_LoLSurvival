@@ -23,10 +23,7 @@ public class YasuoWeapon : DealingDamage
 
         takingDamage.TakeDamage(this.damageDeal, this.stats.armorPenetration);
 
-        float lifeStealValue = this.damageDeal * this.stats.lifeSteal * (1 + this.stats.healingPower / 100);
-        takingDamage.LifeSteal(lifeStealValue);
-
-        float omnivampValue = this.stats.omnivamp * this.stats.omnivamp * (1 + this.stats.healingPower / 100);
-        takingDamage.Omnivamp(omnivampValue);
+        this.Heal(this.transform.root.GetComponentInChildren<PlayerTakingDamage>(), this.damageDeal,
+            this.stats.lifeSteal, this.stats.omnivamp, this.stats.healingPower);
     }
 }
