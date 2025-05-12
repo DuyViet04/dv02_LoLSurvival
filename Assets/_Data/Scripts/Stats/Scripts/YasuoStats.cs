@@ -6,9 +6,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "YasuoStats", menuName = "Stats/Yasuo")]
 public class YasuoStats : MainCharacterStats
 {
-
     private float baseAttackSpeed;
     private float baseMoveSpeed;
+
     private void Reset()
     {
         this.characterName = "Yasuo";
@@ -51,7 +51,7 @@ public class YasuoStats : MainCharacterStats
         this.haste = 0f;
         this.healingPower = 0f;
         this.pickUpRange = 0.5f;
-        
+
         this.baseAttackSpeed = this.attackSpeed;
         this.baseMoveSpeed = this.moveSpeed;
     }
@@ -86,6 +86,11 @@ public class YasuoStats : MainCharacterStats
                 break;
             case UpgradeType.CriticalChance:
                 this.criticalChance += value * 2;
+                if (this.criticalChance > 100f)
+                {
+                    this.attackDamage += (this.criticalChance - 100f) * 0.5f;
+                }
+
                 break;
             case UpgradeType.CriticalDamage:
                 this.criticalDamage += value * 0.9f;
