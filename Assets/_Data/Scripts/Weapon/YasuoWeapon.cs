@@ -22,5 +22,11 @@ public class YasuoWeapon : DealingDamage
         }
 
         takingDamage.TakeDamage(this.damageDeal);
+
+        float lifeStealValue = this.damageDeal * this.stats.lifeSteal * (1 + this.stats.healingPower) / 100;
+        takingDamage.LifeSteal(lifeStealValue);
+
+        float omnivampValue = this.stats.omnivamp * this.stats.omnivamp * (1 + this.stats.healingPower) / 300;
+        takingDamage.Omnivamp(omnivampValue);
     }
 }

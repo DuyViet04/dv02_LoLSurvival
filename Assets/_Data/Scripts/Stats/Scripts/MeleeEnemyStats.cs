@@ -10,7 +10,7 @@ public class MeleeEnemyStats : MainEnemyStats
     {
         this.enemyName = "MeleeEnemy";
         this.health = 477;
-        this.damage = 80;
+        this.damage = 12;
         this.moveSpeed = 1.5f;
         this.armor = 12;
         this.expValue = 61.75f;
@@ -20,7 +20,7 @@ public class MeleeEnemyStats : MainEnemyStats
     {
         this.enemyName = "MeleeEnemy";
         this.health = 477;
-        this.damage = 80;
+        this.damage = 12;
         this.moveSpeed = 1.5f;
         this.armor = 12;
         this.expValue = 61.75f;

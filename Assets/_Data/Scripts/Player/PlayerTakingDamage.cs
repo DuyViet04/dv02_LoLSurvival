@@ -20,7 +20,8 @@ public class PlayerTakingDamage : TakingDamage
     private void FixedUpdate()
     {
         this.maxHp = this.stats.health;
-        this.RegenerateHealth(this.stats.healthRegen);
+        float regenValue = this.stats.healthRegen * (1 + this.stats.healingPower) / 100;
+        this.RegenHealth(regenValue / (1 / Time.fixedDeltaTime));
     }
 
     public override void TakeDamage(float damage)
@@ -37,13 +38,38 @@ public class PlayerTakingDamage : TakingDamage
         }
     }
 
-    void RegenerateHealth(float value)
+    public override void RegenHealth(float value)
     {
-        this.currentHp += value;
-        if (this.currentHp > this.maxHp)
+        base.RegenHealth(value);
+        if (this.currentHp >= this.maxHp)
         {
-            this.currentHp = this.maxHp;
+            this.hpImage.fillAmount = 1f;
+        }
+        else
+        {
             this.hpImage.fillAmount = this.currentHp / maxHp;
+        }
+    }
+
+    public override void LifeSteal(float value)
+    {
+        base.LifeSteal(value);
+        if (this.currentHp >= this.maxHp)
+        {
+            this.hpImage.fillAmount = 1f;
+        }
+        else
+        {
+            this.hpImage.fillAmount = this.currentHp / maxHp;
+        }
+    }
+
+    public override void Omnivamp(float value)
+    {
+        base.Omnivamp(value);
+        if (this.currentHp >= this.maxHp)
+        {
+            this.hpImage.fillAmount = 1f;
         }
         else
         {

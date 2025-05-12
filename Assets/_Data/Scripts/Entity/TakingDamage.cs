@@ -17,6 +17,33 @@ public abstract class TakingDamage : MonoBehaviour
         OnDead();
     }
 
+    public virtual void RegenHealth(float value)
+    {
+        this.currentHp += value;
+        if (this.currentHp >= maxHp)
+        {
+            this.currentHp = maxHp;
+        }
+    }
+
+    public virtual void LifeSteal(float value)
+    {
+        this.currentHp += value;
+        if (this.currentHp >= maxHp)
+        {
+            this.currentHp = maxHp;
+        }
+    }
+    
+    public virtual void Omnivamp(float value)
+    {
+        this.currentHp += value;
+        if (this.currentHp >= maxHp)
+        {
+            this.currentHp = maxHp;
+        }
+    }
+
     public virtual bool IsDead()
     {
         if (this.currentHp > 0f) return false;
