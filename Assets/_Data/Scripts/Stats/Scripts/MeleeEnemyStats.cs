@@ -6,11 +6,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MeleeEnemyStats", menuName = "Stats/MeleeEnemy")]
 public class MeleeEnemyStats : MainEnemyStats
 {
-    private void Awake()
+    private void Reset()
     {
         this.enemyName = "MeleeEnemy";
-        this.health = 10;
-        this.damage = 3;
-        this.moveSpeed = 3;
+        this.health = 477;
+        this.damage = 80;
+        this.moveSpeed = 2;
+        this.armor = 12;
     }
 }

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b03e561a7fd46b545bb837a585d865fd, type: 3}
   m_Name: MeleeEnemyStats
   m_EditorClassIdentifier: 
-  name: MeleeEnemy
-  hp: 10
-  damage: 3
-  moveSpeed: 3
-  attackSpeed: 1
+  enemyName: MeleeEnemy
+  health: 477
+  damage: 80
+  moveSpeed: 2
+  armor: 12
+  magicResistance: 0

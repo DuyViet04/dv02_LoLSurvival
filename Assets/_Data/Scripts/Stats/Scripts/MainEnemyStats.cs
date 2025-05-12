@@ -8,4 +8,6 @@ public class MainEnemyStats : ScriptableObject
     public float health;
     public float damage;
     public float moveSpeed;
+    public float armor;
+    public float magicResistance;
 }
