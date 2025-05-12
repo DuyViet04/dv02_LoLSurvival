@@ -33,6 +33,7 @@ public class PauseManager : MonoBehaviour
 
         if (this.isLevelUp) this.levelUpPanel.SetActive(false);
         pauseMenu.SetActive(true);
+        StatsInforManager.Instance.mainStatsPanel.SetActive(true);
         Time.timeScale = 0;
         this.UpdateMainData();
         this.UpdateSecondData();

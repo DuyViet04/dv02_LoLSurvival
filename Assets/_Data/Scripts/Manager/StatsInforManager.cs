@@ -16,7 +16,7 @@ public class StatsInforManager : MonoBehaviour
 
     [SerializeField] private Image mainStats;
     [SerializeField] private Image secondStats;
-    [SerializeField] private GameObject mainStatsPanel;
+    [SerializeField] public GameObject mainStatsPanel;
     [SerializeField] private GameObject secondStatsPanel;
     [SerializeField] public List<TMP_Text> mainData;
     [SerializeField] public List<TMP_Text> secondData;
