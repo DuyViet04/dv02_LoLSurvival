@@ -57,6 +57,8 @@ public class YasuoStats : MainCharacterStats
 
     public void ApplyUpgrade(UpgradeType type, float value)
     {
+        float baseAttackSpeed = this.attackSpeed;
+        float baseMoveSpeed = this.moveSpeed;
         switch (type)
         {
             case UpgradeType.Health:
@@ -72,7 +74,7 @@ public class YasuoStats : MainCharacterStats
                 this.abilityPower += value;
                 break;
             case UpgradeType.AttackSpeed:
-                this.attackSpeed += this.attackSpeed * (value / 100f);
+                this.attackSpeed += baseAttackSpeed * (value / 100f);
                 break;
             case UpgradeType.Armor:
                 this.armor += value;
@@ -81,7 +83,7 @@ public class YasuoStats : MainCharacterStats
                 this.magicResistance += value;
                 break;
             case UpgradeType.MoveSpeed:
-                this.moveSpeed += this.moveSpeed * (value / 100f);
+                this.moveSpeed += baseMoveSpeed * (value / 100f);
                 break;
             case UpgradeType.CriticalChance:
                 this.criticalChance += value * 2;
