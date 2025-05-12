@@ -34,7 +34,8 @@ public class PauseManager : MonoBehaviour
         if (this.isLevelUp) this.levelUpPanel.SetActive(false);
         pauseMenu.SetActive(true);
         Time.timeScale = 0;
-        this.UpdateData();
+        this.UpdateMainData();
+        this.UpdateSecondData();
     }
 
     public void ContinueGame()
@@ -49,7 +50,7 @@ public class PauseManager : MonoBehaviour
         }
     }
 
-    void UpdateData()
+    void UpdateMainData()
     {
         FieldInfo[] fieldInfo = this.GetYasuoStatFields();
         StatsInforManager.Instance.mainData[0].text = this.levelUp.GetCurrentLevel().ToString();
@@ -57,6 +58,15 @@ public class PauseManager : MonoBehaviour
         for (int i = 1; i < 17; i++)
         {
             StatsInforManager.Instance.mainData[i].text = $"{fieldInfo[i].GetValue(stats):F2}";
+        }
+    }
+
+    void UpdateSecondData()
+    {
+        FieldInfo[] fieldInfo = this.GetYasuoStatFields();
+        for (int i = 17; i < 19; i++)
+        {
+            StatsInforManager.Instance.secondData[i - 17].text = $"{fieldInfo[i].GetValue(stats):F2}";
         }
     }
 

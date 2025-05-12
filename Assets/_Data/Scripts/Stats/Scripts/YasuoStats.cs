@@ -29,6 +29,7 @@ public class YasuoStats : MainCharacterStats
         this.haste = 0f;
         this.healingPower = 0f;
         this.pickUpRange = 0.5f;
+        this.expMultiplayer = 0f;
     }
 
     public void ResetStats()
@@ -51,6 +52,7 @@ public class YasuoStats : MainCharacterStats
         this.haste = 0f;
         this.healingPower = 0f;
         this.pickUpRange = 0.5f;
+        this.expMultiplayer = 0f;
 
         this.baseAttackSpeed = this.attackSpeed;
         this.baseMoveSpeed = this.moveSpeed;
@@ -112,6 +114,9 @@ public class YasuoStats : MainCharacterStats
                 break;
             case UpgradeType.HealingPower:
                 this.healingPower += value;
+                break;
+            case UpgradeType.ExpMultiplayer:
+                this.expMultiplayer += value;
                 break;
         }
     }

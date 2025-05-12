@@ -19,6 +19,7 @@ public class StatsInforManager : MonoBehaviour
     [SerializeField] private GameObject mainStatsPanel;
     [SerializeField] private GameObject secondStatsPanel;
     [SerializeField] public List<TMP_Text> mainData;
+    [SerializeField] public List<TMP_Text> secondData;
 
     private void Awake()
     {
@@ -26,6 +27,7 @@ public class StatsInforManager : MonoBehaviour
         instance = this;
 
         this.LoadMainData();
+        this.LoadSecondData();
     }
 
     public void ShowMainStats()
@@ -62,6 +64,17 @@ public class StatsInforManager : MonoBehaviour
         {
             TMP_Text text = obj.GetComponent<TMP_Text>();
             mainData.Add(text);
+        }
+    }
+
+    void LoadSecondData()
+    {
+        Transform secondDataContainer = this.secondStatsPanel.transform.Find("StatsData");
+
+        foreach (Transform obj in secondDataContainer)
+        {
+            TMP_Text text = obj.GetComponent<TMP_Text>();
+            secondData.Add(text);
         }
     }
 }
