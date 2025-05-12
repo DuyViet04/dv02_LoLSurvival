@@ -15,6 +15,6 @@ MonoBehaviour:
   enemyName: MeleeEnemy
   health: 477
   damage: 80
-  moveSpeed: 2
+  moveSpeed: 1.5
   armor: 12
   magicResistance: 0

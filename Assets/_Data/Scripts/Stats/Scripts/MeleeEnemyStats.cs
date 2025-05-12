@@ -11,7 +11,7 @@ public class MeleeEnemyStats : MainEnemyStats
         this.enemyName = "MeleeEnemy";
         this.health = 477;
         this.damage = 80;
-        this.moveSpeed = 2;
+        this.moveSpeed = 1.5f;
         this.armor = 12;
     }
 }
