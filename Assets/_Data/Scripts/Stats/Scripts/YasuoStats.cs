@@ -6,6 +6,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "YasuoStats", menuName = "Stats/Yasuo")]
 public class YasuoStats : MainCharacterStats
 {
+
+    private float baseAttackSpeed;
+    private float baseMoveSpeed;
     private void Reset()
     {
         this.characterName = "Yasuo";
@@ -48,17 +51,13 @@ public class YasuoStats : MainCharacterStats
         this.haste = 0f;
         this.healingPower = 0f;
         this.pickUpRange = 0.5f;
-    }
-
-    public YasuoStats Clone()
-    {
-        return Instantiate(this);
+        
+        this.baseAttackSpeed = this.attackSpeed;
+        this.baseMoveSpeed = this.moveSpeed;
     }
 
     public void ApplyUpgrade(UpgradeType type, float value)
     {
-        float baseAttackSpeed = this.attackSpeed;
-        float baseMoveSpeed = this.moveSpeed;
         switch (type)
         {
             case UpgradeType.Health:
