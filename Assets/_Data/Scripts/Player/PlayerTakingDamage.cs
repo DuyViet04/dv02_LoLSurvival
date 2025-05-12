@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,8 @@ public class PlayerTakingDamage : TakingDamage
 {
     [SerializeField] private YasuoStats stats;
     [SerializeField] private Image hpImage;
+    [SerializeField] private TMP_Text hpText;
+    [SerializeField] private TMP_Text hpRegenText;
     [SerializeField] private Animator playerAnimator;
 
     private void Start()
@@ -20,8 +23,10 @@ public class PlayerTakingDamage : TakingDamage
     private void FixedUpdate()
     {
         this.maxHp = this.stats.health;
-        float regenValue = this.stats.healthRegen * (1 + this.stats.healingPower) / 100;
+        this.armor = this.stats.armor;
+        float regenValue = this.stats.healthRegen * (1 + this.stats.healingPower / 100);
         this.RegenHealth(regenValue / (1 / Time.fixedDeltaTime));
+        this.hpRegenText.text = $"+{regenValue:F1}/s";
     }
 
     public override void TakeDamage(float damage)
@@ -36,6 +41,8 @@ public class PlayerTakingDamage : TakingDamage
         {
             this.hpImage.fillAmount = this.currentHp / maxHp;
         }
+
+        this.hpText.text = $"{this.currentHp:F1}/{this.maxHp}";
     }
 
     public override void RegenHealth(float value)
@@ -49,6 +56,8 @@ public class PlayerTakingDamage : TakingDamage
         {
             this.hpImage.fillAmount = this.currentHp / maxHp;
         }
+
+        this.hpText.text = $"{this.currentHp:F1}/{this.maxHp}";
     }
 
     public override void LifeSteal(float value)
@@ -62,6 +71,8 @@ public class PlayerTakingDamage : TakingDamage
         {
             this.hpImage.fillAmount = this.currentHp / maxHp;
         }
+
+        this.hpText.text = $"{this.currentHp:F1}/{this.maxHp}";
     }
 
     public override void Omnivamp(float value)
@@ -75,6 +86,8 @@ public class PlayerTakingDamage : TakingDamage
         {
             this.hpImage.fillAmount = this.currentHp / maxHp;
         }
+
+        this.hpText.text = $"{this.currentHp:F1}/{this.maxHp}";
     }
 
     public override void Despawn()

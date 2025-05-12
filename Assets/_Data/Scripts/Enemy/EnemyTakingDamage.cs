@@ -14,6 +14,11 @@ public class EnemyTakingDamage : TakingDamage
         this.currentHp = this.maxHp;
     }
 
+    private void FixedUpdate()
+    {
+        this.armor = this.stats.armor;
+    }
+
     public override void Despawn()
     {
         this.CreateExp();

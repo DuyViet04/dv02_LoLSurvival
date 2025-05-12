@@ -15,7 +15,7 @@ public class ExpSpawner : Spawner
     {
         if (instance != null) Debug.LogError("More than one instance of ExpSpawner");
         instance = this;
-        
+
         this.LoadPrefabs();
     }
 }

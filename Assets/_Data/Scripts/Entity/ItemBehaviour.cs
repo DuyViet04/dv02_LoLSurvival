@@ -6,7 +6,7 @@ using UnityEngine;
 public class ItemBehaviour : MonoBehaviour
 {
     private float expValue;
-    
+
     [SerializeField] private Transform target;
     [SerializeField] private float moveSpeed = 3f;
     private bool isMove;
@@ -15,7 +15,7 @@ public class ItemBehaviour : MonoBehaviour
     {
         this.expValue = value;
     }
-    
+
     public void StartMove()
     {
         this.isMove = true;

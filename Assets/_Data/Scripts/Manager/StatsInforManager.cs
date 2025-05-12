@@ -24,7 +24,7 @@ public class StatsInforManager : MonoBehaviour
     {
         if (instance != null) Debug.LogError("More than one StatsInforManager in scene!");
         instance = this;
-        
+
         this.LoadMainData();
     }
 

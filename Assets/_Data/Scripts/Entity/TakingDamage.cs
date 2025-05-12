@@ -6,15 +6,22 @@ public abstract class TakingDamage : MonoBehaviour
 {
     protected float maxHp = 2f;
     protected float currentHp;
+    protected float armor;
 
     public virtual void TakeDamage(float damage)
     {
-        this.currentHp -= damage;
+        this.currentHp -= damage * this.GetDamageMultiplayer();
         if (this.currentHp <= 0f)
         {
             this.currentHp = 0f;
         }
+
         OnDead();
+    }
+
+    public virtual float GetDamageMultiplayer()
+    {
+        return 1 - this.armor / (100 + this.armor);
     }
 
     public virtual void RegenHealth(float value)
@@ -34,7 +41,7 @@ public abstract class TakingDamage : MonoBehaviour
             this.currentHp = maxHp;
         }
     }
-    
+
     public virtual void Omnivamp(float value)
     {
         this.currentHp += value;
