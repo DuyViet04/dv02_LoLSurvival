@@ -15,6 +15,12 @@ public class RarityTable : ScriptableObject
         this.LoadData();
     }
 
+    public void ResetData()
+    {
+        this.rarities.Clear();
+        this.LoadData();
+    }
+
     public RarityType GetRandomRarity()
     {
         float roll = Random.Range(0f, 1f);
