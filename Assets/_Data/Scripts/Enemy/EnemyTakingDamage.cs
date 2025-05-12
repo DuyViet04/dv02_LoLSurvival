@@ -23,11 +23,11 @@ public class EnemyTakingDamage : TakingDamage
     public override void OnDead()
     {
         base.OnDead();
-        this.CreateExp();
     }
 
     public override void Despawn()
-    {
+    {        
+        this.CreateExp();
         EnemySpawner.Instance.Despawn(this.transform.parent);
     }
 
