@@ -56,7 +56,7 @@ public class PauseManager : MonoBehaviour
 
         for (int i = 1; i < 17; i++)
         {
-            StatsInforManager.Instance.mainData[i].text = fieldInfo[i].GetValue(stats).ToString();
+            StatsInforManager.Instance.mainData[i].text = $"{fieldInfo[i].GetValue(stats):F2}";
         }
     }
 
