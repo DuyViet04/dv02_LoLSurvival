@@ -9,7 +9,7 @@ public class YasuoWeapon : DealingDamage
 
     private void Start()
     {
-        base.damage = this.stats.attackDamage;
+        this.damage = this.stats.attackDamage;
     }
 
     public override void DealDamage(TakingDamage takingDamage)

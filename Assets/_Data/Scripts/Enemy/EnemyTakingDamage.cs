@@ -10,8 +10,8 @@ public class EnemyTakingDamage : TakingDamage
 
     private void Start()
     {
-        base.maxHp = this.stats.health;
-        base.currentHp = this.maxHp;
+        this.maxHp = this.stats.health;
+        this.currentHp = this.maxHp;
     }
 
     public override void TakeDamage(float damage)
@@ -20,13 +20,8 @@ public class EnemyTakingDamage : TakingDamage
         Debug.Log(currentHp);
     }
 
-    public override void OnDead()
-    {
-        base.OnDead();
-    }
-
     public override void Despawn()
-    {        
+    {
         this.CreateExp();
         EnemySpawner.Instance.Despawn(this.transform.parent);
     }

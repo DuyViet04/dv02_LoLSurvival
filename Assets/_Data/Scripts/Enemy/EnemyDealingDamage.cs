@@ -9,11 +9,6 @@ public class EnemyDealingDamage : DealingDamage
 
     private void Start()
     {
-        base.damage = this.stats.damage;
-    }
-
-    public override void DealDamage(TakingDamage takingDamage)
-    {
-        base.DealDamage(takingDamage);
+        this.damage = this.stats.damage;
     }
 }

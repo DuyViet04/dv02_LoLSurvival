@@ -13,8 +13,8 @@ public class PlayerTakingDamage : TakingDamage
 
     private void Start()
     {
-        base.maxHp = this.stats.health;
-        base.currentHp = this.maxHp;
+        this.maxHp = this.stats.health;
+        this.currentHp = this.maxHp;
     }
 
     public override void TakeDamage(float damage)
