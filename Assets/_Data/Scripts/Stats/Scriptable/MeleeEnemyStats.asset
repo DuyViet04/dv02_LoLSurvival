@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: MeleeEnemy
   health: 477
-  damage: 80
+  damage: 12
   moveSpeed: 1.5
   armor: 12
   magicResistance: 0
