@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class LevelUp : MonoBehaviour
 {
+    [SerializeField] private RarityTable table;
     [SerializeField] private LevelUpManager levelUpManager;
     [SerializeField] private GameObject levelUpPanel;
     [SerializeField] private Image expBar;
@@ -25,10 +26,10 @@ public class LevelUp : MonoBehaviour
 
     public void IncreaseExp()
     {
-        this.currentExp += 1;
+        this.currentExp += 1000;
         this.expBar.fillAmount = this.currentExp / maxExp;
 
-        if (this.currentExp == this.maxExp)
+        if (this.currentExp >= this.maxExp)
         {
             this.IncreaseLevel();
         }
@@ -36,6 +37,8 @@ public class LevelUp : MonoBehaviour
 
     void IncreaseLevel()
     {
+        this.IncreaseRarity(table);
+
         this.levelUpPanel.SetActive(true);
         Time.timeScale = 0;
         LevelUpManager.Instance.ShowUpgradeChoices();
@@ -50,5 +53,17 @@ public class LevelUp : MonoBehaviour
     public float GetCurrentLevel()
     {
         return this.currentLv;
+    }
+
+    void IncreaseRarity(RarityTable table)
+    {
+        float progress = (float)1 / 49;
+
+        if (this.currentLv > 50) return;
+        table.rarities[0].change -= progress * 10 / 15;
+        table.rarities[1].change += progress * 4 / 15;
+        table.rarities[2].change += progress * 3 / 15;
+        table.rarities[3].change += progress * 2 / 15;
+        table.rarities[4].change += progress * 1 / 15;
     }
 }
