@@ -16,6 +16,6 @@ MonoBehaviour:
   health: 477
   damage: 12
   moveSpeed: 1.5
-  armor: 160
+  armor: 16
   magicResistance: 0
   expValue: 61.75

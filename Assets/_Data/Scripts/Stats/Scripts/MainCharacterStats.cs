@@ -24,4 +24,5 @@ public class MainCharacterStats : ScriptableObject
     public float healingPower;
     [Header("Secondary Stats")]
     public float pickUpRange;
+    public float expMultiplayer;
 }

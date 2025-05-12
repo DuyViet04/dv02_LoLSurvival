@@ -15,5 +15,6 @@ public enum UpgradeType
     LifeSteal,
     Omnivamp,
     Haste,
-    HealingPower
+    HealingPower,
+    ExpMultiplayer
 }

@@ -8700,6 +8700,7 @@ MonoBehaviour:
   meleeEnemyStats: {fileID: 11400000, guid: 8f4567748d0534846b22d4440a553d0b, type: 2}
   yasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   rarityTable: {fileID: 11400000, guid: fff28aaf87e59cf48ba6a17caa461b54, type: 2}
+  upgradeTable: {fileID: 11400000, guid: 7bf756567195b724c9ec8f3d35a7ce41, type: 2}
 --- !u!4 &1770982127
 Transform:
   m_ObjectHideFlags: 0
