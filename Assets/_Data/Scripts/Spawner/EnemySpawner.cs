@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EnemySpawner : Spawner
 {
-    
     private static EnemySpawner instance;
 
     public static EnemySpawner Instance
     {
         get { return instance; }
     }
+
     [SerializeField] private float spawnTime = 1f;
     [SerializeField] private float spawnRange = 5f;
     private float spawnTimer = 0f;
@@ -20,7 +20,7 @@ public class EnemySpawner : Spawner
     {
         if (instance != null) Debug.LogError("There is more than one Spawner in the scene!");
         instance = this;
-        
+
         this.LoadPrefabs();
     }
 

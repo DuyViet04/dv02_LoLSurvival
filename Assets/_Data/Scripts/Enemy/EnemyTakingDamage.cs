@@ -23,12 +23,18 @@ public class EnemyTakingDamage : TakingDamage
     public override void Despawn()
     {
         this.CreateExp();
+        this.ResetStats();
         EnemySpawner.Instance.Despawn(this.transform.parent);
     }
 
     void CreateExp()
     {
         ExpSpawner.Instance.Spawn("Exp", this.transform.parent.position, Quaternion.identity);
+    }
+
+    void ResetStats()
+    {
+        this.currentHp = this.maxHp;
     }
 
     private void OnTriggerEnter(Collider other)
