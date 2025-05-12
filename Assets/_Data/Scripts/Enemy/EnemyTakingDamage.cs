@@ -29,12 +29,13 @@ public class EnemyTakingDamage : TakingDamage
 
     void CreateExp()
     {
-        ExpSpawner.Instance.Spawn("Exp", this.transform.parent.position, Quaternion.identity);
+        Transform exp = ExpSpawner.Instance.Spawn("Exp", this.transform.parent.position, Quaternion.identity);
+        exp.GetComponentInChildren<ItemBehaviour>().SetExpValue(this.stats.expValue);
     }
 
     void ResetStats()
     {
-        this.currentHp = this.maxHp;
+        this.currentHp = this.stats.health;
     }
 
     private void OnTriggerEnter(Collider other)

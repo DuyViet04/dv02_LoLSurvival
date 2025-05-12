@@ -18,16 +18,16 @@ public class LevelUp : MonoBehaviour
 
     private void Start()
     {
-        this.maxExp = Mathf.Pow(currentLv + 1, 2);
+        this.maxExp = 180 + 100 * Mathf.Pow(this.currentLv - 1, 2);
         this.currentExp = 0;
-        this.expBar.fillAmount = this.currentExp / maxExp;
+        this.expBar.fillAmount = this.currentExp / this.maxExp;
         this.levelText.SetText(this.currentLv.ToString());
     }
 
-    public void IncreaseExp()
+    public void IncreaseExp(float expValue)
     {
-        this.currentExp += 1000;
-        this.expBar.fillAmount = this.currentExp / maxExp;
+        this.currentExp += expValue;
+        this.expBar.fillAmount = this.currentExp / this.maxExp;
 
         if (this.currentExp >= this.maxExp)
         {
@@ -37,16 +37,16 @@ public class LevelUp : MonoBehaviour
 
     void IncreaseLevel()
     {
-        this.IncreaseRarity(table);
+        this.IncreaseRarity(this.table);
 
         this.levelUpPanel.SetActive(true);
         Time.timeScale = 0;
         LevelUpManager.Instance.ShowUpgradeChoices();
 
         this.currentLv++;
-        this.maxExp = Mathf.Pow(currentLv + 1, 2);
+        this.maxExp = 180 + 100 * Mathf.Pow(this.currentLv - 1, 2);
         this.currentExp = 0;
-        this.expBar.fillAmount = this.currentExp / maxExp;
+        this.expBar.fillAmount = this.currentExp / this.maxExp;
         this.levelText.SetText(this.currentLv.ToString());
     }
 

@@ -8421,6 +8421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c857af9c0d0fa854895c72af3e21c86f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meleeEnemyStats: {fileID: 11400000, guid: 8f4567748d0534846b22d4440a553d0b, type: 2}
   yasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   rarityTable: {fileID: 11400000, guid: fff28aaf87e59cf48ba6a17caa461b54, type: 2}
 --- !u!4 &1770982127

@@ -8,7 +8,7 @@ public class Collecting : MonoBehaviour
     [SerializeField] private YasuoStats stats;
     [SerializeField] private CapsuleCollider pickUpCollider;
 
-    private void Start()
+    private void FixedUpdate()
     {
         this.pickUpCollider.radius = this.stats.pickUpRange;
     }

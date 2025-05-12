@@ -13,5 +13,16 @@ public class MeleeEnemyStats : MainEnemyStats
         this.damage = 80;
         this.moveSpeed = 1.5f;
         this.armor = 12;
+        this.expValue = 61.75f;
+    }
+
+    public void ResetStats()
+    {
+        this.enemyName = "MeleeEnemy";
+        this.health = 477;
+        this.damage = 80;
+        this.moveSpeed = 1.5f;
+        this.armor = 12;
+        this.expValue = 61.75f;
     }
 }

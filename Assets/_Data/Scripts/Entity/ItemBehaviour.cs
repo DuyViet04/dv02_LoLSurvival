@@ -5,10 +5,17 @@ using UnityEngine;
 
 public class ItemBehaviour : MonoBehaviour
 {
+    private float expValue;
+    
     [SerializeField] private Transform target;
     [SerializeField] private float moveSpeed = 3f;
     private bool isMove;
 
+    public void SetExpValue(float value)
+    {
+        this.expValue = value;
+    }
+    
     public void StartMove()
     {
         this.isMove = true;
@@ -18,7 +25,7 @@ public class ItemBehaviour : MonoBehaviour
     {
         LevelUp levelUp = GameObject.FindObjectOfType<LevelUp>();
         ExpSpawner.Instance.Despawn(this.transform.parent);
-        levelUp.IncreaseExp();
+        levelUp.IncreaseExp(this.expValue);
     }
 
     public void MoveToTarget(Transform target)

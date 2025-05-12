@@ -18,3 +18,4 @@ MonoBehaviour:
   moveSpeed: 1.5
   armor: 12
   magicResistance: 0
+  expValue: 61.75
