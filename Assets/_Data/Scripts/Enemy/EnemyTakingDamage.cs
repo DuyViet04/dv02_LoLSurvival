@@ -14,12 +14,6 @@ public class EnemyTakingDamage : TakingDamage
         this.currentHp = this.maxHp;
     }
 
-    public override void TakeDamage(float damage)
-    {
-        base.TakeDamage(damage);
-        Debug.Log(currentHp);
-    }
-
     public override void Despawn()
     {
         this.CreateExp();
@@ -43,7 +37,6 @@ public class EnemyTakingDamage : TakingDamage
         if (other.CompareTag("Weapon"))
         {
             other.GetComponent<YasuoWeapon>().DealDamage(this.transform);
-            Debug.Log("Enemy Taking Damage");
         }
     }
 }

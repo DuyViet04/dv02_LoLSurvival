@@ -17,6 +17,12 @@ public class PlayerTakingDamage : TakingDamage
         this.currentHp = this.maxHp;
     }
 
+    private void FixedUpdate()
+    {
+        this.maxHp = this.stats.health;
+        this.RegenerateHealth(this.stats.healthRegen);
+    }
+
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
@@ -29,8 +35,20 @@ public class PlayerTakingDamage : TakingDamage
         {
             this.hpImage.fillAmount = this.currentHp / maxHp;
         }
+    }
 
-        Debug.Log(currentHp);
+    void RegenerateHealth(float value)
+    {
+        this.currentHp += value;
+        if (this.currentHp > this.maxHp)
+        {
+            this.currentHp = this.maxHp;
+            this.hpImage.fillAmount = this.currentHp / maxHp;
+        }
+        else
+        {
+            this.hpImage.fillAmount = this.currentHp / maxHp;
+        }
     }
 
     public override void Despawn()
@@ -45,7 +63,6 @@ public class PlayerTakingDamage : TakingDamage
         if (parent != null && parent.CompareTag("Enemy"))
         {
             parent.GetComponentInChildren<EnemyDealingDamage>().DealDamage(this.transform);
-            Debug.Log("Take Damage");
         }
     }
 }

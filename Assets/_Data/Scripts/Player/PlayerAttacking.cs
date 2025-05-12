@@ -22,7 +22,6 @@ public class PlayerAttacking : MonoBehaviour
     {
         this.animator.SetTrigger("isAttack");
         this.animator.speed = this.GetAnimationSpeed(this.stats.attackSpeed);
-        Debug.Log("Attack");
     }
 
     float GetAttackDelay(float attackSpeed)

@@ -22,6 +22,5 @@ public class YasuoWeapon : DealingDamage
         }
 
         takingDamage.TakeDamage(this.damageDeal);
-        Debug.Log("DamageDeal: " + damageDeal);
     }
 }

@@ -7448,7 +7448,7 @@ MonoBehaviour:
   prefabs: []
   prefabsPool: []
   spawnTime: 1
-  spawnRange: 5
+  spawnRange: 10
 --- !u!1 &1662353784
 GameObject:
   m_ObjectHideFlags: 0
