@@ -84,10 +84,10 @@ public class YasuoStats : MainCharacterStats
                 this.moveSpeed += this.moveSpeed * (value / 100f);
                 break;
             case UpgradeType.CriticalChance:
-                this.criticalChance += value;
+                this.criticalChance += value * 2;
                 break;
             case UpgradeType.CriticalDamage:
-                this.criticalDamage += value;
+                this.criticalDamage += value * 0.9f;
                 break;
             case UpgradeType.ArmorPenetration:
                 this.armorPenetration += value;
