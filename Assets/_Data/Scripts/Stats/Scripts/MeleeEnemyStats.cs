@@ -12,7 +12,7 @@ public class MeleeEnemyStats : MainEnemyStats
         this.health = 477;
         this.damage = 12;
         this.moveSpeed = 1.5f;
-        this.armor = 12;
+        this.armor = 16;
         this.expValue = 61.75f;
     }
 
@@ -22,7 +22,7 @@ public class MeleeEnemyStats : MainEnemyStats
         this.health = 477;
         this.damage = 12;
         this.moveSpeed = 1.5f;
-        this.armor = 12;
+        this.armor = 16;
         this.expValue = 61.75f;
     }
 }

@@ -29,9 +29,9 @@ public class PlayerTakingDamage : TakingDamage
         this.hpRegenText.text = $"+{regenValue:F1}/s";
     }
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(float damage, float armorPenetration)
     {
-        base.TakeDamage(damage);
+        base.TakeDamage(damage, armorPenetration);
         this.playerAnimator.SetTrigger("isTakeDamage");
         if (this.currentHp <= 0f)
         {

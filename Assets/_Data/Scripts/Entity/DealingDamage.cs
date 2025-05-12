@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class DealingDamage : MonoBehaviour
 {
     protected float damage = 1f;
+    protected float armorPenetration;
 
     public virtual void DealDamage(Transform target)
     {
@@ -15,6 +16,6 @@ public abstract class DealingDamage : MonoBehaviour
 
     public virtual void DealDamage(TakingDamage takingDamage)
     {
-        takingDamage.TakeDamage(this.damage);
+        takingDamage.TakeDamage(this.damage, this.armorPenetration);
     }
 }

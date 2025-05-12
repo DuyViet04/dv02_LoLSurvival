@@ -8,9 +8,9 @@ public abstract class TakingDamage : MonoBehaviour
     protected float currentHp;
     protected float armor;
 
-    public virtual void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage, float armorPenetration)
     {
-        this.currentHp -= damage * this.GetDamageMultiplayer();
+        this.currentHp -= damage * this.GetDamageMultiplayer(armorPenetration);
         if (this.currentHp <= 0f)
         {
             this.currentHp = 0f;
@@ -19,9 +19,10 @@ public abstract class TakingDamage : MonoBehaviour
         OnDead();
     }
 
-    public virtual float GetDamageMultiplayer()
+    public virtual float GetDamageMultiplayer(float armorPenetration)
     {
-        return 1 - this.armor / (100 + this.armor);
+        float newArmor = this.armor - armorPenetration;
+        return 1 - newArmor / (100 + Mathf.Abs(newArmor));
     }
 
     public virtual void RegenHealth(float value)

@@ -21,7 +21,7 @@ public class YasuoWeapon : DealingDamage
             this.damageDeal = this.stats.attackDamage * this.stats.criticalDamage / 100;
         }
 
-        takingDamage.TakeDamage(this.damageDeal);
+        takingDamage.TakeDamage(this.damageDeal, this.stats.armorPenetration);
 
         float lifeStealValue = this.damageDeal * this.stats.lifeSteal * (1 + this.stats.healingPower / 100);
         takingDamage.LifeSteal(lifeStealValue);
