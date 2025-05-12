@@ -9,45 +9,45 @@ public class YasuoStats : MainCharacterStats
     private void Reset()
     {
         this.characterName = "Yasuo";
-        this.health = 100f;
-        this.healthRegen = 0f;
-        this.attackDamage = 10f;
+        this.health = 590f;
+        this.healthRegen = 2f;
+        this.attackDamage = 60f;
         this.abilityPower = 0;
-        this.attackSpeed = 1f;
-        this.armor = 0f;
-        this.magicResistance = 0f;
-        this.moveSpeed = 7f;
+        this.attackSpeed = 0.7f;
+        this.armor = 32f;
+        this.magicResistance = 32f;
+        this.moveSpeed = 3.45f;
         this.criticalChance = 0f;
-        this.criticalDamage = 0f;
+        this.criticalDamage = 175 * 0.9f;
         this.armorPenetration = 0f;
         this.magicPenetration = 0f;
         this.lifeSteal = 0f;
         this.omnivamp = 0f;
         this.haste = 0f;
         this.healingPower = 0f;
-        this.pickUpRange = 1f;
+        this.pickUpRange = 0.5f;
     }
 
     public void ResetStats()
     {
         this.characterName = "Yasuo";
-        this.health = 100f;
-        this.healthRegen = 0f;
-        this.attackDamage = 10f;
+        this.health = 590f;
+        this.healthRegen = 2f;
+        this.attackDamage = 60f;
         this.abilityPower = 0;
-        this.attackSpeed = 1f;
-        this.armor = 0f;
-        this.magicResistance = 0f;
-        this.moveSpeed = 7f;
+        this.attackSpeed = 0.7f;
+        this.armor = 32f;
+        this.magicResistance = 32f;
+        this.moveSpeed = 3.45f;
         this.criticalChance = 0f;
-        this.criticalDamage = 0f;
+        this.criticalDamage = 175 * 0.9f;
         this.armorPenetration = 0f;
         this.magicPenetration = 0f;
         this.lifeSteal = 0f;
         this.omnivamp = 0f;
         this.haste = 0f;
         this.healingPower = 0f;
-        this.pickUpRange = 1f;
+        this.pickUpRange = 0.5f;
     }
 
     public YasuoStats Clone()

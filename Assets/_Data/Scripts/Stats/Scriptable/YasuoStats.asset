@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: YasuoStats
   m_EditorClassIdentifier: 
   characterName: Yasuo
-  health: 100
-  healthRegen: 0
-  attackDamage: 10
+  health: 590
+  healthRegen: 2
+  attackDamage: 60
   abilityPower: 0
-  attackSpeed: 1
-  armor: 0
-  magicResistance: 0
-  moveSpeed: 7
+  attackSpeed: 0.7
+  armor: 32
+  magicResistance: 32
+  moveSpeed: 3.45
   criticalChance: 0
-  criticalDamage: 0
+  criticalDamage: 157.5
   armorPenetration: 0
   magicPenetration: 0
   lifeSteal: 0
   omnivamp: 0
   haste: 0
   healingPower: 0
-  pickUpRange: 1
+  pickUpRange: 0.5
