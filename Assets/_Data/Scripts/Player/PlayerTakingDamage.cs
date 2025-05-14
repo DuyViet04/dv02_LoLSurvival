@@ -42,7 +42,7 @@ public class PlayerTakingDamage : TakingDamage
             this.hpImage.fillAmount = this.currentHp / maxHp;
         }
 
-        this.hpText.text = $"{this.currentHp:F1}/{this.maxHp}";
+        this.hpText.text = $"{this.currentHp:N0} / {this.maxHp}";
     }
 
     public override void RegenHealth(float value)
@@ -57,7 +57,7 @@ public class PlayerTakingDamage : TakingDamage
             this.hpImage.fillAmount = this.currentHp / maxHp;
         }
 
-        this.hpText.text = $"{this.currentHp:F1}/{this.maxHp}";
+        this.hpText.text = $"{this.currentHp:N0} / {this.maxHp}";
     }
 
     public override void LifeSteal(float value)
@@ -72,7 +72,7 @@ public class PlayerTakingDamage : TakingDamage
             this.hpImage.fillAmount = this.currentHp / maxHp;
         }
 
-        this.hpText.text = $"{this.currentHp:F1}/{this.maxHp}";
+        this.hpText.text = $"{this.currentHp:N0} / {this.maxHp}";
     }
 
     public override void Omnivamp(float value)
@@ -87,7 +87,7 @@ public class PlayerTakingDamage : TakingDamage
             this.hpImage.fillAmount = this.currentHp / maxHp;
         }
 
-        this.hpText.text = $"{this.currentHp:F1}/{this.maxHp}";
+        this.hpText.text = $"{this.currentHp:N0} / {this.maxHp}";
     }
 
     public override void Despawn()
