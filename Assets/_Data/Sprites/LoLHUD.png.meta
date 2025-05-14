@@ -197,7 +197,7 @@ TextureImporter:
         width: 47
         height: 121
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,6 +205,90 @@ TextureImporter:
       bones: []
       spriteID: 53d4b3c49d94e884d8f10762cb3e8916
       internalID: 636920509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CS, Time Bar
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 493
+        width: 300
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9934c4c6696fe546b62e00bbfa59794
+      internalID: -1580097647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CS Icon
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 697
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e3b85981ecef5f4bbe8395f2a918ce1
+      internalID: -223909347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Time Icon
+      rect:
+        serializedVersion: 2
+        x: 897
+        y: 558
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4186355360b24084187856547cdd3d06
+      internalID: -47270504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gold
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 388
+        width: 198
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e580ea362209a2244850f48370015be2
+      internalID: 700661719
       vertices: []
       indices: 
       edges: []
@@ -221,10 +305,14 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       HP, MP Bar and Skill: 1248718709
+      Time Icon: -47270504
       HPBackground: -1360782465
       Avatar and Level: 265712829
       Exp Bar: 636920509
+      Gold: 700661719
       HP: 1266691831
+      CS, Time Bar: -1580097647
+      CS Icon: -223909347
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
