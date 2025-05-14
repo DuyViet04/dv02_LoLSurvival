@@ -6169,6 +6169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee8f5b9092042d44ea8c2bd27e3912bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   table: {fileID: 11400000, guid: fff28aaf87e59cf48ba6a17caa461b54, type: 2}
   levelUpManager: {fileID: 901364042}
   levelUpPanel: {fileID: 901364038}

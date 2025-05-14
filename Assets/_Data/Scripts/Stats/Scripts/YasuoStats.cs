@@ -8,6 +8,7 @@ public class YasuoStats : MainCharacterStats
 {
     private float baseAttackSpeed;
     private float baseMoveSpeed;
+    private float basePickUpRange;
 
     private void Reset()
     {
@@ -29,7 +30,7 @@ public class YasuoStats : MainCharacterStats
         this.haste = 0f;
         this.healingPower = 0f;
         this.pickUpRange = 0.5f;
-        this.expMultiplayer = 0f;
+        this.expMultiplier = 0f;
     }
 
     public void ResetStats()
@@ -52,10 +53,11 @@ public class YasuoStats : MainCharacterStats
         this.haste = 0f;
         this.healingPower = 0f;
         this.pickUpRange = 0.5f;
-        this.expMultiplayer = 0f;
+        this.expMultiplier = 0f;
 
         this.baseAttackSpeed = this.attackSpeed;
         this.baseMoveSpeed = this.moveSpeed;
+        this.basePickUpRange = this.pickUpRange;
     }
 
     public void ApplyUpgrade(UpgradeType type, float value)
@@ -90,7 +92,9 @@ public class YasuoStats : MainCharacterStats
                 this.criticalChance += value * 2;
                 if (this.criticalChance > 100f)
                 {
-                    this.attackDamage += (this.criticalChance - 100f) * 0.5f;
+                    float balance = this.criticalChance - 100f;
+                    this.attackDamage += balance * 0.5f;
+                    this.criticalChance = 100f;
                 }
 
                 break;
@@ -115,8 +119,11 @@ public class YasuoStats : MainCharacterStats
             case UpgradeType.HealingPower:
                 this.healingPower += value;
                 break;
-            case UpgradeType.ExpMultiplayer:
-                this.expMultiplayer += value;
+            case UpgradeType.PickUpRange:
+                this.pickUpRange += this.basePickUpRange * (value / 100f);
+                break;
+            case UpgradeType.ExpMultiplier:
+                this.expMultiplier += value;
                 break;
         }
     }

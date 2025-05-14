@@ -66,7 +66,7 @@ public abstract class Spawner : MonoBehaviour
         return null;
     }
 
-    public void Despawn(Transform prefab)
+    public virtual void Despawn(Transform prefab)
     {
         prefab.gameObject.SetActive(false);
         this.prefabsPool.Add(prefab);

@@ -11,7 +11,6 @@ public class RarityTable : ScriptableObject
 
     private void Reset()
     {
-        if (rarities != null) return;
         this.LoadData();
     }
 

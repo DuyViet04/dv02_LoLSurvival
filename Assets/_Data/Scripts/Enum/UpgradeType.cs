@@ -16,5 +16,6 @@ public enum UpgradeType
     Omnivamp,
     Haste,
     HealingPower,
-    ExpMultiplayer
+    PickUpRange,
+    ExpMultiplier
 }

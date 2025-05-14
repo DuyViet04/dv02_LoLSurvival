@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class LevelUp : MonoBehaviour
 {
+    [SerializeField] private YasuoStats stats;
     [SerializeField] private RarityTable table;
     [SerializeField] private LevelUpManager levelUpManager;
     [SerializeField] private GameObject levelUpPanel;
@@ -26,7 +27,7 @@ public class LevelUp : MonoBehaviour
 
     public void IncreaseExp(float expValue)
     {
-        this.currentExp += expValue;
+        this.currentExp += expValue * (1 + this.stats.expMultiplier / 100);
         this.expBar.fillAmount = this.currentExp / this.maxExp;
 
         if (this.currentExp >= this.maxExp)

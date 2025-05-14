@@ -10,6 +10,8 @@ public class EnemySpawner : Spawner
     {
         get { return instance; }
     }
+    
+    private int count = 0;
 
     [SerializeField] private float spawnTime = 1f;
     [SerializeField] private float spawnRange = 5f;
@@ -37,5 +39,11 @@ public class EnemySpawner : Spawner
         float x = Random.Range(this.spawnRange, -this.spawnRange);
         float z = Random.Range(this.spawnRange, -this.spawnRange);
         return new Vector3(x, 0, z);
+    }
+
+    public override void Despawn(Transform prefab)
+    {
+        base.Despawn(prefab);
+        this.count++;
     }
 }

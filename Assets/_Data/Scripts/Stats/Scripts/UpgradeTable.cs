@@ -37,7 +37,8 @@ public class UpgradeTable : ScriptableObject
         this.AddUpgrade(UpgradeType.Omnivamp, "Hút máu toàn phần(%):", 5);
         this.AddUpgrade(UpgradeType.Haste, "Hồi chiêu:", 7);
         this.AddUpgrade(UpgradeType.HealingPower, "Sức mạnh hôì phục(%):", 5);
-        this.AddUpgrade(UpgradeType.ExpMultiplayer, "Kinh nghiệm(%): ", 5);
+        this.AddUpgrade(UpgradeType.PickUpRange, "Tầm nhặt(%):", 10);
+        this.AddUpgrade(UpgradeType.ExpMultiplier, "Kinh nghiệm(%): ", 5);
     }
 
     void AddUpgrade(UpgradeType type, string name, float value)
