@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5f960843f8b72b448d9669ec11dd982, type: 3}
+  m_Name: StatikkShiv
+  m_EditorClassIdentifier: 
+  type: 0
+  rarity: 2
+  name: "Dao \u0111i\u1EC7n Statikk"
+  icon: {fileID: -1078115162, guid: ea44283b68262844291a7c5404bbb738, type: 3}
+  cost: 2700
+  craftCost: 450
+  displayText: "S\xE1t th\u01B0\u01A1ng v\u1EADt l\xFD: 45\nT\u1ED1c \u0111\u1ED9
+    \u0111\xE1nh: 35%\nT\u1ED1c \u0111\u1ED9 di chuy\u1EC3n: 4%"
+  attackDamage: 45
+  attackSpeed: 35
+  moveSpeed: 4
+  requiredItems:
+  - {fileID: 11400000, guid: b7d5b7cbffa7bb5458aaf8dc71e8c49e, type: 2}
+  - {fileID: 11400000, guid: 1a044441567488d4ebeaf0fe4e602172, type: 2}
+  - {fileID: 11400000, guid: 1b0a4c7deee9f414f8aaa60d6934b5b6, type: 2}

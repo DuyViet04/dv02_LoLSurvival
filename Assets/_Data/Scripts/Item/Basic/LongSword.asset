@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5f960843f8b72b448d9669ec11dd982, type: 3}
+  m_Name: LongSword
+  m_EditorClassIdentifier: 
+  type: 0
+  rarity: 0
+  name: "Ki\u1EBFm d\xE0i"
+  icon: {fileID: -703757103, guid: e2430da715971c248ac7323c199380cd, type: 3}
+  cost: 350
+  displayText: "S\xE1t th\u01B0\u01A1ng v\u1EADt l\xFD: 10"
+  attackDamage: 10
+  attackSpeed: 0
+  moveSpeed: 0
+  requiredItems: []

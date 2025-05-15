@@ -22,4 +22,15 @@ public class GoldDisplay : MonoBehaviour
         float gold = Mathf.Round(this.currentGold);
         this.goldText.text = gold.ToString();
     }
+
+    public void GiveGold(float value)
+    {
+        this.currentGold -= value;
+        if (this.currentGold < 0) this.goldGeneration = 0;
+    }
+
+    public float GetCurrentGold()
+    {
+        return Mathf.Round(this.currentGold);
+    }
 }

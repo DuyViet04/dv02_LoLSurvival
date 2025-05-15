@@ -281,7 +281,7 @@ TextureImporter:
         width: 198
         height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -289,6 +289,48 @@ TextureImporter:
       bones: []
       spriteID: e580ea362209a2244850f48370015be2
       internalID: 700661719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ItemSlot
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 487
+        width: 150
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cbc0b06b0ee0bc4093ec126e6ecf7c8
+      internalID: 795309742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ItemBackground
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 534
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1999710f990abc04da194d8ad2606f45
+      internalID: -1485911640
       vertices: []
       indices: 
       edges: []
@@ -308,7 +350,9 @@ TextureImporter:
       Time Icon: -47270504
       HPBackground: -1360782465
       Avatar and Level: 265712829
+      ItemBackground: -1485911640
       Exp Bar: 636920509
+      ItemSlot: 795309742
       Gold: 700661719
       HP: 1266691831
       CS, Time Bar: -1580097647

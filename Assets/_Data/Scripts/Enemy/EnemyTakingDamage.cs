@@ -34,7 +34,7 @@ public class EnemyTakingDamage : TakingDamage
     void CreateExp()
     {
         Transform exp = ExpSpawner.Instance.Spawn("Exp", this.transform.parent.position, Quaternion.identity);
-        exp.GetComponentInChildren<ItemBehaviour>().SetExpValue(this.stats.expValue);
+        exp.GetComponentInChildren<ExpBehaviour>().SetExpValue(this.stats.expValue);
     }
 
     void IncreaseStats()

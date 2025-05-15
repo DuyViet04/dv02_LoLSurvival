@@ -27,7 +27,7 @@ public class RarityTable : ScriptableObject
 
         foreach (var r in rarities)
         {
-            cumulative += r.change;
+            cumulative += r.chance;
             if (roll <= cumulative)
                 return r.rarity;
         }
@@ -60,7 +60,7 @@ public class RarityTable : ScriptableObject
         rarityData.rarity = rarity;
         rarityData.color = color;
         rarityData.power = power;
-        rarityData.change = change;
+        rarityData.chance = change;
 
         rarities.Add(rarityData);
     }

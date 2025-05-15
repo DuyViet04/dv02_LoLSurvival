@@ -61,10 +61,10 @@ public class LevelUp : MonoBehaviour
         float progress = (float)1 / 49;
 
         if (this.currentLv > 50) return;
-        table.rarities[0].change -= progress * 10 / 15;
-        table.rarities[1].change += progress * 4 / 15;
-        table.rarities[2].change += progress * 3 / 15;
-        table.rarities[3].change += progress * 2 / 15;
-        table.rarities[4].change += progress * 1 / 15;
+        table.rarities[0].chance -= progress * 10 / 15;
+        table.rarities[1].chance += progress * 4 / 15;
+        table.rarities[2].chance += progress * 3 / 15;
+        table.rarities[3].chance += progress * 2 / 15;
+        table.rarities[4].chance += progress * 1 / 15;
     }
 }
