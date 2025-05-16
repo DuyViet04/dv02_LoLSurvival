@@ -16,6 +16,7 @@ public class ShopManager : MonoBehaviour
         get { return instance; }
     }
 
+    [SerializeField] private YasuoStats yasuoStats;
     [SerializeField] private GameObject shopPanel;
     [SerializeField] private ItemTable itemTable;
     [SerializeField] private ItemRarityTable itemRarityTable;
@@ -94,8 +95,9 @@ public class ShopManager : MonoBehaviour
         {
             this.goldDisplay.GiveGold(item.cost);
             this.inventory.Add(item);
+            this.yasuoStats.ApplyItem(item);
             this.itemCount++;
-            cores[index].SetActive(false);
+            this.cores[index].SetActive(false);
             itemSlots[itemCount - 1].sprite = item.icon;
         }
     }

@@ -16,10 +16,8 @@ public class ItemData : ScriptableObject
     
     [TextArea]
     public string displayText;
-
-    public float attackDamage;
-    public float attackSpeed;
-    public float moveSpeed;
+    
+    public List<ItemUpgradeEffect> effects;
 
     public List<ScriptableObject> requiredItems;
 }

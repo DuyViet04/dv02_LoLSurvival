@@ -127,4 +127,12 @@ public class YasuoStats : MainCharacterStats
                 break;
         }
     }
+
+    public void ApplyItem(ItemData item)
+    {
+        foreach (var effect in item.effects)
+        {
+            ApplyUpgrade(effect.type, effect.value);
+        }
+    }
 }

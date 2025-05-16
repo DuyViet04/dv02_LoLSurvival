@@ -19,9 +19,9 @@ MonoBehaviour:
   cost: 600
   craftCost: 100
   displayText: "T\u1ED1c \u0111\u1ED9 \u0111\xE1nh: 20%"
-  attackDamage: 0
-  attackSpeed: 20
-  moveSpeed: 0
+  effects:
+  - type: 4
+    value: 20
   requiredItems:
   - {fileID: 11400000, guid: ae556adb25589f347989705caa751746, type: 2}
   - {fileID: 11400000, guid: ae556adb25589f347989705caa751746, type: 2}

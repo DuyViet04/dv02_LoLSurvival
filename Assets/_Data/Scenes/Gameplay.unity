@@ -2358,6 +2358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c754e16366d59a4ab74cffee8813f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  yasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   shopPanel: {fileID: 142802630}
   itemTable: {fileID: 11400000, guid: ddbe6bf4f7b60644f89c0d0e5d887c40, type: 2}
   itemRarityTable: {fileID: 11400000, guid: fb69994cd7a94d042b7a3c50ff1b98da, type: 2}

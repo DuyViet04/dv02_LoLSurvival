@@ -17,8 +17,9 @@ MonoBehaviour:
   name: "Dao g\u0103m"
   icon: {fileID: -1632479667, guid: e2430da715971c248ac7323c199380cd, type: 3}
   cost: 250
+  craftCost: 0
   displayText: "T\u1ED1c \u0111\u1ED9 \u0111\xE1nh: 10%"
-  attackDamage: 0
-  attackSpeed: 10
-  moveSpeed: 0
+  effects:
+  - type: 4
+    value: 10
   requiredItems: []
