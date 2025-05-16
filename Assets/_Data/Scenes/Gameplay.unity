@@ -6298,6 +6298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 456ca88f06b6d9e40ad72c6ba4e62e68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  findClosest: {fileID: 2138828310}
   stats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   playerRigid: {fileID: 779784614}
   playerAnimator: {fileID: 6663864753836041498}
