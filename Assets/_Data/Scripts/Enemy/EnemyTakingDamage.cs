@@ -1,8 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyTakingDamage : TakingDamage
@@ -23,7 +18,7 @@ public class EnemyTakingDamage : TakingDamage
         this.armor = this.stats.armor;
     }
 
-    public override void Despawn()
+    protected override void Despawn()
     {
         this.CreateExp();
         this.IncreaseStats();

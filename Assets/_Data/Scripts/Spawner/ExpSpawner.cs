@@ -1,15 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ExpSpawner : Spawner
 {
     private static ExpSpawner instance;
 
-    public static ExpSpawner Instance
-    {
-        get { return instance; }
-    }
+    public static ExpSpawner Instance => instance;
 
     private void Awake()
     {

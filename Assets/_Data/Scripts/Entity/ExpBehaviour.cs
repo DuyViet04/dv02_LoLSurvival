@@ -1,14 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ExpBehaviour : MonoBehaviour
 {
-    private float expValue;
-
     [SerializeField] private Transform target;
     [SerializeField] private float moveSpeed = 3f;
+    private float expValue;
     private bool isMove;
 
     public void SetExpValue(float value)
@@ -21,14 +17,14 @@ public class ExpBehaviour : MonoBehaviour
         this.isMove = true;
     }
 
-    public void PickUp()
+    private void PickUp()
     {
         LevelUp levelUp = GameObject.FindObjectOfType<LevelUp>();
         ExpSpawner.Instance.Despawn(this.transform.parent);
         levelUp.IncreaseExp(this.expValue);
     }
 
-    public void MoveToTarget(Transform target)
+    private void MoveToTarget(Transform target)
     {
         Vector3 pos = Vector3.MoveTowards(this.transform.parent.position, target.position,
             this.moveSpeed * Time.deltaTime);

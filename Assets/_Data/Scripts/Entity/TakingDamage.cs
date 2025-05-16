@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class TakingDamage : MonoBehaviour
@@ -19,13 +17,13 @@ public abstract class TakingDamage : MonoBehaviour
         OnDead();
     }
 
-    public virtual float GetDamageMultiplier(float armorPenetration)
+    private float GetDamageMultiplier(float armorPenetration)
     {
         float newArmor = this.armor - armorPenetration;
         return 1 - newArmor / (100 + Mathf.Abs(newArmor));
     }
 
-    public virtual void RegenHealth(float value)
+    protected virtual void RegenHealth(float value)
     {
         this.currentHp += value;
         if (this.currentHp >= this.maxHp)
@@ -52,17 +50,17 @@ public abstract class TakingDamage : MonoBehaviour
         }
     }
 
-    public virtual bool IsDead()
+    private bool IsDead()
     {
         if (this.currentHp > 0f) return false;
         return true;
     }
 
-    public virtual void OnDead()
+    private void OnDead()
     {
         if (!IsDead()) return;
         this.Despawn();
     }
 
-    public abstract void Despawn();
+    protected abstract void Despawn();
 }

@@ -9,7 +9,7 @@ public class YasuoWeapon : DealingDamage
     [SerializeField] private YasuoStats stats;
     private float damageDeal;
 
-    public override void DealDamage(TakingDamage takingDamage)
+    protected override void DealDamage(TakingDamage takingDamage)
     {
         float roll = Random.Range(0f, 100f);
         if (roll > this.stats.criticalChance)

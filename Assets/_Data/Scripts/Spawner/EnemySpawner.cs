@@ -1,16 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : Spawner
 {
     private static EnemySpawner instance;
 
-    public static EnemySpawner Instance
-    {
-        get { return instance; }
-    }
-    
+    public static EnemySpawner Instance => instance;
+
     private int count = 0;
 
     [SerializeField] private float spawnTime = 1f;

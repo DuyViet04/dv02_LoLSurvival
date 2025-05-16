@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Random = UnityEngine.Random;
 
 public abstract class Spawner : MonoBehaviour
 {
@@ -16,7 +12,7 @@ public abstract class Spawner : MonoBehaviour
         this.LoadPrefabs();
     }
 
-    public Transform GetObjectFromPool(Transform prefab)
+    private Transform GetObjectFromPool(Transform prefab)
     {
         foreach (Transform obj in this.prefabsPool)
         {
@@ -44,7 +40,7 @@ public abstract class Spawner : MonoBehaviour
         return Spawn(prefab, position, rotation);
     }
 
-    protected Transform Spawn(Transform prefab, Vector3 position, Quaternion rotation)
+    private Transform Spawn(Transform prefab, Vector3 position, Quaternion rotation)
     {
         Transform newObj = this.GetObjectFromPool(prefab);
         newObj.SetPositionAndRotation(position, rotation);
@@ -53,7 +49,7 @@ public abstract class Spawner : MonoBehaviour
         return newObj;
     }
 
-    protected Transform GetPrefabByName(string prefabName)
+    private Transform GetPrefabByName(string prefabName)
     {
         foreach (Transform prefab in this.prefabs)
         {

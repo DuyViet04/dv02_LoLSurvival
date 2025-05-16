@@ -1,19 +1,12 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
 using TMPro;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class LevelUpManager : MonoBehaviour
 {
     private static LevelUpManager instance;
 
-    public static LevelUpManager Instance
-    {
-        get { return instance; }
-    }
+    public static LevelUpManager Instance => instance;
 
     [SerializeField] private GameObject levelUpPanel;
     [SerializeField] private YasuoStats yasuoStats;
@@ -45,7 +38,7 @@ public class LevelUpManager : MonoBehaviour
         this.chosenRarity = this.rarityTable.GetRandomRarity();
         Color color = this.rarityTable.GetColorByRarity(chosenRarity);
         this.power = this.rarityTable.GetPowerByRarity(chosenRarity);
-        this.choicesList = GetRamdomUpgrades(3);
+        this.choicesList = GetRandomUpgrades(3);
 
         this.text1.text = this.choicesList[0].name;
         this.text1.color = color;
@@ -71,7 +64,7 @@ public class LevelUpManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    private List<UpgradeData> GetRamdomUpgrades(int count)
+    private List<UpgradeData> GetRandomUpgrades(int count)
     {
         List<UpgradeData> copy = new List<UpgradeData>(this.upgradeTable.upgrades);
         List<UpgradeData> result = new List<UpgradeData>();

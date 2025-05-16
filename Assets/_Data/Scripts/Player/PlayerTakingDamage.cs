@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,7 +41,7 @@ public class PlayerTakingDamage : TakingDamage
         this.hpText.text = $"{this.currentHp:N0} / {this.maxHp}";
     }
 
-    public override void RegenHealth(float value)
+    protected override void RegenHealth(float value)
     {
         base.RegenHealth(value);
         if (this.currentHp >= this.maxHp)
@@ -90,7 +86,7 @@ public class PlayerTakingDamage : TakingDamage
         this.hpText.text = $"{this.currentHp:N0} / {this.maxHp}";
     }
 
-    public override void Despawn()
+    protected override void Despawn()
     {
         //
     }

@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -11,10 +8,7 @@ public class ShopManager : MonoBehaviour
 {
     private static ShopManager instance;
 
-    public static ShopManager Instance
-    {
-        get { return instance; }
-    }
+    public static ShopManager Instance => instance;
 
     [SerializeField] private YasuoStats yasuoStats;
     [SerializeField] private GameObject shopPanel;
@@ -46,7 +40,6 @@ public class ShopManager : MonoBehaviour
     private List<Sprite> itemSprites;
     private int itemCount = 0;
     private int indexItem;
-
 
     private void Awake()
     {

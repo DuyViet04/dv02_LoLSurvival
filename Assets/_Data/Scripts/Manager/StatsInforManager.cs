@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,10 +7,7 @@ public class StatsInforManager : MonoBehaviour
 {
     private static StatsInforManager instance;
 
-    public static StatsInforManager Instance
-    {
-        get { return instance; }
-    }
+    public static StatsInforManager Instance => instance;
 
     [SerializeField] private Image mainStats;
     [SerializeField] private Image secondStats;
