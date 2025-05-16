@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class TimerDisplay : MonoBehaviour
+public class TimeDisplay : MonoBehaviour
 {
     [SerializeField] private TMP_Text text;
     private float timer;
