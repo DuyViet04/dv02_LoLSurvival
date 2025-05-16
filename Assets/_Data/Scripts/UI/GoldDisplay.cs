@@ -29,6 +29,11 @@ public class GoldDisplay : MonoBehaviour
         if (this.currentGold < 0) this.goldGeneration = 0;
     }
 
+    public void Sell(float value)
+    {
+        this.currentGold += value * 0.7f;
+    }
+
     public float GetCurrentGold()
     {
         return Mathf.Round(this.currentGold);

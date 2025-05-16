@@ -22,6 +22,8 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private ItemRarityTable itemRarityTable;
     [SerializeField] private GoldDisplay goldDisplay;
     [SerializeField] private GameObject itemSlot;
+    [SerializeField] private GameObject sellButton;
+    [SerializeField] private Sprite itemBackground;
     [SerializeField] private GameObject core1;
     [SerializeField] private Image icon1;
     [SerializeField] private TMP_Text name1;
@@ -40,7 +42,10 @@ public class ShopManager : MonoBehaviour
     private List<ScriptableObject> choices;
     private List<ItemData> inventory;
     private List<GameObject> cores;
+    private List<Image> itemSlots;
+    private List<Sprite> itemSprites;
     private int itemCount = 0;
+    private int indexItem;
 
 
     private void Awake()
@@ -50,6 +55,7 @@ public class ShopManager : MonoBehaviour
 
         this.inventory = new List<ItemData>();
         this.cores = new List<GameObject> { this.core1, this.core2, this.core3 };
+        this.itemSprites = new List<Sprite>();
     }
 
     public void OpenShop()
@@ -89,7 +95,7 @@ public class ShopManager : MonoBehaviour
 
     public void BuyItem(int index)
     {
-        List<Image> itemSlots = this.LoadItemSlot();
+        this.itemSlots = this.LoadItemSlot();
         ItemData item = (ItemData)this.choices[index];
         if (this.IsCanBuy(item, this.inventory))
         {
@@ -98,8 +104,32 @@ public class ShopManager : MonoBehaviour
             this.yasuoStats.ApplyItem(item);
             this.itemCount++;
             this.cores[index].SetActive(false);
-            itemSlots[itemCount - 1].sprite = item.icon;
+            this.itemSlots[this.itemCount - 1].sprite = item.icon;
+            this.itemSprites.Add(item.icon);
         }
+    }
+
+    public void ShowSellButton(int index)
+    {
+        this.indexItem = index;
+        this.sellButton.SetActive(true);
+    }
+
+    public void SellItem()
+    {
+        ItemData item = this.inventory[this.indexItem];
+        this.goldDisplay.Sell(item.cost);
+        this.itemCount--;
+        this.yasuoStats.RemoveItem(this.inventory[this.indexItem]);
+        this.inventory.Remove(this.inventory[this.indexItem]);
+        this.itemSprites.Remove(this.itemSlots[this.indexItem].sprite);
+        for (int i = 0; i < this.itemSprites.Count; i++)
+        {
+            this.itemSlots[i].sprite = this.itemSprites[i];
+        }
+
+        this.itemSlots[this.itemCount].sprite = this.itemBackground;
+        this.sellButton.SetActive(false);
     }
 
     bool IsCanBuy(ItemData item, List<ItemData> inventory)

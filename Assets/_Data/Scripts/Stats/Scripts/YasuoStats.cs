@@ -128,11 +128,81 @@ public class YasuoStats : MainCharacterStats
         }
     }
 
+    public void RemoveUpgrade(UpgradeType type, float value)
+    {
+        switch (type)
+        {
+            case UpgradeType.Health:
+                this.health -= value;
+                break;
+            case UpgradeType.HealthRegen:
+                this.healthRegen -= value;
+                break;
+            case UpgradeType.AttackDamage:
+                this.attackDamage -= value;
+                break;
+            case UpgradeType.AbilityPower:
+                this.abilityPower -= value;
+                break;
+            case UpgradeType.AttackSpeed:
+                this.attackSpeed -= baseAttackSpeed * (value / 100f);
+                break;
+            case UpgradeType.Armor:
+                this.armor -= value;
+                break;
+            case UpgradeType.MagicResistance:
+                this.magicResistance -= value;
+                break;
+            case UpgradeType.MoveSpeed:
+                this.moveSpeed -= baseMoveSpeed * (value / 100f);
+                break;
+            case UpgradeType.CriticalChance:
+                this.criticalChance -= value * 2;
+                if (this.criticalChance > 100f)
+                {
+                    float balance = this.criticalChance - 100f;
+                    this.attackDamage -= balance * 0.5f;
+                    this.criticalChance = 100f;
+                }
+
+                break;
+            case UpgradeType.CriticalDamage:
+                this.criticalDamage -= value * 0.9f;
+                break;
+            case UpgradeType.ArmorPenetration:
+                this.armorPenetration -= value;
+                break;
+            case UpgradeType.MagicPenetration:
+                this.magicPenetration -= value;
+                break;
+            case UpgradeType.LifeSteal:
+                this.lifeSteal -= value;
+                break;
+            case UpgradeType.Omnivamp:
+                this.omnivamp -= value;
+                break;
+            case UpgradeType.Haste:
+                this.haste -= value;
+                break;
+            case UpgradeType.HealingPower:
+                this.healingPower -= value;
+                break;
+        }
+    }
+
     public void ApplyItem(ItemData item)
     {
         foreach (var effect in item.effects)
         {
             ApplyUpgrade(effect.type, effect.value);
+        }
+    }
+
+    public void RemoveItem(ItemData item)
+    {
+        foreach (var effect in item.effects)
+        {
+            RemoveUpgrade(effect.type, effect.value);
         }
     }
 }
