@@ -116,7 +116,7 @@ public class ShopManager : MonoBehaviour
         this.yasuoStats.RemoveItem(this.inventory[this.indexItem]);
         this.inventory.Remove(this.inventory[this.indexItem]);
         this.itemSprites.Remove(this.itemSlots[this.indexItem].sprite);
-        for (int i = 0; i < this.itemSprites.Count; i++)
+        for (int i = this.indexItem; i < this.itemSprites.Count; i++)
         {
             this.itemSlots[i].sprite = this.itemSprites[i];
         }
