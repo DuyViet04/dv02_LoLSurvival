@@ -9519,7 +9519,6 @@ MonoBehaviour:
   hpImage: {fileID: 395704338}
   hpText: {fileID: 421715908}
   hpRegenText: {fileID: 234235356}
-  playerAnimator: {fileID: 6663864753836041498}
 --- !u!1 &1054042790
 GameObject:
   m_ObjectHideFlags: 0
@@ -13494,9 +13493,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a353b33e2458e9a479f4a60e9d84db53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  findClosest: {fileID: 2138828310}
   stats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   animator: {fileID: 6663864753836041498}
-  model: {fileID: 6663864753836041497}
 --- !u!1 &1571278831
 GameObject:
   m_ObjectHideFlags: 0

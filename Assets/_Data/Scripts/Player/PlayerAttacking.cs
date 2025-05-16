@@ -2,13 +2,20 @@ using UnityEngine;
 
 public class PlayerAttacking : MonoBehaviour
 {
+    [SerializeField] private FindClosestEnemy findClosest;
     [SerializeField] private YasuoStats stats;
     [SerializeField] private Animator animator;
-    [SerializeField] private Transform model;
     private float attackTimer = 0f;
 
     private void Update()
     {
+        float dis = this.findClosest.GetDistanceToTarget();
+        if (dis > 5)
+        {
+            this.animator.ResetTrigger("isAttack");
+            return;
+        }
+
         this.attackTimer += Time.deltaTime;
         if (this.attackTimer < this.GetAttackDelay(this.stats.attackSpeed)) return;
         this.attackTimer = 0f;
