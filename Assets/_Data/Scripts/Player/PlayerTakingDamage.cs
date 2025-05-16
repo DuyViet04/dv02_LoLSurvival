@@ -8,7 +8,6 @@ public class PlayerTakingDamage : TakingDamage
     [SerializeField] private Image hpImage;
     [SerializeField] private TMP_Text hpText;
     [SerializeField] private TMP_Text hpRegenText;
-    [SerializeField] private Animator playerAnimator;
 
     private void Start()
     {
@@ -28,7 +27,6 @@ public class PlayerTakingDamage : TakingDamage
     public override void TakeDamage(float damage, float armorPenetration)
     {
         base.TakeDamage(damage, armorPenetration);
-        this.playerAnimator.SetTrigger("isTakeDamage");
         if (this.currentHp <= 0f)
         {
             this.hpImage.fillAmount = 0f;
