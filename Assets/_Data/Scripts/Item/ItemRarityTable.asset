@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4950c184e2622844980dd8ae325af8ae, type: 3}
   m_Name: ItemRarityTable
   m_EditorClassIdentifier: 
-  items:
+  rarities:
   - type: 0
     chance: 0.5
   - type: 1
