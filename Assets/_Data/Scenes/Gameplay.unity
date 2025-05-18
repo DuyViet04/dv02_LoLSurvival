@@ -2571,6 +2571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelUpPanel: {fileID: 901364038}
   pauseGamePanel: {fileID: 1312197013}
+  shopPanel: {fileID: 142802630}
 --- !u!114 &255831241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10008,8 +10009,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 255831241}
-        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+      - m_Target: {fileID: 142802635}
+        m_TargetAssemblyTypeName: ShopDisplay, Assembly-CSharp
         m_MethodName: ShowItemChoices
         m_Mode: 1
         m_Arguments:

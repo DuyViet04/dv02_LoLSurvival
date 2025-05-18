@@ -1,13 +1,12 @@
-using System;
-using System.Reflection;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PauseManager : MonoBehaviour
 {
     [SerializeField] private GameObject levelUpPanel;
     [SerializeField] private GameObject pauseGamePanel;
+    [SerializeField] private GameObject shopPanel;
     private bool isLevelUp;
+    private bool isShopping;
 
     private void Update()
     {
@@ -20,8 +19,11 @@ public class PauseManager : MonoBehaviour
     void PauseGame()
     {
         this.isLevelUp = this.levelUpPanel.activeSelf;
+        this.isShopping = this.shopPanel.activeSelf;
 
         if (this.isLevelUp) this.levelUpPanel.SetActive(false);
+        if (this.isShopping) this.shopPanel.SetActive(false);
+
         this.pauseGamePanel.SetActive(true);
         StatsDisplay.Instance.mainStatsPanel.SetActive(true);
         Time.timeScale = 0;
@@ -37,6 +39,12 @@ public class PauseManager : MonoBehaviour
         if (this.isLevelUp)
         {
             this.levelUpPanel.SetActive(true);
+            Time.timeScale = 0;
+        }
+
+        if (this.isShopping)
+        {
+            this.shopPanel.SetActive(true);
             Time.timeScale = 0;
         }
     }
