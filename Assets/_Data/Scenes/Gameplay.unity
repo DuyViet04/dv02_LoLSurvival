@@ -930,7 +930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09c19f307afd93f44aeb9846cf68fcfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
+  baseYasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   pickUpCollider: {fileID: 73210272}
 --- !u!1 &82414080
 GameObject:
@@ -6462,8 +6462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 456ca88f06b6d9e40ad72c6ba4e62e68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseYasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   findClosest: {fileID: 2138828310}
-  stats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   playerRigid: {fileID: 779784614}
   playerAnimator: {fileID: 6663864753836041498}
 --- !u!1 &674420197
@@ -7909,7 +7909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee8f5b9092042d44ea8c2bd27e3912bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
+  baseYasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   table: {fileID: 11400000, guid: fff28aaf87e59cf48ba6a17caa461b54, type: 2}
   levelUpDisplay: {fileID: 0}
   levelUpPanel: {fileID: 901364038}
@@ -9786,7 +9786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ead1fe09fb7a24695fc00edeb3532c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
+  baseYasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   hpImage: {fileID: 395704338}
   hpText: {fileID: 421715908}
   hpRegenText: {fileID: 234235356}
@@ -13760,8 +13760,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a353b33e2458e9a479f4a60e9d84db53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseYasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   findClosest: {fileID: 2138828310}
-  stats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   animator: {fileID: 6663864753836041498}
 --- !u!1 &1571278831
 GameObject:
@@ -33104,7 +33104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b2658788b03ea64084363cdae5cbe36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
+  baseYasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
 --- !u!54 &7634598966483363215
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -1,25 +1,32 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerTakingDamage : TakingDamage
 {
-    [SerializeField] private YasuoStats stats;
+    [SerializeField] private YasuoStats baseYasuoStats;
     [SerializeField] private Image hpImage;
     [SerializeField] private TMP_Text hpText;
     [SerializeField] private TMP_Text hpRegenText;
+    private YasuoStats yasuoStats;
+
+    private void Awake()
+    {
+        this.yasuoStats = Instantiate(this.baseYasuoStats);
+    }
 
     private void Start()
     {
-        this.maxHp = this.stats.health;
+        this.maxHp = this.yasuoStats.health;
         this.currentHp = this.maxHp;
     }
 
     private void FixedUpdate()
     {
-        this.maxHp = this.stats.health;
-        this.armor = this.stats.armor;
-        float regenValue = this.stats.healthRegen * (1 + this.stats.healingPower / 100);
+        this.maxHp = this.yasuoStats.health;
+        this.armor = this.yasuoStats.armor;
+        float regenValue = this.yasuoStats.healthRegen * (1 + this.yasuoStats.healingPower / 100);
         this.RegenHealth(regenValue / (1 / Time.fixedDeltaTime));
         this.hpRegenText.text = $"+{regenValue:F1}/s";
     }

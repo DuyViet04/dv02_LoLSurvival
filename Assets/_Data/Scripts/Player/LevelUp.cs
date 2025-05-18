@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -5,15 +6,21 @@ using UnityEngine.UI;
 
 public class LevelUp : MonoBehaviour
 {
-    [SerializeField] private YasuoStats stats;
+    [SerializeField] private YasuoStats baseYasuoStats;
     [SerializeField] private RarityTable table;
     [SerializeField] private LevelUpDisplay levelUpDisplay;
     [SerializeField] private GameObject levelUpPanel;
     [SerializeField] private Image expBar;
     [SerializeField] private TMP_Text levelText;
+    private YasuoStats yasuoStats;
     private float currentLv = 1;
     private float maxExp;
     private float currentExp;
+
+    private void Awake()
+    {
+        this.yasuoStats = Instantiate(this.baseYasuoStats);
+    }
 
     private void Start()
     {
@@ -25,7 +32,7 @@ public class LevelUp : MonoBehaviour
 
     public void IncreaseExp(float expValue)
     {
-        this.currentExp += expValue * (1 + this.stats.expMultiplier / 100);
+        this.currentExp += expValue * (1 + this.yasuoStats.expMultiplier / 100);
         this.expBar.fillAmount = this.currentExp / this.maxExp;
 
         if (this.currentExp >= this.maxExp)

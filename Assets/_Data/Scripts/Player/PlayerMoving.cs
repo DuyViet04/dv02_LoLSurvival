@@ -1,12 +1,20 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerMoving : MonoBehaviour
 {
+    [SerializeField] private YasuoStats baseYasuoStats;
     [SerializeField] private FindClosestEnemy findClosest;
-    [SerializeField] private YasuoStats stats;
     [SerializeField] private Rigidbody playerRigid;
     [SerializeField] private Animator playerAnimator;
+    private YasuoStats yasuoStats;
     private Vector3 lastDirection = Vector3.forward;
+
+    private void Awake()
+    {
+        this.yasuoStats = Instantiate(this.baseYasuoStats);
+    }
 
     private void Update()
     {
@@ -31,8 +39,8 @@ public class PlayerMoving : MonoBehaviour
             }
         }
 
-        this.playerRigid.velocity = moveDir * this.stats.moveSpeed;
-        playerAnimator.SetFloat("isRun", this.playerRigid.velocity.magnitude);
+        this.playerRigid.velocity = moveDir * this.yasuoStats.moveSpeed;
+        this.playerAnimator.SetFloat("isRun", this.playerRigid.velocity.magnitude);
     }
 
     Quaternion GetRotation(Vector3 moveDir)

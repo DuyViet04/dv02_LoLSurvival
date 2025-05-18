@@ -6,24 +6,30 @@ using Random = UnityEngine.Random;
 
 public class YasuoWeapon : DealingDamage
 {
-    [SerializeField] private YasuoStats stats;
+    [SerializeField] private YasuoStats baseYasuoStats;
+    private YasuoStats yasuoStats;
     private float damageDeal;
+
+    private void Awake()
+    {
+        this.yasuoStats = Instantiate(this.baseYasuoStats);
+    }
 
     protected override void DealDamage(TakingDamage takingDamage)
     {
         float roll = Random.Range(0f, 100f);
-        if (roll > this.stats.criticalChance)
+        if (roll > this.yasuoStats.criticalChance)
         {
-            this.damageDeal = this.stats.attackDamage;
+            this.damageDeal = this.yasuoStats.attackDamage;
         }
         else
         {
-            this.damageDeal = this.stats.attackDamage * this.stats.criticalDamage / 100;
+            this.damageDeal = this.yasuoStats.attackDamage * this.yasuoStats.criticalDamage / 100;
         }
 
-        takingDamage.TakeDamage(this.damageDeal, this.stats.armorPenetration);
+        takingDamage.TakeDamage(this.damageDeal, this.yasuoStats.armorPenetration);
 
         this.Heal(this.transform.root.GetComponentInChildren<PlayerTakingDamage>(), this.damageDeal,
-            this.stats.lifeSteal, this.stats.omnivamp, this.stats.healingPower);
+            this.yasuoStats.lifeSteal, this.yasuoStats.omnivamp, this.yasuoStats.healingPower);
     }
 }
