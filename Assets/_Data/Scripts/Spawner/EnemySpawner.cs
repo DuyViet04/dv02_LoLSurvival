@@ -6,8 +6,7 @@ public class EnemySpawner : Spawner
 
     public static EnemySpawner Instance => instance;
 
-    private int count = 0;
-
+    [SerializeField] private CSDisplay display;
     [SerializeField] private float spawnTime = 1f;
     [SerializeField] private float spawnRange = 5f;
     private float spawnTimer = 0f;
@@ -39,6 +38,6 @@ public class EnemySpawner : Spawner
     public override void Despawn(Transform prefab)
     {
         base.Despawn(prefab);
-        this.count++;
+        this.display.IncreaseCsCount();
     }
 }
