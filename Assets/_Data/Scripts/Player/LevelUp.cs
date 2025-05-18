@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class LevelUp : MonoBehaviour
 {
+    [SerializeField] private RarityTable baseRarityTable;
     [SerializeField] private YasuoStats baseYasuoStats;
-    [SerializeField] private RarityTable table;
-    [SerializeField] private LevelUpDisplay levelUpDisplay;
     [SerializeField] private GameObject levelUpPanel;
     [SerializeField] private Image expBar;
     [SerializeField] private TMP_Text levelText;
+    private RarityTable rarityTable;
     private YasuoStats yasuoStats;
     private float currentLv = 1;
     private float maxExp;
@@ -20,6 +20,7 @@ public class LevelUp : MonoBehaviour
     private void Awake()
     {
         this.yasuoStats = Instantiate(this.baseYasuoStats);
+        this.rarityTable = Instantiate(this.baseRarityTable);
     }
 
     private void Start()
@@ -43,7 +44,7 @@ public class LevelUp : MonoBehaviour
 
     void IncreaseLevel()
     {
-        this.IncreaseRarity(this.table);
+        this.IncreaseRarity(this.rarityTable);
 
         this.levelUpPanel.SetActive(true);
         Time.timeScale = 0;

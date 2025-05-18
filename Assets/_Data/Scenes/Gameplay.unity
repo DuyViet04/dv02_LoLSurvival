@@ -7909,9 +7909,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee8f5b9092042d44ea8c2bd27e3912bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseRarityTable: {fileID: 11400000, guid: fff28aaf87e59cf48ba6a17caa461b54, type: 2}
   baseYasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
-  table: {fileID: 11400000, guid: fff28aaf87e59cf48ba6a17caa461b54, type: 2}
-  levelUpDisplay: {fileID: 0}
   levelUpPanel: {fileID: 901364038}
   expBar: {fileID: 820831924}
   levelText: {fileID: 330535255}
@@ -16589,7 +16588,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rarityTable: {fileID: 11400000, guid: fff28aaf87e59cf48ba6a17caa461b54, type: 2}
-  upgradeTable: {fileID: 11400000, guid: 7bf756567195b724c9ec8f3d35a7ce41, type: 2}
 --- !u!4 &1770982127
 Transform:
   m_ObjectHideFlags: 0

@@ -8,11 +8,6 @@ public class UpgradeTable : ScriptableObject
 
     private void Reset()
     {
-        this.LoadData();
-    }
-
-    public void ResetData()
-    {
         this.upgrades.Clear();
         this.LoadData();
     }
