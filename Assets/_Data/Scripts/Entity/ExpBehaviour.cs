@@ -26,8 +26,7 @@ public class ExpBehaviour : MonoBehaviour
 
     private void MoveToTarget(Transform target)
     {
-        Vector3 pos = Vector3.MoveTowards(this.transform.parent.position, target.position,
-            this.moveSpeed * Time.deltaTime);
+        Vector3 pos = Vector3.Lerp(this.transform.parent.position, target.position, this.moveSpeed * Time.deltaTime);
         this.transform.parent.position = pos;
     }
 
@@ -36,8 +35,8 @@ public class ExpBehaviour : MonoBehaviour
         if (this.isMove && this.target != null)
         {
             MoveToTarget(this.target);
-
-            if (this.transform.parent.position != this.target.position) return;
+            float distance = Vector3.Distance(this.transform.parent.position, this.target.position);
+            if (distance > 0.5f) return;
             this.isMove = false;
             PickUp();
         }

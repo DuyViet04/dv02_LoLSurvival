@@ -24,10 +24,10 @@ MonoBehaviour:
   criticalChance: 0
   criticalDamage: 157.5
   armorPenetration: 0
-  magicPenetration: 0
+  magicPenetration: 4
   lifeSteal: 0
   omnivamp: 0
-  haste: 0
+  haste: 7
   healingPower: 0
-  pickUpRange: 0.5
-  expMultiplier: 0
+  pickUpRange: 4.93
+  expMultiplier: 5
