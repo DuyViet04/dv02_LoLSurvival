@@ -1,12 +1,13 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class LevelUp : MonoBehaviour
 {
     [SerializeField] private YasuoStats stats;
     [SerializeField] private RarityTable table;
-    [SerializeField] private LevelUpManager levelUpManager;
+    [SerializeField] private LevelUpDisplay levelUpDisplay;
     [SerializeField] private GameObject levelUpPanel;
     [SerializeField] private Image expBar;
     [SerializeField] private TMP_Text levelText;
@@ -39,7 +40,7 @@ public class LevelUp : MonoBehaviour
 
         this.levelUpPanel.SetActive(true);
         Time.timeScale = 0;
-        LevelUpManager.Instance.ShowUpgradeChoices();
+        LevelUpDisplay.Instance.ShowUpgradeChoices();
 
         this.currentLv++;
         this.maxExp = 180 + 100 * Mathf.Pow(this.currentLv - 1, 2);
