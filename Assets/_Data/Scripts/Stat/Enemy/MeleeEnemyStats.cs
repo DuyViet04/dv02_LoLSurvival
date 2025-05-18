@@ -1,16 +1,17 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MeleeEnemyStats", menuName = "Stats/MeleeEnemy")]
+[CreateAssetMenu(fileName = "MeleeEnemyStats", menuName = "Stats/Enemy/MeleeEnemy")]
 public class MeleeEnemyStats : MainEnemyStats
 {
     private void Reset()
     {
         this.enemyName = "MeleeEnemy";
-        this.health = 47.7f;
-        this.damage = 12;
+        this.health = 46.5f;
+        this.damage = 80;
         this.moveSpeed = 1.5f;
-        this.armor = 16;
+        this.armor = 20;
         this.expValue = 61.75f;
+        this.goldValue = 21f;
     }
 
     public MeleeEnemyStats Clone()
@@ -21,10 +22,11 @@ public class MeleeEnemyStats : MainEnemyStats
     public void ResetStats()
     {
         this.enemyName = "MeleeEnemy";
-        this.health = 47.7f;
-        this.damage = 12;
+        this.health = 46.5f;
+        this.damage = 80;
         this.moveSpeed = 1.5f;
-        this.armor = 16;
+        this.armor = 20;
         this.expValue = 61.75f;
+        this.goldValue = 21f;
     }
 }

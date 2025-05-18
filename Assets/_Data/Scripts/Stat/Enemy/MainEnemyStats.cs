@@ -9,4 +9,5 @@ public class MainEnemyStats : ScriptableObject
     public float armor;
     public float magicResistance;
     public float expValue;
+    public float goldValue;
 }

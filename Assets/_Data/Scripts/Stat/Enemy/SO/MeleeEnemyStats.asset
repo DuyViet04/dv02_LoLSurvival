@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: MeleeEnemyStats
   m_EditorClassIdentifier: 
   enemyName: MeleeEnemy
-  health: 87.27146
-  damage: 21.95514
-  moveSpeed: 2.7443924
-  armor: 29.273455
+  health: 46.5
+  damage: 80
+  moveSpeed: 1.5
+  armor: 20
   magicResistance: 0
-  expValue: 1192995
+  expValue: 61.75
+  goldValue: 21
