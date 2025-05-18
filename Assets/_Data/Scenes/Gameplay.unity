@@ -453,7 +453,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "H\xFAt m\xE1u to\xE0n ph\u1EA7n(%):"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 51300470}
   - component: {fileID: 51300469}
   m_Layer: 5
-  m_Name: MainStatsInfor
+  m_Name: MainStatsInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -794,9 +794,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1172,9 +1170,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2440,6 +2436,7 @@ GameObject:
   m_Component:
   - component: {fileID: 255831239}
   - component: {fileID: 255831240}
+  - component: {fileID: 255831242}
   - component: {fileID: 255831241}
   - component: {fileID: 255831238}
   - component: {fileID: 255831237}
@@ -2552,8 +2549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelUpPanel: {fileID: 901364038}
-  pauseMenu: {fileID: 1312197013}
-  stats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
+  pauseGamePanel: {fileID: 1312197013}
 --- !u!114 &255831241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2589,6 +2585,25 @@ MonoBehaviour:
   name3: {fileID: 1227197084}
   stats3: {fileID: 2120463920}
   cost3: {fileID: 11227312}
+--- !u!114 &255831242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255831235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f6a00620c508f44da2756e89c20d27e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelUpPanel: {fileID: 901364038}
+  baseYasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
+  rarityTable: {fileID: 11400000, guid: fff28aaf87e59cf48ba6a17caa461b54, type: 2}
+  upgradeTable: {fileID: 11400000, guid: 7bf756567195b724c9ec8f3d35a7ce41, type: 2}
+  core: {fileID: 1492168209}
+  core1: {fileID: 861841860}
+  core2: {fileID: 1571278831}
 --- !u!1 &267218777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2782,7 +2797,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "S\u1EE9c m\u1EA1nh ph\xE9p thu\u1EADt:"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3374,9 +3389,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4133,9 +4146,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4897,7 +4908,7 @@ GameObject:
   - component: {fileID: 487524314}
   - component: {fileID: 487524312}
   m_Layer: 5
-  m_Name: StatsInfor
+  m_Name: StatsInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4973,15 +4984,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 487524310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7448f92e7ff3fa44abfa19b1ebf2da5b, type: 3}
+  m_Script: {fileID: 11500000, guid: 417ff4f6e43302747b91109b5a6ba91c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseGamePanel: {fileID: 1312197013}
   mainStats: {fileID: 1422272473}
   secondStats: {fileID: 1126928262}
   mainStatsPanel: {fileID: 51300467}
   secondStatsPanel: {fileID: 803668062}
-  mainData: []
-  secondData: []
+  baseYasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
 --- !u!1 &489480746
 GameObject:
   m_ObjectHideFlags: 0
@@ -5432,9 +5443,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5704,7 +5713,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Xuy\xEAn gi\xE1p:"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5974,7 +5983,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Kh\xE1ng ph\xE9p:"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6282,7 +6291,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "H\u1ED3i chi\xEAu:"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6917,7 +6926,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "T\u1EC9 l\u1EC7 ph\u1EE5c h\u1ED3i(%):"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7052,7 +7061,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "T\u1ED1c \u0111\u1ED9 di chuy\u1EC3n:"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7320,9 +7329,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7502,9 +7509,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7901,7 +7906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   table: {fileID: 11400000, guid: fff28aaf87e59cf48ba6a17caa461b54, type: 2}
-  levelUpManager: {fileID: 901364042}
+  levelUpDisplay: {fileID: 0}
   levelUpPanel: {fileID: 901364038}
   expBar: {fileID: 820831924}
   levelText: {fileID: 330535255}
@@ -8020,7 +8025,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Gi\xE1p:"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8401,7 +8406,7 @@ GameObject:
   - component: {fileID: 803668065}
   - component: {fileID: 803668064}
   m_Layer: 5
-  m_Name: SecondStatsInfor
+  m_Name: SecondStatsInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8628,7 +8633,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 901364042}
+      - m_Target: {fileID: 255831242}
         m_TargetAssemblyTypeName: LevelUpManager, Assembly-CSharp
         m_MethodName: ApplyUpgrade
         m_Mode: 3
@@ -8736,9 +8741,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8898,7 +8901,6 @@ GameObject:
   - component: {fileID: 901364039}
   - component: {fileID: 901364041}
   - component: {fileID: 901364040}
-  - component: {fileID: 901364042}
   m_Layer: 5
   m_Name: LevelUpPanel
   m_TagString: Untagged
@@ -8967,28 +8969,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 901364038}
   m_CullTransparentMesh: 1
---- !u!114 &901364042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 901364038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f6a00620c508f44da2756e89c20d27e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelUpPanel: {fileID: 901364038}
-  yasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
-  rarityTable: {fileID: 11400000, guid: fff28aaf87e59cf48ba6a17caa461b54, type: 2}
-  upgradeTable: {fileID: 11400000, guid: 7bf756567195b724c9ec8f3d35a7ce41, type: 2}
-  text1: {fileID: 2077334977}
-  data1: {fileID: 1908893703}
-  text2: {fileID: 1918093779}
-  data2: {fileID: 1590422532}
-  text3: {fileID: 521919215}
-  data3: {fileID: 685804162}
 --- !u!1 &907608309
 GameObject:
   m_ObjectHideFlags: 0
@@ -10169,7 +10149,7 @@ RectTransform:
   m_Children:
   - {fileID: 1797979956}
   m_Father: {fileID: 1147702906}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10221,7 +10201,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 487524314}
-        m_TargetAssemblyTypeName: StatsInforManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: StatsDisplay, Assembly-CSharp
         m_MethodName: ShowSecondStats
         m_Mode: 1
         m_Arguments:
@@ -10463,9 +10443,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11649,7 +11627,7 @@ Transform:
   - {fileID: 871133305}
   - {fileID: 794448997}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1311787869
 MonoBehaviour:
@@ -12043,7 +12021,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "H\xFAt m\xE1u(%):"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12518,7 +12496,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 487524314}
-        m_TargetAssemblyTypeName: StatsInforManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: StatsDisplay, Assembly-CSharp
         m_MethodName: ShowMainStats
         m_Mode: 1
         m_Arguments:
@@ -12551,7 +12529,7 @@ RectTransform:
   m_Children:
   - {fileID: 561918052}
   m_Father: {fileID: 1147702906}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12616,9 +12594,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12861,7 +12837,7 @@ Transform:
   m_Children:
   - {fileID: 3918732333139058558}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1470851685
 Rigidbody:
@@ -13184,7 +13160,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 901364042}
+      - m_Target: {fileID: 255831242}
         m_TargetAssemblyTypeName: LevelUpManager, Assembly-CSharp
         m_MethodName: ApplyUpgrade
         m_Mode: 3
@@ -13254,7 +13230,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "S\xE1t th\u01B0\u01A1ng ch\xED m\u1EA1ng(%):"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13658,7 +13634,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "S\u1EE9c m\u1EA1nh v\u1EADt l\xFD:\n"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13867,7 +13843,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 901364042}
+      - m_Target: {fileID: 255831242}
         m_TargetAssemblyTypeName: LevelUpManager, Assembly-CSharp
         m_MethodName: ApplyUpgrade
         m_Mode: 3
@@ -14564,7 +14540,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Xuy\xEAn kh\xE1ng ph\xE9p:"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -15072,7 +15048,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "T\u1ED1c \u0111\u1ED9 \u0111\xE1nh:"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -15547,9 +15523,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -15958,9 +15932,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -16612,7 +16584,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meleeEnemyStats: {fileID: 11400000, guid: 8f4567748d0534846b22d4440a553d0b, type: 2}
-  yasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   rarityTable: {fileID: 11400000, guid: fff28aaf87e59cf48ba6a17caa461b54, type: 2}
   upgradeTable: {fileID: 11400000, guid: 7bf756567195b724c9ec8f3d35a7ce41, type: 2}
 --- !u!4 &1770982127
@@ -17090,9 +17061,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -17559,7 +17528,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "T\u1EC9 l\u1EC7 ch\xED m\u1EA1ng(%):"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -18599,9 +18568,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -18894,9 +18861,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
