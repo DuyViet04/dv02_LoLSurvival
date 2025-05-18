@@ -1600,6 +1600,7 @@ GameObject:
   m_Component:
   - component: {fileID: 142802631}
   - component: {fileID: 142802634}
+  - component: {fileID: 142802635}
   - component: {fileID: 142802633}
   m_Layer: 5
   m_Name: ShopPanel
@@ -1673,6 +1674,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142802630}
   m_CullTransparentMesh: 1
+--- !u!114 &142802635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142802630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e22f3bb6f7d63f24bab42391c3948187, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemTable: {fileID: 11400000, guid: ddbe6bf4f7b60644f89c0d0e5d887c40, type: 2}
+  itemRarityTable: {fileID: 11400000, guid: fb69994cd7a94d042b7a3c50ff1b98da, type: 2}
+  core: {fileID: 1536454632}
+  core1: {fileID: 1397487343}
+  core2: {fileID: 1733857795}
+  shopPanel: {fileID: 142802630}
+  coresList: []
+  choices: []
 --- !u!1 &149131016
 GameObject:
   m_ObjectHideFlags: 0
@@ -2562,29 +2583,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c754e16366d59a4ab74cffee8813f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
+  baseYasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   shopPanel: {fileID: 142802630}
-  itemTable: {fileID: 11400000, guid: ddbe6bf4f7b60644f89c0d0e5d887c40, type: 2}
-  itemRarityTable: {fileID: 11400000, guid: fb69994cd7a94d042b7a3c50ff1b98da, type: 2}
   goldDisplay: {fileID: 794445066}
   itemSlot: {fileID: 1995927525}
   sellButton: {fileID: 1931450587}
   itemBackground: {fileID: -1485911640, guid: 3f2e6d8ba3470b144929a5b34b03182c, type: 3}
-  core1: {fileID: 1536454632}
-  icon1: {fileID: 1226450469}
-  name1: {fileID: 1777150228}
-  stats1: {fileID: 435771285}
-  cost1: {fileID: 1576664246}
-  core2: {fileID: 1397487343}
-  icon2: {fileID: 465225236}
-  name2: {fileID: 953258883}
-  stats2: {fileID: 1635623263}
-  cost2: {fileID: 82414082}
-  core3: {fileID: 1733857795}
-  icon3: {fileID: 1026333482}
-  name3: {fileID: 1227197084}
-  stats3: {fileID: 2120463920}
-  cost3: {fileID: 11227312}
 --- !u!114 &255831242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10149,7 +10153,7 @@ RectTransform:
   m_Children:
   - {fileID: 1797979956}
   m_Father: {fileID: 1147702906}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12529,7 +12533,7 @@ RectTransform:
   m_Children:
   - {fileID: 561918052}
   m_Father: {fileID: 1147702906}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
