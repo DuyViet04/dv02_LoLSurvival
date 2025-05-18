@@ -1,9 +1,16 @@
+using System;
 using UnityEngine;
 
 public class EnemyMoving : MonoBehaviour
 {
-    [SerializeField] private MeleeEnemyStats stats;
+    [SerializeField] private MeleeEnemyStats baseMeleeEnemyStats;
     [SerializeField] private Transform target;
+    private MeleeEnemyStats meleeEnemyStats;
+
+    private void Awake()
+    {
+        this.meleeEnemyStats = Instantiate(this.baseMeleeEnemyStats);
+    }
 
     private void Update()
     {
@@ -13,6 +20,6 @@ public class EnemyMoving : MonoBehaviour
     void MoveToTarget()
     {
         this.transform.parent.position = Vector3.MoveTowards(this.transform.parent.position, this.target.position,
-            this.stats.moveSpeed * Time.deltaTime);
+            this.meleeEnemyStats.moveSpeed * Time.deltaTime);
     }
 }

@@ -1,18 +1,25 @@
+using System;
 using UnityEngine;
 
 public class EnemyTakingDamage : TakingDamage
 {
-    [SerializeField] private MeleeEnemyStats stats;
+    [SerializeField] private MeleeEnemyStats baseMeleeEnemyStats;
+    private MeleeEnemyStats meleeEnemyStats;
+
+    private void Awake()
+    {
+        this.meleeEnemyStats = Instantiate(this.baseMeleeEnemyStats);
+    }
 
     private void Start()
     {
-        this.maxHp = this.stats.health;
+        this.maxHp = this.meleeEnemyStats.health;
         this.currentHp = this.maxHp;
     }
 
     private void FixedUpdate()
     {
-        this.armor = this.stats.armor;
+        this.armor = this.meleeEnemyStats.armor;
     }
 
     protected override void Despawn()
@@ -25,12 +32,12 @@ public class EnemyTakingDamage : TakingDamage
     void CreateExp()
     {
         Transform exp = ExpSpawner.Instance.Spawn("Exp", this.transform.parent.position, Quaternion.identity);
-        exp.GetComponentInChildren<ExpBehaviour>().SetExpValue(this.stats.expValue);
+        exp.GetComponentInChildren<ExpBehaviour>().SetExpValue(this.meleeEnemyStats.expValue);
     }
 
     void ResetStats()
     {
-        this.currentHp = this.stats.health;
+        this.currentHp = this.meleeEnemyStats.health;
     }
 
     private void OnTriggerEnter(Collider other)

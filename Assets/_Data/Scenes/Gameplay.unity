@@ -3334,7 +3334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dfcccb6d78e64f44ab9f25acba4e7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 8f4567748d0534846b22d4440a553d0b, type: 2}
+  baseMeleeEnemyStats: {fileID: 11400000, guid: 8f4567748d0534846b22d4440a553d0b, type: 2}
   target: {fileID: 779784615}
 --- !u!1 &317256771
 GameObject:
@@ -16544,7 +16544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4ecf640595df84394ff6c4c3daf16e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 8f4567748d0534846b22d4440a553d0b, type: 2}
+  baseMeleeEnemyStats: {fileID: 11400000, guid: 8f4567748d0534846b22d4440a553d0b, type: 2}
 --- !u!136 &1754654434
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -16588,7 +16588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c857af9c0d0fa854895c72af3e21c86f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleeEnemyStats: {fileID: 11400000, guid: 8f4567748d0534846b22d4440a553d0b, type: 2}
   rarityTable: {fileID: 11400000, guid: fff28aaf87e59cf48ba6a17caa461b54, type: 2}
   upgradeTable: {fileID: 11400000, guid: 7bf756567195b724c9ec8f3d35a7ce41, type: 2}
 --- !u!4 &1770982127
@@ -17202,7 +17201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e510b35bd616feb439079f0bb9df23ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 8f4567748d0534846b22d4440a553d0b, type: 2}
+  baseMeleeEnemyStats: {fileID: 11400000, guid: 8f4567748d0534846b22d4440a553d0b, type: 2}
 --- !u!1 &1797979955
 GameObject:
   m_ObjectHideFlags: 0
