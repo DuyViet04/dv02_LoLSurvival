@@ -3,17 +3,13 @@ using UnityEngine;
 
 public class EnemyMoving : MonoBehaviour
 {
-    [SerializeField] private MeleeEnemyStats baseMeleeEnemyStats;
+    [SerializeField] private EnemyScaleStats scaleStats;
     [SerializeField] private Transform target;
     private MeleeEnemyStats meleeEnemyStats;
 
-    private void Awake()
-    {
-        this.meleeEnemyStats = Instantiate(this.baseMeleeEnemyStats);
-    }
-
     private void Update()
     {
+        this.meleeEnemyStats = this.scaleStats.GetStats();
         this.MoveToTarget();
     }
 

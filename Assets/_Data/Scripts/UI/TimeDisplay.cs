@@ -13,4 +13,9 @@ public class TimeDisplay : MonoBehaviour
         int seconds = Mathf.FloorToInt(this.timer % 60f);
         this.text.text = $"{minutes:00}:{seconds:00}";
     }
+
+    public float GetTime()
+    {
+        return this.timer;
+    }
 }

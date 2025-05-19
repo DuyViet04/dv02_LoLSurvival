@@ -3,31 +3,29 @@ using UnityEngine;
 
 public class EnemyTakingDamage : TakingDamage
 {
+    [SerializeField] private EnemyScaleStats scaleStats;
     [SerializeField] private GoldDisplay goldDisplay;
-    [SerializeField] private MeleeEnemyStats baseMeleeEnemyStats;
     private MeleeEnemyStats meleeEnemyStats;
-
-    private void Awake()
-    {
-        this.meleeEnemyStats = Instantiate(this.baseMeleeEnemyStats);
-    }
 
     private void Start()
     {
-        this.maxHp = this.meleeEnemyStats.health;
         this.currentHp = this.maxHp;
     }
 
     private void FixedUpdate()
     {
-        this.armor = this.meleeEnemyStats.armor;
+        this.meleeEnemyStats = this.scaleStats.GetStats();
+        this.maxHp = this.meleeEnemyStats.health;
     }
 
     protected override void Despawn()
     {
         this.goldDisplay.GetGoldFromKill(this.meleeEnemyStats.goldValue);
         this.CreateExp();
+
         this.ResetStats();
+        Debug.Log($"{meleeEnemyStats.health} {meleeEnemyStats.damage} {meleeEnemyStats.expValue}");
+
         EnemySpawner.Instance.Despawn(this.transform.parent);
     }
 

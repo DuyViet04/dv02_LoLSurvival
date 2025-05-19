@@ -77,7 +77,7 @@ public class StatsDisplay : MonoBehaviour
         FieldInfo[] fieldInfo = this.GetYasuoStatFields();
         for (int i = 17; i < 19; i++)
         {
-            this.secondStatsData[i - 17].text = $"{fieldInfo[i].GetValue(yasuoStats):F1}";
+            this.secondStatsData[i - 17].text = $"{fieldInfo[i].GetValue(this.yasuoStats):F1}";
         }
     }
 
