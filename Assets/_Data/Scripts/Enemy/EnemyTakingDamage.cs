@@ -1,11 +1,16 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EnemyTakingDamage : TakingDamage
 {
-    [SerializeField] private EnemyScaleStats scaleStats;
     [SerializeField] private GoldDisplay goldDisplay;
-    private MeleeEnemyStats meleeEnemyStats;
+    [SerializeField] private MainEnemyStats stats;
+
+    private void Awake()
+    {
+        this.stats = SOManager.Instance.GetStatsByType(this.transform.parent.name);
+    }
 
     private void Start()
     {
@@ -14,30 +19,26 @@ public class EnemyTakingDamage : TakingDamage
 
     private void FixedUpdate()
     {
-        this.meleeEnemyStats = this.scaleStats.GetStats();
-        this.maxHp = this.meleeEnemyStats.health;
+        this.maxHp = this.stats.health;
     }
 
     protected override void Despawn()
     {
-        this.goldDisplay.GetGoldFromKill(this.meleeEnemyStats.goldValue);
+        this.goldDisplay.GetGoldFromKill(this.stats.goldValue);
         this.CreateExp();
-
         this.ResetStats();
-        Debug.Log($"{meleeEnemyStats.health} {meleeEnemyStats.damage} {meleeEnemyStats.expValue}");
-
         EnemySpawner.Instance.Despawn(this.transform.parent);
     }
 
     void CreateExp()
     {
         Transform exp = ExpSpawner.Instance.Spawn("Exp", this.transform.parent.position, Quaternion.identity);
-        exp.GetComponentInChildren<ExpBehaviour>().SetExpValue(this.meleeEnemyStats.expValue);
+        exp.GetComponentInChildren<ExpBehaviour>().SetExpValue(this.stats.expValue);
     }
 
     void ResetStats()
     {
-        this.currentHp = this.meleeEnemyStats.health;
+        this.currentHp = this.stats.health;
     }
 
     private void OnTriggerEnter(Collider other)

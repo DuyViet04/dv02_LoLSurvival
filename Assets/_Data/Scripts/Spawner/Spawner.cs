@@ -40,13 +40,45 @@ public abstract class Spawner : MonoBehaviour
         return Spawn(prefab, position, rotation);
     }
 
-    private Transform Spawn(Transform prefab, Vector3 position, Quaternion rotation)
+    protected Transform Spawn(Transform prefab, Vector3 position, Quaternion rotation)
     {
         Transform newObj = this.GetObjectFromPool(prefab);
         newObj.SetPositionAndRotation(position, rotation);
         newObj.SetParent(this.holder);
         newObj.gameObject.SetActive(true);
         return newObj;
+    }
+
+    protected Transform[] Spawn(string prefabName, Vector3 position, Quaternion rotation, int count)
+    {
+        Transform prefab = GetPrefabByName(prefabName);
+        if (prefab == null)
+        {
+            Debug.LogError(prefabName + " could not be found");
+            return null;
+        }
+
+        return Spawn(prefab, position, rotation, count);
+    }
+
+    protected Transform[] Spawn(Transform prefab, Vector3 position, Quaternion rotation, int count)
+    {
+        Transform[] newObjs = new Transform[count];
+
+        for (int i = 0; i < count; i++)
+        {
+            float xPos = Random.Range(position.x - count / 2f, position.x + count / 2f);
+            float zPos = Random.Range(position.z - count / 2f, position.z + count / 2f);
+            Vector3 newPos = new Vector3(xPos, position.y, zPos);
+            
+            Transform obj = this.GetObjectFromPool(prefab);
+            obj.SetPositionAndRotation(newPos, rotation);
+            obj.SetParent(this.holder);
+            obj.gameObject.SetActive(true);
+            newObjs[i] = obj;
+        }
+
+        return newObjs;
     }
 
     private Transform GetPrefabByName(string prefabName)

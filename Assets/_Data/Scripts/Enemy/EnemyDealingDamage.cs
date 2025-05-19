@@ -3,12 +3,15 @@ using UnityEngine;
 
 public class EnemyDealingDamage : DealingDamage
 {
-    [SerializeField] private EnemyScaleStats scaleStats;
-    private MeleeEnemyStats meleeEnemyStats;
+    [SerializeField] private MainEnemyStats stats;
 
-    private void Update()
+    private void Awake()
     {
-        this.meleeEnemyStats = this.scaleStats.GetStats();
-        this.damage = this.meleeEnemyStats.damage;
+        this.stats = SOManager.Instance.GetStatsByType(this.transform.parent.name);
+    }
+
+    private void FixedUpdate()
+    {
+        this.damage = this.stats.damage;
     }
 }

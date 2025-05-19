@@ -9,17 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b03e561a7fd46b545bb837a585d865fd, type: 3}
-  m_Name: MeleeEnemyStats
+  m_Script: {fileID: 11500000, guid: 4c97d1cb4e726994bbf10218349d916e, type: 3}
+  m_Name: RangeEnemyStats
   m_EditorClassIdentifier: 
-  type: 0
-  health: 86.57297
-  damage: 148.94273
-  attackSpeed: 0
-  moveSpeed: 1.6292677
-  armor: 37.235683
+  type: 1
+  health: 29.6
+  damage: 120
+  attackSpeed: 0.667
+  moveSpeed: 1.5
+  armor: 0
   magicResistance: 0
-  expValue: 114.96517
-  goldValue: 3.9097466
-  spawnDelay: 3
+  expValue: 30.4
+  goldValue: 1.4
+  spawnDelay: 6
   spawnCount: 3

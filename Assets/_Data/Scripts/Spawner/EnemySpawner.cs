@@ -8,7 +8,7 @@ public class EnemySpawner : Spawner
 
     [SerializeField] private CSDisplay display;
     [SerializeField] private float spawnTime = 1f;
-    [SerializeField] private float spawnRange = 5f;
+    [SerializeField] private float spawnRange = 10f;
     private float spawnTimer = 0f;
     private string meleeEnemy = "MeleeEnemy";
 
@@ -22,10 +22,19 @@ public class EnemySpawner : Spawner
 
     private void Update()
     {
+        if (this.spawnRange < 70f)
+        {
+            this.spawnRange += Time.deltaTime;
+        }
+        else
+        {
+            this.spawnRange = 70f;
+        }
+
         this.spawnTimer += Time.deltaTime;
         if (this.spawnTimer < this.spawnTime) return;
         this.spawnTimer = 0f;
-        Spawn(this.meleeEnemy, this.GetRandomPosition(), Quaternion.identity);
+        Spawn(this.meleeEnemy, this.GetRandomPosition(), Quaternion.identity, 3);
     }
 
     Vector3 GetRandomPosition()
