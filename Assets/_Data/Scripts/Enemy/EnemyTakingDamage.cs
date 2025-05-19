@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EnemyTakingDamage : TakingDamage
 {
+    [SerializeField] private GoldDisplay goldDisplay;
     [SerializeField] private MeleeEnemyStats baseMeleeEnemyStats;
     private MeleeEnemyStats meleeEnemyStats;
 
@@ -24,6 +25,7 @@ public class EnemyTakingDamage : TakingDamage
 
     protected override void Despawn()
     {
+        this.goldDisplay.GetGoldFromKill(this.meleeEnemyStats.goldValue);
         this.CreateExp();
         this.ResetStats();
         EnemySpawner.Instance.Despawn(this.transform.parent);

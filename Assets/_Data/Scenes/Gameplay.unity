@@ -8296,7 +8296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldText: {fileID: 1179153995}
-  startingGold: 10000
+  startingGold: 500
   goldGeneration: 20.4
 --- !u!114 &794445067
 MonoBehaviour:
@@ -16543,6 +16543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4ecf640595df84394ff6c4c3daf16e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldDisplay: {fileID: 794445066}
   baseMeleeEnemyStats: {fileID: 11400000, guid: 8f4567748d0534846b22d4440a553d0b, type: 2}
 --- !u!136 &1754654434
 CapsuleCollider:

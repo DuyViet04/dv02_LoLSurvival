@@ -35,4 +35,9 @@ public class GoldDisplay : MonoBehaviour
     {
         return Mathf.Round(this.currentGold);
     }
+
+    public void GetGoldFromKill(float goldValue)
+    {
+        this.currentGold += goldValue;
+    }
 }
