@@ -8,13 +8,12 @@ public class LevelUpDisplay : MonoBehaviour
     public static LevelUpDisplay Instance => instance;
 
     [SerializeField] private GameObject levelUpPanel;
-    [SerializeField] private YasuoStats baseYasuoStats;
+    [SerializeField] private YasuoStats yasuoStats;
     [SerializeField] private RarityTable rarityTable;
     [SerializeField] private UpgradeTable upgradeTable;
     [SerializeField] private GameObject core;
     [SerializeField] private GameObject core1;
     [SerializeField] private GameObject core2;
-    private YasuoStats yasuoStats;
     private RarityType chosenRarity;
     private int power;
     private List<GameObject> coresList;
@@ -26,8 +25,6 @@ public class LevelUpDisplay : MonoBehaviour
     {
         if (instance != null) Debug.LogError("More than one instance of LevelUpManager");
         instance = this;
-
-        this.yasuoStats = Instantiate(this.baseYasuoStats);
 
         this.namesList = new List<TMP_Text>();
         this.valuesList = new List<TMP_Text>();

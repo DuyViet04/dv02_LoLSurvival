@@ -5,16 +5,10 @@ using UnityEngine.UI;
 
 public class PlayerTakingDamage : TakingDamage
 {
-    [SerializeField] private YasuoStats baseYasuoStats;
+    [SerializeField] private YasuoStats yasuoStats;
     [SerializeField] private Image hpImage;
     [SerializeField] private TMP_Text hpText;
     [SerializeField] private TMP_Text hpRegenText;
-    private YasuoStats yasuoStats;
-
-    private void Awake()
-    {
-        this.yasuoStats = Instantiate(this.baseYasuoStats);
-    }
 
     private void Start()
     {

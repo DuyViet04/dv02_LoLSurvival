@@ -3,15 +3,9 @@ using UnityEngine;
 
 public class Collecting : MonoBehaviour
 {
-    [SerializeField] private YasuoStats baseYasuoStats;
+    [SerializeField] private YasuoStats yasuoStats;
     [SerializeField] private CapsuleCollider pickUpCollider;
-    private YasuoStats yasuoStats;
-
-    private void Awake()
-    {
-        this.yasuoStats = Instantiate(this.baseYasuoStats);
-    }
-
+    
     private void FixedUpdate()
     {
         this.pickUpCollider.radius = this.yasuoStats.pickUpRange;

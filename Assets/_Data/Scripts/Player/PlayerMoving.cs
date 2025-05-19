@@ -4,17 +4,11 @@ using UnityEngine.Serialization;
 
 public class PlayerMoving : MonoBehaviour
 {
-    [SerializeField] private YasuoStats baseYasuoStats;
+    [SerializeField] private YasuoStats yasuoStats;
     [SerializeField] private FindClosestEnemy findClosest;
     [SerializeField] private Rigidbody playerRigid;
     [SerializeField] private Animator playerAnimator;
-    private YasuoStats yasuoStats;
     private Vector3 lastDirection = Vector3.forward;
-
-    private void Awake()
-    {
-        this.yasuoStats = Instantiate(this.baseYasuoStats);
-    }
 
     private void Update()
     {

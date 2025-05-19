@@ -30,6 +30,33 @@ public class YasuoStats : MainCharacterStats
         this.expMultiplier = 0f;
     }
 
+    public void ResetStats()
+    {
+        this.characterName = "Yasuo";
+        this.health = 590f;
+        this.healthRegen = 2f;
+        this.attackDamage = 60f;
+        this.abilityPower = 0;
+        this.attackSpeed = 0.7f;
+        this.armor = 32f;
+        this.magicResistance = 32f;
+        this.moveSpeed = 3.45f;
+        this.criticalChance = 0f;
+        this.criticalDamage = 175 * 0.9f;
+        this.armorPenetration = 0f;
+        this.magicPenetration = 0f;
+        this.lifeSteal = 0f;
+        this.omnivamp = 0f;
+        this.haste = 0f;
+        this.healingPower = 0f;
+        this.pickUpRange = 0.5f;
+        this.expMultiplier = 0f;
+
+        this.baseAttackSpeed = this.attackSpeed;
+        this.baseMoveSpeed = this.moveSpeed;
+        this.basePickUpRange = this.pickUpRange;
+    }
+
     public void ApplyUpgrade(UpgradeType type, float value)
     {
         switch (type)

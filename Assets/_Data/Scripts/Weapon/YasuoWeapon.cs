@@ -6,14 +6,8 @@ using Random = UnityEngine.Random;
 
 public class YasuoWeapon : DealingDamage
 {
-    [SerializeField] private YasuoStats baseYasuoStats;
-    private YasuoStats yasuoStats;
+    [SerializeField] private YasuoStats yasuoStats;
     private float damageDeal;
-
-    private void Awake()
-    {
-        this.yasuoStats = Instantiate(this.baseYasuoStats);
-    }
 
     protected override void DealDamage(TakingDamage takingDamage)
     {

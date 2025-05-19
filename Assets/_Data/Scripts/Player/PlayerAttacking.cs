@@ -3,16 +3,10 @@ using UnityEngine;
 
 public class PlayerAttacking : MonoBehaviour
 {
-    [SerializeField] private YasuoStats baseYasuoStats;
+    [SerializeField] private YasuoStats yasuoStats;
     [SerializeField] private FindClosestEnemy findClosest;
     [SerializeField] private Animator animator;
-    private YasuoStats yasuoStats;
     private float attackTimer = 0f;
-
-    private void Awake()
-    {
-        this.yasuoStats = Instantiate(this.baseYasuoStats);
-    }
 
     private void Update()
     {

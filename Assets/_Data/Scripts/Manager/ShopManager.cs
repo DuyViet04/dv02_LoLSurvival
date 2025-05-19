@@ -10,13 +10,12 @@ public class ShopManager : MonoBehaviour
     private static ShopManager instance;
     public static ShopManager Instance => instance;
 
-    [SerializeField] private YasuoStats baseYasuoStats;
+    [SerializeField] private YasuoStats yasuoStats;
     [SerializeField] private GameObject shopPanel;
     [SerializeField] private GoldDisplay goldDisplay;
     [SerializeField] private GameObject itemSlot;
     [SerializeField] private GameObject sellButton;
     [SerializeField] private Sprite itemBackground;
-    private YasuoStats yasuoStats;
     private int itemCount = 0;
     private int indexItem;
     private List<ItemData> inventory;
@@ -27,8 +26,6 @@ public class ShopManager : MonoBehaviour
     {
         if (instance != null) Debug.LogError("More than one Shop Manager in scene.");
         instance = this;
-
-        this.yasuoStats = Instantiate(this.baseYasuoStats);
 
         this.inventory = new List<ItemData>();
         this.itemSprites = new List<Sprite>();

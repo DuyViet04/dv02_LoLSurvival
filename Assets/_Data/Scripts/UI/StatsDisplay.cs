@@ -15,8 +15,7 @@ public class StatsDisplay : MonoBehaviour
     [SerializeField] private Image secondStats;
     [SerializeField] public GameObject mainStatsPanel;
     [SerializeField] private GameObject secondStatsPanel;
-    [SerializeField] private YasuoStats baseYasuoStats;
-    private YasuoStats yasuoStats;
+    [SerializeField] private YasuoStats yasuoStats;
     private LevelUp levelUp;
     private List<TMP_Text> mainStatsData;
     private List<TMP_Text> secondStatsData;
@@ -27,7 +26,6 @@ public class StatsDisplay : MonoBehaviour
         instance = this;
 
         this.levelUp = FindObjectOfType<LevelUp>();
-        this.yasuoStats = Instantiate(this.baseYasuoStats);
 
         this.mainStatsData = new List<TMP_Text>();
         this.secondStatsData = new List<TMP_Text>();
