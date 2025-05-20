@@ -7,11 +7,12 @@ public class EnemyScaleStats : MonoBehaviour
 {
     [SerializeField] private MainEnemyStats stats;
     [SerializeField] private TimeDisplay timeDisplay;
+    [SerializeField] private SOManager soManager;
     private MainEnemyStats baseStats;
 
     private void Awake()
     {
-        this.stats = SOManager.Instance.GetStatsByType(this.transform.parent.name);
+        this.stats = this.soManager.GetStatsByType(this.transform.parent.name);
         this.baseStats = this.stats.GetBaseStats();
     }
 

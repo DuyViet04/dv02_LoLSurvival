@@ -10,7 +10,6 @@ public class EnemySpawner : Spawner
     [SerializeField] private float spawnTime = 1f;
     [SerializeField] private float spawnRange = 10f;
     private float spawnTimer = 0f;
-    private string meleeEnemy = "MeleeEnemy";
 
     private void Awake()
     {
@@ -34,7 +33,8 @@ public class EnemySpawner : Spawner
         this.spawnTimer += Time.deltaTime;
         if (this.spawnTimer < this.spawnTime) return;
         this.spawnTimer = 0f;
-        Spawn(this.meleeEnemy, this.GetRandomPosition(), Quaternion.identity, 3);
+        Spawn(EnemyType.MeleeEnemy.ToString(), this.GetRandomPosition(), Quaternion.identity, 3);
+        Spawn(EnemyType.RangeEnemy.ToString(), this.GetRandomPosition(), Quaternion.identity, 3);
     }
 
     Vector3 GetRandomPosition()

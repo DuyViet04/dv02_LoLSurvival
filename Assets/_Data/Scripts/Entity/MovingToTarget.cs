@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class MovingToTarget : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    [SerializeField] protected Transform target;
     
     protected virtual void MoveToTarget(float moveSpeed)
     {

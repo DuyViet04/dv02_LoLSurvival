@@ -4,12 +4,13 @@ using UnityEngine.Serialization;
 
 public class EnemyTakingDamage : TakingDamage
 {
-    [SerializeField] private GoldDisplay goldDisplay;
     [SerializeField] private MainEnemyStats stats;
+    [SerializeField] private GoldDisplay goldDisplay;
+    [SerializeField] private SOManager soManager;
 
     private void Awake()
     {
-        this.stats = SOManager.Instance.GetStatsByType(this.transform.parent.name);
+        this.stats = this.soManager.GetStatsByType(this.transform.parent.name);
     }
 
     private void Start()

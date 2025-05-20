@@ -5,17 +5,7 @@ using UnityEngine;
 
 public class SOManager : MonoBehaviour
 {
-    private static SOManager instance;
-    public static SOManager Instance => instance;
-
     [SerializeField] private List<MainEnemyStats> enemyStatsList;
-
-
-    private void Awake()
-    {
-        if (instance != null) Debug.LogError("More than one instance of SOManager");
-        instance = this;
-    }
 
     void Reset()
     {

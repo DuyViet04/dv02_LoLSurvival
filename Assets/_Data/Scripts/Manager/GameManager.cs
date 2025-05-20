@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private SOManager soManager;
     [SerializeField] private YasuoStats yasuoStats;
 
     private void Awake()
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
     {
         this.yasuoStats.ResetStats();
 
-        List<MainEnemyStats> list = SOManager.Instance.GetEnemyStatsList();
+        List<MainEnemyStats> list = this.soManager.GetEnemyStatsList();
         foreach (MainEnemyStats item in list)
         {
             item.ResetStats();
