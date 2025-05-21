@@ -33,7 +33,7 @@ public class RangeEnemyStats : MainEnemyStats
         this.moveSpeed = 1.5f;
         this.expValue = 30.4f;
         this.goldValue = 1.4f;
-        this.spawnDelay = 6f;
+        this.spawnDelay = 10f;
         this.spawnCount = 3;
     }
 }

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: RangeEnemyStats
   m_EditorClassIdentifier: 
   type: 1
-  health: 29.6
-  damage: 120
+  health: 36.388103
+  damage: 147.51933
   attackSpeed: 0.667
-  moveSpeed: 1.5
+  moveSpeed: 1.5343992
   armor: 0
   magicResistance: 0
-  expValue: 30.4
-  goldValue: 1.4
-  spawnDelay: 6
+  expValue: 37.371563
+  goldValue: 1.7210588
+  spawnDelay: 10
   spawnCount: 3

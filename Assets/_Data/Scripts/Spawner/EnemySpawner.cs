@@ -1,4 +1,8 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemySpawner : Spawner
 {
@@ -7,9 +11,9 @@ public class EnemySpawner : Spawner
     public static EnemySpawner Instance => instance;
 
     [SerializeField] private CSDisplay display;
-    [SerializeField] private float spawnTime = 1f;
     [SerializeField] private float spawnRange = 10f;
-    private float spawnTimer = 0f;
+    private SOManager soManager;
+    private List<MainEnemyStats> enemyStatsList;
 
     private void Awake()
     {
@@ -17,6 +21,16 @@ public class EnemySpawner : Spawner
         instance = this;
 
         this.LoadPrefabs();
+        this.soManager = FindObjectOfType<SOManager>();
+        this.enemyStatsList = this.soManager.GetEnemyStatsList();
+    }
+
+    private void Start()
+    {
+        foreach (MainEnemyStats item in this.enemyStatsList)
+        {
+            StartCoroutine(SpawnEnemy(item));
+        }
     }
 
     private void Update()
@@ -29,12 +43,15 @@ public class EnemySpawner : Spawner
         {
             this.spawnRange = 70f;
         }
+    }
 
-        this.spawnTimer += Time.deltaTime;
-        if (this.spawnTimer < this.spawnTime) return;
-        this.spawnTimer = 0f;
-        Spawn(EnemyType.MeleeEnemy.ToString(), this.GetRandomPosition(), Quaternion.identity, 3);
-        Spawn(EnemyType.RangeEnemy.ToString(), this.GetRandomPosition(), Quaternion.identity, 3);
+    IEnumerator SpawnEnemy(MainEnemyStats enemyStats)
+    {
+        while (true)
+        {
+            Spawn(enemyStats.type.ToString(), this.GetRandomPosition(), Quaternion.identity, enemyStats.spawnCount);
+            yield return new WaitForSeconds(enemyStats.spawnDelay);
+        }
     }
 
     Vector3 GetRandomPosition()
