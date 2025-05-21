@@ -49,8 +49,8 @@ public class EnemySpawner : Spawner
     {
         while (true)
         {
-            Spawn(enemyStats.type.ToString(), this.GetRandomPosition(), Quaternion.identity, enemyStats.spawnCount);
             yield return new WaitForSeconds(enemyStats.spawnDelay);
+            Spawn(enemyStats.type.ToString(), this.GetRandomPosition(), Quaternion.identity, enemyStats.spawnCount);
         }
     }
 
