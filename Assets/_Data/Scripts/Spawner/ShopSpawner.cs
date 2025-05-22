@@ -10,6 +10,8 @@ public class ShopSpawner : Spawner
 
     public static ShopSpawner Instance => instance;
 
+    [SerializeField] private Transform player;
+
     private void Awake()
     {
         if (instance != null) Debug.LogError("More than one instance of ExpSpawner");
@@ -25,14 +27,23 @@ public class ShopSpawner : Spawner
 
     IEnumerator SpawnShop()
     {
-        yield return new WaitForSeconds(45);
-        Vector3 pos = this.GetRandomPosition();
-        Spawn("Shopkeeper", pos, Quaternion.identity);
+        while (true)
+        {
+            yield return new WaitForSeconds(45);
+            Vector3 pos = this.GetRandomPosition();
+
+            Transform newShop = Spawn("Shopkeeper", pos, Quaternion.identity);
+            Transform newArrow = Spawn("Arrow", this.player.position, Quaternion.identity);
+
+            ArrowToShop arrowToShop = newArrow.GetComponentInChildren<ArrowToShop>();
+            arrowToShop.shopTransform = newShop.transform;
+            arrowToShop.playerTransform = this.player;
+        }
     }
 
     Vector3 GetRandomPosition()
     {
-        float range = 70f;
+        float range = 50f;
         float x = Random.Range(-range, range);
         float z = Random.Range(-range, range);
         return new Vector3(x, 0, z);
