@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -26,6 +27,18 @@ public class EnemyTakingDamage : TakingDamage
 
     protected override void Despawn()
     {
+        switch (this.transform.parent.name)
+        {
+            case "KrugL":
+                EnemySpawner.Instance.Spawn(EnemyType.KrugM.ToString(), this.transform.parent.position,
+                    Quaternion.identity, 2);
+                break;
+            case "KrugM":
+                EnemySpawner.Instance.Spawn(EnemyType.KrugS.ToString(), this.transform.parent.position,
+                    Quaternion.identity, 2);
+                break;
+        }
+
         this.goldDisplay.GetGoldFromKill(this.stats.goldValue);
         this.CreateExp();
         this.ResetStats();

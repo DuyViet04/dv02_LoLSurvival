@@ -49,7 +49,7 @@ public abstract class Spawner : MonoBehaviour
         return newObj;
     }
 
-    protected Transform[] Spawn(string prefabName, Vector3 position, Quaternion rotation, float count)
+    public Transform[] Spawn(string prefabName, Vector3 position, Quaternion rotation, float count)
     {
         Transform prefab = GetPrefabByName(prefabName);
         if (prefab == null)
