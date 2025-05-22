@@ -49,7 +49,7 @@ public abstract class Spawner : MonoBehaviour
         return newObj;
     }
 
-    protected Transform[] Spawn(string prefabName, Vector3 position, Quaternion rotation, int count)
+    protected Transform[] Spawn(string prefabName, Vector3 position, Quaternion rotation, float count)
     {
         Transform prefab = GetPrefabByName(prefabName);
         if (prefab == null)
@@ -61,16 +61,16 @@ public abstract class Spawner : MonoBehaviour
         return Spawn(prefab, position, rotation, count);
     }
 
-    protected Transform[] Spawn(Transform prefab, Vector3 position, Quaternion rotation, int count)
+    protected Transform[] Spawn(Transform prefab, Vector3 position, Quaternion rotation, float count)
     {
-        Transform[] newObjs = new Transform[count];
+        Transform[] newObjs = new Transform[Mathf.RoundToInt(count)];
 
         for (int i = 0; i < count; i++)
         {
-            float xPos = Random.Range(position.x - count / 2f, position.x + count / 2f);
-            float zPos = Random.Range(position.z - count / 2f, position.z + count / 2f);
+            float xPos = Random.Range(position.x - count * 2f, position.x + count * 2f);
+            float zPos = Random.Range(position.z - count * 2f, position.z + count * 2f);
             Vector3 newPos = new Vector3(xPos, position.y, zPos);
-            
+
             Transform obj = this.GetObjectFromPool(prefab);
             obj.SetPositionAndRotation(newPos, rotation);
             obj.SetParent(this.holder);

@@ -15,6 +15,7 @@ public class EnemyTakingDamage : TakingDamage
 
     private void Start()
     {
+        this.maxHp = this.stats.health;
         this.currentHp = this.maxHp;
     }
 

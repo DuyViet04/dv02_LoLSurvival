@@ -9,6 +9,7 @@ public class SOManager : MonoBehaviour
 
     void Reset()
     {
+        this.enemyStatsList.Clear();
         this.LoadEnemyStatsList();
     }
 
@@ -18,9 +19,9 @@ public class SOManager : MonoBehaviour
             new[] { "Assets/_Data/Scripts/Stat/Enemy/SO" });
         if (guids.Length > 0)
         {
-            for (int i = 0; i < guids.Length; i++)
+            foreach (string item in guids)
             {
-                string path = AssetDatabase.GUIDToAssetPath(guids[i]);
+                string path = AssetDatabase.GUIDToAssetPath(item);
                 MainEnemyStats stats = AssetDatabase.LoadAssetAtPath<MainEnemyStats>(path);
                 this.enemyStatsList.Add(stats);
             }

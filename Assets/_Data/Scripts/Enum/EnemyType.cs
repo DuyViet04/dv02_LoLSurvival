@@ -1,5 +1,17 @@
 public enum EnemyType
 {
     MeleeEnemy,
-    RangeEnemy
+    RangeEnemy,
+    CannonEnemy,
+    SuperEnemy,
+    Gromp,
+    MurkWolfL,
+    MurkWolfS,
+    RaptorL,
+    RaptorS,
+    KrugL,
+    KrugM,
+    KrugS,
+    Blue,
+    Red
 }

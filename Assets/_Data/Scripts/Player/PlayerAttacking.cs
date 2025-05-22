@@ -11,7 +11,7 @@ public class PlayerAttacking : MonoBehaviour
     private void Update()
     {
         float dis = this.findClosest.GetDistanceToTarget();
-        if (dis > 5)
+        if (dis > 7)
         {
             this.animator.ResetTrigger("isAttack");
             return;

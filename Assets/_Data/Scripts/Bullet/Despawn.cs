@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Despawn : MonoBehaviour
 {
-    private float lifeTime = 10f;
+    private float lifeTime = 20f;
     private float timer = 0f;
 
     private void Update()

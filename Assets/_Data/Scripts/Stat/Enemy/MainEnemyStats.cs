@@ -11,9 +11,10 @@ public abstract class MainEnemyStats : ScriptableObject
     public float magicResistance;
     public float expValue;
     public float goldValue;
+    public float csValue;
     public float spawnDelay;
-    public int spawnCount;
-    
+    public float spawnCount;
+
     public abstract MainEnemyStats GetBaseStats();
     public abstract void ResetStats();
 }

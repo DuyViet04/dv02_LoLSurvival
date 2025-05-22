@@ -7,14 +7,17 @@ public class RangeEnemyStats : MainEnemyStats
     private void Reset()
     {
         this.type = EnemyType.RangeEnemy;
-        this.health = 29.6f;
-        this.damage = 120f;
+        this.health = 28.4f;
+        this.damage = 21f;
         this.attackSpeed = 0.667f;
         this.moveSpeed = 1.5f;
+        this.armor = 1f;
+        this.magicResistance = 1f;
         this.expValue = 30.4f;
-        this.goldValue = 1.4f;
+        this.goldValue = 14f;
+        this.csValue = 1f;
         this.spawnDelay = 6f;
-        this.spawnCount = 3;
+        this.spawnCount = 3f;
     }
 
     public override MainEnemyStats GetBaseStats()
@@ -27,13 +30,16 @@ public class RangeEnemyStats : MainEnemyStats
     public override void ResetStats()
     {
         this.type = EnemyType.RangeEnemy;
-        this.health = 29.6f;
-        this.damage = 120f;
+        this.health = 28.4f;
+        this.damage = 21f;
         this.attackSpeed = 0.667f;
         this.moveSpeed = 1.5f;
+        this.armor = 1f;
+        this.magicResistance = 1f;
         this.expValue = 30.4f;
-        this.goldValue = 1.4f;
-        this.spawnDelay = 10f;
-        this.spawnCount = 3;
+        this.goldValue = 14f;
+        this.csValue = 1f;
+        this.spawnDelay = 6f;
+        this.spawnCount = 3f;
     }
 }

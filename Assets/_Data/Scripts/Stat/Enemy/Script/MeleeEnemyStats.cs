@@ -7,13 +7,15 @@ public class MeleeEnemyStats : MainEnemyStats
     {
         this.type = EnemyType.MeleeEnemy;
         this.health = 46.5f;
-        this.damage = 80;
+        this.damage = 11f;
         this.moveSpeed = 1.5f;
-        this.armor = 20;
+        this.armor = 20f;
+        this.magicResistance = 1f;
         this.expValue = 61.75f;
-        this.goldValue = 2.1f;
+        this.goldValue = 21f;
+        this.csValue = 1f;
         this.spawnDelay = 3f;
-        this.spawnCount = 3;
+        this.spawnCount = 3f;
     }
 
     public override MainEnemyStats GetBaseStats()
@@ -27,12 +29,14 @@ public class MeleeEnemyStats : MainEnemyStats
     {
         this.type = EnemyType.MeleeEnemy;
         this.health = 46.5f;
-        this.damage = 80;
+        this.damage = 11f;
         this.moveSpeed = 1.5f;
-        this.armor = 20;
+        this.armor = 20f;
+        this.magicResistance = 1f;
         this.expValue = 61.75f;
-        this.goldValue = 2.1f;
+        this.goldValue = 21f;
+        this.csValue = 1f;
         this.spawnDelay = 3f;
-        this.spawnCount = 3;
+        this.spawnCount = 3f;
     }
 }

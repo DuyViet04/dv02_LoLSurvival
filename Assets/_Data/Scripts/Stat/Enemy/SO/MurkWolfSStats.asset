@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e49e701bd66a8948bf0fa7d9fdb9f91, type: 3}
+  m_Name: MurkWolfSStats
+  m_EditorClassIdentifier: 
+  type: 6
+  health: 63
+  damage: 10
+  attackSpeed: 0
+  moveSpeed: 5.25
+  armor: 20
+  magicResistance: 20
+  expValue: 15
+  goldValue: 15
+  csValue: 1
+  spawnDelay: 180
+  spawnCount: 2
