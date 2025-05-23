@@ -1,11 +1,25 @@
 using UnityEngine;
 
-public class ExpBehaviour : MonoBehaviour
+[RequireComponent(typeof(CapsuleCollider))]
+public class ExpBehaviour : VyesBehaviour
 {
-    [SerializeField] private Transform target;
-    [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private GameObject target;
+    [SerializeField] private CapsuleCollider capsuleCollider;
+    private float moveSpeed = 3f;
     private float expValue;
     private bool isMove;
+
+    private void Update()
+    {
+        if (this.isMove && this.target != null)
+        {
+            this.MoveToTarget(this.target.transform);
+            float distance = Vector3.Distance(this.transform.parent.position, this.target.transform.position);
+            if (distance > 0.5f) return;
+            this.isMove = false;
+            this.PickUp();
+        }
+    }
 
     public void SetExpValue(float value)
     {
@@ -19,7 +33,7 @@ public class ExpBehaviour : MonoBehaviour
 
     private void PickUp()
     {
-        LevelUp levelUp = GameObject.FindObjectOfType<LevelUp>();
+        LevelUp levelUp = FindObjectOfType<LevelUp>();
         ExpSpawner.Instance.Despawn(this.transform.parent);
         levelUp.IncreaseExp(this.expValue);
     }
@@ -30,15 +44,27 @@ public class ExpBehaviour : MonoBehaviour
         this.transform.parent.position = pos;
     }
 
-    private void Update()
+    protected override void LoadComponents()
     {
-        if (this.isMove && this.target != null)
-        {
-            MoveToTarget(this.target);
-            float distance = Vector3.Distance(this.transform.parent.position, this.target.position);
-            if (distance > 0.5f) return;
-            this.isMove = false;
-            PickUp();
-        }
+        base.LoadComponents();
+        this.LoadTarget();
+        this.LoadCapsuleCollider();
+    }
+
+    void LoadTarget()
+    {
+        if (this.target != null) return;
+        this.target = GameObject.FindGameObjectWithTag("Player");
+        Debug.LogWarning(this.transform.name + ": LoadTarget", this.gameObject);
+    }
+
+    void LoadCapsuleCollider()
+    {
+        if (this.capsuleCollider != null) return;
+        this.capsuleCollider = GetComponent<CapsuleCollider>();
+        this.capsuleCollider.isTrigger = true;
+        this.capsuleCollider.center = new Vector3(0, 0.1f, 0);
+        this.capsuleCollider.radius = 0.1f;
+        this.capsuleCollider.height = 0.1f;
     }
 }
