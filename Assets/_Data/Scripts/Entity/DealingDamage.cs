@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public abstract class DealingDamage : MonoBehaviour
+public abstract class DealingDamage : VyesBehaviour
 {
-    protected float damage = 1f;
+    protected float damage;
+    protected float damageDealt;
     protected float armorPenetration;
     protected float lifeSteal;
     protected float omnivamp;
@@ -17,20 +18,27 @@ public abstract class DealingDamage : MonoBehaviour
 
     protected virtual void DealDamage(TakingDamage takingDamage)
     {
-        takingDamage.TakeDamage(this.damage, this.armorPenetration);
-        this.Heal(this.transform.root);
+        this.GetDamageDealt(takingDamage);
+        takingDamage.TakeDamage(this.damageDealt);
     }
 
     protected void Heal(Transform target)
     {
         TakingDamage takingDamage = target.GetComponentInChildren<TakingDamage>();
         if (takingDamage == null) return;
-        this.Heal(takingDamage, this.damage, this.lifeSteal, this.omnivamp, this.healingPower);
+        this.Heal(takingDamage);
     }
 
-    protected void Heal(TakingDamage takingDamage, float damage, float lifeSteal, float omnivamp, float healingPower)
+    protected virtual void Heal(TakingDamage takingDamage)
     {
-        takingDamage.LifeSteal(damage * (lifeSteal / 100) * (1 + healingPower / 100));
-        takingDamage.Omnivamp(damage * (omnivamp / 300) * (1 + healingPower / 100));
+        takingDamage.LifeSteal(this.damageDealt * (this.lifeSteal / 100) * (1 + this.healingPower / 100));
+        takingDamage.Omnivamp(this.damageDealt * (this.omnivamp / 300) * (1 + this.healingPower / 100));
+    }
+
+    protected virtual float GetDamageDealt(TakingDamage takingDamage)
+    {
+        float dmgMulti = takingDamage.GetDamageMultiplier(this.armorPenetration);
+        this.damageDealt = this.damage * dmgMulti;
+        return this.damageDealt;
     }
 }

@@ -6,9 +6,9 @@ public abstract class TakingDamage : MonoBehaviour
     protected float currentHp;
     protected float armor;
 
-    public virtual void TakeDamage(float damage, float armorPenetration)
+    public virtual void TakeDamage(float damage)
     {
-        this.currentHp -= damage * this.GetDamageMultiplier(armorPenetration);
+        this.currentHp -= damage;
         if (this.currentHp <= 0f)
         {
             this.currentHp = 0f;
@@ -17,7 +17,7 @@ public abstract class TakingDamage : MonoBehaviour
         OnDead();
     }
 
-    private float GetDamageMultiplier(float armorPenetration)
+    public float GetDamageMultiplier(float armorPenetration)
     {
         float newArmor = this.armor - armorPenetration;
         return 1 - newArmor / (100 + Mathf.Abs(newArmor));

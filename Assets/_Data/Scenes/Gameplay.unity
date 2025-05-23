@@ -60107,6 +60107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
+  player: {fileID: 779784615}
 --- !u!54 &7634598966483363215
 Rigidbody:
   m_ObjectHideFlags: 0

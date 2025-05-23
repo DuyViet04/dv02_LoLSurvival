@@ -25,9 +25,9 @@ public class PlayerTakingDamage : TakingDamage
         this.hpRegenText.text = $"+{regenValue:F1}/s";
     }
 
-    public override void TakeDamage(float damage, float armorPenetration)
+    public override void TakeDamage(float damage)
     {
-        base.TakeDamage(damage, armorPenetration);
+        base.TakeDamage(damage);
         if (this.currentHp <= 0f)
         {
             this.hpImage.fillAmount = 0f;
