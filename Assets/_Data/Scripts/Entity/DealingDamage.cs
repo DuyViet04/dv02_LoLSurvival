@@ -9,6 +9,7 @@ public abstract class DealingDamage : VyesBehaviour
     protected float omnivamp;
     protected float healingPower;
 
+    //Gây damage cho target có "TakingDamage"
     public virtual void DealDamage(Transform target)
     {
         TakingDamage takingDamage = target.GetComponentInChildren<TakingDamage>();
@@ -22,6 +23,7 @@ public abstract class DealingDamage : VyesBehaviour
         takingDamage.TakeDamage(this.damageDealt);
     }
 
+    //Hồi máu cho target có "TakingDamage"
     protected void Heal(Transform target)
     {
         TakingDamage takingDamage = target.GetComponentInChildren<TakingDamage>();
@@ -35,6 +37,7 @@ public abstract class DealingDamage : VyesBehaviour
         takingDamage.Omnivamp(this.damageDealt * (this.omnivamp / 300) * (1 + this.healingPower / 100));
     }
 
+    //Tính lượng damage gây ra
     protected virtual float GetDamageDealt(TakingDamage takingDamage)
     {
         float dmgMulti = takingDamage.GetDamageMultiplier(this.armorPenetration);
