@@ -13,5 +13,11 @@ public class ArrowToShop : MonoBehaviour
         this.transform.parent.rotation = Quaternion.Euler(0, angle, 0);
         this.transform.parent.position =
             new Vector3(this.playerTransform.position.x, 0.5f, this.playerTransform.position.z);
+
+        if (this.shopTransform.gameObject.activeSelf == false)
+        {
+            ShopSpawner.Instance.Despawn(this.transform.parent);
+            return;
+        }
     }
 }

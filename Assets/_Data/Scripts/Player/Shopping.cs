@@ -8,6 +8,7 @@ public class Shopping : MonoBehaviour
         if (parent != null && parent.CompareTag("Shop"))
         {
             ShopManager.Instance.OpenShop();
+            ShopSpawner.Instance.Despawn(parent);
         }
     }
 }
