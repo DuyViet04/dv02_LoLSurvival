@@ -7532,6 +7532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f9955bc074dd7741b5119c220f7e9fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sphereCollider: {fileID: 604763179}
 --- !u!1 &611268848
 GameObject:
   m_ObjectHideFlags: 0

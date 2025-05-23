@@ -1,11 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(SphereCollider))]
 public class BulletDealingDamage : DealingDamage
 {
+    [SerializeField] private SphereCollider sphereCollider;
+
     public void SetAttackDamage(float damage)
     {
         this.damage = damage;
@@ -19,5 +18,20 @@ public class BulletDealingDamage : DealingDamage
             parent.GetComponentInChildren<PlayerTakingDamage>().TakeDamage(this.damage);
             BulletSpawner.Instance.Despawn(this.transform.parent);
         }
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadSphereCollider();
+    }
+
+    void LoadSphereCollider()
+    {
+        if (this.sphereCollider != null) return;
+        this.sphereCollider = GetComponent<SphereCollider>();
+        this.sphereCollider.isTrigger = true;
+        this.sphereCollider.radius = 0.2f;
+        Debug.LogWarning(this.transform.name + ": LoadSphereCollider", this.gameObject);
     }
 }
