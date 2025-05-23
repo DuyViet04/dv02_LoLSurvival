@@ -35,9 +35,9 @@ public class ShopSpawner : Spawner
             Transform newShop = Spawn("Shopkeeper", pos, Quaternion.identity);
             Transform newArrow = Spawn("Arrow", this.player.position, Quaternion.identity);
 
-            ArrowToShop arrowToShop = newArrow.GetComponentInChildren<ArrowToShop>();
+            ArrowToShop arrowToShop = newArrow.gameObject.GetComponentInChildren<ArrowToShop>();
             arrowToShop.shopTransform = newShop.transform;
-            arrowToShop.playerTransform = this.player;
+            arrowToShop.player.transform.position = this.player.position;
         }
     }
 
