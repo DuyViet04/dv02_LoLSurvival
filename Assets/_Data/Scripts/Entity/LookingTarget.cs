@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class LookingTarget : MonoBehaviour
+public abstract class LookingTarget : VyesBehaviour
 {
     [SerializeField] protected Transform target;
 
@@ -9,6 +9,7 @@ public abstract class LookingTarget : MonoBehaviour
         Vector3 currentPos = currentTrans.position;
         Vector3 targetPos = target.position;
 
+        //Tính toán góc quay
         float x = targetPos.x - currentPos.x;
         float z = targetPos.z - currentPos.z;
         float angle = Mathf.Atan2(x, z) * Mathf.Rad2Deg;
