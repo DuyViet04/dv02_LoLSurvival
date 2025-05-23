@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public abstract class TakingDamage : MonoBehaviour
+public abstract class TakingDamage : VyesBehaviour
 {
-    protected float maxHp = 2f;
+    protected float maxHp;
     protected float currentHp;
     protected float armor;
 
+    //Trừ hp khi nhận damage
     public virtual void TakeDamage(float damage)
     {
         this.currentHp -= damage;
@@ -14,15 +15,17 @@ public abstract class TakingDamage : MonoBehaviour
             this.currentHp = 0f;
         }
 
-        OnDead();
+        this.OnDead();
     }
 
+    //Tính toán tỉ lệ damage nhận vào
     public float GetDamageMultiplier(float armorPenetration)
     {
         float newArmor = this.armor - armorPenetration;
         return 1 - newArmor / (100 + Mathf.Abs(newArmor));
     }
 
+    //Hồi máu theo máu hồi
     protected virtual void RegenHealth(float value)
     {
         this.currentHp += value;
@@ -32,6 +35,7 @@ public abstract class TakingDamage : MonoBehaviour
         }
     }
 
+    //Hồi máu theo hút máu
     public virtual void LifeSteal(float value)
     {
         this.currentHp += value;
@@ -41,6 +45,7 @@ public abstract class TakingDamage : MonoBehaviour
         }
     }
 
+    //Hồi máu theo hút máu toàn phần
     public virtual void Omnivamp(float value)
     {
         this.currentHp += value;
@@ -50,12 +55,14 @@ public abstract class TakingDamage : MonoBehaviour
         }
     }
 
+    //Kiểm tra xem đã chết hay chưa
     private bool IsDead()
     {
         if (this.currentHp > 0f) return false;
         return true;
     }
 
+    //Xử lý khi chết
     private void OnDead()
     {
         if (!IsDead()) return;
