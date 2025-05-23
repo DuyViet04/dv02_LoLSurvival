@@ -22572,7 +22572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopTransform: {fileID: 0}
-  playerTransform: {fileID: 779784615}
+  player: {fileID: 779784613}
 --- !u!1 &1908893701
 GameObject:
   m_ObjectHideFlags: 0
