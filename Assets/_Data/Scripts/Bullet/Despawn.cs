@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Despawn : MonoBehaviour
+public class Despawn : VyesBehaviour
 {
-    private float lifeTime = 20f;
+    private float lifeTime = 15f;
     private float timer = 0f;
 
+    //Despawn sau 15s
     private void Update()
     {
         this.timer += Time.deltaTime;
