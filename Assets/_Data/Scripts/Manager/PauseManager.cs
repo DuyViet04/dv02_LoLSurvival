@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PauseManager : MonoBehaviour
+public class PauseManager : VyesBehaviour
 {
     [SerializeField] private GameObject levelUpPanel;
     [SerializeField] private GameObject pauseGamePanel;
@@ -47,5 +47,37 @@ public class PauseManager : MonoBehaviour
             this.shopPanel.SetActive(true);
             Time.timeScale = 0;
         }
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadLevelUpPanel();
+        this.LoadGamePausePanel();
+        this.LoadShopPanel();
+    }
+
+    void LoadLevelUpPanel()
+    {
+        if (this.levelUpPanel != null) return;
+        this.levelUpPanel = GameObject.Find("LevelUpPanel");
+        Debug.LogWarning(this.transform.name + ": LoadLevelUpPanel", this.gameObject);
+        this.levelUpPanel.SetActive(false);
+    }
+
+    void LoadGamePausePanel()
+    {
+        if (this.pauseGamePanel != null) return;
+        this.pauseGamePanel = GameObject.Find("PauseGamePanel");
+        Debug.LogWarning(this.transform.name + ": LoadGamePausePanel", this.gameObject);
+        this.pauseGamePanel.SetActive(false);
+    }
+
+    void LoadShopPanel()
+    {
+        if (this.shopPanel != null) return;
+        this.shopPanel = GameObject.Find("ShopPanel");
+        Debug.LogWarning(this.transform.name + ": LoadShopPanel", this.gameObject);
+        this.shopPanel.SetActive(false);
     }
 }
