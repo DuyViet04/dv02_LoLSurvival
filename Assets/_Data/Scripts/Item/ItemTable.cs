@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -6,6 +7,12 @@ using UnityEngine;
 public class ItemTable : ScriptableObject
 {
     public List<ScriptableObject> items;
+
+    private void Awake()
+    {
+        this.items.Clear();
+        this.LoadData();
+    }
 
     void Reset()
     {

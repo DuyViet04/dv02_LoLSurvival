@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -7,8 +8,15 @@ public class ItemRarityTable : ScriptableObject
 {
     public List<ItemRarityData> rarities;
 
+    private void Awake()
+    {
+        this.rarities.Clear();
+        this.LoadData();
+    }
+
     private void Reset()
     {
+        this.rarities.Clear();
         this.LoadData();
     }
 
