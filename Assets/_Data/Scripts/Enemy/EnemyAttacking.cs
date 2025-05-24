@@ -8,11 +8,6 @@ public class EnemyAttacking : VyesBehaviour
     [SerializeField] private Animator animator;
     private float attackTimer = 0f;
 
-    private void Awake()
-    {
-        this.stats = this.soManager.GetStatsByType(this.transform.parent.name);
-    }
-
     private void Update()
     {
         this.attackTimer += Time.deltaTime; //Tính thời gian giữa 2 lần bắn
