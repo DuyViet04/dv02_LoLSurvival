@@ -2,7 +2,6 @@ using UnityEngine;
 
 public abstract class LookingTarget : VyesBehaviour
 {
-    [SerializeField] protected Transform target;
 
     protected virtual void LookAtTarget(Transform currentTrans, Transform target)
     {
