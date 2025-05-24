@@ -14,6 +14,7 @@ public class MeleeEnemyMoving : MovingToTarget
     {
         base.LoadComponents();
         this.LoadStats();
+        this.LoadTarget();
     }
 
     void LoadStats()
@@ -30,5 +31,11 @@ public class MeleeEnemyMoving : MovingToTarget
         if (this.soManager != null) return;
         this.soManager = GameObject.FindObjectOfType<SOManager>();
         Debug.LogWarning(this.transform.name + ": LoadSOManager", this.gameObject);
+    }
+
+    void LoadTarget()
+    {
+        if (this.target != null) return;
+        this.target = GameObject.FindGameObjectWithTag("Player");
     }
 }
