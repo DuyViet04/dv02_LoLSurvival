@@ -1,8 +1,7 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class EnemyAttacking : MonoBehaviour
+public class EnemyAttacking : VyesBehaviour
 {
     [SerializeField] private MainEnemyStats stats;
     [SerializeField] private SOManager soManager;
@@ -16,12 +15,13 @@ public class EnemyAttacking : MonoBehaviour
 
     private void Update()
     {
-        this.attackTimer += Time.deltaTime;
+        this.attackTimer += Time.deltaTime; //Tính thời gian giữa 2 lần bắn
         if (this.attackTimer < this.GetAttackDelay(this.stats.attackSpeed)) return;
         this.attackTimer = 0f;
         this.Attack();
     }
 
+    //Spawn bullet mỗi khi attack
     private void Attack()
     {
         Transform newBullet =
@@ -40,11 +40,33 @@ public class EnemyAttacking : MonoBehaviour
         return 1 * attackSpeed;
     }
 
-    Quaternion GetRandomRotation()
+    protected override void LoadComponents()
     {
-        Quaternion rot = this.transform.rotation;
-        float newRotY = Random.Range(rot.y - 10, rot.y + 10);
-        Quaternion newRot = Quaternion.Euler(0, newRotY, 0);
-        return newRot;
+        base.LoadComponents();
+        this.LoadStats();
+        this.LoadAnimator();
+    }
+
+    void LoadStats()
+    {
+        this.LoadSoManager();
+
+        if (this.stats != null) return;
+        this.stats = this.soManager.GetStatsByType(this.transform.parent.name);
+        Debug.LogWarning(this.transform.name + ": LoadStats", this.gameObject);
+    }
+
+    void LoadSoManager()
+    {
+        if (this.soManager != null) return;
+        this.soManager = GameObject.FindObjectOfType<SOManager>();
+        Debug.LogWarning(this.transform.name + ": LoadSOManager", this.gameObject);
+    }
+
+    void LoadAnimator()
+    {
+        if (this.animator != null) return;
+        this.animator = this.transform.parent.GetComponentInChildren<Animator>();
+        Debug.LogWarning(this.transform.name + ": LoadAnimator", this.gameObject);
     }
 }
