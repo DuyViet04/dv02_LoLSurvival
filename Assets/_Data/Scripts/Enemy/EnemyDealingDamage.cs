@@ -6,7 +6,6 @@ public class EnemyDealingDamage : DealingDamage
 {
     [SerializeField] private MainEnemyStats stats;
     [SerializeField] private SOManager soManager;
-    [SerializeField] private CapsuleCollider capsuleCollider;
 
     private void FixedUpdate()
     {
@@ -17,7 +16,6 @@ public class EnemyDealingDamage : DealingDamage
     {
         base.LoadComponents();
         this.LoadStats();
-        this.LoadCapsuleCollider();
     }
 
     void LoadStats()
@@ -34,15 +32,5 @@ public class EnemyDealingDamage : DealingDamage
         if (this.soManager != null) return;
         this.soManager = GameObject.FindObjectOfType<SOManager>();
         Debug.LogWarning(this.transform.name + ": LoadSOManager", this.gameObject);
-    }
-
-    void LoadCapsuleCollider()
-    {
-        if (this.capsuleCollider != null) return;
-        this.capsuleCollider = this.GetComponent<CapsuleCollider>();
-        this.capsuleCollider.center = new Vector3(0, 0.5f, 0);
-        this.capsuleCollider.radius = 0.5f;
-        this.capsuleCollider.height = 1;
-        Debug.LogWarning(this.transform.name + ": LoadCapsuleCollider", this.gameObject);
     }
 }
