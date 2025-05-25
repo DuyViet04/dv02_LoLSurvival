@@ -20,7 +20,7 @@ public class KrugMStats : MainEnemyStats
 
     public override MainEnemyStats GetBaseStats()
     {
-        MeleeEnemyStats newStats = new MeleeEnemyStats();
+        KrugMStats newStats = CreateInstance<KrugMStats>();
         newStats.ResetStats();
         return newStats;
     }

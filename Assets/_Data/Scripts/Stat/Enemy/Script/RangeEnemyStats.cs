@@ -22,7 +22,7 @@ public class RangeEnemyStats : MainEnemyStats
 
     public override MainEnemyStats GetBaseStats()
     {
-        RangeEnemyStats newStats = new RangeEnemyStats();
+        RangeEnemyStats newStats = CreateInstance<RangeEnemyStats>();
         newStats.ResetStats();
         return newStats;
     }

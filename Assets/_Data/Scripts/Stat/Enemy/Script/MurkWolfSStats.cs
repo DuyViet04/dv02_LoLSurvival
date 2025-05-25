@@ -20,7 +20,7 @@ public class MurkWolfSStats : MainEnemyStats
 
     public override MainEnemyStats GetBaseStats()
     {
-        MeleeEnemyStats newStats = new MeleeEnemyStats();
+        MurkWolfSStats newStats = CreateInstance<MurkWolfSStats>();
         newStats.ResetStats();
         return newStats;
     }

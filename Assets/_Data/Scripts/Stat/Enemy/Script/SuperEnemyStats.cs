@@ -20,7 +20,7 @@ public class SuperEnemyStats : MainEnemyStats
 
     public override MainEnemyStats GetBaseStats()
     {
-        MeleeEnemyStats newStats = new MeleeEnemyStats();
+        SuperEnemyStats newStats = CreateInstance<SuperEnemyStats>();
         newStats.ResetStats();
         return newStats;
     }

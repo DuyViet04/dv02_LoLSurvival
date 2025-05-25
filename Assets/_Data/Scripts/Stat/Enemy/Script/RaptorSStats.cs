@@ -20,7 +20,7 @@ public class RaptorSStats : MainEnemyStats
 
     public override MainEnemyStats GetBaseStats()
     {
-        MeleeEnemyStats newStats = new MeleeEnemyStats();
+        RaptorSStats newStats = CreateInstance<RaptorSStats>();
         newStats.ResetStats();
         return newStats;
     }

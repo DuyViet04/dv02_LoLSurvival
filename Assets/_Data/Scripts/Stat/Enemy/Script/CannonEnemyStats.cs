@@ -37,7 +37,7 @@ public class CannonEnemyStats : MainEnemyStats
 
     public override MainEnemyStats GetBaseStats()
     {
-        CannonEnemyStats stats = new CannonEnemyStats();
+        CannonEnemyStats stats = CreateInstance<CannonEnemyStats>();
         stats.ResetStats();
         return stats;
     }

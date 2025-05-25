@@ -20,7 +20,7 @@ public class RedStats : MainEnemyStats
 
     public override MainEnemyStats GetBaseStats()
     {
-        MeleeEnemyStats newStats = new MeleeEnemyStats();
+        RedStats newStats = CreateInstance<RedStats>();
         newStats.ResetStats();
         return newStats;
     }

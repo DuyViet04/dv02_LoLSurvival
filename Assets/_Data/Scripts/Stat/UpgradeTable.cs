@@ -34,12 +34,14 @@ public class UpgradeTable : ScriptableObject
         this.AddUpgrade(UpgradeType.ExpMultiplier, "Kinh nghiệm(%): ", 5);
     }
 
-    void AddUpgrade(UpgradeType type, string name, float value)
+    void AddUpgrade(UpgradeType type, string upgName, float value)
     {
-        UpgradeData upgrade = new UpgradeData();
-        upgrade.type = type;
-        upgrade.name = name;
-        upgrade.value = value;
+        UpgradeData upgrade = new UpgradeData
+        {
+            type = type,
+            name = upgName,
+            value = value
+        };
 
         this.upgrades.Add(upgrade);
     }

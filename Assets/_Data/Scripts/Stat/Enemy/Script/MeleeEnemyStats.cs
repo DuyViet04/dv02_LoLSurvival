@@ -20,7 +20,7 @@ public class MeleeEnemyStats : MainEnemyStats
 
     public override MainEnemyStats GetBaseStats()
     {
-        MeleeEnemyStats newStats = new MeleeEnemyStats();
+        MeleeEnemyStats newStats = CreateInstance<MeleeEnemyStats>();
         newStats.ResetStats();
         return newStats;
     }

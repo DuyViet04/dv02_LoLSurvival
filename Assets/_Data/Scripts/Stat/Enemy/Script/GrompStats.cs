@@ -20,7 +20,7 @@ public class GrompStats : MainEnemyStats
 
     public override MainEnemyStats GetBaseStats()
     {
-        MeleeEnemyStats newStats = new MeleeEnemyStats();
+        GrompStats newStats = CreateInstance<GrompStats>();
         newStats.ResetStats();
         return newStats;
     }

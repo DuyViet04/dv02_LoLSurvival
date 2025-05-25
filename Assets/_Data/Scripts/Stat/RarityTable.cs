@@ -50,11 +50,13 @@ public class RarityTable : ScriptableObject
 
     void AddRarityData(RarityType rarity, Color color, int power, float change)
     {
-        RarityData rarityData = new RarityData();
-        rarityData.rarity = rarity;
-        rarityData.color = color;
-        rarityData.power = power;
-        rarityData.chance = change;
+        RarityData rarityData = new RarityData
+        {
+            rarity = rarity,
+            color = color,
+            power = power,
+            chance = change
+        };
 
         rarities.Add(rarityData);
     }
