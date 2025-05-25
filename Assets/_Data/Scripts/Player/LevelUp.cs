@@ -1,10 +1,10 @@
 using System;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class LevelUp : MonoBehaviour
+public class LevelUp : VyesBehaviour
 {
     [SerializeField] private RarityTable baseRarityTable;
     [SerializeField] private YasuoStats yasuoStats;
@@ -16,8 +16,9 @@ public class LevelUp : MonoBehaviour
     private float maxExp;
     private float currentExp;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         this.rarityTable = Instantiate(this.baseRarityTable);
     }
 
@@ -48,6 +49,7 @@ public class LevelUp : MonoBehaviour
         Time.timeScale = 0;
         LevelUpDisplay.Instance.ShowUpgradeChoices();
 
+        //Tính toán kinh nghiệm cho level tiếp theo
         this.currentLv++;
         this.maxExp = 180 + 100 * Mathf.Pow(this.currentLv - 1, 2);
         this.currentExp = 0;
@@ -60,6 +62,7 @@ public class LevelUp : MonoBehaviour
         return this.currentLv;
     }
 
+    // Xử lý tăng tỉ lệ theo cấp
     void IncreaseRarity(RarityTable table)
     {
         float progress = (float)1 / 49;
@@ -70,5 +73,54 @@ public class LevelUp : MonoBehaviour
         table.rarities[2].chance += progress * 3 / 15;
         table.rarities[3].chance += progress * 2 / 15;
         table.rarities[4].chance += progress * 1 / 15;
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadYasuoStats();
+        this.LoadLevelUpPanel();
+        this.LoadExpBar();
+        this.LoadLevelText();
+        this.LoadRarityTable();
+    }
+
+    void LoadRarityTable()
+    {
+        if (this.baseRarityTable != null) return;
+        string[] guids = AssetDatabase.FindAssets("t:RarityTable", new[] { "Assets/_Data/Scripts/Stat" });
+        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
+        this.baseRarityTable = AssetDatabase.LoadAssetAtPath<RarityTable>(path);
+        Debug.LogWarning(this.transform.name + ": LoadRarityTable", this.gameObject);
+    }
+
+    void LoadYasuoStats()
+    {
+        if (this.yasuoStats != null) return;
+        string[] guids = AssetDatabase.FindAssets("t:YasuoStats", new[] { "Assets/_Data/Scripts/Stat/Character/SO" });
+        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
+        this.yasuoStats = AssetDatabase.LoadAssetAtPath<YasuoStats>(path);
+        Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
+    }
+
+    void LoadLevelUpPanel()
+    {
+        if (this.levelUpPanel != null) return;
+        this.levelUpPanel = GameObject.Find("LevelUpPanel");
+        Debug.LogWarning(this.transform.name + ": LoadLevelUpPanel", this.gameObject);
+    }
+
+    void LoadExpBar()
+    {
+        if (this.expBar != null) return;
+        this.expBar = GameObject.Find("ExpBar").GetComponent<Image>();
+        Debug.LogWarning(this.transform.name + ": LoadExpBar", this.gameObject);
+    }
+
+    void LoadLevelText()
+    {
+        if (this.levelText != null) return;
+        this.levelText = GameObject.Find("LevelText").GetComponent<TMP_Text>();
+        Debug.LogWarning(this.transform.name + ": LoadLevelText", this.gameObject);
     }
 }

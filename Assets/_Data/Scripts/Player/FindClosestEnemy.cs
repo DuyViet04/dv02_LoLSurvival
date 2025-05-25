@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FindClosestEnemy : MonoBehaviour
+public class FindClosestEnemy : VyesBehaviour
 {
     public float GetDistanceToTarget()
     {

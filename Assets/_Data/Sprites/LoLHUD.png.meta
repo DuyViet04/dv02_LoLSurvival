@@ -189,7 +189,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Exp Bar
+      name: ExpBar
       rect:
         serializedVersion: 2
         x: 632
@@ -323,7 +323,7 @@ TextureImporter:
         width: 25
         height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -348,10 +348,10 @@ TextureImporter:
     nameFileIdTable:
       HP, MP Bar and Skill: 1248718709
       Time Icon: -47270504
+      ExpBar: 636920509
       HPBackground: -1360782465
       Avatar and Level: 265712829
       ItemBackground: -1485911640
-      Exp Bar: 636920509
       ItemSlot: 795309742
       Gold: 700661719
       HP: 1266691831
