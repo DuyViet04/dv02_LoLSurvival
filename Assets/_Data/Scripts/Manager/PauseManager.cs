@@ -8,6 +8,14 @@ public class PauseManager : VyesBehaviour
     private bool isLevelUp;
     private bool isShopping;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        this.levelUpPanel.SetActive(false);
+        this.pauseGamePanel.SetActive(false);
+        this.shopPanel.SetActive(false);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -62,7 +70,6 @@ public class PauseManager : VyesBehaviour
         if (this.levelUpPanel != null) return;
         this.levelUpPanel = GameObject.Find("LevelUpPanel");
         Debug.LogWarning(this.transform.name + ": LoadLevelUpPanel", this.gameObject);
-        this.levelUpPanel.SetActive(false);
     }
 
     void LoadGamePausePanel()
@@ -70,7 +77,6 @@ public class PauseManager : VyesBehaviour
         if (this.pauseGamePanel != null) return;
         this.pauseGamePanel = GameObject.Find("PauseGamePanel");
         Debug.LogWarning(this.transform.name + ": LoadGamePausePanel", this.gameObject);
-        this.pauseGamePanel.SetActive(false);
     }
 
     void LoadShopPanel()
@@ -78,6 +84,5 @@ public class PauseManager : VyesBehaviour
         if (this.shopPanel != null) return;
         this.shopPanel = GameObject.Find("ShopPanel");
         Debug.LogWarning(this.transform.name + ": LoadShopPanel", this.gameObject);
-        this.shopPanel.SetActive(false);
     }
 }

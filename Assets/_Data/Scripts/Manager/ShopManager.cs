@@ -1,15 +1,10 @@
 using System.Collections.Generic;
-using TMPro;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
-public class ShopManager : MonoBehaviour
+public class ShopManager : VyesSingleton<ShopManager>
 {
-    private static ShopManager instance;
-    public static ShopManager Instance => instance;
-
     [SerializeField] private YasuoStats yasuoStats;
     [SerializeField] private GameObject shopPanel;
     [SerializeField] private GoldDisplay goldDisplay;
@@ -22,11 +17,10 @@ public class ShopManager : MonoBehaviour
     private List<Image> itemSlots;
     private List<Sprite> itemSprites;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (instance != null) Debug.LogError("More than one Shop Manager in scene.");
-        instance = this;
-
+        base.Awake();
+        this.shopPanel.SetActive(false);
         this.inventory = new List<ItemData>();
         this.itemSprites = new List<Sprite>();
     }
@@ -46,7 +40,7 @@ public class ShopManager : MonoBehaviour
 
     public void BuyItem(int index)
     {
-        this.itemSlots = this.LoadItemSlot();
+        this.itemSlots = this.LoadItemSlots();
         ItemData item = (ItemData)ShopDisplay.Instance.choices[index];
         if (this.IsCanBuy(item, this.inventory))
         {
@@ -83,22 +77,78 @@ public class ShopManager : MonoBehaviour
         this.sellButton.SetActive(false);
     }
 
-    bool IsCanBuy(ItemData item, List<ItemData> inventory)
+    bool IsCanBuy(ItemData item, List<ItemData> inv)
     {
         if (item.cost > this.goldDisplay.GetCurrentGold()) return false;
-        if (inventory.Count >= 6) return false;
+        if (inv.Count >= 6) return false;
         return true;
     }
 
-    List<Image> LoadItemSlot()
+    List<Image> LoadItemSlots()
     {
-        List<Image> itemSlots = new List<Image>();
+        List<Image> list = new List<Image>();
         foreach (Transform item in this.itemSlot.transform)
         {
             Image itemImg = item.GetComponent<Image>();
-            itemSlots.Add(itemImg);
+            list.Add(itemImg);
         }
 
-        return itemSlots;
+        return list;
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadYasuoStats();
+        this.LoadShopPanel();
+        this.LoadGoldDisplay();
+        this.LoadItemSlot();
+        this.LoadSellButton();
+        this.LoadItemBackground();
+    }
+
+    void LoadYasuoStats()
+    {
+        if (this.yasuoStats != null) return;
+        string[] guid = AssetDatabase.FindAssets("t:YasuoStats", new[] { "Assets/_Data/Scripts/Stat/Character/SO" });
+        string path = AssetDatabase.GUIDToAssetPath(guid[0]);
+        this.yasuoStats = AssetDatabase.LoadAssetAtPath<YasuoStats>(path);
+        Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
+    }
+
+    void LoadShopPanel()
+    {
+        if (this.shopPanel != null) return;
+        this.shopPanel = GameObject.Find("ShopPanel");
+        Debug.LogWarning(this.transform.name + ": LoadShopPanel", this.gameObject);
+    }
+
+    void LoadGoldDisplay()
+    {
+        if (this.goldDisplay != null) return;
+        this.goldDisplay = FindObjectOfType<GoldDisplay>();
+        Debug.LogWarning(this.transform.name + ": LoadGoldDisplay", this.gameObject);
+    }
+
+    void LoadItemSlot()
+    {
+        if (this.itemSlot != null) return;
+        this.itemSlot = GameObject.Find("ItemSlot");
+        Debug.LogWarning(this.transform.name + ": LoadItemSlot", this.gameObject);
+    }
+
+    void LoadSellButton()
+    {
+        if (this.sellButton != null) return;
+        this.sellButton = GameObject.Find("SellButton");
+        Debug.LogWarning(this.transform.name + ": LoadSellButton", this.gameObject);
+    }
+
+    void LoadItemBackground()
+    {
+        if (this.itemBackground != null) return;
+        string path = "Assets/_Data/Sprites/LoLHUD.png";
+        this.itemBackground = SpriteFinder.GetSprite(path, "ItemBackground");
+        Debug.LogWarning(this.transform.name + ": LoadItemBackground", this.gameObject);
     }
 }
