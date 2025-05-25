@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Spawner : VyesSingleton<Spawner>
+public abstract class Spawner : VyesBehaviour
 {
     [SerializeField] private Transform holder;
     [SerializeField] private List<Transform> prefabs;

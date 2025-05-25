@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class ShopSpawner : Spawner
+public class ShopSpawner : SpawnerSingleton<ShopSpawner>
 {
     [SerializeField] private Transform player;
 

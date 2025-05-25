@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class EnemySpawner : Spawner
+public class EnemySpawner : SpawnerSingleton<EnemySpawner>
 {
     [SerializeField] private float spawnRange = 10f;
     private List<MainEnemyStats> enemyStatsList;

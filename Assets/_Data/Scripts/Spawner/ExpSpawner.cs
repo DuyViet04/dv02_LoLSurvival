@@ -1,5 +1,5 @@
 using UnityEngine;
 
-public class ExpSpawner : Spawner
+public class ExpSpawner : SpawnerSingleton<ExpSpawner>
 {
 }
