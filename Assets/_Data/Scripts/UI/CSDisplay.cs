@@ -16,4 +16,17 @@ public class CSDisplay : VyesSingleton<CSDisplay>
     {
         this.csCount += 1;
     }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadCSText();
+    }
+
+    void LoadCSText()
+    {
+        if (this.csText != null) return;
+        this.csText = GetComponentInChildren<TMP_Text>();
+        Debug.LogWarning(this.transform.name + ": LoadCSText", this.gameObject);
+    }
 }

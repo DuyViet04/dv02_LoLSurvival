@@ -1,44 +1,38 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class ShopDisplay : MonoBehaviour
+public class ShopDisplay : VyesSingleton<ShopDisplay>
 {
-    private static ShopDisplay instance;
-    public static ShopDisplay Instance => instance;
-
     [SerializeField] private ItemTable itemTable;
     [SerializeField] private ItemRarityTable itemRarityTable;
-    [SerializeField] private GameObject core;
-    [SerializeField] private GameObject core1;
-    [SerializeField] private GameObject core2;
     [SerializeField] private GameObject shopPanel;
-    public List<GameObject> coresList;
+    [SerializeField] private List<GameObject> listCores;
+    public List<GameObject> ListCores => this.listCores;
     private List<Image> coreIconList;
     private List<TMP_Text> coreNameList, coreStatsList, coreCostList;
     public List<ScriptableObject> choices;
 
-    private void Awake()
-    {
-        if (instance != null) Debug.LogError("More than one ShopDisplay in scene.");
-        instance = this;
 
-        this.coresList = new List<GameObject> { this.core, this.core1, this.core2 };
+    protected override void Awake()
+    {
+        base.Awake();
         this.coreIconList = new List<Image>();
         this.coreNameList = new List<TMP_Text>();
         this.coreStatsList = new List<TMP_Text>();
         this.coreCostList = new List<TMP_Text>();
         this.choices = new List<ScriptableObject>();
-
         this.LoadCoresData();
     }
 
     public void ShowItemChoices()
     {
-        foreach (GameObject core in this.coresList)
+        foreach (GameObject core in this.listCores)
         {
             core.SetActive(true);
         }
@@ -77,7 +71,7 @@ public class ShopDisplay : MonoBehaviour
 
     void LoadCoresData()
     {
-        foreach (GameObject item in this.coresList)
+        foreach (GameObject item in this.listCores)
         {
             Image itemImage = item.transform.Find("Icon").GetComponent<Image>();
             TMP_Text itemName = item.transform.Find("Name").GetComponent<TMP_Text>();
@@ -89,5 +83,51 @@ public class ShopDisplay : MonoBehaviour
             this.coreStatsList.Add(itemStats);
             this.coreCostList.Add(itemCost);
         }
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadShopPanel();
+        this.LoadItemTable();
+        this.LoadItemRarityTable();
+        this.LoadListCores();
+    }
+
+    void LoadItemTable()
+    {
+        if (this.itemTable != null) return;
+        string[] guids = AssetDatabase.FindAssets("t:ItemTable", new[] { "Assets/_Data/Scripts/Item" });
+        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
+        this.itemTable = AssetDatabase.LoadAssetAtPath<ItemTable>(path);
+        Debug.LogWarning(this.transform.name + ": LoadItemTable", this.gameObject);
+    }
+
+    void LoadItemRarityTable()
+    {
+        if (this.itemRarityTable != null) return;
+        string[] guids = AssetDatabase.FindAssets("t:ItemRarityTable", new[] { "Assets/_Data/Scripts/Item" });
+        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
+        this.itemRarityTable = AssetDatabase.LoadAssetAtPath<ItemRarityTable>(path);
+        Debug.LogWarning(this.transform.name + ": LoadItemRarityTable", this.gameObject);
+    }
+
+    void LoadListCores()
+    {
+        this.listCores = new List<GameObject>
+        {
+            this.transform.Find("Core").gameObject,
+            this.transform.Find("Core_1").gameObject,
+            this.transform.Find("Core_2").gameObject,
+        };
+
+        Debug.LogWarning(this.transform.name + ": LoadListCores", this.gameObject);
+    }
+
+    void LoadShopPanel()
+    {
+        if (this.shopPanel != null) return;
+        this.shopPanel = GameObject.Find("ShopPanel");
+        Debug.LogWarning(this.transform.name + ": LoadShopPanel", this.gameObject);
     }
 }

@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class GoldDisplay : MonoBehaviour
+public class GoldDisplay : VyesBehaviour
 {
     [SerializeField] private TMP_Text goldText;
     [SerializeField] private float startingGold = 500;
@@ -39,5 +39,18 @@ public class GoldDisplay : MonoBehaviour
     public void GetGoldFromKill(float goldValue)
     {
         this.currentGold += goldValue;
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadGoldText();
+    }
+
+    void LoadGoldText()
+    {
+        if (this.goldText != null) return;
+        this.goldText = GetComponentInChildren<TMP_Text>();
+        Debug.LogWarning(this.transform.name + ": LoadGoldText", this.gameObject);
     }
 }

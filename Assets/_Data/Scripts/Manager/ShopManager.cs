@@ -48,7 +48,7 @@ public class ShopManager : VyesSingleton<ShopManager>
             this.inventory.Add(item);
             this.itemCount++;
             this.yasuoStats.ApplyItem(item);
-            ShopDisplay.Instance.coresList[index].SetActive(false);
+            ShopDisplay.Instance.ListCores[index].SetActive(false);
             this.itemSlots[this.itemCount - 1].sprite = item.icon;
             this.itemSprites.Add(item.icon);
         }

@@ -1,35 +1,28 @@
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
-public class LevelUpDisplay : MonoBehaviour
+public class LevelUpDisplay : VyesSingleton<LevelUpDisplay>
 {
-    private static LevelUpDisplay instance;
-    public static LevelUpDisplay Instance => instance;
-
     [SerializeField] private GameObject levelUpPanel;
     [SerializeField] private YasuoStats yasuoStats;
     [SerializeField] private RarityTable rarityTable;
     [SerializeField] private UpgradeTable upgradeTable;
-    [SerializeField] private GameObject core;
-    [SerializeField] private GameObject core1;
-    [SerializeField] private GameObject core2;
+    [SerializeField] private List<GameObject> listCores;
     private RarityType chosenRarity;
     private int power;
-    private List<GameObject> coresList;
     private List<TMP_Text> namesList;
     private List<TMP_Text> valuesList;
     private List<UpgradeData> choicesList;
 
-    void Awake()
+    protected override void Awake()
     {
-        if (instance != null) Debug.LogError("More than one instance of LevelUpManager");
-        instance = this;
-
+        base.Awake();
         this.namesList = new List<TMP_Text>();
         this.valuesList = new List<TMP_Text>();
-        this.coresList = new List<GameObject> { this.core, this.core1, this.core2 };
         this.LoadNamesAndValues();
+        this.LoadComponents();
     }
 
     public void ShowUpgradeChoices()
@@ -83,7 +76,7 @@ public class LevelUpDisplay : MonoBehaviour
     {
         this.levelUpPanel.SetActive(true);
 
-        foreach (GameObject coreItem in this.coresList)
+        foreach (GameObject coreItem in this.listCores)
         {
             TMP_Text coreName = coreItem.transform.Find("Name").GetComponent<TMP_Text>();
             TMP_Text coreValue = coreItem.transform.Find("Value").GetComponent<TMP_Text>();
@@ -92,5 +85,60 @@ public class LevelUpDisplay : MonoBehaviour
         }
 
         this.levelUpPanel.SetActive(false);
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadLevelUpPanel();
+        this.LoadYasuoStats();
+        this.LoadRarityTable();
+        this.LoadUpgradeTable();
+        this.LoadListCores();
+    }
+
+    private void LoadListCores()
+    {
+        this.listCores = new List<GameObject>();
+        foreach (Transform item in this.levelUpPanel.transform)
+        {
+            this.listCores.Add(item.gameObject);
+        }
+
+        Debug.LogWarning(this.transform.name + ": LoadListCores", this.gameObject);
+    }
+
+    void LoadLevelUpPanel()
+    {
+        if (this.levelUpPanel != null) return;
+        this.levelUpPanel = this.transform.Find("LevelUpPanel").gameObject;
+        Debug.LogWarning(this.transform.name + ": LoadLevelUpPanel", this.gameObject);
+    }
+
+    void LoadYasuoStats()
+    {
+        if (this.yasuoStats != null) return;
+        string[] guids = AssetDatabase.FindAssets("t:YasuoStats", new[] { "Assets/_Data/Scripts/Stat/Character/SO" });
+        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
+        this.yasuoStats = AssetDatabase.LoadAssetAtPath<YasuoStats>(path);
+        Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
+    }
+
+    void LoadRarityTable()
+    {
+        if (this.rarityTable != null) return;
+        string[] guids = AssetDatabase.FindAssets("t:RarityTable", new[] { "Assets/_Data/Scripts/Stat" });
+        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
+        this.rarityTable = AssetDatabase.LoadAssetAtPath<RarityTable>(path);
+        Debug.LogWarning(this.transform.name + ": LoadRarityTable", this.gameObject);
+    }
+
+    void LoadUpgradeTable()
+    {
+        if (this.upgradeTable != null) return;
+        string[] guids = AssetDatabase.FindAssets("t:UpgradeTable", new[] { "Assets/_Data/Scripts/Stat" });
+        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
+        this.upgradeTable = AssetDatabase.LoadAssetAtPath<UpgradeTable>(path);
+        Debug.LogWarning(this.transform.name + ": LoadUpgradeTable", this.gameObject);
     }
 }

@@ -2131,11 +2131,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemTable: {fileID: 11400000, guid: ddbe6bf4f7b60644f89c0d0e5d887c40, type: 2}
   itemRarityTable: {fileID: 11400000, guid: fb69994cd7a94d042b7a3c50ff1b98da, type: 2}
-  core: {fileID: 1536454632}
-  core1: {fileID: 1397487343}
-  core2: {fileID: 1733857795}
   shopPanel: {fileID: 142802630}
-  coresList: []
+  listCores:
+  - {fileID: 1536454632}
+  - {fileID: 1397487343}
+  - {fileID: 1733857795}
   choices: []
 --- !u!1 &143797991
 GameObject:
@@ -3290,9 +3290,10 @@ MonoBehaviour:
   yasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   rarityTable: {fileID: 11400000, guid: fff28aaf87e59cf48ba6a17caa461b54, type: 2}
   upgradeTable: {fileID: 11400000, guid: 7bf756567195b724c9ec8f3d35a7ce41, type: 2}
-  core: {fileID: 1492168209}
-  core1: {fileID: 861841860}
-  core2: {fileID: 1571278831}
+  listCores:
+  - {fileID: 1492168209}
+  - {fileID: 861841860}
+  - {fileID: 1571278831}
 --- !u!1 &256009697
 GameObject:
   m_ObjectHideFlags: 0

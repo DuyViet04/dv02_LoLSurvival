@@ -5,11 +5,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StatsDisplay : MonoBehaviour
+public class StatsDisplay : VyesSingleton<StatsDisplay>
 {
-    private static StatsDisplay instance;
-    public static StatsDisplay Instance => instance;
-
     [SerializeField] private GameObject pauseGamePanel;
     [SerializeField] private Image mainStats;
     [SerializeField] private Image secondStats;
@@ -22,9 +19,6 @@ public class StatsDisplay : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null) Debug.LogError("More than one StatsDisplay in scene!");
-        instance = this;
-
         this.levelUp = FindObjectOfType<LevelUp>();
 
         this.mainStatsData = new List<TMP_Text>();
@@ -32,7 +26,7 @@ public class StatsDisplay : MonoBehaviour
         this.LoadMainData();
         this.LoadSecondData();
     }
-    
+
     public void ShowMainStats()
     {
         this.mainStatsPanel.SetActive(true);
