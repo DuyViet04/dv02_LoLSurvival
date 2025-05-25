@@ -5,14 +5,12 @@ using UnityEngine;
 
 public class GameManager : VyesBehaviour
 {
-    [SerializeField] private SOManager soManager;
     [SerializeField] private YasuoStats yasuoStats;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadYasuoStats();
-        this.LoadSOManager();
     }
 
     //Reset giá trị của các SO về mặc định
@@ -32,18 +30,11 @@ public class GameManager : VyesBehaviour
         Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
     }
 
-    void LoadSOManager()
-    {
-        if (this.soManager != null) return;
-        this.soManager = FindObjectOfType<SOManager>();
-        Debug.LogWarning(this.transform.name + ": LoadSOManager", this.gameObject);
-    }
-
     void ResetStats()
     {
         this.yasuoStats.ResetStats();
 
-        List<MainEnemyStats> list = this.soManager.GetEnemyStatsList();
+        List<MainEnemyStats> list = SOManager.Instance.GetEnemyStatsList();
         foreach (MainEnemyStats item in list)
         {
             item.ResetStats();

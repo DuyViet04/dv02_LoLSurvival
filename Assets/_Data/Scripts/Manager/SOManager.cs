@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class SOManager : MonoBehaviour
+public class SOManager : VyesSingleton<SOManager>
 {
     [SerializeField] private List<MainEnemyStats> enemyStatsList;
 
-    void Reset()
+    protected override void LoadComponents()
     {
+        base.LoadComponents();
         this.enemyStatsList.Clear();
         this.LoadEnemyStatsList();
     }

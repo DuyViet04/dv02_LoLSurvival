@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyDealingDamage : DealingDamage
 {
     [SerializeField] private MainEnemyStats stats;
-    [SerializeField] private SOManager soManager;
 
     private void FixedUpdate()
     {
@@ -20,17 +19,8 @@ public class EnemyDealingDamage : DealingDamage
 
     void LoadStats()
     {
-        this.LoadSoManager();
-
         if (this.stats != null) return;
-        this.stats = this.soManager.GetStatsByType(this.transform.parent.name);
+        this.stats = SOManager.Instance.GetStatsByType(this.transform.parent.name);
         Debug.LogWarning(this.transform.name + ": LoadStats", this.gameObject);
-    }
-
-    void LoadSoManager()
-    {
-        if (this.soManager != null) return;
-        this.soManager = GameObject.FindObjectOfType<SOManager>();
-        Debug.LogWarning(this.transform.name + ": LoadSOManager", this.gameObject);
     }
 }

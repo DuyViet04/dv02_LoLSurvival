@@ -5,7 +5,6 @@ public class EnemyTakingDamage : TakingDamage
 {
     [SerializeField] private MainEnemyStats stats;
     [SerializeField] private GoldDisplay goldDisplay;
-    [SerializeField] private SOManager soManager;
 
     private void Start()
     {
@@ -69,18 +68,9 @@ public class EnemyTakingDamage : TakingDamage
 
     void LoadStats()
     {
-        this.LoadSoManager();
-
         if (this.stats != null) return;
-        this.stats = this.soManager.GetStatsByType(this.transform.parent.name);
+        this.stats = SOManager.Instance.GetStatsByType(this.transform.parent.name);
         Debug.LogWarning(this.transform.name + ": LoadStats", this.gameObject);
-    }
-
-    void LoadSoManager()
-    {
-        if (this.soManager != null) return;
-        this.soManager = GameObject.FindObjectOfType<SOManager>();
-        Debug.LogWarning(this.transform.name + ": LoadSOManager", this.gameObject);
     }
 
     void LoadGoldDisplay()
