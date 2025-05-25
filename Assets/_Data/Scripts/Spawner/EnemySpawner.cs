@@ -6,23 +6,13 @@ using Random = UnityEngine.Random;
 
 public class EnemySpawner : Spawner
 {
-    private static EnemySpawner instance;
-
-    public static EnemySpawner Instance => instance;
-
-    [SerializeField] private CSDisplay display;
     [SerializeField] private float spawnRange = 10f;
-    private SOManager soManager;
     private List<MainEnemyStats> enemyStatsList;
 
-    private void Awake()
+    protected override void LoadComponents()
     {
-        if (instance != null) Debug.LogError("There is more than one Spawner in the scene!");
-        instance = this;
-
-        this.LoadPrefabs();
-        this.soManager = FindObjectOfType<SOManager>();
-        this.enemyStatsList = this.soManager.GetEnemyStatsList();
+        base.LoadComponents();
+        this.enemyStatsList = SOManager.Instance.GetEnemyStatsList();
     }
 
     private void Start()
@@ -64,6 +54,6 @@ public class EnemySpawner : Spawner
     public override void Despawn(Transform prefab)
     {
         base.Despawn(prefab);
-        this.display.IncreaseCsCount();
+        CSDisplay.Instance.IncreaseCsCount();
     }
 }

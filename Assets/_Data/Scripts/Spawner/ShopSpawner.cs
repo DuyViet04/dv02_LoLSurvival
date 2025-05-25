@@ -6,19 +6,7 @@ using Random = UnityEngine.Random;
 
 public class ShopSpawner : Spawner
 {
-    private static ShopSpawner instance;
-
-    public static ShopSpawner Instance => instance;
-
     [SerializeField] private Transform player;
-
-    private void Awake()
-    {
-        if (instance != null) Debug.LogError("More than one instance of ExpSpawner");
-        instance = this;
-
-        this.LoadPrefabs();
-    }
 
     private void Start()
     {
@@ -47,5 +35,18 @@ public class ShopSpawner : Spawner
         float x = Random.Range(-range, range);
         float z = Random.Range(-range, range);
         return new Vector3(x, 0, z);
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadPlayer();
+    }
+
+    void LoadPlayer()
+    {
+        if (this.player != null) return;
+        this.player = GameObject.FindGameObjectWithTag("Player").transform;
+        Debug.LogWarning(this.transform.name + ": LoadPlayer", this.gameObject);
     }
 }

@@ -2,7 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
-public class CSDisplay : MonoBehaviour
+public class CSDisplay : VyesSingleton<CSDisplay>
 {
     [SerializeField] private TMP_Text csText;
     private int csCount = 0;

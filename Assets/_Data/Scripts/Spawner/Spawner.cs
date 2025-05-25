@@ -1,16 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Spawner : MonoBehaviour
+public abstract class Spawner : VyesSingleton<Spawner>
 {
     [SerializeField] private Transform holder;
     [SerializeField] private List<Transform> prefabs;
     [SerializeField] private List<Transform> prefabsPool;
-
-    private void Awake()
-    {
-        this.LoadPrefabs();
-    }
 
     private Transform GetObjectFromPool(Transform prefab)
     {
@@ -118,5 +113,19 @@ public abstract class Spawner : MonoBehaviour
         {
             prefab.gameObject.SetActive(false);
         }
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadHolder();
+        this.LoadPrefabs();
+    }
+
+    void LoadHolder()
+    {
+        if (this.holder != null) return;
+        this.holder = this.transform.Find("Holder");
+        Debug.LogWarning(this.transform.name + ": LoadHolder", this.gameObject);
     }
 }

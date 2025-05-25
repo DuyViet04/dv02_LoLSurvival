@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Shopping : MonoBehaviour
+public class Shopping : VyesBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
