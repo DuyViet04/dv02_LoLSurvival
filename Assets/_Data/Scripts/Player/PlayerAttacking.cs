@@ -1,7 +1,8 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 
-public class PlayerAttacking : MonoBehaviour
+public class PlayerAttacking : VyesBehaviour
 {
     [SerializeField] private YasuoStats yasuoStats;
     [SerializeField] private FindClosestEnemy findClosest;
@@ -37,5 +38,36 @@ public class PlayerAttacking : MonoBehaviour
     float GetAnimationSpeed(float attackSpeed)
     {
         return 1 * attackSpeed;
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadYasuoStats();
+        this.LoadFindClosest();
+        this.LoadAnimator();
+    }
+
+    void LoadYasuoStats()
+    {
+        if (this.yasuoStats != null) return;
+        string[] guids = AssetDatabase.FindAssets("t:YasuoStats", new[] { "Assets/_Data/Scripts/Stat/Character/SO" });
+        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
+        this.yasuoStats = AssetDatabase.LoadAssetAtPath<YasuoStats>(path);
+        Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
+    }
+
+    void LoadFindClosest()
+    {
+        if (this.findClosest != null) return;
+        this.findClosest = FindObjectOfType<FindClosestEnemy>();
+        Debug.LogWarning(this.transform.name + ": LoadFindClosest", this.gameObject);
+    }
+
+    void LoadAnimator()
+    {
+        if (this.animator != null) return;
+        this.animator = this.transform.parent.GetComponentInChildren<Animator>();
+        Debug.LogWarning(this.transform.name + ": LoadAnimator", this.gameObject);
     }
 }
