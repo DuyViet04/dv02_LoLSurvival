@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerLooking : MonoBehaviour
+public class PlayerLooking : VyesBehaviour
 {
     [SerializeField] private FindClosestEnemy findClosest;
 
@@ -22,5 +22,18 @@ public class PlayerLooking : MonoBehaviour
         Quaternion targetRot = Quaternion.LookRotation(direction);
 
         currentTrans.rotation = Quaternion.RotateTowards(currentTrans.rotation, targetRot, Time.deltaTime * 180f);
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadFindClosest();
+    }
+
+    void LoadFindClosest()
+    {
+        if (this.findClosest != null) return;
+        this.findClosest = FindObjectOfType<FindClosestEnemy>();
+        Debug.LogWarning(this.transform.name + ": LoadFindClosest", this.gameObject);
     }
 }
