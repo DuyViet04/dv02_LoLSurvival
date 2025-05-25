@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -98,5 +99,44 @@ public class PlayerTakingDamage : TakingDamage
         {
             parent.GetComponentInChildren<EnemyDealingDamage>().DealDamage(this.transform);
         }
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadYasuoStats();
+        this.LoadHPImage();
+        this.LoadHPText();
+        this.LoadHPRegenText();
+    }
+
+    void LoadYasuoStats()
+    {
+        if (this.yasuoStats != null) return;
+        string[] guids = AssetDatabase.FindAssets("t:YasuoStats", new[] { "Assets/_Data/Scripts/Stat/Character/SO" });
+        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
+        this.yasuoStats = AssetDatabase.LoadAssetAtPath<YasuoStats>(path);
+        Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
+    }
+
+    void LoadHPImage()
+    {
+        if (this.hpImage != null) return;
+        this.hpImage = GameObject.Find("HP").GetComponent<Image>();
+        Debug.LogWarning(this.transform.name + ": LoadHPImage", this.gameObject);
+    }
+
+    void LoadHPText()
+    {
+        if (this.hpText != null) return;
+        this.hpText = GameObject.Find("HPText").GetComponent<TMP_Text>();
+        Debug.LogWarning(this.transform.name + ": LoadHPText", this.gameObject);
+    }
+
+    void LoadHPRegenText()
+    {
+        if (this.hpRegenText != null) return;
+        this.hpRegenText = GameObject.Find("HPRegenText").GetComponent<TMP_Text>();
+        Debug.LogWarning(this.transform.name + ": LoadHPRegenText", this.gameObject);
     }
 }
