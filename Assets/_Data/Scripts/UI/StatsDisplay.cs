@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,14 +18,16 @@ public class StatsDisplay : VyesSingleton<StatsDisplay>
     private List<TMP_Text> mainStatsData;
     private List<TMP_Text> secondStatsData;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         this.levelUp = FindObjectOfType<LevelUp>();
-
         this.mainStatsData = new List<TMP_Text>();
         this.secondStatsData = new List<TMP_Text>();
+        
         this.LoadMainData();
         this.LoadSecondData();
+        this.secondStatsPanel.SetActive(false);
     }
 
     public void ShowMainStats()
@@ -99,5 +102,60 @@ public class StatsDisplay : VyesSingleton<StatsDisplay>
             TMP_Text text = obj.GetComponent<TMP_Text>();
             this.secondStatsData.Add(text);
         }
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadPauseGamePanel();
+        this.LoadMainStats();
+        this.LoadSecondStats();
+        this.LoadMainStatsPanel();
+        this.LoadSecondStatsPanel();
+        this.LoadYasuoStats();
+    }
+
+    void LoadPauseGamePanel()
+    {
+        if (this.pauseGamePanel != null) return;
+        this.pauseGamePanel = GameObject.Find("PauseGamePanel");
+        Debug.LogWarning(this.transform.name + ": LoadPauseGamePanel", this.gameObject);
+    }
+
+    void LoadMainStats()
+    {
+        if (this.mainStats != null) return;
+        this.mainStats = GameObject.Find("MainStatsTitle").GetComponent<Image>();
+        Debug.LogWarning(this.transform.name + ": LoadMainStats", this.gameObject);
+    }
+
+    void LoadSecondStats()
+    {
+        if (this.secondStats != null) return;
+        this.secondStats = GameObject.Find("SecondStatsTitle").GetComponent<Image>();
+        Debug.LogWarning(this.transform.name + ": LoadSecondStats", this.gameObject);
+    }
+
+    void LoadMainStatsPanel()
+    {
+        if (this.mainStatsPanel != null) return;
+        this.mainStatsPanel = GameObject.Find("MainStatsInfo");
+        Debug.LogWarning(this.transform.name + ": LoadMainStatsPanel", this.gameObject);
+    }
+
+    void LoadSecondStatsPanel()
+    {
+        if (this.secondStatsPanel != null) return;
+        this.secondStatsPanel = GameObject.Find("SecondStatsInfo");
+        Debug.LogWarning(this.transform.name + ": LoadSecondStatsPanel", this.gameObject);
+    }
+
+    void LoadYasuoStats()
+    {
+        if (this.yasuoStats != null) return;
+        string[] guids = AssetDatabase.FindAssets("t:YasuoStats", new[] { "Assets/_Data/Scripts/Stat/Character/SO" });
+        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
+        this.yasuoStats = AssetDatabase.LoadAssetAtPath<YasuoStats>(path);
+        Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
     }
 }
