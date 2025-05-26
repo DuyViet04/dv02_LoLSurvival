@@ -1,9 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(CapsuleCollider))]
 public class YasuoWeapon : DealingDamage
 {
     [SerializeField] private YasuoStats yasuoStats;
@@ -37,5 +36,28 @@ public class YasuoWeapon : DealingDamage
         }
 
         return this.damageDealt;
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadYasuoStats();
+        this.LoadPlayer();
+    }
+
+    void LoadYasuoStats()
+    {
+        if (this.yasuoStats != null) return;
+        string[] guids = AssetDatabase.FindAssets("t:YasuoStats", new[] { "Assets/_Data/Scripts/Stat/Character/SO" });
+        string assetPath = AssetDatabase.GUIDToAssetPath(guids[0]);
+        this.yasuoStats = AssetDatabase.LoadAssetAtPath<YasuoStats>(assetPath);
+        Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
+    }
+
+    void LoadPlayer()
+    {
+        if (this.player != null) return;
+        this.player = GameObject.FindGameObjectWithTag("Player").transform;
+        Debug.LogWarning(this.transform.name + ": LoadPlayer", this.gameObject);
     }
 }

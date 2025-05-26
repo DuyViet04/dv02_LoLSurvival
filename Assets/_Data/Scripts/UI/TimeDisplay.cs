@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class TimeDisplay : MonoBehaviour
+public class TimeDisplay : VyesBehaviour
 {
     [SerializeField] private TMP_Text text;
     private float timer;
@@ -17,5 +17,18 @@ public class TimeDisplay : MonoBehaviour
     public float GetTime()
     {
         return this.timer;
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadText();
+    }
+
+    void LoadText()
+    {
+        if (this.text != null) return;
+        this.text = GameObject.Find("Time").GetComponentInChildren<TMP_Text>();
+        Debug.LogWarning(this.transform.name + ": LoadText", this.gameObject);
     }
 }
