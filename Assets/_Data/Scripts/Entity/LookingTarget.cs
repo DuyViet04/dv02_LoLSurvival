@@ -2,7 +2,6 @@ using UnityEngine;
 
 public abstract class LookingTarget : VyesBehaviour
 {
-
     protected virtual void LookAtTarget(Transform currentTrans, Transform target)
     {
         Vector3 currentPos = currentTrans.position;

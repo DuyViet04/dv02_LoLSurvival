@@ -335,6 +335,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: CDBackground
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 594
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6243154641cfb3b48957a9cdf50a4e71
+      internalID: 1631668605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -351,6 +372,7 @@ TextureImporter:
       ExpBar: 636920509
       HPBackground: -1360782465
       Avatar and Level: 265712829
+      CDBackground: 1631668605
       ItemBackground: -1485911640
       ItemSlot: 795309742
       Gold: 700661719
