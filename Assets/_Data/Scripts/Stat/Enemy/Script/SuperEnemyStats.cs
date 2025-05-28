@@ -7,7 +7,16 @@ public class SuperEnemyStats : MainEnemyStats
     {
         this.type = EnemyType.SuperEnemy;
         this.health = 160f;
-        this.damage = 215f;
+        this.attackData = new AttackData()
+        {
+            attackType = AttackType.NormalAttack,
+            damageType = DamageType.PhysicDamage,
+            baseDamage = 215f,
+            bonusAD = 0f,
+            bonusAP = 0f,
+            isCritical = false,
+            cooldown = 0f
+        };
         this.moveSpeed = 1.5f;
         this.armor = 100f;
         this.magicResistance = -30f;
@@ -29,7 +38,16 @@ public class SuperEnemyStats : MainEnemyStats
     {
         this.type = EnemyType.SuperEnemy;
         this.health = 160f;
-        this.damage = 215f;
+        this.attackData = new AttackData()
+        {
+            attackType = AttackType.NormalAttack,
+            damageType = DamageType.PhysicDamage,
+            baseDamage = 215f,
+            bonusAD = 0f,
+            bonusAP = 0f,
+            isCritical = false,
+            cooldown = 0f
+        };
         this.moveSpeed = 1.5f;
         this.armor = 100f;
         this.magicResistance = -30f;

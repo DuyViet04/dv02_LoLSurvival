@@ -14,7 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 12
   health: 230
-  damage: 66
+  attackData:
+    attackType: 0
+    damageType: 1
+    baseDamage: 66
+    bonusAD: 0
+    bonusAP: 0
+    isCritical: 0
+    cooldown: 0
   attackSpeed: 0
   moveSpeed: 2.75
   armor: 42

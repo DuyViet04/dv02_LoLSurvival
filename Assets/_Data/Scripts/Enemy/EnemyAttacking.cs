@@ -20,7 +20,7 @@ public class EnemyAttacking : VyesBehaviour
     {
         Transform newBullet =
             BulletSpawner.Instance.Spawn("Bullet", this.transform.position, this.transform.parent.rotation);
-        newBullet.GetComponentInChildren<BulletDealingDamage>().SetAttackDamage(this.stats.damage);
+        newBullet.GetComponentInChildren<BulletDealingDamage>().SetAttackDamage(this.stats.attackData.baseDamage);
         this.animator.speed = this.GetAnimationSpeed(this.stats.attackSpeed);
     }
 

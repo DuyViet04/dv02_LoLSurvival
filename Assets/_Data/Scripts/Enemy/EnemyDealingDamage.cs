@@ -8,7 +8,12 @@ public class EnemyDealingDamage : DealingDamage
 
     private void FixedUpdate()
     {
-        this.damage = this.stats.damage;
+        this.attackDamage = this.stats.attackData.baseDamage;
+    }
+
+    public AttackData GetAttackData()
+    {
+        return this.stats.attackData;
     }
 
     protected override void LoadComponents()

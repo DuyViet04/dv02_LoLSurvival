@@ -97,7 +97,8 @@ public class PlayerTakingDamage : TakingDamage
 
         if (parent != null && parent.CompareTag("Enemy"))
         {
-            parent.GetComponentInChildren<EnemyDealingDamage>().DealDamage(this.transform);
+            AttackData attackData = parent.GetComponentInChildren<EnemyDealingDamage>().GetAttackData();
+            parent.GetComponentInChildren<EnemyDealingDamage>().DealDamage(this.transform, attackData);
         }
     }
 

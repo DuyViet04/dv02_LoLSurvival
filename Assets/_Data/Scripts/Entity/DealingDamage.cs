@@ -2,24 +2,28 @@ using UnityEngine;
 
 public abstract class DealingDamage : VyesBehaviour
 {
-    protected float damage;
+    protected float attackDamage;
+    protected float abilityPower;
     protected float damageDealt;
+    protected float criticalChance;
+    protected float criticalDamage;
     protected float armorPenetration;
+    protected float magicPenetration;
     protected float lifeSteal;
     protected float omnivamp;
     protected float healingPower;
 
     //Gây damage cho target có "TakingDamage"
-    public virtual void DealDamage(Transform target)
+    public virtual void DealDamage(Transform target, AttackData attackData)
     {
         TakingDamage takingDamage = target.GetComponentInChildren<TakingDamage>();
         if (takingDamage == null) return;
-        this.DealDamage(takingDamage);
+        this.DealDamage(takingDamage, attackData);
     }
 
-    protected virtual void DealDamage(TakingDamage takingDamage)
+    protected virtual void DealDamage(TakingDamage takingDamage, AttackData attackData)
     {
-        this.GetDamageDealt(takingDamage);
+        this.GetDamageDealt(takingDamage, attackData);
         takingDamage.TakeDamage(this.damageDealt);
     }
 
@@ -38,10 +42,44 @@ public abstract class DealingDamage : VyesBehaviour
     }
 
     //Tính lượng damage gây ra
-    protected virtual float GetDamageDealt(TakingDamage takingDamage)
+    protected virtual float GetDamageDealt(TakingDamage takingDamage, AttackData attackData)
     {
-        float dmgMulti = takingDamage.GetDamageMultiplier(this.armorPenetration);
-        this.damageDealt = this.damage * dmgMulti;
+        switch (attackData.damageType)
+        {
+            case DamageType.PhysicDamage:
+                float atkDmgMulti = takingDamage.GetAttackDamageMultiplier(this.armorPenetration);
+                if (attackData.isCritical)
+                {
+                    float roll = Random.Range(0f, 100f);
+                    if (roll > this.criticalChance)
+                    {
+                        this.damageDealt = attackData.GetDamage(this.attackDamage, this.abilityPower) * atkDmgMulti;
+                    }
+                    else
+                    {
+                        this.damageDealt = attackData.GetDamage(this.attackDamage, this.abilityPower) *
+                                           (this.criticalDamage / 100) * atkDmgMulti;
+                    }
+                }
+
+                Debug.Log(
+                    $"{attackData.attackType} - {attackData.damageType} - {this.damageDealt} - {attackData.isCritical}");
+                break;
+            case DamageType.MagicDamage:
+                float magicDmgMulti = takingDamage.GetAbilityPowerMultiplier(this.magicPenetration);
+                this.damageDealt = attackData.GetDamage(this.attackDamage, this.abilityPower) * magicDmgMulti;
+                Debug.Log(
+                    $"{attackData.attackType} - {attackData.damageType} - {this.damageDealt} - {attackData.isCritical}");
+
+                break;
+            case DamageType.TrueDamage:
+                this.damageDealt = attackData.GetDamage(this.attackDamage, this.abilityPower);
+                Debug.Log(
+                    $"{attackData.attackType} - {attackData.damageType} - {this.damageDealt} - {attackData.isCritical}");
+
+                break;
+        }
+
         return this.damageDealt;
     }
 }

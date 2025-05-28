@@ -10,6 +10,7 @@ public class Skill1Attack : VyesBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Image cooldownImage;
     [SerializeField] private TMP_Text cooldownText;
+    [SerializeField] private GameObject prefab;
     private float cooldownTimer;
     private bool isCooldown = false;
 
@@ -37,9 +38,18 @@ public class Skill1Attack : VyesBehaviour
     void Attack()
     {
         if (this.isCooldown) return;
+        this.yasuoSkill.lastSkillIndex = 1;
         this.animator.SetInteger("currentSkill", 1);
+        Quaternion rotation = Quaternion.Euler(-90, this.transform.parent.eulerAngles.y, 0);
+        Instantiate(this.prefab, this.transform.parent.position, rotation);
         this.isCooldown = true;
         this.cooldownTimer = this.yasuoSkill.yasuoSkillData[1].cooldown;
+    }
+
+    public AttackData GetAttackData()
+    {
+        AttackData skill1 = this.yasuoSkill.yasuoSkillData[1];
+        return skill1;
     }
 
     void UICooldown()

@@ -7,7 +7,16 @@ public class MeleeEnemyStats : MainEnemyStats
     {
         this.type = EnemyType.MeleeEnemy;
         this.health = 46.5f;
-        this.damage = 11f;
+        this.attackData = new AttackData()
+        {
+            attackType = AttackType.NormalAttack,
+            damageType = DamageType.PhysicDamage,
+            baseDamage = 11f,
+            bonusAD = 0f,
+            bonusAP = 0f,
+            isCritical = false,
+            cooldown = 0f
+        };
         this.moveSpeed = 1.5f;
         this.armor = 20f;
         this.magicResistance = 1f;
@@ -29,7 +38,16 @@ public class MeleeEnemyStats : MainEnemyStats
     {
         this.type = EnemyType.MeleeEnemy;
         this.health = 46.5f;
-        this.damage = 11f;
+        this.attackData = new AttackData()
+        {
+            attackType = AttackType.NormalAttack,
+            damageType = DamageType.PhysicDamage,
+            baseDamage = 11f,
+            bonusAD = 0f,
+            bonusAP = 0f,
+            isCritical = false,
+            cooldown = 0f
+        };
         this.moveSpeed = 1.5f;
         this.armor = 20f;
         this.magicResistance = 1f;

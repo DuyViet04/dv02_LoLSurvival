@@ -8,7 +8,16 @@ public class RangeEnemyStats : MainEnemyStats
     {
         this.type = EnemyType.RangeEnemy;
         this.health = 28.4f;
-        this.damage = 21f;
+        this.attackData = new AttackData()
+        {
+            attackType = AttackType.NormalAttack,
+            damageType = DamageType.PhysicDamage,
+            baseDamage = 21f,
+            bonusAD = 0f,
+            bonusAP = 0f,
+            isCritical = false,
+            cooldown = 0f
+        };
         this.attackSpeed = 0.667f;
         this.moveSpeed = 1.5f;
         this.armor = 1f;
@@ -31,7 +40,16 @@ public class RangeEnemyStats : MainEnemyStats
     {
         this.type = EnemyType.RangeEnemy;
         this.health = 28.4f;
-        this.damage = 21f;
+        this.attackData = new AttackData()
+        {
+            attackType = AttackType.NormalAttack,
+            damageType = DamageType.PhysicDamage,
+            baseDamage = 21f,
+            bonusAD = 0f,
+            bonusAP = 0f,
+            isCritical = false,
+            cooldown = 0f
+        };
         this.attackSpeed = 0.667f;
         this.moveSpeed = 1.5f;
         this.armor = 1f;

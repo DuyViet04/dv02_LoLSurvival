@@ -7,7 +7,7 @@ public class BulletDealingDamage : DealingDamage
 
     public void SetAttackDamage(float damage)
     {
-        this.damage = damage;
+        this.attackDamage = damage;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -15,7 +15,7 @@ public class BulletDealingDamage : DealingDamage
         Transform parent = other.transform.parent;
         if (parent != null && parent.CompareTag("Player"))
         {
-            parent.GetComponentInChildren<PlayerTakingDamage>().TakeDamage(this.damage);
+            parent.GetComponentInChildren<PlayerTakingDamage>().TakeDamage(this.attackDamage);
             BulletSpawner.Instance.Despawn(this.transform.parent);
         }
     }

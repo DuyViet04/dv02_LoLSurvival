@@ -13,13 +13,21 @@ MonoBehaviour:
   m_Name: MeleeEnemyStats
   m_EditorClassIdentifier: 
   type: 0
-  health: 86.57297
-  damage: 148.94273
+  health: 46.5
+  attackData:
+    attackType: 0
+    damageType: 0
+    baseDamage: 11
+    bonusAD: 0
+    bonusAP: 0
+    isCritical: 0
+    cooldown: 0
   attackSpeed: 0
-  moveSpeed: 1.6292677
-  armor: 37.235683
-  magicResistance: 0
-  expValue: 114.96517
-  goldValue: 3.9097466
+  moveSpeed: 1.5
+  armor: 20
+  magicResistance: 1
+  expValue: 61.75
+  goldValue: 21
+  csValue: 1
   spawnDelay: 3
   spawnCount: 3

@@ -37,6 +37,7 @@ public class Skill2Attack : VyesBehaviour
     void Attack()
     {
         if (this.isCooldown) return;
+        this.yasuoSkill.lastSkillIndex = 2;
         this.animator.SetInteger("currentSkill", 2);
         this.isCooldown = true;
         this.cooldownTimer = this.yasuoSkill.yasuoSkillData[2].cooldown;
@@ -103,7 +104,7 @@ public class Skill2Attack : VyesBehaviour
     void LoadCooldownText()
     {
         if (this.cooldownText != null) return;
-        Transform skill2= GameObject.Find("Skill2").transform;
+        Transform skill2 = GameObject.Find("Skill2").transform;
         this.cooldownText = skill2.GetComponentInChildren<TMP_Text>();
         Debug.LogWarning(this.transform.name + ": LoadCooldownText", this.gameObject);
     }

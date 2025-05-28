@@ -15,22 +15,23 @@ MonoBehaviour:
   yasuoSkillData:
   - attackType: 0
     damageType: 0
-    damage: 20
+    baseDamage: 20
     bonusAD: 105
     bonusAP: 0
     isCritical: 1
     cooldown: 4
   - attackType: 1
     damageType: 0
-    damage: 45
+    baseDamage: 45
     bonusAD: 105
     bonusAP: 0
     isCritical: 1
     cooldown: 12
   - attackType: 2
-    damageType: 0
-    damage: 70
+    damageType: 1
+    baseDamage: 70
     bonusAD: 20
     bonusAP: 60
     isCritical: 0
     cooldown: 10
+  lastSkillIndex: 0

@@ -31,6 +31,7 @@ public class NormalAttack : VyesBehaviour
     void Attack()
     {
         if (this.isCooldown) return;
+        this.yasuoSkill.lastSkillIndex = 0;
         this.animator.SetInteger("currentSkill", 0);
         this.isCooldown = true;
         this.cooldownTimer = this.yasuoSkill.yasuoSkillData[0].cooldown;

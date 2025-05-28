@@ -5,10 +5,12 @@ public abstract class TakingDamage : VyesBehaviour
     protected float maxHp;
     protected float currentHp;
     protected float armor;
+    protected float magicResistance;
 
     //Trừ hp khi nhận damage
     public virtual void TakeDamage(float damage)
     {
+        Debug.Log(damage);
         this.currentHp -= damage;
         if (this.currentHp <= 0f)
         {
@@ -19,10 +21,17 @@ public abstract class TakingDamage : VyesBehaviour
     }
 
     //Tính toán tỉ lệ damage nhận vào
-    public float GetDamageMultiplier(float armorPenetration)
+
+    public float GetAttackDamageMultiplier(float armorPenetration)
     {
         float newArmor = this.armor - armorPenetration;
         return 1 - newArmor / (100 + Mathf.Abs(newArmor));
+    }
+
+    public float GetAbilityPowerMultiplier(float magicPenetration)
+    {
+        float newMagicResist = this.magicResistance - magicPenetration;
+        return 1 - newMagicResist / (100 + Mathf.Abs(newMagicResist));
     }
 
     //Hồi máu theo máu hồi

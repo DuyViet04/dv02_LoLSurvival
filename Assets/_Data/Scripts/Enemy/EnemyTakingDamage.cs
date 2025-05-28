@@ -15,6 +15,8 @@ public class EnemyTakingDamage : TakingDamage
     private void FixedUpdate()
     {
         this.maxHp = this.stats.health;
+        this.armor = this.stats.armor;
+        this.magicResistance = this.stats.magicResistance;
     }
 
     //Spawn quái nhỏ nếu là 2 loại dưới
@@ -55,7 +57,8 @@ public class EnemyTakingDamage : TakingDamage
     {
         if (other.CompareTag("Weapon"))
         {
-            other.GetComponent<YasuoWeapon>().DealDamage(this.transform);
+            AttackData attackData = other.GetComponent<YasuoWeapon>().GetAttackData();
+            other.GetComponent<YasuoWeapon>().DealDamage(this.transform, attackData);
         }
     }
 

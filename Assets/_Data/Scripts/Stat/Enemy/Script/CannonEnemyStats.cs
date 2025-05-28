@@ -7,7 +7,16 @@ public class CannonEnemyStats : MainEnemyStats
     {
         this.type = EnemyType.CannonEnemy;
         this.health = 83.5f;
-        this.damage = 37.5f;
+        this.attackData = new AttackData()
+        {
+            attackType = AttackType.NormalAttack,
+            damageType = DamageType.PhysicDamage,
+            baseDamage = 37.5f,
+            bonusAD = 0f,
+            bonusAP = 0f,
+            isCritical = false,
+            cooldown = 0f
+        };
         this.attackSpeed = 1f;
         this.moveSpeed = 1.5f;
         this.armor = 1f;
@@ -23,7 +32,16 @@ public class CannonEnemyStats : MainEnemyStats
     {
         this.type = EnemyType.CannonEnemy;
         this.health = 83.5f;
-        this.damage = 37.5f;
+        this.attackData = new AttackData()
+        {
+            attackType = AttackType.NormalAttack,
+            damageType = DamageType.PhysicDamage,
+            baseDamage = 37.5f,
+            bonusAD = 0f,
+            bonusAP = 0f,
+            isCritical = false,
+            cooldown = 0f
+        };
         this.attackSpeed = 1f;
         this.moveSpeed = 1.5f;
         this.armor = 1f;

@@ -15,7 +15,7 @@ public class EnemyScaleStats : VyesBehaviour
     void ScaleByLevel(float level, MainEnemyStats stat, MainEnemyStats baseStat)
     {
         stat.health = baseStat.health * (1 + level * 0.1f);
-        stat.damage = baseStat.damage * (1 + level * 0.1f);
+        stat.attackData.baseDamage = baseStat.attackData.baseDamage * (1 + level * 0.1f);
         stat.moveSpeed = baseStat.moveSpeed * (1 + level * 0.1f);
         stat.armor = baseStat.armor * (1 + level * 0.1f);
         stat.magicResistance = baseStat.magicResistance * (1 + level * 0.1f);
