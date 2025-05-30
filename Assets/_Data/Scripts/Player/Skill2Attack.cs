@@ -10,11 +10,19 @@ public class Skill2Attack : VyesBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Image cooldownImage;
     [SerializeField] private TMP_Text cooldownText;
+    private Vector3 dashDirection;
+    private float cooldownTime;
+    private float dashDuration = 1f;
     private float cooldownTimer;
+    private float dashTimer;
     private bool isCooldown = false;
+    private bool isDash = false;
 
     private void Update()
     {
+        this.cooldownTime = CooldownCalculator.GetCooldown(this.yasuoSkill.yasuoSkillData[2].cooldown,
+            this.yasuoStats.haste);
+
         if (this.isCooldown)
         {
             this.cooldownTimer -= Time.deltaTime;
@@ -23,6 +31,17 @@ public class Skill2Attack : VyesBehaviour
                 this.cooldownTimer = 0;
                 this.isCooldown = false;
                 this.animator.SetInteger("currentSkill", 3);
+            }
+        }
+
+        if (this.isDash)
+        {
+            this.dashTimer -= Time.deltaTime;
+            this.transform.parent.Translate(this.dashDirection * 7 * Time.deltaTime);
+
+            if (this.dashTimer <= 0f)
+            {
+                this.isDash = false;
             }
         }
 
@@ -38,9 +57,14 @@ public class Skill2Attack : VyesBehaviour
     {
         if (this.isCooldown) return;
         this.yasuoSkill.lastSkillIndex = 2;
+
+        this.isDash = true;
+        this.dashTimer = this.dashDuration;
+        this.dashDirection = Vector3.forward;
+
         this.animator.SetInteger("currentSkill", 2);
         this.isCooldown = true;
-        this.cooldownTimer = this.yasuoSkill.yasuoSkillData[2].cooldown;
+        this.cooldownTimer = this.cooldownTime;
     }
 
     void UICooldown()
@@ -51,7 +75,7 @@ public class Skill2Attack : VyesBehaviour
         }
 
         this.cooldownText.text = this.cooldownTimer.ToString("0");
-        this.cooldownImage.fillAmount = this.cooldownTimer / this.yasuoSkill.yasuoSkillData[2].cooldown;
+        this.cooldownImage.fillAmount = this.cooldownTimer / this.cooldownTime;
         if (this.cooldownTimer <= 0)
         {
             this.cooldownImage.fillAmount = 0;
