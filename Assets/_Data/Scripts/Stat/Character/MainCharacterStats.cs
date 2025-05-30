@@ -8,7 +8,6 @@ public class MainCharacterStats : ScriptableObject
     public float healthRegen;
     public float attackDamage;
     public float abilityPower;
-    public float attackSpeed;
     public float armor;
     public float magicResistance;
     public float moveSpeed;

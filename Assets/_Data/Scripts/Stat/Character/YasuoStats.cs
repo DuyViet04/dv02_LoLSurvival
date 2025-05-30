@@ -3,7 +3,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "YasuoStats", menuName = "Stats/Yasuo")]
 public class YasuoStats : MainCharacterStats
 {
-    private float baseAttackSpeed;
     private float baseMoveSpeed;
     private float basePickUpRange;
 
@@ -14,7 +13,6 @@ public class YasuoStats : MainCharacterStats
         this.healthRegen = 2f;
         this.attackDamage = 60f;
         this.abilityPower = 0;
-        this.attackSpeed = 0.7f;
         this.armor = 32f;
         this.magicResistance = 32f;
         this.moveSpeed = 3.45f;
@@ -26,7 +24,7 @@ public class YasuoStats : MainCharacterStats
         this.omnivamp = 0f;
         this.haste = 0f;
         this.healingPower = 0f;
-        this.pickUpRange = 0.5f;
+        this.pickUpRange = 1f;
         this.expMultiplier = 0f;
     }
 
@@ -37,7 +35,6 @@ public class YasuoStats : MainCharacterStats
         this.healthRegen = 2f;
         this.attackDamage = 60f;
         this.abilityPower = 0;
-        this.attackSpeed = 0.7f;
         this.armor = 32f;
         this.magicResistance = 32f;
         this.moveSpeed = 3.45f;
@@ -49,10 +46,9 @@ public class YasuoStats : MainCharacterStats
         this.omnivamp = 0f;
         this.haste = 0f;
         this.healingPower = 0f;
-        this.pickUpRange = 0.5f;
+        this.pickUpRange = 1f;
         this.expMultiplier = 0f;
 
-        this.baseAttackSpeed = this.attackSpeed;
         this.baseMoveSpeed = this.moveSpeed;
         this.basePickUpRange = this.pickUpRange;
     }
@@ -72,9 +68,6 @@ public class YasuoStats : MainCharacterStats
                 break;
             case UpgradeType.AbilityPower:
                 this.abilityPower += value;
-                break;
-            case UpgradeType.AttackSpeed:
-                this.attackSpeed += baseAttackSpeed * (value / 100f);
                 break;
             case UpgradeType.Armor:
                 this.armor += value;
@@ -140,9 +133,6 @@ public class YasuoStats : MainCharacterStats
                 break;
             case UpgradeType.AbilityPower:
                 this.abilityPower -= value;
-                break;
-            case UpgradeType.AttackSpeed:
-                this.attackSpeed -= baseAttackSpeed * (value / 100f);
                 break;
             case UpgradeType.Armor:
                 this.armor -= value;

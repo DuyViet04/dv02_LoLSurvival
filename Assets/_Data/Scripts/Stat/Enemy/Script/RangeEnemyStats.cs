@@ -12,13 +12,13 @@ public class RangeEnemyStats : MainEnemyStats
         {
             attackType = AttackType.NormalAttack,
             damageType = DamageType.PhysicDamage,
-            baseDamage = 21f,
+            baseDamage = 42f,
             bonusAD = 0f,
             bonusAP = 0f,
             isCritical = false,
             cooldown = 0f
         };
-        this.attackSpeed = 0.667f;
+        this.attackSpeed = 0.333f;
         this.moveSpeed = 1.5f;
         this.armor = 1f;
         this.magicResistance = 1f;
@@ -44,13 +44,13 @@ public class RangeEnemyStats : MainEnemyStats
         {
             attackType = AttackType.NormalAttack,
             damageType = DamageType.PhysicDamage,
-            baseDamage = 21f,
+            baseDamage = 42f,
             bonusAD = 0f,
             bonusAP = 0f,
             isCritical = false,
             cooldown = 0f
         };
-        this.attackSpeed = 0.667f;
+        this.attackSpeed = 0.333f;
         this.moveSpeed = 1.5f;
         this.armor = 1f;
         this.magicResistance = 1f;

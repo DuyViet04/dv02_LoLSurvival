@@ -24,7 +24,7 @@ public class StatsDisplay : VyesSingleton<StatsDisplay>
         this.levelUp = FindObjectOfType<LevelUp>();
         this.mainStatsData = new List<TMP_Text>();
         this.secondStatsData = new List<TMP_Text>();
-        
+
         this.LoadMainData();
         this.LoadSecondData();
         this.secondStatsPanel.SetActive(false);
@@ -61,7 +61,7 @@ public class StatsDisplay : VyesSingleton<StatsDisplay>
         FieldInfo[] fieldInfo = this.GetYasuoStatFields();
         this.mainStatsData[0].text = this.levelUp.GetCurrentLevel().ToString();
 
-        for (int i = 1; i < 17; i++)
+        for (int i = 1; i < 16; i++)
         {
             this.mainStatsData[i].text = $"{fieldInfo[i].GetValue(this.yasuoStats):F1}";
         }
@@ -70,9 +70,9 @@ public class StatsDisplay : VyesSingleton<StatsDisplay>
     public void UpdateSecondData()
     {
         FieldInfo[] fieldInfo = this.GetYasuoStatFields();
-        for (int i = 17; i < 19; i++)
+        for (int i = 16; i < 18; i++)
         {
-            this.secondStatsData[i - 17].text = $"{fieldInfo[i].GetValue(this.yasuoStats):F1}";
+            this.secondStatsData[i - 16].text = $"{fieldInfo[i].GetValue(this.yasuoStats):F1}";
         }
     }
 

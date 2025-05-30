@@ -11,13 +11,13 @@ public class CannonEnemyStats : MainEnemyStats
         {
             attackType = AttackType.NormalAttack,
             damageType = DamageType.PhysicDamage,
-            baseDamage = 37.5f,
+            baseDamage = 75f,
             bonusAD = 0f,
             bonusAP = 0f,
             isCritical = false,
             cooldown = 0f
         };
-        this.attackSpeed = 1f;
+        this.attackSpeed = 0.5f;
         this.moveSpeed = 1.5f;
         this.armor = 1f;
         this.magicResistance = 1f;
@@ -36,13 +36,13 @@ public class CannonEnemyStats : MainEnemyStats
         {
             attackType = AttackType.NormalAttack,
             damageType = DamageType.PhysicDamage,
-            baseDamage = 37.5f,
+            baseDamage = 75f,
             bonusAD = 0f,
             bonusAP = 0f,
             isCritical = false,
             cooldown = 0f
         };
-        this.attackSpeed = 1f;
+        this.attackSpeed = 0.5f;
         this.moveSpeed = 1.5f;
         this.armor = 1f;
         this.magicResistance = 1f;
