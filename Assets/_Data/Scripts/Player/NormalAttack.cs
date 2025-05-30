@@ -13,6 +13,8 @@ public class NormalAttack : VyesBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0) return;
+        
         this.cooldownTime =
             CooldownCalculator.GetCooldown(this.yasuoSkill.yasuoSkillData[0].cooldown, this.yasuoStats.haste);
 

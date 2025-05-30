@@ -16,7 +16,7 @@ public class ShopDisplay : VyesSingleton<ShopDisplay>
     public List<GameObject> ListCores => this.listCores;
     private List<Image> coreIconList;
     private List<TMP_Text> coreNameList, coreStatsList, coreCostList;
-    public List<ScriptableObject> choices;
+    public List<ItemData> choices;
 
 
     protected override void Awake()
@@ -26,7 +26,7 @@ public class ShopDisplay : VyesSingleton<ShopDisplay>
         this.coreNameList = new List<TMP_Text>();
         this.coreStatsList = new List<TMP_Text>();
         this.coreCostList = new List<TMP_Text>();
-        this.choices = new List<ScriptableObject>();
+        this.choices = new List<ItemData>();
         this.LoadCoresData();
     }
 
@@ -38,26 +38,26 @@ public class ShopDisplay : VyesSingleton<ShopDisplay>
         }
 
         this.choices = this.GetRandomItems(3);
-        this.coreIconList[0].sprite = ((ItemData)this.choices[0]).icon;
-        this.coreNameList[0].text = ((ItemData)this.choices[0]).name;
-        this.coreStatsList[0].text = ((ItemData)this.choices[0]).displayText;
-        this.coreCostList[0].text = ((ItemData)this.choices[0]).cost.ToString();
+        this.coreIconList[0].sprite = this.choices[0].icon;
+        this.coreNameList[0].text = this.choices[0].name;
+        this.coreStatsList[0].text = this.choices[0].displayText;
+        this.coreCostList[0].text = this.choices[0].cost.ToString();
 
-        this.coreIconList[1].sprite = ((ItemData)this.choices[1]).icon;
-        this.coreNameList[1].text = ((ItemData)this.choices[1]).name;
-        this.coreStatsList[1].text = ((ItemData)this.choices[1]).displayText;
-        this.coreCostList[1].text = ((ItemData)this.choices[1]).cost.ToString();
+        this.coreIconList[1].sprite = this.choices[1].icon;
+        this.coreNameList[1].text = this.choices[1].name;
+        this.coreStatsList[1].text = this.choices[1].displayText;
+        this.coreCostList[1].text = this.choices[1].cost.ToString();
 
-        this.coreIconList[2].sprite = ((ItemData)this.choices[2]).icon;
-        this.coreNameList[2].text = ((ItemData)this.choices[2]).name;
-        this.coreStatsList[2].text = ((ItemData)this.choices[2]).displayText;
-        this.coreCostList[2].text = ((ItemData)this.choices[2]).cost.ToString();
+        this.coreIconList[2].sprite = this.choices[2].icon;
+        this.coreNameList[2].text = this.choices[2].name;
+        this.coreStatsList[2].text = this.choices[2].displayText;
+        this.coreCostList[2].text = this.choices[2].cost.ToString();
     }
 
-    List<ScriptableObject> GetRandomItems(int count)
+    List<ItemData> GetRandomItems(int count)
     {
-        List<ScriptableObject> copy = new List<ScriptableObject>(this.itemTable.items);
-        List<ScriptableObject> result = new List<ScriptableObject>();
+        List<ItemData> copy = new List<ItemData>(this.itemTable.items);
+        List<ItemData> result = new List<ItemData>();
 
         for (int i = 0; i < count && copy.Count > 0; i++)
         {

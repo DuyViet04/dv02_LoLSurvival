@@ -4,7 +4,6 @@ public enum UpgradeType
     HealthRegen,
     AttackDamage,
     AbilityPower,
-    AttackSpeed,
     Armor,
     MagicResistance,
     MoveSpeed,

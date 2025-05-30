@@ -17,6 +17,8 @@ public class Skill1Attack : VyesBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0) return;
+   
         this.cooldownTime =
             CooldownCalculator.GetCooldown(this.yasuoSkill.yasuoSkillData[1].cooldown, this.yasuoStats.haste);
 
@@ -58,12 +60,12 @@ public class Skill1Attack : VyesBehaviour
 
     void UICooldown()
     {
+        this.cooldownText.text = this.cooldownTimer.ToString("0.0");
         if (this.cooldownTimer <= 0)
         {
             this.cooldownText.text = "";
         }
 
-        this.cooldownText.text = this.cooldownTimer.ToString("0");
         this.cooldownImage.fillAmount = this.cooldownTimer / this.cooldownTime;
         if (this.cooldownTimer <= 0)
         {

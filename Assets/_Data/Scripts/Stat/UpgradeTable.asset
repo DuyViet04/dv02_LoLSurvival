@@ -25,9 +25,6 @@ MonoBehaviour:
   - type: 3
     name: "S\u1EE9c m\u1EA1nh ph\xE9p thu\u1EADt:"
     value: 7
-  - type: 4
-    name: "T\u1ED1c \u0111\u1ED9 \u0111\xE1nh(%):"
-    value: 7
   - type: 5
     name: "Gi\xE1p:"
     value: 9

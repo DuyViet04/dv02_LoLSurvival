@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ItemTable", menuName = "Item/ItemTable")]
 public class ItemTable : ScriptableObject
 {
-    public List<ScriptableObject> items;
+    public List<ItemData> items;
 
     private void Awake()
     {

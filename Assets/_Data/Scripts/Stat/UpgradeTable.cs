@@ -18,7 +18,6 @@ public class UpgradeTable : ScriptableObject
         this.AddUpgrade(UpgradeType.HealthRegen, "Hồi máu:", 2);
         this.AddUpgrade(UpgradeType.AttackDamage, "Sức mạnh vật lý:", 7);
         this.AddUpgrade(UpgradeType.AbilityPower, "Sức mạnh phép thuật:", 7);
-        this.AddUpgrade(UpgradeType.AttackSpeed, "Tốc độ đánh(%):", 7);
         this.AddUpgrade(UpgradeType.Armor, "Giáp:", 9);
         this.AddUpgrade(UpgradeType.MagicResistance, "Kháng phép:", 9);
         this.AddUpgrade(UpgradeType.MoveSpeed, "Tốc độ di chuyển(%):", 4);

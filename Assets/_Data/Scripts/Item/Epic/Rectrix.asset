@@ -21,9 +21,9 @@ MonoBehaviour:
   displayText: "S\xE1t th\u01B0\u01A1ng v\u1EADt l\xFD: 15\nT\u1ED1c \u0111\u1ED9
     di chuy\u1EC3n: 4%"
   effects:
-  - type: 3
+  - type: 2
     value: 15
-  - type: 7
+  - type: 6
     value: 4
   requiredItems:
   - {fileID: 11400000, guid: ec121214819d7814d8b3691b144a032c, type: 2}
