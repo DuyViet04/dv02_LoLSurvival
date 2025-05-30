@@ -12,7 +12,7 @@ public class Skill2Attack : VyesBehaviour
     [SerializeField] private TMP_Text cooldownText;
     private Vector3 dashDirection;
     private float cooldownTime;
-    private float dashDuration = 1f;
+    private float dashDuration = 0.5f;
     private float cooldownTimer;
     private float dashTimer;
     private bool isCooldown = false;
@@ -37,7 +37,7 @@ public class Skill2Attack : VyesBehaviour
         if (this.isDash)
         {
             this.dashTimer -= Time.deltaTime;
-            this.transform.parent.Translate(this.dashDirection * 7 * Time.deltaTime);
+            this.transform.parent.Translate(this.dashDirection * 10 * Time.deltaTime);
 
             if (this.dashTimer <= 0f)
             {

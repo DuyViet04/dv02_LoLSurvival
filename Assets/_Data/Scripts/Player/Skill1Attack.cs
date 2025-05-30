@@ -11,11 +11,15 @@ public class Skill1Attack : VyesBehaviour
     [SerializeField] private Image cooldownImage;
     [SerializeField] private TMP_Text cooldownText;
     [SerializeField] private GameObject prefab;
+    private float cooldownTime;
     private float cooldownTimer;
     private bool isCooldown = false;
 
     private void Update()
     {
+        this.cooldownTime =
+            CooldownCalculator.GetCooldown(this.yasuoSkill.yasuoSkillData[1].cooldown, this.yasuoStats.haste);
+
         if (this.isCooldown)
         {
             this.cooldownTimer -= Time.deltaTime;
@@ -43,7 +47,7 @@ public class Skill1Attack : VyesBehaviour
         Quaternion rotation = Quaternion.Euler(-90, this.transform.parent.eulerAngles.y, 0);
         Instantiate(this.prefab, this.transform.parent.position, rotation);
         this.isCooldown = true;
-        this.cooldownTimer = this.yasuoSkill.yasuoSkillData[1].cooldown;
+        this.cooldownTimer = this.cooldownTime;
     }
 
     public AttackData GetAttackData()
@@ -60,7 +64,7 @@ public class Skill1Attack : VyesBehaviour
         }
 
         this.cooldownText.text = this.cooldownTimer.ToString("0");
-        this.cooldownImage.fillAmount = this.cooldownTimer / this.yasuoSkill.yasuoSkillData[1].cooldown;
+        this.cooldownImage.fillAmount = this.cooldownTimer / this.cooldownTime;
         if (this.cooldownTimer <= 0)
         {
             this.cooldownImage.fillAmount = 0;
