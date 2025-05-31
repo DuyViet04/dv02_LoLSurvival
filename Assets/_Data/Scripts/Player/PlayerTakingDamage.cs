@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerTakingDamage : TakingDamage
@@ -32,6 +33,8 @@ public class PlayerTakingDamage : TakingDamage
         if (this.currentHp <= 0f)
         {
             this.hpImage.fillAmount = 0f;
+            GameManager.Instance.CSCount = CSDisplay.Instance.CSCount;
+            SceneManager.LoadScene("Gameover");
         }
         else
         {

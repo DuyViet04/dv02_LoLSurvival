@@ -13,54 +13,71 @@ MonoBehaviour:
   m_Name: UpgradeTable
   m_EditorClassIdentifier: 
   upgrades:
-  - type: 0
+  - icon: {fileID: 21300000, guid: 71273279a3ff9944c8b2474d1837dbfa, type: 3}
+    type: 0
     name: "M\xE1u t\u1ED1i \u0111a:"
     value: 75
-  - type: 1
+  - icon: {fileID: 21300000, guid: 7e56a630275e2a34aa2618346ff4d985, type: 3}
+    type: 1
     name: "H\u1ED3i m\xE1u:"
     value: 2
-  - type: 2
+  - icon: {fileID: 21300000, guid: d34f17bd26010e14b976f98e6c6a89cc, type: 3}
+    type: 2
     name: "S\u1EE9c m\u1EA1nh v\u1EADt l\xFD:"
     value: 7
-  - type: 3
+  - icon: {fileID: 21300000, guid: 8f35c8ebfbe3f7343ae5096b62d22192, type: 3}
+    type: 3
     name: "S\u1EE9c m\u1EA1nh ph\xE9p thu\u1EADt:"
     value: 7
-  - type: 5
+  - icon: {fileID: 21300000, guid: ee78fff7c577aef4189e5fc1f85edc96, type: 3}
+    type: 4
     name: "Gi\xE1p:"
     value: 9
-  - type: 6
+  - icon: {fileID: 21300000, guid: b37e99fbd2fcba24397a57b588c33f6f, type: 3}
+    type: 5
     name: "Kh\xE1ng ph\xE9p:"
     value: 9
-  - type: 7
+  - icon: {fileID: 21300000, guid: 9f20b277e4c39264b93dbde6e6b4e2a2, type: 3}
+    type: 6
     name: "T\u1ED1c \u0111\u1ED9 di chuy\u1EC3n(%):"
     value: 4
-  - type: 8
+  - icon: {fileID: 21300000, guid: a46258bbcbc02c24cbdb4f6cf200303a, type: 3}
+    type: 7
     name: "T\u1EC9 l\u1EC7 ch\xED m\u1EA1ng(%):"
     value: 5
-  - type: 9
+  - icon: {fileID: 21300000, guid: 5f6e5aac16d098e43bc39d08f1d04d55, type: 3}
+    type: 8
     name: "S\xE1t th\u01B0\u01A1ng ch\xED m\u1EA1ng(%):"
     value: 5
-  - type: 10
+  - icon: {fileID: 21300000, guid: 1561921dc4b835349a65a7541eb6a193, type: 3}
+    type: 9
     name: "Xuy\xEAn gi\xE1p:"
     value: 4
-  - type: 11
+  - icon: {fileID: 21300000, guid: c1e5350459acebe4489dfdc7aafc8c32, type: 3}
+    type: 10
     name: "Xuy\xEAn kh\xE1ng ph\xE9p:"
     value: 4
-  - type: 12
+  - icon: {fileID: 21300000, guid: 762dbb3105490a64c974aec6104b518e, type: 3}
+    type: 11
     name: "H\xFAt m\xE1u(%):"
     value: 3
-  - type: 13
+  - icon: {fileID: 21300000, guid: a0111dbd4f95bec408a771036bf1f3ff, type: 3}
+    type: 12
     name: "H\xFAt m\xE1u to\xE0n ph\u1EA7n(%):"
     value: 5
-  - type: 14
+  - icon: {fileID: 21300000, guid: 226cdd3f7c3c32b40973fcf77c5924d0, type: 3}
+    type: 13
     name: "H\u1ED3i chi\xEAu:"
     value: 7
-  - type: 15
+  - icon: {fileID: 21300000, guid: f43efaa445229e045bd6c9cd442d2c55, type: 3}
+    type: 14
     name: "S\u1EE9c m\u1EA1nh h\xF4\xEC ph\u1EE5c(%):"
     value: 5
-  - type: 16
+  - icon: {fileID: 21300000, guid: 32d513c7817453549801ee98a64d30e0, type: 3}
+    type: 15
     name: "T\u1EA7m nh\u1EB7t(%):"
     value: 10
-  - type: 17
+  - icon: {fileID: 21300000, guid: 489ac8b39bb91734da93e97da99858ad, type: 3}
+    type: 16
     name: "Kinh nghi\u1EC7m(%): "
     value: 5

@@ -1,21 +1,17 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class CSDisplay : VyesSingleton<CSDisplay>
+public class GameoverManager : VyesSingleton<GameoverManager>
 {
     [SerializeField] private TMP_Text csText;
-    private int csCount = 0;
-    public int CSCount => this.csCount;
 
-    private void Update()
+    private void Start()
     {
-        this.csText.text = this.csCount.ToString();
-    }
-
-    public void IncreaseCsCount()
-    {
-        this.csCount += 1;
+        int csCount = GameManager.Instance.CSCount;
+        this.csText.text = $"CS: {csCount:0}";
     }
 
     protected override void LoadComponents()
@@ -27,7 +23,7 @@ public class CSDisplay : VyesSingleton<CSDisplay>
     void LoadCSText()
     {
         if (this.csText != null) return;
-        this.csText = GetComponentInChildren<TMP_Text>();
+        this.csText = GameObject.Find("CSText").GetComponent<TMP_Text>();
         Debug.LogWarning(this.transform.name + ": LoadCSText", this.gameObject);
     }
 }

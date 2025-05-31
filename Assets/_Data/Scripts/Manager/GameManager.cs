@@ -3,21 +3,29 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class GameManager : VyesBehaviour
+public class GameManager : VyesPersistentSingleton<GameManager>
 {
     [SerializeField] private YasuoStats yasuoStats;
+    private int csCount;
+
+    public int CSCount
+    {
+        get => this.csCount;
+        set => this.csCount = value;
+    }
+
+    //Reset giá trị của các SO về mặc định
+
+    protected override void ResetValues()
+    {
+        base.ResetValues();
+        this.ResetStats();
+    }
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadYasuoStats();
-    }
-
-    //Reset giá trị của các SO về mặc định
-    protected override void ResetValues()
-    {
-        base.ResetValues();
-        this.ResetStats();
     }
 
     void LoadYasuoStats()

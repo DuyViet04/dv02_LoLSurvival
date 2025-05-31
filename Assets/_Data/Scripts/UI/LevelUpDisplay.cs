@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelUpDisplay : VyesSingleton<LevelUpDisplay>
 {
@@ -12,6 +13,7 @@ public class LevelUpDisplay : VyesSingleton<LevelUpDisplay>
     [SerializeField] private List<GameObject> listCores;
     private RarityType chosenRarity;
     private int power;
+    private List<Image> iconList;
     private List<TMP_Text> namesList;
     private List<TMP_Text> valuesList;
     private List<UpgradeData> choicesList;
@@ -19,9 +21,10 @@ public class LevelUpDisplay : VyesSingleton<LevelUpDisplay>
     protected override void Awake()
     {
         base.Awake();
+        this.iconList = new List<Image>();
         this.namesList = new List<TMP_Text>();
         this.valuesList = new List<TMP_Text>();
-        this.LoadNamesAndValues();
+        this.LoadCoreData();
         this.LoadComponents();
     }
 
@@ -31,6 +34,10 @@ public class LevelUpDisplay : VyesSingleton<LevelUpDisplay>
         Color color = this.rarityTable.GetColorByRarity(chosenRarity);
         this.power = this.rarityTable.GetPowerByRarity(chosenRarity);
         this.choicesList = GetRandomUpgrades(3);
+
+        this.iconList[0].sprite = this.choicesList[0].icon;
+        this.iconList[1].sprite = this.choicesList[1].icon;
+        this.iconList[2].sprite = this.choicesList[2].icon;
 
         this.namesList[0].text = this.choicesList[0].name;
         this.namesList[0].color = color;
@@ -72,7 +79,7 @@ public class LevelUpDisplay : VyesSingleton<LevelUpDisplay>
         return result;
     }
 
-    void LoadNamesAndValues()
+    void LoadCoreData()
     {
         this.levelUpPanel.SetActive(true);
 
@@ -80,8 +87,10 @@ public class LevelUpDisplay : VyesSingleton<LevelUpDisplay>
         {
             TMP_Text coreName = coreItem.transform.Find("Name").GetComponent<TMP_Text>();
             TMP_Text coreValue = coreItem.transform.Find("Value").GetComponent<TMP_Text>();
+            Image coreIcon = coreItem.transform.Find("Icon").GetComponent<Image>();
             this.namesList.Add(coreName);
             this.valuesList.Add(coreValue);
+            this.iconList.Add(coreIcon);
         }
 
         this.levelUpPanel.SetActive(false);
