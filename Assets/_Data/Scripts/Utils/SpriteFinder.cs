@@ -19,4 +19,18 @@ public class SpriteFinder
         Debug.LogError($"Sprite {spriteName} not found in {pathToImage}");
         return null;
     }
+
+    public static Sprite GetStatIconSprite(string spriteName)
+    {
+        string path = "Assets/_Data/Sprites/Icon";
+        Object[] sprites = AssetDatabase.LoadAllAssetRepresentationsAtPath(path);
+        foreach (Object sprite in sprites)
+        {
+            if (sprite is Sprite && sprite.name == spriteName)
+                return sprite as Sprite;
+        }
+
+        Debug.LogError($"Sprite {spriteName} not found in {path}");
+        return null;
+    }
 }
