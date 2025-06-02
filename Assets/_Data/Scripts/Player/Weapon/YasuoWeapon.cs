@@ -11,7 +11,7 @@ public class YasuoWeapon : DealingDamage
     [SerializeField] private Transform player;
     [SerializeField] private CapsuleCollider capsule;
 
-    protected override void DealDamage(TakingDamage takingDamage, AttackData attackData)
+    public override void DealDamage(TakingDamage takingDamage, AttackData attackData)
     {
         this.attackDamage = this.yasuoStats.attackDamage;
         this.abilityPower = this.yasuoStats.abilityPower;

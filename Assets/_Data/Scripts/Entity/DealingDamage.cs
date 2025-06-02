@@ -21,7 +21,7 @@ public abstract class DealingDamage : VyesBehaviour
         this.DealDamage(takingDamage, attackData);
     }
 
-    protected virtual void DealDamage(TakingDamage takingDamage, AttackData attackData)
+    public virtual void DealDamage(TakingDamage takingDamage, AttackData attackData)
     {
         this.GetDamageDealt(takingDamage, attackData);
         takingDamage.TakeDamage(this.damageDealt);
@@ -61,22 +61,18 @@ public abstract class DealingDamage : VyesBehaviour
                                            (this.criticalDamage / 100) * atkDmgMulti;
                     }
                 }
+                else
+                {
+                    this.damageDealt = attackData.GetDamage(this.attackDamage, this.abilityPower) * atkDmgMulti;
+                }
 
-                Debug.Log(
-                    $"{attackData.attackType} - {attackData.damageType} - {this.damageDealt} - {attackData.isCritical}");
                 break;
             case DamageType.MagicDamage:
                 float magicDmgMulti = takingDamage.GetAbilityPowerMultiplier(this.magicPenetration);
                 this.damageDealt = attackData.GetDamage(this.attackDamage, this.abilityPower) * magicDmgMulti;
-                Debug.Log(
-                    $"{attackData.attackType} - {attackData.damageType} - {this.damageDealt} - {attackData.isCritical}");
-
                 break;
             case DamageType.TrueDamage:
                 this.damageDealt = attackData.GetDamage(this.attackDamage, this.abilityPower);
-                Debug.Log(
-                    $"{attackData.attackType} - {attackData.damageType} - {this.damageDealt} - {attackData.isCritical}");
-
                 break;
         }
 

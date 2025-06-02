@@ -10,7 +10,6 @@ public abstract class TakingDamage : VyesBehaviour
     //Trừ hp khi nhận damage
     public virtual void TakeDamage(float damage)
     {
-        Debug.Log(damage);
         this.currentHp -= damage;
         if (this.currentHp <= 0f)
         {
