@@ -84,6 +84,11 @@ public class ShopManager : VyesSingleton<ShopManager>
         return true;
     }
 
+    public List<Sprite> GetLastItem()
+    {
+        return this.itemSprites;
+    }
+
     List<Image> LoadItemSlots()
     {
         List<Image> list = new List<Image>();

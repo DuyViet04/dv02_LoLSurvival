@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -92,6 +93,7 @@ public class PlayerTakingDamage : TakingDamage
         GameManager.Instance.CSCount = CSDisplay.Instance.CSCount;
         GameManager.Instance.MainStatsData = StatsDisplay.Instance.GetLastMainData();
         GameManager.Instance.SecondStatsData = StatsDisplay.Instance.GetLastSecondData();
+        GameManager.Instance.ItemSprites = ShopManager.Instance.GetLastItem();
         SceneManager.LoadScene("Gameover");
     }
 

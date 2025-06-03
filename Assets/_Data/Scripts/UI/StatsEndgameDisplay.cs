@@ -28,6 +28,7 @@ public class StatsEndgameDisplay : VyesBehaviour
     private void Start()
     {
         this.UpdateMainData();
+        this.UpdateSecondData();
     }
 
     public void ShowMainStats()
@@ -67,7 +68,7 @@ public class StatsEndgameDisplay : VyesBehaviour
             }
         }
     }
-    
+
     void UpdateSecondData()
     {
         List<TMP_Text> secondStats = GameManager.Instance.SecondStatsData;

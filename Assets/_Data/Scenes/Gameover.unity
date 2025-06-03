@@ -1638,6 +1638,7 @@ GameObject:
   - component: {fileID: 237242681}
   - component: {fileID: 237242683}
   - component: {fileID: 237242682}
+  - component: {fileID: 237242684}
   m_Layer: 5
   m_Name: ItemSlot
   m_TagString: Untagged
@@ -1709,6 +1710,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237242680}
   m_CullTransparentMesh: 1
+--- !u!114 &237242684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237242680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152947b87ca4b249c2b876b6a24edca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSlot: {fileID: 237242680}
 --- !u!1 &266930646
 GameObject:
   m_ObjectHideFlags: 0

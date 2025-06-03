@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : VyesPersistentSingleton<GameManager>
 {
     [SerializeField] private YasuoStats yasuoStats;
     private int csCount;
+    private List<Sprite> itemSprites;
     private List<TMP_Text> mainStatsData;
     private List<TMP_Text> secondStatsData;
 
@@ -22,13 +24,19 @@ public class GameManager : VyesPersistentSingleton<GameManager>
         get => this.csCount;
         set => this.csCount = value;
     }
-    
+
+    public List<Sprite> ItemSprites
+    {
+        get => this.itemSprites;
+        set => this.itemSprites = value;
+    }
+
     public List<TMP_Text> MainStatsData
     {
         get => this.mainStatsData;
         set => this.mainStatsData = value;
     }
-    
+
     public List<TMP_Text> SecondStatsData
     {
         get => this.secondStatsData;
