@@ -2127,7 +2127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &142802631
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3132,6 +3132,7 @@ GameObject:
   - component: {fileID: 255831240}
   - component: {fileID: 255831242}
   - component: {fileID: 255831241}
+  - component: {fileID: 255831243}
   - component: {fileID: 255831238}
   - component: {fileID: 255831237}
   - component: {fileID: 255831236}
@@ -3283,6 +3284,24 @@ MonoBehaviour:
   - {fileID: 1492168209}
   - {fileID: 861841860}
   - {fileID: 1571278831}
+--- !u!114 &255831243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255831235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 417ff4f6e43302747b91109b5a6ba91c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseGamePanel: {fileID: 1312197013}
+  mainStats: {fileID: 1422272473}
+  secondStats: {fileID: 1126928262}
+  mainStatsPanel: {fileID: 51300467}
+  secondStatsPanel: {fileID: 803668062}
+  yasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
 --- !u!1 &256009697
 GameObject:
   m_ObjectHideFlags: 0
@@ -6309,7 +6328,6 @@ GameObject:
   m_Component:
   - component: {fileID: 487524311}
   - component: {fileID: 487524313}
-  - component: {fileID: 487524314}
   - component: {fileID: 487524312}
   m_Layer: 5
   m_Name: StatsInfo
@@ -6379,24 +6397,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 487524310}
   m_CullTransparentMesh: 1
---- !u!114 &487524314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 487524310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 417ff4f6e43302747b91109b5a6ba91c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseGamePanel: {fileID: 1312197013}
-  mainStats: {fileID: 1422272473}
-  secondStats: {fileID: 1126928262}
-  mainStatsPanel: {fileID: 51300467}
-  secondStatsPanel: {fileID: 803668062}
-  yasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
 --- !u!1 &489480746
 GameObject:
   m_ObjectHideFlags: 0
@@ -13237,7 +13237,7 @@ RectTransform:
   m_Children:
   - {fileID: 1797979956}
   m_Father: {fileID: 1147702906}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13288,7 +13288,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 487524314}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StatsDisplay, Assembly-CSharp
         m_MethodName: ShowSecondStats
         m_Mode: 1
@@ -13895,6 +13895,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b9314edd5923361478f623ea4c260e57, type: 2}
   - {fileID: 11400000, guid: 8b79c76d51715cc4b9fb726fdb282eaa, type: 2}
   - {fileID: 11400000, guid: 8b518f4da9b4f394c9734819bd42bced, type: 2}
+  yasuoStats: {fileID: 0}
 --- !u!4 &1170303324
 Transform:
   m_ObjectHideFlags: 0
@@ -15394,7 +15395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1312197014
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16333,7 +16334,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 487524314}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StatsDisplay, Assembly-CSharp
         m_MethodName: ShowMainStats
         m_Mode: 1
@@ -16367,7 +16368,7 @@ RectTransform:
   m_Children:
   - {fileID: 561918052}
   m_Father: {fileID: 1147702906}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

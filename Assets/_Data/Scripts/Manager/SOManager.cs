@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class SOManager : VyesSingleton<SOManager>
+public class SOManager : VyesPersistentSingleton<SOManager>
 {
     [SerializeField] private List<MainEnemyStats> enemyStatsList;
+    [SerializeField] private YasuoStats yasuoStats;
 
     protected override void LoadComponents()
     {
@@ -43,5 +44,10 @@ public class SOManager : VyesSingleton<SOManager>
     public List<MainEnemyStats> GetEnemyStatsList()
     {
         return this.enemyStatsList;
+    }
+
+    public YasuoStats GetYasuoStats()
+    {
+        return this.yasuoStats;
     }
 }

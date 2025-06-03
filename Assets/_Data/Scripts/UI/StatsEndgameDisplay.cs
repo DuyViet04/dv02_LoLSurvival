@@ -1,33 +1,33 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StatsDisplay : VyesSingleton<StatsDisplay>
+public class StatsEndgameDisplay : VyesBehaviour
 {
-    [SerializeField] private GameObject pauseGamePanel;
     [SerializeField] private Image mainStats;
     [SerializeField] private Image secondStats;
     [SerializeField] public GameObject mainStatsPanel;
     [SerializeField] private GameObject secondStatsPanel;
-    [SerializeField] private YasuoStats yasuoStats;
-    private LevelUp levelUp;
     private List<TMP_Text> mainStatsData;
     private List<TMP_Text> secondStatsData;
 
     protected override void Awake()
     {
         base.Awake();
-        this.levelUp = FindObjectOfType<LevelUp>();
         this.mainStatsData = new List<TMP_Text>();
         this.secondStatsData = new List<TMP_Text>();
 
         this.LoadMainData();
         this.LoadSecondData();
-        this.secondStatsPanel.SetActive(false);
+    }
+
+    private void Start()
+    {
+        this.UpdateMainData();
     }
 
     public void ShowMainStats()
@@ -56,42 +56,37 @@ public class StatsDisplay : VyesSingleton<StatsDisplay>
         this.secondStats.color = secondColor;
     }
 
-    public void UpdateMainData()
+    void UpdateMainData()
     {
-        FieldInfo[] fieldInfo = this.GetYasuoStatFields();
-        this.mainStatsData[0].text = this.levelUp.GetCurrentLevel().ToString();
-
-        for (int i = 1; i < 16; i++)
+        List<TMP_Text> mainStats = GameManager.Instance.MainStatsData;
+        for (int i = 0; i < mainStats.Count; i++)
         {
-            this.mainStatsData[i].text = $"{fieldInfo[i].GetValue(this.yasuoStats):F1}";
-        }
-    }
-
-    public void UpdateSecondData()
-    {
-        FieldInfo[] fieldInfo = this.GetYasuoStatFields();
-        for (int i = 16; i < 18; i++)
-        {
-            this.secondStatsData[i - 16].text = $"{fieldInfo[i].GetValue(this.yasuoStats):F1}";
+            if (i < this.mainStatsData.Count)
+            {
+                this.mainStatsData[i].text = mainStats[i].text;
+            }
         }
     }
     
-    public List<TMP_Text> GetLastMainData()
+    void UpdateSecondData()
     {
-        this.UpdateMainData();
-        return this.mainStatsData;
-    }
-    
-    public List<TMP_Text> GetLastSecondData()
-    {
-        this.UpdateSecondData();
-        return this.secondStatsData;
+        List<TMP_Text> secondStats = GameManager.Instance.SecondStatsData;
+        for (int i = 0; i < secondStats.Count; i++)
+        {
+            if (i < this.secondStatsData.Count)
+            {
+                this.secondStatsData[i].text = secondStats[i].text;
+            }
+        }
     }
 
-    //Refection
-    FieldInfo[] GetYasuoStatFields()
+    protected override void LoadComponents()
     {
-        return typeof(YasuoStats).GetFields(BindingFlags.Public | BindingFlags.Instance);
+        base.LoadComponents();
+        this.LoadMainStats();
+        this.LoadSecondStats();
+        this.LoadMainStatsPanel();
+        this.LoadSecondStatsPanel();
     }
 
     void LoadMainData()
@@ -114,24 +109,6 @@ public class StatsDisplay : VyesSingleton<StatsDisplay>
             TMP_Text text = obj.GetComponent<TMP_Text>();
             this.secondStatsData.Add(text);
         }
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadPauseGamePanel();
-        this.LoadMainStats();
-        this.LoadSecondStats();
-        this.LoadMainStatsPanel();
-        this.LoadSecondStatsPanel();
-        this.LoadYasuoStats();
-    }
-
-    void LoadPauseGamePanel()
-    {
-        if (this.pauseGamePanel != null) return;
-        this.pauseGamePanel = GameObject.Find("PauseGamePanel");
-        Debug.LogWarning(this.transform.name + ": LoadPauseGamePanel", this.gameObject);
     }
 
     void LoadMainStats()
@@ -160,14 +137,5 @@ public class StatsDisplay : VyesSingleton<StatsDisplay>
         if (this.secondStatsPanel != null) return;
         this.secondStatsPanel = GameObject.Find("SecondStatsInfo");
         Debug.LogWarning(this.transform.name + ": LoadSecondStatsPanel", this.gameObject);
-    }
-
-    void LoadYasuoStats()
-    {
-        if (this.yasuoStats != null) return;
-        string[] guids = AssetDatabase.FindAssets("t:YasuoStats", new[] { "Assets/_Data/Scripts/Stat/Character/SO" });
-        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
-        this.yasuoStats = AssetDatabase.LoadAssetAtPath<YasuoStats>(path);
-        Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
     }
 }

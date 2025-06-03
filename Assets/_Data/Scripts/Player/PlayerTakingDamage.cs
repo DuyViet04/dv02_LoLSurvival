@@ -33,8 +33,6 @@ public class PlayerTakingDamage : TakingDamage
         if (this.currentHp <= 0f)
         {
             this.hpImage.fillAmount = 0f;
-            GameManager.Instance.CSCount = CSDisplay.Instance.CSCount;
-            SceneManager.LoadScene("Gameover");
         }
         else
         {
@@ -91,7 +89,10 @@ public class PlayerTakingDamage : TakingDamage
 
     protected override void Despawn()
     {
-        //
+        GameManager.Instance.CSCount = CSDisplay.Instance.CSCount;
+        GameManager.Instance.MainStatsData = StatsDisplay.Instance.GetLastMainData();
+        GameManager.Instance.SecondStatsData = StatsDisplay.Instance.GetLastSecondData();
+        SceneManager.LoadScene("Gameover");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -101,7 +102,6 @@ public class PlayerTakingDamage : TakingDamage
         if (parent != null && parent.CompareTag("Enemy"))
         {
             AttackData attackData = parent.GetComponentInChildren<EnemyDealingDamage>().GetAttackData();
-            Debug.LogWarning(attackData.damageType + " " + attackData.baseDamage, this.gameObject);
             parent.GetComponentInChildren<EnemyDealingDamage>().DealDamage(this.transform.parent, attackData);
         }
     }
