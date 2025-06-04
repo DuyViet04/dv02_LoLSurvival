@@ -9,4 +9,9 @@ public class SceneLevelManager : VyesPersistentSingleton<SceneLevelManager>
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
