@@ -6,13 +6,13 @@ public class SpriteFinder
     public static Sprite GetSprite(string pathToImage, string spriteName)
     {
         //Tìm những obj con trong obj cha có path = pathToImage
-        Object[] sprites = AssetDatabase.LoadAllAssetRepresentationsAtPath(pathToImage);
+        Sprite[] sprites = Resources.LoadAll<Sprite>(pathToImage);
 
-        foreach (Object sprite in sprites)
+        foreach (Sprite sprite in sprites)
         {
-            if (sprite is Sprite && sprite.name == spriteName)
+            if (sprite.name == spriteName)
             {
-                return sprite as Sprite;
+                return sprite;
             }
         }
 
@@ -22,12 +22,12 @@ public class SpriteFinder
 
     public static Sprite GetStatIconSprite(string spriteName)
     {
-        string path = "Assets/_Data/Sprites/Icon";
-        Object[] sprites = AssetDatabase.LoadAllAssetRepresentationsAtPath(path);
-        foreach (Object sprite in sprites)
+        string path = "Sprites/Icon";
+        Sprite[] sprites = Resources.LoadAll<Sprite>(path);
+        foreach (Sprite sprite in sprites)
         {
-            if (sprite is Sprite && sprite.name == spriteName)
-                return sprite as Sprite;
+            if (sprite.name == spriteName)
+                return sprite;
         }
 
         Debug.LogError($"Sprite {spriteName} not found in {path}");

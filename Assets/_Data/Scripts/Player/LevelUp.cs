@@ -1,6 +1,4 @@
-using System;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -88,18 +86,14 @@ public class LevelUp : VyesBehaviour
     void LoadRarityTable()
     {
         if (this.baseRarityTable != null) return;
-        string[] guids = AssetDatabase.FindAssets("t:RarityTable", new[] { "Assets/_Data/Scripts/Stat" });
-        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
-        this.baseRarityTable = AssetDatabase.LoadAssetAtPath<RarityTable>(path);
+        this.baseRarityTable = Resources.Load<RarityTable>("Stat/RarityTable");
         Debug.LogWarning(this.transform.name + ": LoadRarityTable", this.gameObject);
     }
 
     void LoadYasuoStats()
     {
         if (this.yasuoStats != null) return;
-        string[] guids = AssetDatabase.FindAssets("t:YasuoStats", new[] { "Assets/_Data/Scripts/Stat/Character/SO" });
-        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
-        this.yasuoStats = AssetDatabase.LoadAssetAtPath<YasuoStats>(path);
+        this.yasuoStats = SOManager.Instance.GetYasuoStats();
         Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
     }
 

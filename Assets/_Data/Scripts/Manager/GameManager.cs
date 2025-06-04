@@ -1,9 +1,6 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : VyesPersistentSingleton<GameManager>
 {
@@ -61,10 +58,7 @@ public class GameManager : VyesPersistentSingleton<GameManager>
     void LoadYasuoStats()
     {
         if (this.yasuoStats != null) return;
-        string[] guids =
-            AssetDatabase.FindAssets("t:YasuoStats", new string[] { "Assets/_Data/Scripts/Stat/Character/SO" });
-        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
-        this.yasuoStats = AssetDatabase.LoadAssetAtPath<YasuoStats>(path);
+        this.yasuoStats = SOManager.Instance.GetYasuoStats();
         Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
     }
 

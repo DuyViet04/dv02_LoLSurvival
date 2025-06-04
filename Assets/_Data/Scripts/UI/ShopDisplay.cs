@@ -97,18 +97,14 @@ public class ShopDisplay : VyesSingleton<ShopDisplay>
     void LoadItemTable()
     {
         if (this.itemTable != null) return;
-        string[] guids = AssetDatabase.FindAssets("t:ItemTable", new[] { "Assets/_Data/Scripts/Item" });
-        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
-        this.itemTable = AssetDatabase.LoadAssetAtPath<ItemTable>(path);
+        this.itemTable = Resources.Load<ItemTable>("Item/ItemTable");
         Debug.LogWarning(this.transform.name + ": LoadItemTable", this.gameObject);
     }
 
     void LoadItemRarityTable()
     {
         if (this.itemRarityTable != null) return;
-        string[] guids = AssetDatabase.FindAssets("t:ItemRarityTable", new[] { "Assets/_Data/Scripts/Item" });
-        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
-        this.itemRarityTable = AssetDatabase.LoadAssetAtPath<ItemRarityTable>(path);
+        this.itemRarityTable = Resources.Load<ItemRarityTable>("Item/ItemRarityTable");
         Debug.LogWarning(this.transform.name + ": LoadItemRarityTable", this.gameObject);
     }
 

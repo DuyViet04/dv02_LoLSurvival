@@ -3395,7 +3395,7 @@ MonoBehaviour:
   yasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   shopPanel: {fileID: 142802630}
   goldDisplay: {fileID: 794445066}
-  itemSlot: {fileID: 1995927525}
+  itemSlot: {fileID: 1928716188}
   sellButton: {fileID: 1931450587}
   itemBackground: {fileID: -1485911640, guid: 3f2e6d8ba3470b144929a5b34b03182c, type: 3}
 --- !u!114 &255831242
@@ -14162,7 +14162,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b9314edd5923361478f623ea4c260e57, type: 2}
   - {fileID: 11400000, guid: 8b79c76d51715cc4b9fb726fdb282eaa, type: 2}
   - {fileID: 11400000, guid: 8b518f4da9b4f394c9734819bd42bced, type: 2}
-  yasuoStats: {fileID: 0}
+  yasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
+  yasuoSkill: {fileID: 11400000, guid: 49bf0f88d7507624c85f0cc32e59398a, type: 2}
 --- !u!4 &1170303324
 Transform:
   m_ObjectHideFlags: 0

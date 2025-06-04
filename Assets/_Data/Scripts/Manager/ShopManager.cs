@@ -115,9 +115,7 @@ public class ShopManager : VyesSingleton<ShopManager>
     void LoadYasuoStats()
     {
         if (this.yasuoStats != null) return;
-        string[] guid = AssetDatabase.FindAssets("t:YasuoStats", new[] { "Assets/_Data/Scripts/Stat/Character/SO" });
-        string path = AssetDatabase.GUIDToAssetPath(guid[0]);
-        this.yasuoStats = AssetDatabase.LoadAssetAtPath<YasuoStats>(path);
+        this.yasuoStats = SOManager.Instance.GetYasuoStats();
         Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
     }
 
@@ -152,7 +150,7 @@ public class ShopManager : VyesSingleton<ShopManager>
     void LoadItemBackground()
     {
         if (this.itemBackground != null) return;
-        string path = "Assets/_Data/Sprites/LoLHUD.png";
+        string path = "Sprites/LoLHUD";
         this.itemBackground = SpriteFinder.GetSprite(path, "ItemBackground");
         Debug.LogWarning(this.transform.name + ": LoadItemBackground", this.gameObject);
     }

@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: ItemTable
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 11400000, guid: ae556adb25589f347989705caa751746, type: 2}
   - {fileID: 11400000, guid: ec121214819d7814d8b3691b144a032c, type: 2}
   - {fileID: 11400000, guid: b7d5b7cbffa7bb5458aaf8dc71e8c49e, type: 2}
   - {fileID: 11400000, guid: 1a044441567488d4ebeaf0fe4e602172, type: 2}
-  - {fileID: 11400000, guid: 1b0a4c7deee9f414f8aaa60d6934b5b6, type: 2}
   - {fileID: 11400000, guid: 65fdedc9bcec51d49a865ba5e0140cb8, type: 2}

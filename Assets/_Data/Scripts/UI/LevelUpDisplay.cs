@@ -127,27 +127,21 @@ public class LevelUpDisplay : VyesSingleton<LevelUpDisplay>
     void LoadYasuoStats()
     {
         if (this.yasuoStats != null) return;
-        string[] guids = AssetDatabase.FindAssets("t:YasuoStats", new[] { "Assets/_Data/Scripts/Stat/Character/SO" });
-        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
-        this.yasuoStats = AssetDatabase.LoadAssetAtPath<YasuoStats>(path);
+        this.yasuoStats = SOManager.Instance.GetYasuoStats();
         Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
     }
 
     void LoadRarityTable()
     {
         if (this.rarityTable != null) return;
-        string[] guids = AssetDatabase.FindAssets("t:RarityTable", new[] { "Assets/_Data/Scripts/Stat" });
-        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
-        this.rarityTable = AssetDatabase.LoadAssetAtPath<RarityTable>(path);
+        this.rarityTable = Resources.Load<RarityTable>("Stat/RarityTable");
         Debug.LogWarning(this.transform.name + ": LoadRarityTable", this.gameObject);
     }
 
     void LoadUpgradeTable()
     {
         if (this.upgradeTable != null) return;
-        string[] guids = AssetDatabase.FindAssets("t:UpgradeTable", new[] { "Assets/_Data/Scripts/Stat" });
-        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
-        this.upgradeTable = AssetDatabase.LoadAssetAtPath<UpgradeTable>(path);
+        this.upgradeTable = Resources.Load<UpgradeTable>("Stat/UpgradeTable");
         Debug.LogWarning(this.transform.name + ": LoadUpgradeTable", this.gameObject);
     }
 }
