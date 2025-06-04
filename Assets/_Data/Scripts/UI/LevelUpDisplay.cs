@@ -113,8 +113,6 @@ public class LevelUpDisplay : VyesSingleton<LevelUpDisplay>
         {
             this.listCores.Add(item.gameObject);
         }
-
-        Debug.LogWarning(this.transform.name + ": LoadListCores", this.gameObject);
     }
 
     void LoadLevelUpPanel()

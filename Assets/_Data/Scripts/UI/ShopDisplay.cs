@@ -39,17 +39,17 @@ public class ShopDisplay : VyesSingleton<ShopDisplay>
 
         this.choices = this.GetRandomItems(3);
         this.coreIconList[0].sprite = this.choices[0].icon;
-        this.coreNameList[0].text = this.choices[0].name;
+        this.coreNameList[0].text = this.choices[0].itemName;
         this.coreStatsList[0].text = this.choices[0].displayText;
         this.coreCostList[0].text = this.choices[0].cost.ToString();
 
         this.coreIconList[1].sprite = this.choices[1].icon;
-        this.coreNameList[1].text = this.choices[1].name;
+        this.coreNameList[1].text = this.choices[1].itemName;
         this.coreStatsList[1].text = this.choices[1].displayText;
         this.coreCostList[1].text = this.choices[1].cost.ToString();
 
         this.coreIconList[2].sprite = this.choices[2].icon;
-        this.coreNameList[2].text = this.choices[2].name;
+        this.coreNameList[2].text = this.choices[2].itemName;
         this.coreStatsList[2].text = this.choices[2].displayText;
         this.coreCostList[2].text = this.choices[2].cost.ToString();
     }
@@ -116,8 +116,6 @@ public class ShopDisplay : VyesSingleton<ShopDisplay>
             this.transform.Find("Core_1").gameObject,
             this.transform.Find("Core_2").gameObject,
         };
-
-        Debug.LogWarning(this.transform.name + ": LoadListCores", this.gameObject);
     }
 
     void LoadShopPanel()

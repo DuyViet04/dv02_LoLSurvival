@@ -33,6 +33,10 @@ public abstract class VyesSingleton<T> : VyesBehaviour where T : VyesBehaviour
         }
 
         if (_instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
             Debug.LogError("VyesSingleton<" + typeof(T).Name + "> already exists.");
+        }
     }
 }

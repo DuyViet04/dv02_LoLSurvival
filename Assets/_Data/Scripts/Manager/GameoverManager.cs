@@ -3,27 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameoverManager : VyesSingleton<GameoverManager>
 {
-    [SerializeField] private TMP_Text csText;
-
-    private void Start()
+    public void Exit()
     {
-        int csCount = GameManager.Instance.CSCount;
-        this.csText.text = $"CS: {csCount:0}";
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadCSText();
-    }
-
-    void LoadCSText()
-    {
-        if (this.csText != null) return;
-        this.csText = GameObject.Find("CSText").GetComponent<TMP_Text>();
-        Debug.LogWarning(this.transform.name + ": LoadCSText", this.gameObject);
+        SceneLevelManager.Instance.GoToScene("MainMenu");
     }
 }
