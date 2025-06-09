@@ -14,6 +14,9 @@ public class BossAttacking : VyesBehaviour
 
     private void Update()
     {
+        Transform target = GameObject.FindGameObjectWithTag("Player").transform;
+        float dis = this.GetDistanceToTarget(target.position);
+
         AnimatorStateInfo stateInfo = this.animator.GetCurrentAnimatorStateInfo(0);
         if (stateInfo.IsName("Q1") || stateInfo.IsName("Q2") || stateInfo.IsName("Q3"))
         {
@@ -36,10 +39,9 @@ public class BossAttacking : VyesBehaviour
         }
         else
         {
+            if (dis > 5f) return;
             this.Attack();
         }
-
-        Debug.Log(isAttacking);
     }
 
     void Attack()
@@ -48,6 +50,12 @@ public class BossAttacking : VyesBehaviour
         this.animator.SetTrigger("IsAttack");
         this.isCooldown = true;
         this.cooldownTimer = this.cooldownTime;
+    }
+
+    float GetDistanceToTarget(Vector3 targetPosition)
+    {
+        float distance = Vector3.Distance(this.transform.parent.position, targetPosition);
+        return distance;
     }
 
     protected override void LoadComponents()

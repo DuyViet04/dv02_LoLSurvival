@@ -8,12 +8,14 @@ public class BossMoving : MovingToTarget
     [SerializeField] private Animator animator;
     [SerializeField] private MainBossStats bossStats;
     private BossAttacking bossAttacking;
+    private BossLooking bossLooking;
     private float moveSpeed;
 
     protected override void Awake()
     {
         base.Awake();
         this.bossAttacking = this.transform.parent.GetComponentInChildren<BossAttacking>();
+        this.bossLooking = this.transform.parent.GetComponentInChildren<BossLooking>();
     }
 
     private void Update()
@@ -21,10 +23,12 @@ public class BossMoving : MovingToTarget
         if (this.bossAttacking.IsAttacking)
         {
             this.moveSpeed = 0f;
+            this.bossLooking.gameObject.SetActive(false);
         }
         else
         {
             this.moveSpeed = this.bossStats.moveSpeed;
+            this.bossLooking.gameObject.SetActive(true);
         }
 
         this.MoveToTarget(this.moveSpeed);
