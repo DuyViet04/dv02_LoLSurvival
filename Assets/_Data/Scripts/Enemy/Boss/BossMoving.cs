@@ -6,29 +6,29 @@ using UnityEngine;
 public class BossMoving : MovingToTarget
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private MainBossStats bossStats;
+    private BossAttacking bossAttacking;
+    private float moveSpeed;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        this.bossAttacking = this.transform.parent.GetComponentInChildren<BossAttacking>();
+    }
 
     private void Update()
     {
-        float moveSpd;
-        float dis = this.GetDistanceToTarget();
-        if (dis > 5f)
+        if (this.bossAttacking.IsAttacking)
         {
-            moveSpd = this.moveSpeed;
+            this.moveSpeed = 0f;
         }
         else
         {
-            moveSpd = 0;
+            this.moveSpeed = this.bossStats.moveSpeed;
         }
 
-        this.MoveToTarget(moveSpd);
-        this.animator.SetFloat("isMove", moveSpd);
-    }
-
-    float GetDistanceToTarget()
-    {
-        return Vector3.Distance(this.transform.parent.position, this.target.transform.position);
+        this.MoveToTarget(this.moveSpeed);
+        this.animator.SetFloat("MoveSpeed", this.moveSpeed);
     }
 
     protected override void LoadComponents()
@@ -36,6 +36,7 @@ public class BossMoving : MovingToTarget
         base.LoadComponents();
         this.LoadTarget();
         this.LoadAnimator();
+        this.LoadBossStats();
     }
 
     void LoadTarget()
@@ -50,5 +51,12 @@ public class BossMoving : MovingToTarget
         if (this.animator != null) return;
         this.animator = this.transform.parent.GetComponentInChildren<Animator>();
         Debug.LogWarning(this.transform.name + ": LoadAnimator", this.gameObject);
+    }
+
+    void LoadBossStats()
+    {
+        if (this.bossStats != null) return;
+        this.bossStats = SOManager.Instance.GetBossStatsByType(this.transform.parent.name);
+        Debug.LogWarning(this.transform.name + ": LoadBossStats", this.gameObject);
     }
 }

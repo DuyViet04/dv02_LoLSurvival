@@ -19,7 +19,7 @@ public class MeleeEnemyMoving : MovingToTarget
     void LoadStats()
     {
         if (this.stats != null) return;
-        this.stats = SOManager.Instance.GetStatsByType(this.transform.parent.name);
+        this.stats = SOManager.Instance.GetEnemyStatsByType(this.transform.parent.name);
         Debug.LogWarning(this.transform.name + ": LoadStats", this.gameObject);
     }
     void LoadTarget()
