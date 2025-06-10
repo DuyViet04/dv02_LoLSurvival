@@ -32,6 +32,8 @@ public class ShopDisplay : VyesSingleton<ShopDisplay>
 
     public void ShowItemChoices()
     {
+        AudioManager.Instance.PlaySFXClip("Click");
+        
         foreach (GameObject core in this.listCores)
         {
             core.SetActive(true);

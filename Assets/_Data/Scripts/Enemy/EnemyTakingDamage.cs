@@ -35,6 +35,7 @@ public class EnemyTakingDamage : TakingDamage
         }
 
         this.goldDisplay.GetGoldFromKill(this.stats.goldValue);
+        AudioManager.Instance.PlaySFXClip("GetGold");
         this.CreateExp();
         this.ResetStats();
         EnemySpawner.Instance.Despawn(this.transform.parent);

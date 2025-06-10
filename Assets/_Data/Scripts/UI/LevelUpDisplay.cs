@@ -56,6 +56,8 @@ public class LevelUpDisplay : VyesSingleton<LevelUpDisplay>
 
     public void ApplyUpgrade(int index)
     {
+        AudioManager.Instance.PlaySFXClip("Click");
+        
         UpgradeData chosen = this.choicesList[index];
         float finalValue = chosen.value * this.power;
         this.yasuoStats.ApplyUpgrade(chosen.type, finalValue);

@@ -27,6 +27,7 @@ public class ShopManager : VyesSingleton<ShopManager>
 
     public void OpenShop()
     {
+        AudioManager.Instance.PlaySFXClip("OpenShop");   
         this.shopPanel.SetActive(true);
         Time.timeScale = 0;
         ShopDisplay.Instance.ShowItemChoices();
@@ -34,14 +35,16 @@ public class ShopManager : VyesSingleton<ShopManager>
 
     public void ExitShop()
     {
+        AudioManager.Instance.PlaySFXClip("CloseShop");
         this.shopPanel.SetActive(false);
         Time.timeScale = 1;
     }
 
     public void BuyItem(int index)
     {
+        AudioManager.Instance.PlaySFXClip("BuyItem");
         this.itemSlots = this.LoadItemSlots();
-        ItemData item = (ItemData)ShopDisplay.Instance.choices[index];
+        ItemData item = ShopDisplay.Instance.choices[index];
         if (this.IsCanBuy(item, this.inventory))
         {
             this.goldDisplay.GiveGold(item.cost);
@@ -62,6 +65,7 @@ public class ShopManager : VyesSingleton<ShopManager>
 
     public void SellItem()
     {
+        AudioManager.Instance.PlaySFXClip("SellItem");
         ItemData item = this.inventory[this.indexItem];
         this.goldDisplay.Sell(item.cost);
         this.itemCount--;

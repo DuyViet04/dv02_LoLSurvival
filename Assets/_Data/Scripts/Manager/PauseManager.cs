@@ -52,6 +52,7 @@ public class PauseManager : VyesBehaviour
 
     public void ContinueGame()
     {
+        AudioManager.Instance.PlaySFXClip("Click");
         this.pauseGamePanel.SetActive(false);
         Time.timeScale = 1;
 
@@ -70,11 +71,13 @@ public class PauseManager : VyesBehaviour
 
     public void OpenSetting()
     {
+        AudioManager.Instance.PlaySFXClip("Click");
         this.settingPanel.SetActive(true);
     }
 
     public void ExitToMainMenu()
     {
+        AudioManager.Instance.PlaySFXClip("Click");
         Time.timeScale = 1;
         SceneLevelManager.Instance.GoToScene("MainMenu");
     }

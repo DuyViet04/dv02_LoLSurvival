@@ -32,6 +32,7 @@ public class SceneLevelManager : VyesPersistentSingleton<SceneLevelManager>
     public void GoToScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        AudioManager.Instance.PlaySFXClip("Click");
     }
 
     public void QuitGame()

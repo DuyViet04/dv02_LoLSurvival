@@ -32,6 +32,8 @@ public class StatsDisplay : VyesSingleton<StatsDisplay>
 
     public void ShowMainStats()
     {
+        AudioManager.Instance.PlaySFXClip("Click");
+        
         this.mainStatsPanel.SetActive(true);
         Color mainColor = this.mainStats.color;
         mainColor.a = Mathf.Clamp01(0f / 255f);
@@ -45,6 +47,8 @@ public class StatsDisplay : VyesSingleton<StatsDisplay>
 
     public void ShowSecondStats()
     {
+        AudioManager.Instance.PlaySFXClip("Click");
+        
         this.mainStatsPanel.SetActive(false);
         Color mainColor = this.mainStats.color;
         mainColor.a = Mathf.Clamp01(200f / 255f);
