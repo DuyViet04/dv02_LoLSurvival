@@ -23,8 +23,7 @@ public class BossAatroxStats : MainBossStats
         this.haste = 0f;
         this.healingPower = 0f;
     }
-
-    void ResetStats()
+    public override void ResetStats()
     {
         this.bossType = BossType.BossAatrox;
         this.characterName = "BossAatrox";
@@ -43,5 +42,12 @@ public class BossAatroxStats : MainBossStats
         this.omnivamp = 0f;
         this.haste = 0f;
         this.healingPower = 0f;
+    }
+
+    public override MainBossStats GetBaseStats()
+    {
+        BossAatroxStats newStats = CreateInstance<BossAatroxStats>();
+        newStats.ResetStats();
+        return newStats;
     }
 }

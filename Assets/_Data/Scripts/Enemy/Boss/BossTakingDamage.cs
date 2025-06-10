@@ -18,6 +18,13 @@ public class BossTakingDamage : TakingDamage
         this.currentHp = this.maxHp;
     }
 
+    private void Update()
+    {
+        this.maxHp = this.bossStats.health;
+        this.armor = this.bossStats.armor;
+        this.magicResistance = this.bossStats.magicResistance;
+    }
+
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);

@@ -1,7 +1,10 @@
 ﻿using System;
 using UnityEngine;
 
-public class MainBossStats : MainCharacterStats
+public abstract class MainBossStats : MainCharacterStats
 {
      public BossType bossType;
+
+     public abstract MainBossStats GetBaseStats();
+     public abstract void ResetStats();
 }

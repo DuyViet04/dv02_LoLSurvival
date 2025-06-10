@@ -16,7 +16,7 @@ public class EnemyScaleStats : VyesBehaviour
     {
         stat.health = baseStat.health * (1 + level * 0.1f);
         stat.attackData.baseDamage = baseStat.attackData.baseDamage * (1 + level * 0.1f);
-        stat.moveSpeed = baseStat.moveSpeed * (1 + level * 0.1f);
+        stat.moveSpeed = baseStat.moveSpeed * (1 + level * 0.01f);
         stat.armor = baseStat.armor * (1 + level * 0.1f);
         stat.magicResistance = baseStat.magicResistance * (1 + level * 0.1f);
         stat.expValue = baseStat.expValue * (1 + level * 0.1f);

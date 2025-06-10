@@ -5701,6 +5701,7 @@ Transform:
   - {fileID: 298185959}
   - {fileID: 1779344792}
   - {fileID: 59001384}
+  - {fileID: 2142541674}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16001,6 +16002,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 8d5602f28803513488bd0d746beb7a7f, type: 2}
   goldDisplay: {fileID: 794445066}
+--- !u!114 &1309698979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49635663e7394d3a98ca697327bc3d06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: BossAatrox
+  health: 1300
+  healthRegen: 6
+  attackDamage: 120
+  abilityPower: 0
+  armor: 76
+  magicResistance: 64
+  moveSpeed: 3
+  criticalChance: 0
+  criticalDamage: 0
+  armorPenetration: 0
+  magicPenetration: 0
+  lifeSteal: 0
+  omnivamp: 0
+  haste: 0
+  healingPower: 0
+  pickUpRange: 0
+  expMultiplier: 0
+  bossType: 0
 --- !u!1 &1311787867
 GameObject:
   m_ObjectHideFlags: 0
@@ -27243,6 +27275,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 6796d090ecc48a8438c93728bcf1e73c, type: 2}
   goldDisplay: {fileID: 794445066}
+--- !u!1 &2142541673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2142541674}
+  - component: {fileID: 2142541675}
+  m_Layer: 0
+  m_Name: BossScaling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2142541674
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142541673}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 394608067}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2142541675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142541673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 884f14a39ba84384790a5350bf351c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: 981269b56c44c7e4a80361152c9a6824, type: 2}
+  levelUp: {fileID: 778320443}
+  baseStats: {fileID: 1309698979}
 --- !u!1 &7453608248505202
 GameObject:
   m_ObjectHideFlags: 0
