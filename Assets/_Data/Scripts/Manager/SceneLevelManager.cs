@@ -7,8 +7,6 @@ using UnityEngine.UI;
 public class SceneLevelManager : VyesPersistentSingleton<SceneLevelManager>
 {
     [SerializeField] private Button playButton;
-
-    [FormerlySerializedAs("quitButton")] [SerializeField]
     private Button quitGameButton;
 
     private void FixedUpdate()

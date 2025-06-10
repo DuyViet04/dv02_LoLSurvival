@@ -8,10 +8,12 @@ public class PauseManager : VyesBehaviour
     [SerializeField] private GameObject pauseGamePanel;
     [SerializeField] private GameObject shopPanel;
     [SerializeField] private GameObject itemSlot;
+    public GameObject settingPanel;
     private List<Image> itemSlots;
     private List<Sprite> itemSprites;
     private bool isLevelUp;
     private bool isShopping;
+
 
     protected override void Awake()
     {
@@ -45,6 +47,7 @@ public class PauseManager : VyesBehaviour
         StatsDisplay.Instance.UpdateSecondData();
 
         this.UpdateItem();
+        this.LoadSettingPanel();
     }
 
     public void ContinueGame()
@@ -63,6 +66,17 @@ public class PauseManager : VyesBehaviour
             this.shopPanel.SetActive(true);
             Time.timeScale = 0;
         }
+    }
+
+    public void OpenSetting()
+    {
+        this.settingPanel.SetActive(true);
+    }
+
+    public void ExitToMainMenu()
+    {
+        Time.timeScale = 1;
+        SceneLevelManager.Instance.GoToScene("MainMenu");
     }
 
     void UpdateItem()
@@ -124,5 +138,12 @@ public class PauseManager : VyesBehaviour
         if (this.itemSlot != null) return;
         this.itemSlot = GameObject.Find("ItemSlot");
         Debug.LogWarning(this.transform.name + ": LoadItemSlot", this.gameObject);
+    }
+
+    void LoadSettingPanel()
+    {
+        if (this.settingPanel != null) return;
+        this.settingPanel = SettingDisplay.Instance.SettingPanel;
+        Debug.LogWarning(this.transform.name + ": LoadSettingPanel", this.gameObject);
     }
 }
