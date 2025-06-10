@@ -43,6 +43,9 @@ public class BossTakingDamage : TakingDamage
 
     protected override void Despawn()
     {
+        GameManager.Instance.MainStatsData = StatsDisplay.Instance.GetLastMainData();
+        GameManager.Instance.SecondStatsData = StatsDisplay.Instance.GetLastSecondData();
+        GameManager.Instance.ItemSprites = ShopManager.Instance.GetLastItem();
         SceneLevelManager.Instance.GoToScene("GameVictory");
     }
 

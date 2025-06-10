@@ -6,13 +6,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameoverManager : VyesSingleton<GameoverManager>
+public class EndGameManager : VyesPersistentSingleton<EndGameManager>
 {
     [SerializeField] private Button exitButton;
 
-    public void Exit()
+    public void Update()
     {
-        if (SceneManager.GetActiveScene().name == "GameOver")
+        if ((SceneManager.GetActiveScene().name == "GameOver") || (SceneManager.GetActiveScene().name == "GameVictory"))
         {
             this.LoadExitButton();
         }
@@ -22,12 +22,6 @@ public class GameoverManager : VyesSingleton<GameoverManager>
             this.exitButton.onClick.RemoveAllListeners();
             this.exitButton.onClick.AddListener(() => SceneLevelManager.Instance.GoToScene("MainMenu"));
         }
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadExitButton();
     }
 
     void LoadExitButton()

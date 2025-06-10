@@ -27,7 +27,7 @@ public class TornadoBehaviour : DealingDamage
     private void OnTriggerEnter(Collider other)
     {
         Transform parent = other.transform.parent;
-        if (parent != null && parent.CompareTag("Enemy"))
+        if (parent != null && (parent.CompareTag("Enemy") || parent.CompareTag("Boss")))
         {
             this.attackDamage = this.yasuoStats.attackDamage;
             this.abilityPower = this.yasuoStats.abilityPower;

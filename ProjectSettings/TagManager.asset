@@ -8,6 +8,7 @@ TagManager:
   - Weapon
   - Item
   - Shop
+  - Boss
   layers:
   - Default
   - TransparentFX

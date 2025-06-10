@@ -33,7 +33,7 @@ public class SceneLevelManager : VyesPersistentSingleton<SceneLevelManager>
 
     public void GoToScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 
     public void QuitGame()
