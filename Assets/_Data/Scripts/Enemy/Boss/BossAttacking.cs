@@ -1,16 +1,16 @@
 using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class BossAttacking : VyesBehaviour
 {
     [SerializeField] private Animator animator;
-    private float cooldownTime = 12f;
+    [SerializeField] private BossAatroxSkill bossAatroxSkill;
     private float cooldownTimer;
     private bool isCooldown = false;
-    public bool IsCooldown => this.isCooldown;
     private bool isAttacking = false;
     public bool IsAttacking => this.isAttacking;
+    private string currentAnim;
+    public string CurrentAnim => this.currentAnim;
 
     private void Update()
     {
@@ -26,6 +26,8 @@ public class BossAttacking : VyesBehaviour
         {
             this.isAttacking = false;
         }
+
+        this.currentAnim = this.GetCurrentAnim(stateInfo);
 
         if (this.isCooldown)
         {
@@ -49,7 +51,7 @@ public class BossAttacking : VyesBehaviour
         if (this.isCooldown) return;
         this.animator.SetTrigger("IsAttack");
         this.isCooldown = true;
-        this.cooldownTimer = this.cooldownTime;
+        this.cooldownTimer = this.bossAatroxSkill.bossAatroxSkillData[0].cooldown;
     }
 
     float GetDistanceToTarget(Vector3 targetPosition)
@@ -58,10 +60,29 @@ public class BossAttacking : VyesBehaviour
         return distance;
     }
 
+    string GetCurrentAnim(AnimatorStateInfo stateInfo)
+    {
+        if (stateInfo.IsName("Q1"))
+        {
+            return "Skill1";
+        }
+        else if (stateInfo.IsName("Q2"))
+        {
+            return "Skill1_1";
+        }
+        else if (stateInfo.IsName("Q3"))
+        {
+            return "Skill1_2";
+        }
+
+        return "Unknown";
+    }
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadAnimator();
+        this.LoadBossAatroxSkill();
     }
 
     void LoadAnimator()
@@ -69,5 +90,12 @@ public class BossAttacking : VyesBehaviour
         if (this.animator != null) return;
         this.animator = this.transform.parent.GetComponentInChildren<Animator>();
         Debug.LogWarning(this.transform.name + ": LoadAnimator", this.gameObject);
+    }
+
+    void LoadBossAatroxSkill()
+    {
+        if (this.bossAatroxSkill != null) return;
+        this.bossAatroxSkill = Resources.Load<BossAatroxSkill>("Skill/Boss/BossAatroxSkill");
+        Debug.LogWarning(this.transform.name + ": LoadBossAatroxSkill", this.gameObject);
     }
 }
