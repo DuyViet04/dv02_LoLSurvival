@@ -2206,7 +2206,7 @@ RectTransform:
   - {fileID: 1778112794}
   - {fileID: 1931450588}
   m_Father: {fileID: 255831239}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3548,9 +3548,9 @@ RectTransform:
   - {fileID: 1533184272}
   - {fileID: 1743122811}
   - {fileID: 116606857}
+  - {fileID: 142802631}
   - {fileID: 1312197014}
   - {fileID: 901364039}
-  - {fileID: 142802631}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3591,7 +3591,7 @@ MonoBehaviour:
   yasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   shopPanel: {fileID: 142802630}
   goldDisplay: {fileID: 794445066}
-  itemSlot: {fileID: 1928716188}
+  itemSlot: {fileID: 1995927525}
   sellButton: {fileID: 1931450587}
   itemBackground: {fileID: -1485911640, guid: 3f2e6d8ba3470b144929a5b34b03182c, type: 3}
 --- !u!114 &255831242
@@ -12195,7 +12195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &901364039
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12212,7 +12212,7 @@ RectTransform:
   - {fileID: 861841861}
   - {fileID: 1571278832}
   m_Father: {fileID: 255831239}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -16398,7 +16398,7 @@ RectTransform:
   - {fileID: 2089952525}
   - {fileID: 1928716189}
   m_Father: {fileID: 255831239}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -27398,7 +27398,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1485911640, guid: 3f2e6d8ba3470b144929a5b34b03182c, type: 3}
+  m_Sprite: {fileID: -192074899, guid: f71c743c061da3d42ab51dfd72ca75c1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -18,7 +18,7 @@ public class Skill1Attack : VyesBehaviour
     private void Update()
     {
         if (Time.timeScale == 0) return;
-   
+
         this.cooldownTime =
             CooldownCalculator.GetCooldown(this.yasuoSkill.yasuoSkillData[1].cooldown, this.yasuoStats.haste);
 
@@ -44,6 +44,7 @@ public class Skill1Attack : VyesBehaviour
     void Attack()
     {
         if (this.isCooldown) return;
+        AudioManager.Instance.PlaySFXClip("YasuoSkill1");
         this.yasuoSkill.lastSkillIndex = 1;
         this.animator.SetInteger("currentSkill", 1);
         Quaternion rotation = Quaternion.Euler(-90, this.transform.parent.eulerAngles.y, 0);

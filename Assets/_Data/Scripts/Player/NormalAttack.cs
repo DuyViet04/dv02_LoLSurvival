@@ -35,6 +35,7 @@ public class NormalAttack : VyesBehaviour
     void Attack()
     {
         if (this.isCooldown) return;
+        AudioManager.Instance.PlaySFXClip("YasuoNormalAttack");
         this.yasuoSkill.lastSkillIndex = 0;
         this.animator.SetInteger("currentSkill", 0);
         this.isCooldown = true;
