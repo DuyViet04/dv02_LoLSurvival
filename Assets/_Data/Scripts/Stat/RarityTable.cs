@@ -11,7 +11,13 @@ public class RarityTable : ScriptableObject
     private void Reset()
     {
         this.rarities.Clear();
-           this.LoadData();
+        this.LoadData();
+    }
+
+    public void ResetRarityTable()
+    {
+        this.rarities.Clear();
+        this.LoadData();
     }
 
     public RarityType GetRandomRarity()

@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : VyesPersistentSingleton<GameManager>
 {
     [SerializeField] private YasuoStats yasuoStats;
+    [SerializeField] private RarityTable rarityTable;
     private int csCount;
     private List<Sprite> itemSprites;
     private List<TMP_Text> mainStatsData;
@@ -53,6 +54,7 @@ public class GameManager : VyesPersistentSingleton<GameManager>
     {
         base.LoadComponents();
         this.LoadYasuoStats();
+        this.LoadRarityTable();
     }
 
     void LoadYasuoStats()
@@ -62,9 +64,17 @@ public class GameManager : VyesPersistentSingleton<GameManager>
         Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
     }
 
+    void LoadRarityTable()
+    {
+        if (this.rarityTable != null) return;
+        this.rarityTable = Resources.Load<RarityTable>("Stat/RarityTable");
+        Debug.LogWarning(this.transform.name + ": LoadRarityTable", this.gameObject);
+    }
+
     void ResetStats()
     {
         this.yasuoStats.ResetStats();
+        this.rarityTable.ResetRarityTable();
 
         List<MainEnemyStats> list = SOManager.Instance.GetEnemyStatsList();
         foreach (MainEnemyStats item in list)

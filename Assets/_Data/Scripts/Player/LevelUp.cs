@@ -9,16 +9,9 @@ public class LevelUp : VyesBehaviour
     [SerializeField] private GameObject levelUpPanel;
     [SerializeField] private Image expBar;
     [SerializeField] private TMP_Text levelText;
-    private RarityTable rarityTable;
     private float currentLv = 1;
     private float maxExp;
     private float currentExp;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        this.rarityTable = Instantiate(this.baseRarityTable);
-    }
 
     private void Start()
     {
@@ -41,7 +34,7 @@ public class LevelUp : VyesBehaviour
 
     void IncreaseLevel()
     {
-        this.IncreaseRarity(this.rarityTable);
+        this.IncreaseRarity(this.baseRarityTable);
 
         this.levelUpPanel.SetActive(true);
         Time.timeScale = 0;
