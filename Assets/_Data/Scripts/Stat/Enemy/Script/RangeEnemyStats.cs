@@ -12,7 +12,7 @@ public class RangeEnemyStats : MainEnemyStats
         {
             attackType = AttackType.NormalAttack,
             damageType = DamageType.PhysicDamage,
-            baseDamage = 42f,
+            baseDamage = 21f,
             bonusAD = 0f,
             bonusAP = 0f,
             isCritical = false,
@@ -44,7 +44,7 @@ public class RangeEnemyStats : MainEnemyStats
         {
             attackType = AttackType.NormalAttack,
             damageType = DamageType.PhysicDamage,
-            baseDamage = 42f,
+            baseDamage = 21f,
             bonusAD = 0f,
             bonusAP = 0f,
             isCritical = false,

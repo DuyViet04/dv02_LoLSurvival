@@ -11,7 +11,7 @@ public class CannonEnemyStats : MainEnemyStats
         {
             attackType = AttackType.NormalAttack,
             damageType = DamageType.PhysicDamage,
-            baseDamage = 75f,
+            baseDamage = 37.5f,
             bonusAD = 0f,
             bonusAP = 0f,
             isCritical = false,
@@ -36,7 +36,7 @@ public class CannonEnemyStats : MainEnemyStats
         {
             attackType = AttackType.NormalAttack,
             damageType = DamageType.PhysicDamage,
-            baseDamage = 75f,
+            baseDamage = 37.5f,
             bonusAD = 0f,
             bonusAP = 0f,
             isCritical = false,
