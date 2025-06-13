@@ -1,7 +1,4 @@
-using System;
-using UnityEditor;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(CapsuleCollider))]
 public class YasuoWeapon : DealingDamage
