@@ -18,7 +18,7 @@ public class RangeEnemyStats : MainEnemyStats
             isCritical = false,
             cooldown = 0f
         };
-        this.attackSpeed = 0.333f;
+        this.attackSpeed = 0.25f;
         this.moveSpeed = 1.5f;
         this.armor = 1f;
         this.magicResistance = 1f;
@@ -50,7 +50,7 @@ public class RangeEnemyStats : MainEnemyStats
             isCritical = false,
             cooldown = 0f
         };
-        this.attackSpeed = 0.333f;
+        this.attackSpeed = 0.25f;
         this.moveSpeed = 1.5f;
         this.armor = 1f;
         this.magicResistance = 1f;

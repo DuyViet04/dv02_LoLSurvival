@@ -8,10 +8,22 @@ public class EnemyAttacking : VyesBehaviour
 
     private void Update()
     {
+        bool isOnScreen = this.IsOnScreen();
+        if (!isOnScreen) return;
+
         this.attackTimer += Time.deltaTime; //Tính thời gian giữa 2 lần bắn
         if (this.attackTimer < this.GetAttackDelay(this.stats.attackSpeed)) return;
         this.attackTimer = 0f;
         this.Attack();
+    }
+
+    bool IsOnScreen()
+    {
+        Vector3 screenPoint = Camera.main.WorldToViewportPoint(this.transform.parent.position);
+        bool isOnScreen = screenPoint.x >= 0 && screenPoint.x <= 1 &&
+                          screenPoint.y >= 0 && screenPoint.y <= 1 &&
+                          screenPoint.z > 0;
+        return isOnScreen;
     }
 
     //Spawn bullet mỗi khi attack

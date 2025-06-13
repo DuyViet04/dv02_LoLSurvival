@@ -17,7 +17,7 @@ public class CannonEnemyStats : MainEnemyStats
             isCritical = false,
             cooldown = 0f
         };
-        this.attackSpeed = 0.5f;
+        this.attackSpeed = 0.33f;
         this.moveSpeed = 1.5f;
         this.armor = 1f;
         this.magicResistance = 1f;
@@ -42,7 +42,7 @@ public class CannonEnemyStats : MainEnemyStats
             isCritical = false,
             cooldown = 0f
         };
-        this.attackSpeed = 0.5f;
+        this.attackSpeed = 0.33f;
         this.moveSpeed = 1.5f;
         this.armor = 1f;
         this.magicResistance = 1f;
