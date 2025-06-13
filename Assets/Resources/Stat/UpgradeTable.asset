@@ -20,7 +20,7 @@ MonoBehaviour:
   - icon: {fileID: 21300000, guid: 7e56a630275e2a34aa2618346ff4d985, type: 3}
     type: 1
     name: "H\u1ED3i m\xE1u:"
-    value: 2
+    value: 5
   - icon: {fileID: 21300000, guid: d34f17bd26010e14b976f98e6c6a89cc, type: 3}
     type: 2
     name: "S\u1EE9c m\u1EA1nh v\u1EADt l\xFD:"

@@ -10,7 +10,7 @@ public class YasuoStats : MainCharacterStats
     {
         this.characterName = "Yasuo";
         this.health = 590f;
-        this.healthRegen = 2f;
+        this.healthRegen = 5f;
         this.attackDamage = 60f;
         this.abilityPower = 0;
         this.armor = 32f;
@@ -32,7 +32,7 @@ public class YasuoStats : MainCharacterStats
     {
         this.characterName = "Yasuo";
         this.health = 590f;
-        this.healthRegen = 2f;
+        this.healthRegen = 5f;
         this.attackDamage = 60f;
         this.abilityPower = 0;
         this.armor = 32f;
