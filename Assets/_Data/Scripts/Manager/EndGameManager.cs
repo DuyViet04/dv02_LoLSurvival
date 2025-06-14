@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +6,8 @@ using UnityEngine.UI;
 public class EndGameManager : VyesPersistentSingleton<EndGameManager>
 {
     [SerializeField] private Button exitButton;
+    [SerializeField] private TMP_Text csPointText;
+    [SerializeField] private TalentTable talentTable;
     private bool hasPlayedClip = false;
 
     public void Update()
@@ -16,6 +15,8 @@ public class EndGameManager : VyesPersistentSingleton<EndGameManager>
         if (SceneManager.GetActiveScene().name == "GameOver")
         {
             this.LoadExitButton();
+            this.LoadCSPointText();
+            this.csPointText.text = $"Điểm CS: +{GameManager.Instance.CSCount}";
             if (!this.hasPlayedClip)
             {
                 AudioManager.Instance.PlaySFXClip("Defeat");
@@ -25,6 +26,8 @@ public class EndGameManager : VyesPersistentSingleton<EndGameManager>
         else if (SceneManager.GetActiveScene().name == "GameVictory")
         {
             this.LoadExitButton();
+            this.LoadCSPointText();
+            this.csPointText.text = $"Điểm CS: +{GameManager.Instance.CSCount}";
             if (!this.hasPlayedClip)
             {
                 AudioManager.Instance.PlaySFXClip("Victory");
@@ -43,10 +46,30 @@ public class EndGameManager : VyesPersistentSingleton<EndGameManager>
         }
     }
 
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadTalentTable();
+    }
+
     void LoadExitButton()
     {
         if (this.exitButton != null) return;
         this.exitButton = GameObject.Find("ExitButton").GetComponent<Button>();
         Debug.LogWarning(this.transform.name + ": LoadExitButton", this.gameObject);
+    }
+
+    void LoadCSPointText()
+    {
+        if (this.csPointText != null) return;
+        this.csPointText = GameObject.Find("CSPoint").GetComponent<TMP_Text>();
+        Debug.LogWarning(this.transform.name + ": LoadCSPointText", this.gameObject);
+    }
+
+    void LoadTalentTable()
+    {
+        if (this.talentTable != null) return;
+        this.talentTable = Resources.Load<TalentTable>("Stat/TalentTable");
+        Debug.LogWarning(this.transform.name + ": LoadTalentTable", this.gameObject);
     }
 }

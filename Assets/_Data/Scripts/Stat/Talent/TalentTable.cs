@@ -4,50 +4,61 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TalentTable", menuName = "TalentTable")]
 public class TalentTable : ScriptableObject
 {
-    public List<TalentData> attackTalent;
-    public List<TalentData> defenseTalent;
-    public List<TalentData> otherTalent;
+    public int csPoint;
+    public List<TalentData> talents;
 
-    void LoadAttackTalent()
+    void Reset()
     {
-        this.attackTalent.Add(AddData(SpriteFinder.GetStatIconSprite("AttackDamage"), UpgradeType.AttackDamage, 5));
-        this.attackTalent.Add(AddData((SpriteFinder.GetStatIconSprite("AbilityPower")), UpgradeType.AbilityPower, 8));
-        this.attackTalent.Add(AddData(SpriteFinder.GetStatIconSprite("CriticalChance"), UpgradeType.CriticalChance, 5));
-        this.attackTalent.Add(AddData(SpriteFinder.GetStatIconSprite("CriticalDamage"), UpgradeType.CriticalDamage, 5));
-        this.attackTalent.Add(AddData(SpriteFinder.GetStatIconSprite("ArmorPenetration"), UpgradeType.ArmorPenetration,
-            5));
-        this.attackTalent.Add(AddData(SpriteFinder.GetStatIconSprite("MagicPenetration"), UpgradeType.MagicPenetration,
-            5));
-        this.attackTalent.Add(AddData(SpriteFinder.GetStatIconSprite("Haste"), UpgradeType.Haste, 5));
+        this.talents.Clear();
+        this.LoadData();
     }
 
-    void LoadDefenseTalent()
+    void LoadData()
     {
-        this.defenseTalent.Add(AddData(SpriteFinder.GetStatIconSprite("Health"), UpgradeType.Health, 50));
-        this.defenseTalent.Add(AddData(SpriteFinder.GetStatIconSprite("HealthRegen"), UpgradeType.HealthRegen, 5));
-        this.defenseTalent.Add(AddData(SpriteFinder.GetStatIconSprite("HealingPower"), UpgradeType.HealingPower, 5));
-        this.defenseTalent.Add(AddData(SpriteFinder.GetStatIconSprite("Armor"), UpgradeType.Armor, 5));
-        this.defenseTalent.Add(AddData(SpriteFinder.GetStatIconSprite("MagicResistance"), UpgradeType.MagicResistance,
-            5));
-        this.defenseTalent.Add(AddData(SpriteFinder.GetStatIconSprite("MoveSpeed"), UpgradeType.MoveSpeed, 5));
-        this.defenseTalent.Add(AddData(SpriteFinder.GetStatIconSprite("LifeSteal"), UpgradeType.LifeSteal, 3));
-        this.defenseTalent.Add(AddData(SpriteFinder.GetStatIconSprite("Omnivamp"), UpgradeType.Omnivamp, 5));
+        this.AddTalent(SpriteFinder.GetStatIconSprite("Health"), UpgradeType.Health, 0, "Máu tối đa:", 0, 50);
+        this.AddTalent(SpriteFinder.GetStatIconSprite("HealthRegen"), UpgradeType.HealthRegen, 0, "Hồi máu:", 0, 50);
+        this.AddTalent(SpriteFinder.GetStatIconSprite("AttackDamage"), UpgradeType.AttackDamage, 0, "Sức mạnh vật lý:",
+            0, 50);
+        this.AddTalent(SpriteFinder.GetStatIconSprite("AbilityPower"), UpgradeType.AbilityPower, 0,
+            "Sức mạnh phép thuật:", 0, 50);
+        this.AddTalent(SpriteFinder.GetStatIconSprite("Armor"), UpgradeType.Armor, 0, "Giáp:", 0, 50);
+        this.AddTalent(SpriteFinder.GetStatIconSprite("MagicResistance"), UpgradeType.MagicResistance, 0, "Kháng phép:",
+            0, 50);
+        this.AddTalent(SpriteFinder.GetStatIconSprite("MoveSpeed"), UpgradeType.MoveSpeed, 0, "Tốc độ di chuyển(%):", 0,
+            50);
+        this.AddTalent(SpriteFinder.GetStatIconSprite("CriticalChance"), UpgradeType.CriticalChance, 0,
+            "Tỉ lệ chí mạng(%):", 0, 50);
+        this.AddTalent(SpriteFinder.GetStatIconSprite("CriticalDamage"), UpgradeType.CriticalDamage, 0,
+            "Sát thương chí mạng(%):", 0, 50);
+        this.AddTalent(SpriteFinder.GetStatIconSprite("ArmorPenetration"), UpgradeType.ArmorPenetration, 0,
+            "Xuyên giáp:", 0, 50);
+        this.AddTalent(SpriteFinder.GetStatIconSprite("MagicPenetration"), UpgradeType.MagicPenetration, 0,
+            "Xuyên kháng phép:", 0, 50);
+        this.AddTalent(SpriteFinder.GetStatIconSprite("LifeSteal"), UpgradeType.LifeSteal, 0, "Hút máu(%):", 0, 50);
+        this.AddTalent(SpriteFinder.GetStatIconSprite("Omnivamp"), UpgradeType.Omnivamp, 0, "Hút máu toàn phần(%):", 0,
+            50);
+        this.AddTalent(SpriteFinder.GetStatIconSprite("Haste"), UpgradeType.Haste, 0, "Hồi chiêu:", 0, 50);
+        this.AddTalent(SpriteFinder.GetStatIconSprite("HealingPower"), UpgradeType.HealingPower, 0,
+            "Sức mạnh hôì phục(%):", 0, 50);
+        this.AddTalent(SpriteFinder.GetStatIconSprite("PickUpRange"), UpgradeType.PickUpRange, 0, "Tầm nhặt(%):", 0,
+            50);
+        this.AddTalent(SpriteFinder.GetStatIconSprite("ExpMultiplier"), UpgradeType.ExpMultiplier, 0, "Kinh nghiệm(%):",
+            0, 50);
     }
 
-    void LoadOtherTalent()
+    void AddTalent(Sprite icon, UpgradeType type, int currentLevel, string effectName, float effectValue,
+        int pointCost)
     {
-        this.otherTalent.Add(AddData(SpriteFinder.GetStatIconSprite("PickUpRange"), UpgradeType.PickUpRange, 10));
-        this.otherTalent.Add(AddData(SpriteFinder.GetStatIconSprite("ExpMultiplier"), UpgradeType.ExpMultiplier, 10));
-    }
-
-    TalentData AddData(Sprite icon, UpgradeType type, float value)
-    {
-        TalentData talentData = new TalentData
+        TalentData talent = new TalentData
         {
             icon = icon,
             type = type,
-            value = value
+            currentLevel = currentLevel,
+            effectName = effectName,
+            effectValue = effectValue,
+            pointCost = pointCost
         };
-        return talentData;
+
+        this.talents.Add(talent);
     }
 }

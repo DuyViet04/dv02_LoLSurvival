@@ -28,7 +28,7 @@ public class YasuoStats : MainCharacterStats
         this.expMultiplier = 0f;
     }
 
-    public void ResetStats()
+    public void ResetToBaseStats()
     {
         this.characterName = "Yasuo";
         this.health = 590f;
@@ -51,6 +51,28 @@ public class YasuoStats : MainCharacterStats
 
         this.baseMoveSpeed = this.moveSpeed;
         this.basePickUpRange = this.pickUpRange;
+    }
+
+    public void ResetStats(TalentTable talentTable)
+    {
+        this.characterName = "Yasuo";
+        this.health = 590f + talentTable.talents[0].effectValue;
+        this.healthRegen = 5f + talentTable.talents[1].effectValue;
+        this.attackDamage = 60f + talentTable.talents[2].effectValue;
+        this.abilityPower = 0 + talentTable.talents[3].effectValue;
+        this.armor = 32f + talentTable.talents[4].effectValue;
+        this.magicResistance = 32f + talentTable.talents[5].effectValue;
+        this.moveSpeed = 3.45f + (3.45f * (talentTable.talents[6].effectValue / 100f));
+        this.criticalChance = 0f + (talentTable.talents[7].effectValue * 2);
+        this.criticalDamage = (175 * 0.9f) + (talentTable.talents[8].effectValue * 0.9f);
+        this.armorPenetration = 0f + talentTable.talents[9].effectValue;
+        this.magicPenetration = 0f + talentTable.talents[10].effectValue;
+        this.lifeSteal = 0f + talentTable.talents[11].effectValue;
+        this.omnivamp = 0f + talentTable.talents[12].effectValue;
+        this.haste = 0f + talentTable.talents[13].effectValue;
+        this.healingPower = 0f + talentTable.talents[14].effectValue;
+        this.pickUpRange = 1f + (1f * (talentTable.talents[15].effectValue / 100f));
+        this.expMultiplier = 0f + talentTable.talents[16].effectValue;
     }
 
     public void ApplyUpgrade(UpgradeType type, float value)

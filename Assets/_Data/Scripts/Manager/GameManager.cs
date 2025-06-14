@@ -6,6 +6,7 @@ public class GameManager : VyesPersistentSingleton<GameManager>
 {
     [SerializeField] private YasuoStats yasuoStats;
     [SerializeField] private RarityTable rarityTable;
+    [SerializeField] private TalentTable talentTable;
     private int csCount;
     private List<Sprite> itemSprites;
     private List<TMP_Text> mainStatsData;
@@ -41,6 +42,18 @@ public class GameManager : VyesPersistentSingleton<GameManager>
         set => this.secondStatsData = value;
     }
 
+    void ResetStats()
+    {
+        this.yasuoStats.ResetStats(this.talentTable);
+        this.rarityTable.ResetRarityTable();
+
+        List<MainEnemyStats> list = SOManager.Instance.GetEnemyStatsList();
+        foreach (MainEnemyStats item in list)
+        {
+            item.ResetStats();
+        }
+    }
+
 
     //Reset giá trị của các SO về mặc định
 
@@ -55,6 +68,7 @@ public class GameManager : VyesPersistentSingleton<GameManager>
         base.LoadComponents();
         this.LoadYasuoStats();
         this.LoadRarityTable();
+        this.LoadTalentTable();
     }
 
     void LoadYasuoStats()
@@ -71,15 +85,10 @@ public class GameManager : VyesPersistentSingleton<GameManager>
         Debug.LogWarning(this.transform.name + ": LoadRarityTable", this.gameObject);
     }
 
-    void ResetStats()
+    void LoadTalentTable()
     {
-        this.yasuoStats.ResetStats();
-        this.rarityTable.ResetRarityTable();
-
-        List<MainEnemyStats> list = SOManager.Instance.GetEnemyStatsList();
-        foreach (MainEnemyStats item in list)
-        {
-            item.ResetStats();
-        }
+        if (this.talentTable != null) return;
+        this.talentTable = Resources.Load<TalentTable>("Stat/TalentTable");
+        Debug.LogWarning(this.transform.name + ": LoadTalentTable", this.gameObject);
     }
 }

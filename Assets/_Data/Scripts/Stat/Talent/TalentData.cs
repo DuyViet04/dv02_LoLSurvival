@@ -5,6 +5,8 @@ public class TalentData
 {
     public Sprite icon;
     public UpgradeType type;
-    public float value;
-    public int level;
+    public int currentLevel;
+    public string effectName;
+    public float effectValue;
+    public int pointCost;
 }
