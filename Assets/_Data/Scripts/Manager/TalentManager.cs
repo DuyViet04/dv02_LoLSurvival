@@ -30,6 +30,7 @@ public class TalentManager : VyesSingleton<TalentManager>
         if (this.talentTable.csPoint < this.talentTable.talents[index].pointCost) return;
         this.talentTable.talents[index].currentLevel++;
         this.talentTable.csPoint -= this.talentTable.talents[index].pointCost;
+        this.csPointText.text = $"Điểm CS: {this.talentTable.csPoint}";
         UpgradeData upgrade = this.upgradeTable.upgrades[index];
         this.talentTable.talents[index].effectValue += upgrade.value;
         this.talentTable.talents[index].pointCost += 50;
