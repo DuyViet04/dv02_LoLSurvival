@@ -26,28 +26,6 @@ public class YasuoStats : MainCharacterStats
         this.healingPower = 0f;
         this.pickUpRange = 1f;
         this.expMultiplier = 0f;
-    }
-
-    public void ResetToBaseStats()
-    {
-        this.characterName = "Yasuo";
-        this.health = 590f;
-        this.healthRegen = 5f;
-        this.attackDamage = 60f;
-        this.abilityPower = 0;
-        this.armor = 32f;
-        this.magicResistance = 32f;
-        this.moveSpeed = 3.45f;
-        this.criticalChance = 0f;
-        this.criticalDamage = 175 * 0.9f;
-        this.armorPenetration = 0f;
-        this.magicPenetration = 0f;
-        this.lifeSteal = 0f;
-        this.omnivamp = 0f;
-        this.haste = 0f;
-        this.healingPower = 0f;
-        this.pickUpRange = 1f;
-        this.expMultiplier = 0f;
 
         this.baseMoveSpeed = this.moveSpeed;
         this.basePickUpRange = this.pickUpRange;

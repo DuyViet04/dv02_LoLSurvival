@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Yasuo
   health: 590
-  healthRegen: 2
+  healthRegen: 5
   attackDamage: 60
   abilityPower: 0
   armor: 32

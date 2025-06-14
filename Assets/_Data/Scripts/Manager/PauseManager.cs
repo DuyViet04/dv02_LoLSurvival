@@ -79,7 +79,11 @@ public class PauseManager : VyesBehaviour
     {
         AudioManager.Instance.PlaySFXClip("Click");
         Time.timeScale = 1;
-        SceneLevelManager.Instance.GoToScene("MainMenu");
+        GameManager.Instance.CSCount = CSDisplay.Instance.CSCount;
+        GameManager.Instance.MainStatsData = StatsDisplay.Instance.GetLastMainData();
+        GameManager.Instance.SecondStatsData = StatsDisplay.Instance.GetLastSecondData();
+        GameManager.Instance.ItemSprites = ShopManager.Instance.GetLastItem();
+        SceneLevelManager.Instance.GoToScene("GameOver");
     }
 
     void UpdateItem()

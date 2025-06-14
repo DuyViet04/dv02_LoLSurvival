@@ -48,6 +48,7 @@ public class TalentManager : VyesSingleton<TalentManager>
         {
             this.talentTable.csPoint += GameManager.Instance.CSCount;
             this.csPointText.text = $"Điểm CS: {this.talentTable.csPoint}";
+            GameManager.Instance.CSCount = 0;
         }
         this.talentPanel.SetActive(true);
     }

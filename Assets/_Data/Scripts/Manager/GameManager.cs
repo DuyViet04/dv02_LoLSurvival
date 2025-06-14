@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : VyesPersistentSingleton<GameManager>
 {
@@ -11,11 +13,27 @@ public class GameManager : VyesPersistentSingleton<GameManager>
     private List<Sprite> itemSprites;
     private List<TMP_Text> mainStatsData;
     private List<TMP_Text> secondStatsData;
+    private bool isLoad = false;
 
     protected override void Awake()
     {
         base.Awake();
         this.mainStatsData = new List<TMP_Text>();
+    }
+
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().name == "GamePlay")
+        {
+            if (!this.isLoad)
+            {
+                this.ResetStats();
+            }
+        }
+        else
+        {
+            this.isLoad = false;
+        }
     }
 
     public int CSCount
@@ -42,6 +60,7 @@ public class GameManager : VyesPersistentSingleton<GameManager>
         set => this.secondStatsData = value;
     }
 
+    // Reset các SO về giá trị ban đầu
     void ResetStats()
     {
         this.yasuoStats.ResetStats(this.talentTable);
@@ -52,15 +71,8 @@ public class GameManager : VyesPersistentSingleton<GameManager>
         {
             item.ResetStats();
         }
-    }
 
-
-    //Reset giá trị của các SO về mặc định
-
-    protected override void ResetValues()
-    {
-        base.ResetValues();
-        this.ResetStats();
+        this.isLoad = true;
     }
 
     protected override void LoadComponents()
