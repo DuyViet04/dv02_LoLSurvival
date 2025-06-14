@@ -44,6 +44,7 @@ public class TalentManager : VyesSingleton<TalentManager>
     public void ShowTalentPanel()
     {
         AudioManager.Instance.PlaySFXClip("Click");
+        this.LoadComponents();
         if (GameManager.Instance.enabled)
         {
             this.talentTable.csPoint += GameManager.Instance.CSCount;
