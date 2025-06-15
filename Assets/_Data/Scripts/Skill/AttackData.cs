@@ -10,9 +10,14 @@ public class AttackData
     public float bonusAP;
     public bool isCritical;
     public float cooldown;
+    public string info;
 
     public float GetDamage(float attackDamage, float abilityPower)
     {
         return baseDamage + (bonusAD / 100 * attackDamage) + (bonusAP / 100 * abilityPower);
+    }
+    
+    public void SetInfo(float attackDamage, float abilityPower)
+    {
     }
 }
