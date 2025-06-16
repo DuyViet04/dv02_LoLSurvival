@@ -7,7 +7,6 @@ public class EndGameManager : VyesPersistentSingleton<EndGameManager>
 {
     [SerializeField] private Button exitButton;
     [SerializeField] private TMP_Text csPointText;
-    [SerializeField] private TalentTable talentTable;
     private bool hasPlayedClip = false;
 
     public void Update()
@@ -46,12 +45,6 @@ public class EndGameManager : VyesPersistentSingleton<EndGameManager>
         }
     }
 
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadTalentTable();
-    }
-
     void LoadExitButton()
     {
         if (this.exitButton != null) return;
@@ -64,12 +57,5 @@ public class EndGameManager : VyesPersistentSingleton<EndGameManager>
         if (this.csPointText != null) return;
         this.csPointText = GameObject.Find("CSPoint").GetComponent<TMP_Text>();
         Debug.LogWarning(this.transform.name + ": LoadCSPointText", this.gameObject);
-    }
-
-    void LoadTalentTable()
-    {
-        if (this.talentTable != null) return;
-        this.talentTable = Resources.Load<TalentTable>("Stat/TalentTable");
-        Debug.LogWarning(this.transform.name + ": LoadTalentTable", this.gameObject);
     }
 }

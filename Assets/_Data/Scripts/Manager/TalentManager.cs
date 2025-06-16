@@ -27,30 +27,37 @@ public class TalentManager : VyesSingleton<TalentManager>
     public void LevelUpTalent(int index)
     {
         AudioManager.Instance.PlaySFXClip("Click");
-        if (this.talentTable.csPoint < this.talentTable.talents[index].pointCost) return;
-        this.talentTable.talents[index].currentLevel++;
-        this.talentTable.csPoint -= this.talentTable.talents[index].pointCost;
-        this.csPointText.text = $"Điểm CS: {this.talentTable.csPoint}";
-        UpgradeData upgrade = this.upgradeTable.upgrades[index];
-        this.talentTable.talents[index].effectValue += upgrade.value;
-        this.talentTable.talents[index].pointCost += 50;
+        if (this.talentTable.csPoint > this.talentTable.talents[index].pointCost)
+        {
+            this.talentTable.talents[index].currentLevel++;
+            this.talentTable.csPoint -= this.talentTable.talents[index].pointCost;
+            this.csPointText.text = $"Điểm CS: {this.talentTable.csPoint}";
+            UpgradeData upgrade = this.upgradeTable.upgrades[index];
+            this.talentTable.talents[index].effectValue += upgrade.value;
+            this.talentTable.talents[index].pointCost += 50;
 
-        this.talentLevel[index].text = $"Cấp độ: {this.talentTable.talents[index].currentLevel}";
-        this.talentEffect[index].text =
-            $"{this.talentTable.talents[index].effectName} +{this.talentTable.talents[index].effectValue}";
-        this.csPoint[index].text = $"Điểm CS cần: {this.talentTable.talents[index].pointCost}";
+            this.talentLevel[index].text = $"Cấp độ: {this.talentTable.talents[index].currentLevel}";
+            this.talentEffect[index].text =
+                $"{this.talentTable.talents[index].effectName} +{this.talentTable.talents[index].effectValue}";
+            this.csPoint[index].text = $"Điểm CS cần: {this.talentTable.talents[index].pointCost}";
+        }
     }
 
     public void ShowTalentPanel()
     {
+        SaveManager.Instance.LoadGame();
         AudioManager.Instance.PlaySFXClip("Click");
-        this.LoadComponents();
-        if (GameManager.Instance.enabled)
+        this.talentTable.csPoint += GameManager.Instance.CSCount;
+        this.csPointText.text = $"Điểm CS: {this.talentTable.csPoint}";
+        GameManager.Instance.CSCount = 0;
+        for (int i = 0; i < this.talentsList.Count; i++)
         {
-            this.talentTable.csPoint += GameManager.Instance.CSCount;
-            this.csPointText.text = $"Điểm CS: {this.talentTable.csPoint}";
-            GameManager.Instance.CSCount = 0;
+            this.talentLevel[i].text = $"Cấp độ: {this.talentTable.talents[i].currentLevel}";
+            this.talentEffect[i].text =
+                $"{this.talentTable.talents[i].effectName} +{this.talentTable.talents[i].effectValue}";
+            this.csPoint[i].text = $"Điểm CS cần: {this.talentTable.talents[i].pointCost}";
         }
+
         this.talentPanel.SetActive(true);
     }
 
@@ -58,6 +65,7 @@ public class TalentManager : VyesSingleton<TalentManager>
     {
         AudioManager.Instance.PlaySFXClip("Click");
         this.talentPanel.SetActive(false);
+        SaveManager.Instance.SaveGame();
     }
 
     protected override void LoadComponents()
