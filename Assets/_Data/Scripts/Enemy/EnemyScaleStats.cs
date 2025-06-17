@@ -12,6 +12,7 @@ public class EnemyScaleStats : VyesBehaviour
         this.ScaleByLevel(currentLevel, this.stats, this.baseStats);
     }
 
+    // Phương thức này sẽ scale stats của Enemy dựa trên level
     void ScaleByLevel(float level, MainEnemyStats stat, MainEnemyStats baseStat)
     {
         stat.health = baseStat.health * (1 + level * 0.1f);

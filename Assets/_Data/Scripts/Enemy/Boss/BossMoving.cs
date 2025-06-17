@@ -17,9 +17,10 @@ public class BossMoving : MovingToTarget
 
     private void Update()
     {
+        // Cập nhật tốc độ di chuyển dựa trên trạng thái tấn công của boss
         if (this.bossAttacking.IsAttacking)
         {
-            this.moveSpeed = 0f;
+            this.moveSpeed = 0f; // Dừng di chuyển khi đang tấn công
             this.bossLooking.gameObject.SetActive(false);
         }
         else

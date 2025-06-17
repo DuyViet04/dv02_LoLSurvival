@@ -29,6 +29,8 @@ public class BossAatroxWeapon : DealingDamage
         this.healingPower = this.bossStats.healingPower;
     }
 
+    
+    //Xử lý va chạm với Player
     private void OnTriggerEnter(Collider other)
     {
         Transform parent = other.transform.parent;

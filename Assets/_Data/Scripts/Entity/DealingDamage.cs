@@ -24,7 +24,7 @@ public abstract class DealingDamage : VyesBehaviour
     public virtual void DealDamage(TakingDamage takingDamage, AttackData attackData)
     {
         this.GetDamageDealt(takingDamage, attackData);
-        takingDamage.TakeDamage(this.damageDealt);
+        takingDamage.TakeDamage(this.damageDealt); //Gọi hàm TakeDamage của TakingDamage
     }
 
     //Hồi máu cho target có "TakingDamage"
@@ -46,6 +46,7 @@ public abstract class DealingDamage : VyesBehaviour
     {
         switch (attackData.damageType)
         {
+            // Tính toán lượng damage dựa trên loại sát thương
             case DamageType.PhysicDamage:
                 float atkDmgMulti = takingDamage.GetAttackDamageMultiplier(this.armorPenetration);
                 if (attackData.isCritical)

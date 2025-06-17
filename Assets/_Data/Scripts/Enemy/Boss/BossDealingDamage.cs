@@ -9,6 +9,8 @@ public class BossDealingDamage : DealingDamage
     protected override void Awake()
     {
         base.Awake();
+        
+        // Tạo attackData cho va chạm
         this.attackData = new AttackData()
         {
             attackType = AttackType.NormalAttack,
@@ -21,6 +23,8 @@ public class BossDealingDamage : DealingDamage
         };
     }
 
+    
+    // Xử lý va chạm với Player
     private void OnTriggerEnter(Collider other)
     {
         Transform parent = other.transform.parent;

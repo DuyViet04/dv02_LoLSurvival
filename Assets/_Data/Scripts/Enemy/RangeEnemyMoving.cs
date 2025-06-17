@@ -12,6 +12,8 @@ public class RangeEnemyMoving : MovingToTarget
         this.MoveToTarget(moveSpeed);
     }
 
+    
+    // Tính khoảng cách từ Enemy đến target
     float GetDistanceToTarget()
     {
         float dis = Vector3.Distance(this.target.transform.position, this.transform.parent.position);

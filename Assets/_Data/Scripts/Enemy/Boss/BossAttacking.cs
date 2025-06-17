@@ -16,6 +16,7 @@ public class BossAttacking : VyesBehaviour
         Transform target = GameObject.FindGameObjectWithTag("Player").transform;
         float dis = this.GetDistanceToTarget(target.position);
 
+        // Kiểm tra trạng thái của Animator để xác định xem Boss có đang tấn công hay không
         AnimatorStateInfo stateInfo = this.animator.GetCurrentAnimatorStateInfo(0);
         if (stateInfo.IsName("Q1") || stateInfo.IsName("Q2") || stateInfo.IsName("Q3"))
         {
@@ -26,8 +27,9 @@ public class BossAttacking : VyesBehaviour
             this.isAttacking = false;
         }
 
-        this.currentAnim = this.GetCurrentAnim(stateInfo);
+        this.currentAnim = this.GetCurrentAnim(stateInfo);// Lấy tên anim hiện tại
 
+        // Nếu Boss đang tấn công, không cho phép tấn công tiếp
         if (this.isCooldown)
         {
             this.animator.ResetTrigger("IsAttack");
@@ -45,6 +47,7 @@ public class BossAttacking : VyesBehaviour
         }
     }
 
+    // Gọi skill tấn công
     void Attack()
     {
         if (this.isCooldown) return;
@@ -53,12 +56,14 @@ public class BossAttacking : VyesBehaviour
         this.cooldownTimer = this.bossAatroxSkill.bossAatroxSkillData[0].cooldown;
     }
 
+    // Tính khoảng cách từ Boss đến target
     float GetDistanceToTarget(Vector3 targetPosition)
     {
         float distance = Vector3.Distance(this.transform.parent.position, targetPosition);
         return distance;
     }
 
+    // Lấy tên anim hiện tại dựa trên AnimatorStateInfo
     string GetCurrentAnim(AnimatorStateInfo stateInfo)
     {
         if (stateInfo.IsName("Q1"))

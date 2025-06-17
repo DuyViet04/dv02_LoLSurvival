@@ -9,7 +9,8 @@ public class EnemyDealingDamage : DealingDamage
     {
         this.attackDamage = this.stats.attackData.baseDamage;
     }
-
+    
+    //Lấy AttackData từ stats
     public AttackData GetAttackData()
     {
         return this.stats.attackData;

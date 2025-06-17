@@ -12,6 +12,7 @@ public class BossScaling : VyesBehaviour
         this.ScaleByLevel(currentLevel, this.stats, this.baseStats);
     }
 
+    // Tính toán scale của Boss theo level người chơi
     void ScaleByLevel(float level, MainBossStats stat, MainBossStats baseStat)
     {
         stat.health = baseStat.health * (1 + level * 0.1f);

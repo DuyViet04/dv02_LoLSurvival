@@ -17,6 +17,7 @@ public class EnemyAttacking : VyesBehaviour
         this.Attack();
     }
 
+    // Kiểm tra xem Enemy có đang ở trên màn hình hay không
     bool IsOnScreen()
     {
         Vector3 screenPoint = Camera.main.WorldToViewportPoint(this.transform.parent.position);
@@ -35,11 +36,15 @@ public class EnemyAttacking : VyesBehaviour
         this.animator.speed = this.GetAnimationSpeed(this.stats.attackSpeed);
     }
 
+    
+    //Tính toán thời gian giữa 2 lần bắn
     float GetAttackDelay(float attackSpeed)
     {
         return 1 / attackSpeed;
     }
 
+    
+    //Tính toán tốc độ anim dựa trên tốc độ tấn công
     float GetAnimationSpeed(float attackSpeed)
     {
         return 1 * attackSpeed;

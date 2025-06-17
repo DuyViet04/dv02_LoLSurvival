@@ -34,7 +34,7 @@ public class EnemyTakingDamage : TakingDamage
                 break;
         }
 
-        this.goldDisplay.GetGoldFromKill(this.stats.goldValue);
+        this.goldDisplay.GetGoldFromKill(this.stats.goldValue); //Cộng vàng cho người chơi
         AudioManager.Instance.PlaySFXClip("GetGold");
         this.CreateExp();
         this.ResetStats();
@@ -54,6 +54,8 @@ public class EnemyTakingDamage : TakingDamage
         this.currentHp = this.stats.health;
     }
 
+    
+    // Xử lý va chạm với vũ khí
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Weapon"))
