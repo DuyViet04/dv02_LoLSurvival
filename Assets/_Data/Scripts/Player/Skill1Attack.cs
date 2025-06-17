@@ -18,9 +18,11 @@ public class Skill1Attack : VyesBehaviour
     {
         if (Time.timeScale == 0) return;
 
+        // Tính thời gian hồi chiêu dựa trên chỉ số Haste của Yasuo
         this.cooldownTime =
             CooldownCalculator.GetCooldown(this.yasuoSkill.yasuoSkillData[1].cooldown, this.yasuoStats.haste);
 
+        // Kiểm tra nếu đang trong thời gian hồi chiêu
         if (this.isCooldown)
         {
             this.cooldownTimer -= Time.deltaTime;
@@ -32,32 +34,35 @@ public class Skill1Attack : VyesBehaviour
             }
         }
 
+        // Nếu không đang trong thời gian hồi chiêu và người chơi nhấn nút tấn công
         if (Input.GetMouseButtonDown(0))
         {
             this.Attack();
         }
 
-        this.UICooldown();
+        this.UICooldown(); // Cập nhật giao diện hồi chiêu
     }
 
     void Attack()
     {
         if (this.isCooldown) return;
         AudioManager.Instance.PlaySFXClip("YasuoSkill1");
-        this.yasuoSkill.lastSkillIndex = 1;
+        this.yasuoSkill.lastSkillIndex = 1; // Lưu chỉ số kỹ năng cuối cùng đã sử dụng
         this.animator.SetInteger("currentSkill", 1);
-        Quaternion rotation = Quaternion.Euler(-90, this.transform.parent.eulerAngles.y, 0);
+        Quaternion rotation = Quaternion.Euler(-90, this.transform.parent.eulerAngles.y, 0); 
         Instantiate(this.prefab, this.transform.parent.position, rotation);
         this.isCooldown = true;
         this.cooldownTimer = this.cooldownTime;
     }
 
+    // Lấy AttackData từ YasuoSkill dựa trên chỉ số kỹ năng 1
     public AttackData GetAttackData()
     {
         AttackData skill1 = this.yasuoSkill.yasuoSkillData[1];
         return skill1;
     }
 
+    // Cập nhật giao diện hồi chiêu
     void UICooldown()
     {
         this.cooldownText.text = this.cooldownTimer.ToString("0.0");

@@ -20,11 +20,13 @@ public class PlayerTakingDamage : TakingDamage
     {
         this.maxHp = this.yasuoStats.health;
         this.armor = this.yasuoStats.armor;
+        // Cập nhật thanh máu
         float regenValue = this.yasuoStats.healthRegen * (1 + this.yasuoStats.healingPower / 100);
         this.RegenHealth(regenValue / (1 / Time.fixedDeltaTime));
         this.hpRegenText.text = $"+{regenValue:F1}/s";
     }
 
+    // Cập nhật thanh máu
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
@@ -40,6 +42,7 @@ public class PlayerTakingDamage : TakingDamage
         this.hpText.text = $"{this.currentHp:N0} / {this.maxHp}";
     }
 
+    // Cập nhật thanh máu khi hồi máu
     protected override void RegenHealth(float value)
     {
         base.RegenHealth(value);
@@ -55,6 +58,7 @@ public class PlayerTakingDamage : TakingDamage
         this.hpText.text = $"{this.currentHp:N0} / {this.maxHp}";
     }
 
+    // Cập nhật thanh máu khi hút máu
     public override void LifeSteal(float value)
     {
         base.LifeSteal(value);
@@ -70,6 +74,7 @@ public class PlayerTakingDamage : TakingDamage
         this.hpText.text = $"{this.currentHp:N0} / {this.maxHp}";
     }
 
+    // Cập nhật thanh máu khi hút máu toàn phần
     public override void Omnivamp(float value)
     {
         base.Omnivamp(value);
@@ -85,15 +90,17 @@ public class PlayerTakingDamage : TakingDamage
         this.hpText.text = $"{this.currentHp:N0} / {this.maxHp}";
     }
 
+    // Khi máu về 0, sẽ gọi hàm Despawn để xử lý kết thúc trò chơi
     protected override void Despawn()
     {
-        GameManager.Instance.CSCount = CSDisplay.Instance.CSCount;
-        GameManager.Instance.MainStatsData = StatsDisplay.Instance.GetLastMainData();
-        GameManager.Instance.SecondStatsData = StatsDisplay.Instance.GetLastSecondData();
-        GameManager.Instance.ItemSprites = ShopManager.Instance.GetLastItem();
-        SceneManager.LoadScene("Gameover");
+        GameManager.Instance.CSCount = CSDisplay.Instance.CSCount; // Lưu số lính đã tiêu diệt
+        GameManager.Instance.MainStatsData = StatsDisplay.Instance.GetLastMainData(); // Lưu dữ liệu thống kê chính
+        GameManager.Instance.SecondStatsData = StatsDisplay.Instance.GetLastSecondData(); // Lưu dữ liệu thống kê phụ
+        GameManager.Instance.ItemSprites = ShopManager.Instance.GetLastItem(); // Lưu dữ liệu vật phẩm đã mua
+        SceneManager.LoadScene("GameOver");
     }
 
+    // Xử lý va chạm với kẻ địch
     private void OnTriggerEnter(Collider other)
     {
         Transform parent = other.transform.parent;

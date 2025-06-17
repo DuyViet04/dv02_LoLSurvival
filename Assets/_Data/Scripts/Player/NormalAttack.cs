@@ -13,9 +13,11 @@ public class NormalAttack : VyesBehaviour
     {
         if (Time.timeScale == 0) return;
 
+        // Tính thời gian hồi chiêu dựa trên chỉ số Haste của Yasuo
         this.cooldownTime =
             CooldownCalculator.GetCooldown(this.yasuoSkill.yasuoSkillData[0].cooldown, this.yasuoStats.haste);
 
+        // Kiểm tra nếu đang trong thời gian hồi chiêu
         if (this.isCooldown && (!Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1)))
         {
             this.animator.SetInteger("currentSkill", 3);
@@ -31,7 +33,7 @@ public class NormalAttack : VyesBehaviour
             this.Attack();
         }
     }
-
+    
     void Attack()
     {
         if (this.isCooldown) return;

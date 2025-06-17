@@ -13,6 +13,7 @@ public class LevelUp : VyesBehaviour
     private float maxExp;
     private float currentExp;
 
+    // Cập nhật lượng kinh nghiệm ban đầu
     private void Start()
     {
         this.maxExp = 180 + 100 * Mathf.Pow(this.currentLv - 1, 2);
@@ -21,6 +22,7 @@ public class LevelUp : VyesBehaviour
         this.levelText.SetText(this.currentLv.ToString());
     }
 
+    // Tăng kinh nghiệm và kiểm tra xem có đủ để lên cấp hay không
     public void IncreaseExp(float expValue)
     {
         this.currentExp += expValue * (1 + this.yasuoStats.expMultiplier / 100);
@@ -32,13 +34,14 @@ public class LevelUp : VyesBehaviour
         }
     }
 
+    // Tăng cấp độ và hiển thị bảng nâng cấp
     void IncreaseLevel()
     {
-        this.IncreaseRarity(this.baseRarityTable);
+        this.IncreaseRarity(this.baseRarityTable); // Tăng tỉ lệ hiếm của nâng cấp
 
-        this.levelUpPanel.SetActive(true);
-        Time.timeScale = 0;
-        LevelUpDisplay.Instance.ShowUpgradeChoices();
+        this.levelUpPanel.SetActive(true); // Hiển thị bảng nâng cấp
+        Time.timeScale = 0; // Dừng thời gian để người chơi có thể chọn nâng cấp
+        LevelUpDisplay.Instance.ShowUpgradeChoices(); // Hiển thị các lựa chọn nâng cấp
 
         //Tính toán kinh nghiệm cho level tiếp theo
         this.currentLv++;

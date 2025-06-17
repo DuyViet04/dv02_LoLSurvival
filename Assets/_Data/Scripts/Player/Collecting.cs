@@ -11,6 +11,7 @@ public class Collecting : VyesBehaviour
         this.pickUpCollider.radius = this.yasuoStats.pickUpRange;
     }
 
+    // Khi có collider đi vào vùng pick up, sẽ gọi hàm StartMove của ExpBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Transform parent = other.transform.parent;

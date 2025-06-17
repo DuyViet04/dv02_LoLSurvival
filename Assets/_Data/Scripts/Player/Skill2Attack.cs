@@ -21,9 +21,11 @@ public class Skill2Attack : VyesBehaviour
     {
         if (Time.timeScale == 0) return;
 
+        // Tính thời gian hồi chiêu dựa trên chỉ số Haste của Yasuo
         this.cooldownTime = CooldownCalculator.GetCooldown(this.yasuoSkill.yasuoSkillData[2].cooldown,
             this.yasuoStats.haste);
 
+        // Kiểm tra nếu đang trong thời gian hồi chiêu
         if (this.isCooldown)
         {
             this.cooldownTimer -= Time.deltaTime;
@@ -35,6 +37,7 @@ public class Skill2Attack : VyesBehaviour
             }
         }
 
+        // Xử lý khi lướt
         if (this.isDash)
         {
             this.dashTimer -= Time.deltaTime;
@@ -46,19 +49,21 @@ public class Skill2Attack : VyesBehaviour
             }
         }
 
+        // Nếu không đang trong thời gian hồi chiêu và người chơi nhấn nút tấn công
         if (Input.GetMouseButtonDown(1))
         {
             this.Attack();
         }
 
-        this.UICooldown();
+        this.UICooldown(); // Cập nhật giao diện hồi chiêu
     }
 
     void Attack()
     {
         if (this.isCooldown) return;
-        this.yasuoSkill.lastSkillIndex = 2;
+        this.yasuoSkill.lastSkillIndex = 2; // Lưu chỉ số kỹ năng cuối cùng đã sử dụng
 
+        // Bắt đầu lướt
         this.isDash = true;
         this.dashTimer = this.dashDuration;
         this.dashDirection = Vector3.forward;
@@ -68,6 +73,7 @@ public class Skill2Attack : VyesBehaviour
         this.cooldownTimer = this.cooldownTime;
     }
 
+    // Lấy AttackData từ YasuoSkill dựa trên chỉ số kỹ năng 2
     void UICooldown()
     {
         this.cooldownText.text = this.cooldownTimer.ToString("0.0");

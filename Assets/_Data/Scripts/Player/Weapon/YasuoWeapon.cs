@@ -21,11 +21,12 @@ public class YasuoWeapon : DealingDamage
         this.healingPower = this.yasuoStats.healingPower;
         
         attackData = this.GetAttackData();
-        this.damageDealt = this.GetDamageDealt(takingDamage, attackData);
+        this.damageDealt = this.GetDamageDealt(takingDamage, attackData); // Tính toán damage gây ra
         takingDamage.TakeDamage(this.damageDealt);
-        this.Heal(this.player.GetComponentInChildren<PlayerTakingDamage>());
+        this.Heal(this.player.GetComponentInChildren<PlayerTakingDamage>()); // Hồi máu cho người chơi
     }
 
+    // Lấy AttackData từ YasuoSkill dựa trên chỉ số kỹ năng cuối cùng
     public AttackData GetAttackData()
     {
         return this.yasuoSkill.yasuoSkillData[this.yasuoSkill.lastSkillIndex];
