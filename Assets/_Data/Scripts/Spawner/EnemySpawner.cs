@@ -25,13 +25,13 @@ public class EnemySpawner : SpawnerSingleton<EnemySpawner>
 
     private void Update()
     {
-        if (this.spawnRange < 70f)
+        if (this.spawnRange < 60f)
         {
             this.spawnRange += Time.deltaTime;
         }
         else
         {
-            this.spawnRange = 70f;
+            this.spawnRange = 60f;
         }
     }
 

@@ -31,19 +31,27 @@ public class EnemyAttacking : VyesBehaviour
     private void Attack()
     {
         Transform newBullet =
-            BulletSpawner.Instance.Spawn("Bullet", this.transform.position, this.transform.parent.rotation);
+            BulletSpawner.Instance.Spawn("Bullet", this.transform.position, this.GetRandomRotation());
         newBullet.GetComponentInChildren<BulletDealingDamage>().SetAttackDamage(this.stats.attackData.baseDamage);
         this.animator.speed = this.GetAnimationSpeed(this.stats.attackSpeed);
     }
 
-    
+    Quaternion GetRandomRotation()
+    {
+        Vector3 forward = this.transform.parent.forward;
+        float angle = Random.Range(-30f, 30f);
+        Vector3 rotatedDirection = Quaternion.Euler(0f, angle, 0f) * forward;
+        return Quaternion.LookRotation(rotatedDirection);
+    }
+
+
     //Tính toán thời gian giữa 2 lần bắn
     float GetAttackDelay(float attackSpeed)
     {
         return 1 / attackSpeed;
     }
 
-    
+
     //Tính toán tốc độ anim dựa trên tốc độ tấn công
     float GetAnimationSpeed(float attackSpeed)
     {

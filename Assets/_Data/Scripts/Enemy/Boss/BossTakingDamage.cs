@@ -52,6 +52,7 @@ public class BossTakingDamage : TakingDamage
     // Xử lý khi chết
     protected override void Despawn()
     {
+        GameManager.Instance.CSCount = CSDisplay.Instance.CSCount; // Lưu số lính đã tiêu diệt
         GameManager.Instance.MainStatsData =
             StatsDisplay.Instance.GetLastMainData(); // Lưu lại stats cuối cùng của người chơi
         GameManager.Instance.SecondStatsData =

@@ -25,8 +25,10 @@ public class PlayerMoving : VyesBehaviour
         float zDir = Input.GetAxis("Vertical");
         Vector3 moveDir = new Vector3(xDir, 0, zDir); // Tạo vector di chuyển từ các giá trị bàn phím
 
-        if (moveDir == Vector3.zero) return;
-        this.tutorial.SetActive(false);
+        if (moveDir != Vector3.zero)
+        {
+            this.tutorial.SetActive(false);
+        }
 
         this.playerRigid.velocity = moveDir * this.yasuoStats.moveSpeed;
         this.playerAnimator.SetFloat("isRun", this.playerRigid.velocity.magnitude);

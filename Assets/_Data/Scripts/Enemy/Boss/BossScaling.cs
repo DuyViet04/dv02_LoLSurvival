@@ -6,8 +6,9 @@ public class BossScaling : VyesBehaviour
     [SerializeField] private LevelUp levelUp;
     public MainBossStats baseStats;
 
-    private void FixedUpdate()
+    protected override void Awake()
     {
+        base.Awake();
         float currentLevel = this.levelUp.GetCurrentLevel();
         this.ScaleByLevel(currentLevel, this.stats, this.baseStats);
     }
