@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ComingSoonDisplay : VyesBehaviour
+public class ComingSoonDisplay : MonoBehaviour
 {
     [SerializeField] private GameObject lockPanel;
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         this.lockPanel.SetActive(false);
     }
 
@@ -20,18 +19,5 @@ public class ComingSoonDisplay : VyesBehaviour
     public void CloseLockPanel()
     {
         this.lockPanel.SetActive(false);
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadLockPanel();
-    }
-
-    void LoadLockPanel()
-    {
-        if (this.lockPanel != null) return;
-        this.lockPanel = GameObject.Find("LockPanel");
-        Debug.LogWarning(this.transform.name + ": LoadLockPanel", this.gameObject);
     }
 }

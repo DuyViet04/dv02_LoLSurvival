@@ -33,7 +33,7 @@ public class StatsDisplay : VyesSingleton<StatsDisplay>
     public void ShowMainStats()
     {
         AudioManager.Instance.PlaySFXClip("Click");
-        
+
         this.mainStatsPanel.SetActive(true);
         Color mainColor = this.mainStats.color;
         mainColor.a = Mathf.Clamp01(0f / 255f);
@@ -48,7 +48,7 @@ public class StatsDisplay : VyesSingleton<StatsDisplay>
     public void ShowSecondStats()
     {
         AudioManager.Instance.PlaySFXClip("Click");
-        
+
         this.mainStatsPanel.SetActive(false);
         Color mainColor = this.mainStats.color;
         mainColor.a = Mathf.Clamp01(200f / 255f);
@@ -79,13 +79,13 @@ public class StatsDisplay : VyesSingleton<StatsDisplay>
             this.secondStatsData[i - 16].text = $"{fieldInfo[i].GetValue(this.yasuoStats):F1}";
         }
     }
-    
+
     public List<TMP_Text> GetLastMainData()
     {
         this.UpdateMainData();
         return this.mainStatsData;
     }
-    
+
     public List<TMP_Text> GetLastSecondData()
     {
         this.UpdateSecondData();
@@ -118,58 +118,5 @@ public class StatsDisplay : VyesSingleton<StatsDisplay>
             TMP_Text text = obj.GetComponent<TMP_Text>();
             this.secondStatsData.Add(text);
         }
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadPauseGamePanel();
-        this.LoadMainStats();
-        this.LoadSecondStats();
-        this.LoadMainStatsPanel();
-        this.LoadSecondStatsPanel();
-        this.LoadYasuoStats();
-    }
-
-    void LoadPauseGamePanel()
-    {
-        if (this.pauseGamePanel != null) return;
-        this.pauseGamePanel = GameObject.Find("PauseGamePanel");
-        Debug.LogWarning(this.transform.name + ": LoadPauseGamePanel", this.gameObject);
-    }
-
-    void LoadMainStats()
-    {
-        if (this.mainStats != null) return;
-        this.mainStats = GameObject.Find("MainStatsTitle").GetComponent<Image>();
-        Debug.LogWarning(this.transform.name + ": LoadMainStats", this.gameObject);
-    }
-
-    void LoadSecondStats()
-    {
-        if (this.secondStats != null) return;
-        this.secondStats = GameObject.Find("SecondStatsTitle").GetComponent<Image>();
-        Debug.LogWarning(this.transform.name + ": LoadSecondStats", this.gameObject);
-    }
-
-    void LoadMainStatsPanel()
-    {
-        if (this.mainStatsPanel != null) return;
-        this.mainStatsPanel = GameObject.Find("MainStatsInfo");
-        Debug.LogWarning(this.transform.name + ": LoadMainStatsPanel", this.gameObject);
-    }
-
-    void LoadSecondStatsPanel()
-    {
-        if (this.secondStatsPanel != null) return;
-        this.secondStatsPanel = GameObject.Find("SecondStatsInfo");
-        Debug.LogWarning(this.transform.name + ": LoadSecondStatsPanel", this.gameObject);
-    }
-
-    void LoadYasuoStats()
-    {
-        if (this.yasuoStats != null) return;
-        this.yasuoStats = SOManager.Instance.GetYasuoStats();
-        Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
     }
 }

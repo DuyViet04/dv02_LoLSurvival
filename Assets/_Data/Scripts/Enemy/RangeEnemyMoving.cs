@@ -12,31 +12,11 @@ public class RangeEnemyMoving : MovingToTarget
         this.MoveToTarget(moveSpeed);
     }
 
-    
+
     // Tính khoảng cách từ Enemy đến target
     float GetDistanceToTarget()
     {
         float dis = Vector3.Distance(this.target.transform.position, this.transform.parent.position);
         return dis;
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadStats();
-        this.LoadTarget();
-    }
-
-    void LoadStats()
-    {
-        if (this.stats != null) return;
-        this.stats = SOManager.Instance.GetEnemyStatsByType(this.transform.parent.name);
-        Debug.LogWarning(this.transform.name + ": LoadStats", this.gameObject);
-    }
-    
-    void LoadTarget()
-    {
-        if (this.target != null) return;
-        this.target = GameObject.FindGameObjectWithTag("Player");
     }
 }

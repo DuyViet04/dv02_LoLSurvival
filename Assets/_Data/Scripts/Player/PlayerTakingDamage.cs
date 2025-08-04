@@ -97,7 +97,7 @@ public class PlayerTakingDamage : TakingDamage
         GameManager.Instance.MainStatsData = StatsDisplay.Instance.GetLastMainData(); // Lưu dữ liệu thống kê chính
         GameManager.Instance.SecondStatsData = StatsDisplay.Instance.GetLastSecondData(); // Lưu dữ liệu thống kê phụ
         GameManager.Instance.ItemSprites = ShopManager.Instance.GetLastItem(); // Lưu dữ liệu vật phẩm đã mua
-        SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene(nameof(ScenesEnum.GameOver));
     }
 
     // Xử lý va chạm với kẻ địch
@@ -105,47 +105,10 @@ public class PlayerTakingDamage : TakingDamage
     {
         Transform parent = other.transform.parent;
 
-        if (parent != null && parent.CompareTag("Enemy"))
+        if (parent != null && parent.CompareTag(nameof(TagEnum.Enemy)))
         {
             AttackData attackData = parent.GetComponentInChildren<EnemyDealingDamage>().GetAttackData();
             parent.GetComponentInChildren<EnemyDealingDamage>().DealDamage(this.transform.parent, attackData);
         }
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadYasuoStats();
-        this.LoadHPImage();
-        this.LoadHPText();
-        this.LoadHPRegenText();
-    }
-
-    void LoadYasuoStats()
-    {
-        if (this.yasuoStats != null) return;
-        this.yasuoStats = SOManager.Instance.GetYasuoStats();
-        Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
-    }
-
-    void LoadHPImage()
-    {
-        if (this.hpImage != null) return;
-        this.hpImage = GameObject.Find("HP").GetComponent<Image>();
-        Debug.LogWarning(this.transform.name + ": LoadHPImage", this.gameObject);
-    }
-
-    void LoadHPText()
-    {
-        if (this.hpText != null) return;
-        this.hpText = GameObject.Find("HPText").GetComponent<TMP_Text>();
-        Debug.LogWarning(this.transform.name + ": LoadHPText", this.gameObject);
-    }
-
-    void LoadHPRegenText()
-    {
-        if (this.hpRegenText != null) return;
-        this.hpRegenText = GameObject.Find("HPRegenText").GetComponent<TMP_Text>();
-        Debug.LogWarning(this.transform.name + ": LoadHPRegenText", this.gameObject);
     }
 }

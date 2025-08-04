@@ -11,25 +11,25 @@ public class EndGameManager : VyesPersistentSingleton<EndGameManager>
 
     public void Update()
     {
-        if (SceneManager.GetActiveScene().name == "GameOver")
+        if (SceneManager.GetActiveScene().name == nameof(ScenesEnum.GameOver))
         {
             this.LoadExitButton();
             this.LoadCSPointText();
             this.csPointText.text = $"Điểm CS: +{GameManager.Instance.CSCount}";
             if (!this.hasPlayedClip)
             {
-                AudioManager.Instance.PlaySFXClip("Defeat");
+                AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.Defeat));
                 this.hasPlayedClip = true;
             }
         }
-        else if (SceneManager.GetActiveScene().name == "GameVictory")
+        else if (SceneManager.GetActiveScene().name == nameof(ScenesEnum.GameVictory))
         {
             this.LoadExitButton();
             this.LoadCSPointText();
             this.csPointText.text = $"Điểm CS: +{GameManager.Instance.CSCount}";
             if (!this.hasPlayedClip)
             {
-                AudioManager.Instance.PlaySFXClip("Victory");
+                AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.Victory));
                 this.hasPlayedClip = true;
             }
         }
@@ -41,7 +41,7 @@ public class EndGameManager : VyesPersistentSingleton<EndGameManager>
         if (this.exitButton != null)
         {
             this.exitButton.onClick.RemoveAllListeners();
-            this.exitButton.onClick.AddListener(() => SceneLevelManager.Instance.GoToScene("MainMenu"));
+            this.exitButton.onClick.AddListener(() => SceneLevelManager.Instance.GoToScene(nameof(ScenesEnum.MainMenu)));
         }
     }
 

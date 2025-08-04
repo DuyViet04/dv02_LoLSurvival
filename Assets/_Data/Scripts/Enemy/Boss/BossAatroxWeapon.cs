@@ -8,10 +8,8 @@ public class BossAatroxWeapon : DealingDamage
     private BossAttacking bossAttacking;
     private AttackData attackData;
 
-
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         this.bossAttacking = this.transform.root.GetComponentInChildren<BossAttacking>();
         this.attackData = new AttackData();
     }
@@ -29,12 +27,12 @@ public class BossAatroxWeapon : DealingDamage
         this.healingPower = this.bossStats.healingPower;
     }
 
-    
+
     //Xử lý va chạm với Player
     private void OnTriggerEnter(Collider other)
     {
         Transform parent = other.transform.parent;
-        if (parent != null && parent.CompareTag("Player"))
+        if (parent != null && parent.CompareTag(nameof(TagEnum.Player)))
         {
             this.GetAttackData();
             this.DealDamage(parent.GetComponentInChildren<PlayerTakingDamage>(), this.attackData);
@@ -58,26 +56,5 @@ public class BossAatroxWeapon : DealingDamage
                 this.attackData = new AttackData();
                 break;
         }
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadBossStats();
-        this.LoadBossAatroxSkill();
-    }
-
-    void LoadBossStats()
-    {
-        if (this.bossStats != null) return;
-        this.bossStats = SOManager.Instance.GetBossStatsByType(this.transform.root.name);
-        Debug.LogWarning(this.transform.name + ": LoadBossStats", this.gameObject);
-    }
-
-    void LoadBossAatroxSkill()
-    {
-        if (this.bossAatroxSkill != null) return;
-        this.bossAatroxSkill = Resources.Load<BossAatroxSkill>("Skill/Boss/BossAatroxSkill");
-        Debug.LogWarning(this.transform.name + ": LoadBossAatroxSkill", this.gameObject);
     }
 }

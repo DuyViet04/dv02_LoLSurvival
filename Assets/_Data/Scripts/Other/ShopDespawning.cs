@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ShopDespawning : VyesBehaviour
+public class ShopDespawning : MonoBehaviour
 {
     [SerializeField] private float lifeTime = 120f;
     private float timer;

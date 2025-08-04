@@ -27,7 +27,7 @@ public class ShopManager : VyesSingleton<ShopManager>
 
     public void OpenShop()
     {
-        AudioManager.Instance.PlaySFXClip("OpenShop");   
+        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.OpenShop));
         this.shopPanel.SetActive(true);
         Time.timeScale = 0;
         ShopDisplay.Instance.ShowItemChoices();
@@ -35,14 +35,14 @@ public class ShopManager : VyesSingleton<ShopManager>
 
     public void ExitShop()
     {
-        AudioManager.Instance.PlaySFXClip("CloseShop");
+        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.CloseShop));
         this.shopPanel.SetActive(false);
         Time.timeScale = 1;
     }
 
     public void BuyItem(int index)
     {
-        AudioManager.Instance.PlaySFXClip("BuyItem");
+        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.BuyItem));
         this.itemSlots = this.LoadItemSlots();
         ItemData item = ShopDisplay.Instance.choices[index];
         if (this.IsCanBuy(item, this.inventory))
@@ -65,7 +65,7 @@ public class ShopManager : VyesSingleton<ShopManager>
 
     public void SellItem()
     {
-        AudioManager.Instance.PlaySFXClip("SellItem");
+        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.SellItem));
         ItemData item = this.inventory[this.indexItem];
         this.goldDisplay.Sell(item.cost);
         this.itemCount--;
@@ -103,59 +103,5 @@ public class ShopManager : VyesSingleton<ShopManager>
         }
 
         return list;
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadYasuoStats();
-        this.LoadShopPanel();
-        this.LoadGoldDisplay();
-        this.LoadItemSlot();
-        this.LoadSellButton();
-        this.LoadItemBackground();
-    }
-
-    void LoadYasuoStats()
-    {
-        if (this.yasuoStats != null) return;
-        this.yasuoStats = SOManager.Instance.GetYasuoStats();
-        Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
-    }
-
-    void LoadShopPanel()
-    {
-        if (this.shopPanel != null) return;
-        this.shopPanel = GameObject.Find("ShopPanel");
-        Debug.LogWarning(this.transform.name + ": LoadShopPanel", this.gameObject);
-    }
-
-    void LoadGoldDisplay()
-    {
-        if (this.goldDisplay != null) return;
-        this.goldDisplay = FindObjectOfType<GoldDisplay>();
-        Debug.LogWarning(this.transform.name + ": LoadGoldDisplay", this.gameObject);
-    }
-
-    void LoadItemSlot()
-    {
-        if (this.itemSlot != null) return;
-        this.itemSlot = GameObject.Find("ItemSlot");
-        Debug.LogWarning(this.transform.name + ": LoadItemSlot", this.gameObject);
-    }
-
-    void LoadSellButton()
-    {
-        if (this.sellButton != null) return;
-        this.sellButton = GameObject.Find("SellButton");
-        Debug.LogWarning(this.transform.name + ": LoadSellButton", this.gameObject);
-    }
-
-    void LoadItemBackground()
-    {
-        if (this.itemBackground != null) return;
-        string path = "Sprites/LoLHUD";
-        this.itemBackground = SpriteFinder.GetSprite(path, "ItemBackground");
-        Debug.LogWarning(this.transform.name + ": LoadItemBackground", this.gameObject);
     }
 }

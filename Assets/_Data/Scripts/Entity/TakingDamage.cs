@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class TakingDamage : VyesBehaviour
+public abstract class TakingDamage : MonoBehaviour
 {
     protected float maxHp;
     protected float currentHp;

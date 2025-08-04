@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Shopping : VyesBehaviour
+public class Shopping : MonoBehaviour
 {
     // Collider để nhận diện vùng mua sắm
     private void OnTriggerEnter(Collider other)

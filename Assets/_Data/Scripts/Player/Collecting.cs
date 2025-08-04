@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CapsuleCollider))]
-public class Collecting : VyesBehaviour
+public class Collecting : MonoBehaviour
 {
     [SerializeField] private YasuoStats yasuoStats;
     [SerializeField] private CapsuleCollider pickUpCollider;
@@ -20,26 +20,5 @@ public class Collecting : VyesBehaviour
         {
             other.GetComponent<ExpBehaviour>().StartMove();
         }
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadYasuoStats();
-        this.LoadPickUpCollider();
-    }
-
-    void LoadYasuoStats()
-    {
-        if (this.yasuoStats != null) return;
-        this.yasuoStats = SOManager.Instance.GetYasuoStats();
-        Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
-    }
-
-    void LoadPickUpCollider()
-    {
-        if (this.pickUpCollider != null) return;
-        this.pickUpCollider = this.GetComponent<CapsuleCollider>();
-        Debug.LogWarning(this.transform.name + ": LoadPickUpCollider", this.pickUpCollider);
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 
@@ -16,18 +15,5 @@ public class CSDisplay : VyesSingleton<CSDisplay>
     public void IncreaseCsCount()
     {
         this.csCount += 1;
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadCSText();
-    }
-
-    void LoadCSText()
-    {
-        if (this.csText != null) return;
-        this.csText = GetComponentInChildren<TMP_Text>();
-        Debug.LogWarning(this.transform.name + ": LoadCSText", this.gameObject);
     }
 }

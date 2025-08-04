@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Despawn : VyesBehaviour
+public class Despawn : MonoBehaviour
 {
     //Despawn khi ra khỏi màn hình
     private void Update()
@@ -13,8 +13,8 @@ public class Despawn : VyesBehaviour
     bool IsOnScreen()
     {
         Vector3 screenPoint = Camera.main.WorldToViewportPoint(this.transform.parent.position);
-        bool isOnScreen = screenPoint.x >= 0 && screenPoint.x <= 1 &&
-                          screenPoint.y >= 0 && screenPoint.y <= 1 &&
+        bool isOnScreen = screenPoint.x is >= 0 and <= 1 &&
+                          screenPoint.y is >= 0 and <= 1 &&
                           screenPoint.z > 0;
         return isOnScreen;
     }

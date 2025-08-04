@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemEndgameDisplay : VyesBehaviour
+public class ItemEndgameDisplay : MonoBehaviour
+
 {
     [SerializeField] private GameObject itemSlot;
     private List<Image> itemSlots;
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         this.itemSlots = this.LoadItemSlots();
     }
 
@@ -31,12 +31,6 @@ public class ItemEndgameDisplay : VyesBehaviour
         }
     }
 
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadItemSlot();
-    }
-
     List<Image> LoadItemSlots()
     {
         List<Image> list = new List<Image>();
@@ -47,12 +41,5 @@ public class ItemEndgameDisplay : VyesBehaviour
         }
 
         return list;
-    }
-
-    void LoadItemSlot()
-    {
-        if (this.itemSlot != null) return;
-        this.itemSlot = GameObject.Find("ItemSlot");
-        Debug.LogWarning(this.transform.name + ": LoadItemSlot", this.gameObject);
     }
 }

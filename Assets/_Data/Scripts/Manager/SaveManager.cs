@@ -61,25 +61,4 @@ public class SaveManager : VyesSingleton<SaveManager>
     {
         this.LoadGame();
     }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadTalentTable();
-        this.LoadYasuoStats();
-    }
-
-    void LoadTalentTable()
-    {
-        if (this.talentTable != null) return;
-        this.talentTable = Resources.Load<TalentTable>("Stat/TalentTable");
-        Debug.LogWarning(this.transform.name + ": LoadTalentTable", this.gameObject);
-    }
-
-    void LoadYasuoStats()
-    {
-        if (this.yasuoStats != null) return;
-        this.yasuoStats = Resources.Load<YasuoStats>("Stat/Character/YasuoStats");
-        Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
-    }
 }

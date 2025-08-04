@@ -11,7 +11,7 @@ public class SceneLevelManager : VyesPersistentSingleton<SceneLevelManager>
 
     private void FixedUpdate()
     {
-        if (SceneManager.GetActiveScene().name == "MainMenu")
+        if (SceneManager.GetActiveScene().name == nameof(ScenesEnum.MainMenu))
         {
             this.LoadComponents();
         }
@@ -19,7 +19,7 @@ public class SceneLevelManager : VyesPersistentSingleton<SceneLevelManager>
         if (this.playButton != null)
         {
             this.playButton.onClick.RemoveAllListeners();
-            this.playButton.onClick.AddListener(() => this.GoToScene("GamePlay"));
+            this.playButton.onClick.AddListener(() => this.GoToScene(nameof(ScenesEnum.GamePlay)));
         }
 
         if (this.quitGameButton != null)
@@ -32,7 +32,7 @@ public class SceneLevelManager : VyesPersistentSingleton<SceneLevelManager>
     public void GoToScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
-        AudioManager.Instance.PlaySFXClip("Click");
+        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.Click));
     }
 
     public void QuitGame()

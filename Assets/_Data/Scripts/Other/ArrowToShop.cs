@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class ArrowToShop : VyesBehaviour
+public class ArrowToShop : MonoBehaviour
 {
     public Transform shopTransform;
     public GameObject player;
@@ -23,18 +22,5 @@ public class ArrowToShop : VyesBehaviour
             ShopSpawner.Instance.Despawn(this.transform.parent);
             return;
         }
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadPlayerTransform();
-    }
-
-    void LoadPlayerTransform()
-    {
-        if (this.player != null) return;
-        this.player = GameObject.FindGameObjectWithTag("Player");
-        Debug.LogWarning(this.transform.name + ": LoadPlayerTransform", this.gameObject);
     }
 }

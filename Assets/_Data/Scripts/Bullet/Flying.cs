@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class Flying : VyesBehaviour
+public class Flying : MonoBehaviour
 {
-    private float flySpeed = 5f;
+    [SerializeField] private float flySpeed = 5f;
 
-    //Dịch chuyển theo hướng trước mặt
+    // Dịch chuyển theo hướng trước mặt
     private void Update()
     {
         this.transform.parent.Translate(Vector3.forward * this.flySpeed * Time.deltaTime);

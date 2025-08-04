@@ -9,9 +9,8 @@ public class BossTakingDamage : TakingDamage
     [SerializeField] private GameObject bossHPBarCanvas;
 
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         this.bossHPBarCanvas.SetActive(true); // Bật canvas hiển thị thanh máu của boss
         this.maxHp = this.bossStats.health;
         this.currentHp = this.maxHp;
@@ -42,7 +41,7 @@ public class BossTakingDamage : TakingDamage
     // Xử lý va chạm với vũ khí
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Weapon"))
+        if (other.CompareTag(nameof(TagEnum.Weapon)))
         {
             AttackData attackData = other.GetComponent<YasuoWeapon>().GetAttackData();
             other.GetComponent<YasuoWeapon>().DealDamage(this.transform, attackData);
@@ -58,36 +57,6 @@ public class BossTakingDamage : TakingDamage
         GameManager.Instance.SecondStatsData =
             StatsDisplay.Instance.GetLastSecondData(); // Lưu lại stats cuối cùng của người chơi
         GameManager.Instance.ItemSprites = ShopManager.Instance.GetLastItem(); // Lưu lại item cuối cùng của người chơi
-        SceneLevelManager.Instance.GoToScene("GameVictory"); // Chuyển đến màn hình chiến thắng
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadBossHPBarCanvas();
-        this.LoadHpImage();
-        this.LoadBossStats();
-    }
-
-    void LoadHpImage()
-    {
-        if (this.hpImage != null) return;
-        Transform bossHpBar = this.bossHPBarCanvas.transform.Find("HPBar");
-        this.hpImage = bossHpBar.Find("HP").GetComponent<Image>();
-        Debug.LogWarning(this.transform.name + ": LoadHpImage", this.gameObject);
-    }
-
-    void LoadBossStats()
-    {
-        if (this.bossStats != null) return;
-        this.bossStats = SOManager.Instance.GetBossStatsByType(this.transform.parent.name);
-        Debug.LogWarning(this.transform.name + ": LoadBossStats", this.gameObject);
-    }
-
-    void LoadBossHPBarCanvas()
-    {
-        if (this.bossHPBarCanvas != null) return;
-        this.bossHPBarCanvas = GameObject.Find("BossHPBarCanvas");
-        Debug.LogWarning(this.transform.name + ": LoadBossHPBarCanvas", this.gameObject);
+        SceneLevelManager.Instance.GoToScene(nameof(ScenesEnum.GameVictory)); // Chuyển đến màn hình chiến thắng
     }
 }

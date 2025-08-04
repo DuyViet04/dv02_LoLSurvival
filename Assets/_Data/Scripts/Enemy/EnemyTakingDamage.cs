@@ -24,18 +24,18 @@ public class EnemyTakingDamage : TakingDamage
     {
         switch (this.transform.parent.name)
         {
-            case "KrugL":
-                EnemySpawner.Instance.Spawn(EnemyType.KrugM.ToString(), this.transform.parent.position,
+            case nameof(EnemyType.KrugL):
+                EnemySpawner.Instance.Spawn(nameof(EnemyType.KrugM), this.transform.parent.position,
                     Quaternion.identity, 2);
                 break;
-            case "KrugM":
-                EnemySpawner.Instance.Spawn(EnemyType.KrugS.ToString(), this.transform.parent.position,
+            case nameof(EnemyType.KrugM):
+                EnemySpawner.Instance.Spawn(nameof(EnemyType.KrugS), this.transform.parent.position,
                     Quaternion.identity, 2);
                 break;
         }
 
         this.goldDisplay.GetGoldFromKill(this.stats.goldValue); //Cộng vàng cho người chơi
-        AudioManager.Instance.PlaySFXClip("GetGold");
+        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.GetGold));
         this.CreateExp();
         this.ResetStats();
         EnemySpawner.Instance.Despawn(this.transform.parent);
@@ -58,31 +58,10 @@ public class EnemyTakingDamage : TakingDamage
     // Xử lý va chạm với vũ khí
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Weapon"))
+        if (other.CompareTag(nameof(TagEnum.Weapon)))
         {
             AttackData attackData = other.GetComponent<YasuoWeapon>().GetAttackData();
             other.GetComponent<YasuoWeapon>().DealDamage(this.transform, attackData);
         }
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadStats();
-        this.LoadGoldDisplay();
-    }
-
-    void LoadStats()
-    {
-        if (this.stats != null) return;
-        this.stats = SOManager.Instance.GetEnemyStatsByType(this.transform.parent.name);
-        Debug.LogWarning(this.transform.name + ": LoadStats", this.gameObject);
-    }
-
-    void LoadGoldDisplay()
-    {
-        if (this.goldDisplay != null) return;
-        this.goldDisplay = FindObjectOfType<GoldDisplay>();
-        Debug.LogWarning(this.transform.name + ": LoadGoldDisplay", this.gameObject);
     }
 }

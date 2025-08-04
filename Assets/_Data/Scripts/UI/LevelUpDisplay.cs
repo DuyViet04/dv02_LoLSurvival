@@ -56,7 +56,7 @@ public class LevelUpDisplay : VyesSingleton<LevelUpDisplay>
 
     public void ApplyUpgrade(int index)
     {
-        AudioManager.Instance.PlaySFXClip("Click");
+        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.Click));
         
         UpgradeData chosen = this.choicesList[index];
         float finalValue = chosen.value * this.power;
@@ -96,52 +96,5 @@ public class LevelUpDisplay : VyesSingleton<LevelUpDisplay>
         }
 
         this.levelUpPanel.SetActive(false);
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadLevelUpPanel();
-        this.LoadYasuoStats();
-        this.LoadRarityTable();
-        this.LoadUpgradeTable();
-        this.LoadListCores();
-    }
-
-    private void LoadListCores()
-    {
-        this.listCores = new List<GameObject>();
-        foreach (Transform item in this.levelUpPanel.transform)
-        {
-            this.listCores.Add(item.gameObject);
-        }
-    }
-
-    void LoadLevelUpPanel()
-    {
-        if (this.levelUpPanel != null) return;
-        this.levelUpPanel = this.transform.Find("LevelUpPanel").gameObject;
-        Debug.LogWarning(this.transform.name + ": LoadLevelUpPanel", this.gameObject);
-    }
-
-    void LoadYasuoStats()
-    {
-        if (this.yasuoStats != null) return;
-        this.yasuoStats = SOManager.Instance.GetYasuoStats();
-        Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
-    }
-
-    void LoadRarityTable()
-    {
-        if (this.rarityTable != null) return;
-        this.rarityTable = Resources.Load<RarityTable>("Stat/RarityTable");
-        Debug.LogWarning(this.transform.name + ": LoadRarityTable", this.gameObject);
-    }
-
-    void LoadUpgradeTable()
-    {
-        if (this.upgradeTable != null) return;
-        this.upgradeTable = Resources.Load<UpgradeTable>("Stat/UpgradeTable");
-        Debug.LogWarning(this.transform.name + ": LoadUpgradeTable", this.gameObject);
     }
 }

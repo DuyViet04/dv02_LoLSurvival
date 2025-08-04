@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelUp : VyesBehaviour
+public class LevelUp : MonoBehaviour
 {
     [SerializeField] private RarityTable baseRarityTable;
     [SerializeField] private YasuoStats yasuoStats;
@@ -67,50 +67,5 @@ public class LevelUp : VyesBehaviour
         table.rarities[2].chance += progress * 3 / 15;
         table.rarities[3].chance += progress * 2 / 15;
         table.rarities[4].chance += progress * 1 / 15;
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadYasuoStats();
-        this.LoadLevelUpPanel();
-        this.LoadExpBar();
-        this.LoadLevelText();
-        this.LoadRarityTable();
-    }
-
-    void LoadRarityTable()
-    {
-        if (this.baseRarityTable != null) return;
-        this.baseRarityTable = Resources.Load<RarityTable>("Stat/RarityTable");
-        Debug.LogWarning(this.transform.name + ": LoadRarityTable", this.gameObject);
-    }
-
-    void LoadYasuoStats()
-    {
-        if (this.yasuoStats != null) return;
-        this.yasuoStats = SOManager.Instance.GetYasuoStats();
-        Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
-    }
-
-    void LoadLevelUpPanel()
-    {
-        if (this.levelUpPanel != null) return;
-        this.levelUpPanel = GameObject.Find("LevelUpPanel");
-        Debug.LogWarning(this.transform.name + ": LoadLevelUpPanel", this.gameObject);
-    }
-
-    void LoadExpBar()
-    {
-        if (this.expBar != null) return;
-        this.expBar = GameObject.Find("ExpBar").GetComponent<Image>();
-        Debug.LogWarning(this.transform.name + ": LoadExpBar", this.gameObject);
-    }
-
-    void LoadLevelText()
-    {
-        if (this.levelText != null) return;
-        this.levelText = GameObject.Find("LevelText").GetComponent<TMP_Text>();
-        Debug.LogWarning(this.transform.name + ": LoadLevelText", this.gameObject);
     }
 }

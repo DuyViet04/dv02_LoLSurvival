@@ -5,6 +5,7 @@ public class EnemyAttacking : VyesBehaviour
     [SerializeField] private MainEnemyStats stats;
     [SerializeField] private Animator animator;
     private float attackTimer = 0f;
+    private const string BulletName = "Bullet";
 
     private void Update()
     {
@@ -21,8 +22,8 @@ public class EnemyAttacking : VyesBehaviour
     bool IsOnScreen()
     {
         Vector3 screenPoint = Camera.main.WorldToViewportPoint(this.transform.parent.position);
-        bool isOnScreen = screenPoint.x >= 0 && screenPoint.x <= 1 &&
-                          screenPoint.y >= 0 && screenPoint.y <= 1 &&
+        bool isOnScreen = screenPoint.x is >= 0 and <= 1 &&
+                          screenPoint.y is >= 0 and <= 1 &&
                           screenPoint.z > 0;
         return isOnScreen;
     }
@@ -31,7 +32,7 @@ public class EnemyAttacking : VyesBehaviour
     private void Attack()
     {
         Transform newBullet =
-            BulletSpawner.Instance.Spawn("Bullet", this.transform.position, this.GetRandomRotation());
+            BulletSpawner.Instance.Spawn(BulletName, this.transform.position, this.GetRandomRotation());
         newBullet.GetComponentInChildren<BulletDealingDamage>().SetAttackDamage(this.stats.attackData.baseDamage);
         this.animator.speed = this.GetAnimationSpeed(this.stats.attackSpeed);
     }
@@ -56,26 +57,5 @@ public class EnemyAttacking : VyesBehaviour
     float GetAnimationSpeed(float attackSpeed)
     {
         return 1 * attackSpeed;
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadStats();
-        this.LoadAnimator();
-    }
-
-    void LoadStats()
-    {
-        if (this.stats != null) return;
-        this.stats = SOManager.Instance.GetEnemyStatsByType(this.transform.parent.name);
-        Debug.LogWarning(this.transform.name + ": LoadStats", this.gameObject);
-    }
-
-    void LoadAnimator()
-    {
-        if (this.animator != null) return;
-        this.animator = this.transform.parent.GetComponentInChildren<Animator>();
-        Debug.LogWarning(this.transform.name + ": LoadAnimator", this.gameObject);
     }
 }

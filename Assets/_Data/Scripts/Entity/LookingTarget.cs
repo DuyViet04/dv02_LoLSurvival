@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class LookingTarget : VyesBehaviour
+public abstract class LookingTarget : MonoBehaviour
 {
     protected virtual void LookAtTarget(Transform currentTrans, Transform target)
     {

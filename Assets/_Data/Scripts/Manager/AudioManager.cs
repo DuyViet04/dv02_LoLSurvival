@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class AudioManager : VyesPersistentSingleton<AudioManager>
 {
@@ -12,7 +10,7 @@ public class AudioManager : VyesPersistentSingleton<AudioManager>
     protected override void Awake()
     {
         base.Awake();
-        this.PlayMusicClip("ThemeGame");
+        this.PlayMusicClip(nameof(AudioNameEnum.ThemeGame));
     }
 
     private void Update()
@@ -64,37 +62,5 @@ public class AudioManager : VyesPersistentSingleton<AudioManager>
         }
 
         return null;
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadAudioClips();
-        this.LoadMusicSource();
-        this.LoadSFXSource();
-    }
-
-    void LoadAudioClips()
-    {
-        this.audioClips = new List<AudioClip>();
-        AudioClip[] clipsList = Resources.LoadAll<AudioClip>("Audio");
-        foreach (AudioClip clip in clipsList)
-        {
-            this.audioClips.Add(clip);
-        }
-    }
-
-    void LoadMusicSource()
-    {
-        if (this.musicSource != null) return;
-        this.musicSource = this.transform.Find("MusicSource").GetComponent<AudioSource>();
-        Debug.LogWarning(this.transform.name + ": LoadMusicSource", this.gameObject);
-    }
-
-    void LoadSFXSource()
-    {
-        if (this.sfxSource != null) return;
-        this.sfxSource = this.transform.Find("SFXSource").GetComponent<AudioSource>();
-        Debug.LogWarning(this.transform.name + ": LoadSFXSource", this.gameObject);
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class DealingDamage : VyesBehaviour
+public abstract class DealingDamage : MonoBehaviour
 {
     protected float attackDamage;
     protected float abilityPower;

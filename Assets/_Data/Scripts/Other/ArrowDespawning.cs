@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ArrowDespawning : VyesBehaviour
+public class ArrowDespawning : MonoBehaviour
 {
     [SerializeField] private float lifeTime = 120f;
     [SerializeField] private SpriteRenderer arrowRenderer;
@@ -18,19 +18,5 @@ public class ArrowDespawning : VyesBehaviour
         if (this.timer <= this.lifeTime) return;
         this.timer = 0f;
         ShopSpawner.Instance.Despawn(this.transform.parent);
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadArrowRenderer();
-    }
-
-    void LoadArrowRenderer()
-    {
-        if (this.arrowRenderer != null) return;
-        this.arrowRenderer = this.transform.parent.GetComponentInChildren<SpriteRenderer>();
-        Debug.LogWarning(this.transform.name + ": LoadArrowRenderer", this.gameObject);
-        ;
     }
 }

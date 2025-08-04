@@ -23,7 +23,7 @@ public class GameManager : VyesPersistentSingleton<GameManager>
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name == "GamePlay")
+        if (SceneManager.GetActiveScene().name == nameof(ScenesEnum.GamePlay))
         {
             if (!this.isLoad)
             {
@@ -73,34 +73,5 @@ public class GameManager : VyesPersistentSingleton<GameManager>
         }
 
         this.isLoad = true;
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadYasuoStats();
-        this.LoadRarityTable();
-        this.LoadTalentTable();
-    }
-
-    void LoadYasuoStats()
-    {
-        if (this.yasuoStats != null) return;
-        this.yasuoStats = SOManager.Instance.GetYasuoStats();
-        Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
-    }
-
-    void LoadRarityTable()
-    {
-        if (this.rarityTable != null) return;
-        this.rarityTable = Resources.Load<RarityTable>("Stat/RarityTable");
-        Debug.LogWarning(this.transform.name + ": LoadRarityTable", this.gameObject);
-    }
-
-    void LoadTalentTable()
-    {
-        if (this.talentTable != null) return;
-        this.talentTable = Resources.Load<TalentTable>("Stat/TalentTable");
-        Debug.LogWarning(this.transform.name + ": LoadTalentTable", this.gameObject);
     }
 }

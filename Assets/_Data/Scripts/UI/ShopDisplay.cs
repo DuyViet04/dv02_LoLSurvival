@@ -32,7 +32,7 @@ public class ShopDisplay : VyesSingleton<ShopDisplay>
 
     public void ShowItemChoices()
     {
-        AudioManager.Instance.PlaySFXClip("Click");
+        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.Click));
         
         foreach (GameObject core in this.listCores)
         {
@@ -85,45 +85,5 @@ public class ShopDisplay : VyesSingleton<ShopDisplay>
             this.coreStatsList.Add(itemStats);
             this.coreCostList.Add(itemCost);
         }
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadShopPanel();
-        this.LoadItemTable();
-        this.LoadItemRarityTable();
-        this.LoadListCores();
-    }
-
-    void LoadItemTable()
-    {
-        if (this.itemTable != null) return;
-        this.itemTable = Resources.Load<ItemTable>("Item/ItemTable");
-        Debug.LogWarning(this.transform.name + ": LoadItemTable", this.gameObject);
-    }
-
-    void LoadItemRarityTable()
-    {
-        if (this.itemRarityTable != null) return;
-        this.itemRarityTable = Resources.Load<ItemRarityTable>("Item/ItemRarityTable");
-        Debug.LogWarning(this.transform.name + ": LoadItemRarityTable", this.gameObject);
-    }
-
-    void LoadListCores()
-    {
-        this.listCores = new List<GameObject>
-        {
-            this.transform.Find("Core").gameObject,
-            this.transform.Find("Core_1").gameObject,
-            this.transform.Find("Core_2").gameObject,
-        };
-    }
-
-    void LoadShopPanel()
-    {
-        if (this.shopPanel != null) return;
-        this.shopPanel = GameObject.Find("ShopPanel");
-        Debug.LogWarning(this.transform.name + ": LoadShopPanel", this.gameObject);
     }
 }

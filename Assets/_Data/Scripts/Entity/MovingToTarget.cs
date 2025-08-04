@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class MovingToTarget : VyesBehaviour
+public abstract class MovingToTarget : MonoBehaviour
 {
     [SerializeField] protected GameObject target;
 

@@ -15,17 +15,4 @@ public class EnemyDealingDamage : DealingDamage
     {
         return this.stats.attackData;
     }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadStats();
-    }
-
-    void LoadStats()
-    {
-        if (this.stats != null) return;
-        this.stats = SOManager.Instance.GetEnemyStatsByType(this.transform.parent.name);
-        Debug.LogWarning(this.transform.name + ": LoadStats", this.gameObject);
-    }
 }

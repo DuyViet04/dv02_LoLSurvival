@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkillDisplay : VyesBehaviour
+public class SkillDisplay : MonoBehaviour
 {
     [SerializeField] private GameObject infoPanel;
     [SerializeField] private TMP_Text skillInfoText;
@@ -41,42 +41,5 @@ public class SkillDisplay : VyesBehaviour
     public void HideSkillInfo()
     {
         this.infoPanel.SetActive(false);
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadInfoPanel();
-        this.LoadSkillInfoText();
-        this.LoadYasuoSkill();
-        this.LoadYasuoStats();
-    }
-
-    void LoadInfoPanel()
-    {
-        if (this.infoPanel != null) return;
-        this.infoPanel = GameObject.Find("InfoPanel");
-        Debug.LogWarning(this.transform.name + ": LoadInfoPanel", this.gameObject);
-    }
-
-    void LoadSkillInfoText()
-    {
-        if (this.skillInfoText != null) return;
-        this.skillInfoText = this.infoPanel.GetComponentInChildren<TMP_Text>();
-        Debug.LogWarning(this.transform.name + ": LoadSkillInfoText", this.gameObject);
-    }
-
-    void LoadYasuoSkill()
-    {
-        if (this.yasuoSkill != null) return;
-        this.yasuoSkill = SOManager.Instance.GetYasuoSkill();
-        Debug.LogWarning(this.transform.name + ": LoadYasuoSkill", this.gameObject);
-    }
-
-    void LoadYasuoStats()
-    {
-        if (this.yasuoStats != null) return;
-        this.yasuoStats = SOManager.Instance.GetYasuoStats();
-        Debug.LogWarning(this.transform.name + ": LoadYasuoStats", this.gameObject);
     }
 }

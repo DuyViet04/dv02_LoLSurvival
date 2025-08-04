@@ -1,10 +1,9 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CapsuleCollider))]
-public class ExpBehaviour : VyesBehaviour
+public class ExpBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject target;
-    [SerializeField] private CapsuleCollider capsuleCollider;
     private float moveSpeed = 3f;
     private float expValue;
     private bool isMove;
@@ -42,29 +41,5 @@ public class ExpBehaviour : VyesBehaviour
     {
         Vector3 pos = Vector3.Lerp(this.transform.parent.position, target.position, this.moveSpeed * Time.deltaTime);
         this.transform.parent.position = pos;
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadTarget();
-        this.LoadCapsuleCollider();
-    }
-
-    void LoadTarget()
-    {
-        if (this.target != null) return;
-        this.target = GameObject.FindGameObjectWithTag("Player");
-        Debug.LogWarning(this.transform.name + ": LoadTarget", this.gameObject);
-    }
-
-    void LoadCapsuleCollider()
-    {
-        if (this.capsuleCollider != null) return;
-        this.capsuleCollider = GetComponent<CapsuleCollider>();
-        this.capsuleCollider.isTrigger = true;
-        this.capsuleCollider.center = new Vector3(0, 0.1f, 0);
-        this.capsuleCollider.radius = 0.1f;
-        this.capsuleCollider.height = 0.1f;
     }
 }

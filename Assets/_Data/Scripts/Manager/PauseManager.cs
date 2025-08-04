@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PauseManager : VyesBehaviour
+public class PauseManager : MonoBehaviour
 {
     [SerializeField] private GameObject levelUpPanel;
     [SerializeField] private GameObject pauseGamePanel;
@@ -15,9 +15,8 @@ public class PauseManager : VyesBehaviour
     private bool isShopping;
 
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         this.itemSlots = this.LoadItemSlots();
         this.levelUpPanel.SetActive(false);
         this.pauseGamePanel.SetActive(false);
@@ -52,7 +51,7 @@ public class PauseManager : VyesBehaviour
 
     public void ContinueGame()
     {
-        AudioManager.Instance.PlaySFXClip("Click");
+        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.Click));
         this.pauseGamePanel.SetActive(false);
         Time.timeScale = 1;
 
@@ -71,19 +70,19 @@ public class PauseManager : VyesBehaviour
 
     public void OpenSetting()
     {
-        AudioManager.Instance.PlaySFXClip("Click");
+        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.Click));
         this.settingPanel.SetActive(true);
     }
 
     public void ExitToMainMenu()
     {
-        AudioManager.Instance.PlaySFXClip("Click");
+        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.Click));
         Time.timeScale = 1;
         GameManager.Instance.CSCount = CSDisplay.Instance.CSCount;
         GameManager.Instance.MainStatsData = StatsDisplay.Instance.GetLastMainData();
         GameManager.Instance.SecondStatsData = StatsDisplay.Instance.GetLastSecondData();
         GameManager.Instance.ItemSprites = ShopManager.Instance.GetLastItem();
-        SceneLevelManager.Instance.GoToScene("GameOver");
+        SceneLevelManager.Instance.GoToScene(nameof(ScenesEnum.GameOver));
     }
 
     void UpdateItem()
@@ -98,36 +97,6 @@ public class PauseManager : VyesBehaviour
         }
     }
 
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadLevelUpPanel();
-        this.LoadGamePausePanel();
-        this.LoadShopPanel();
-        this.LoadItemSlot();
-    }
-
-    void LoadLevelUpPanel()
-    {
-        if (this.levelUpPanel != null) return;
-        this.levelUpPanel = GameObject.Find("LevelUpPanel");
-        Debug.LogWarning(this.transform.name + ": LoadLevelUpPanel", this.gameObject);
-    }
-
-    void LoadGamePausePanel()
-    {
-        if (this.pauseGamePanel != null) return;
-        this.pauseGamePanel = GameObject.Find("PauseGamePanel");
-        Debug.LogWarning(this.transform.name + ": LoadGamePausePanel", this.gameObject);
-    }
-
-    void LoadShopPanel()
-    {
-        if (this.shopPanel != null) return;
-        this.shopPanel = GameObject.Find("ShopPanel");
-        Debug.LogWarning(this.transform.name + ": LoadShopPanel", this.gameObject);
-    }
-
     List<Image> LoadItemSlots()
     {
         List<Image> list = new List<Image>();
@@ -138,13 +107,6 @@ public class PauseManager : VyesBehaviour
         }
 
         return list;
-    }
-
-    void LoadItemSlot()
-    {
-        if (this.itemSlot != null) return;
-        this.itemSlot = GameObject.Find("ItemSlot");
-        Debug.LogWarning(this.transform.name + ": LoadItemSlot", this.gameObject);
     }
 
     void LoadSettingPanel()
