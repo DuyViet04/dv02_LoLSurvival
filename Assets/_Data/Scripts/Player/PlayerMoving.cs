@@ -29,7 +29,7 @@ public class PlayerMoving : MonoBehaviour
             this.tutorial.SetActive(false);
         }
 
-        this.playerRigid.velocity = moveDir * this.yasuoStats.moveSpeed;
-        this.playerAnimator.SetFloat("isRun", this.playerRigid.velocity.magnitude);
+        this.playerRigid.linearVelocity = moveDir * this.yasuoStats.moveSpeed;
+        this.playerAnimator.SetFloat("isRun", this.playerRigid.linearVelocity.magnitude);
     }
 }
