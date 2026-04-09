@@ -4,12 +4,13 @@ namespace VyesBase.Core.Architecture.Model
 {
     public abstract class BaseSo : ScriptableObject
     {
-        protected abstract void Init();
-
-        public virtual BaseSoRuntime CreateRuntime()
+        protected void Reset()
         {
-            return new BaseSoRuntime(this);
+            Init();
         }
+
+        protected abstract void Init();
+        public abstract BaseSoRuntime CreateRuntime();
 
 #if UNITY_EDITOR
         private void OnValidate()

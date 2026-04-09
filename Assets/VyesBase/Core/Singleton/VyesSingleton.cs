@@ -1,9 +1,8 @@
-﻿using UnityEngine;
-using VyesBase.Utils.GameLogger;
+﻿using VyesBase.Utils.GameLogger;
 
 namespace VyesBase.Core.Singleton
 {
-    public class VyesSingleton<T> : MonoBehaviour where T : MonoBehaviour
+    public class VyesSingleton<T> : VyesBehaviour where T : VyesBehaviour
     {
         private static T _instance;
 
@@ -20,7 +19,13 @@ namespace VyesBase.Core.Singleton
             }
         }
 
-        protected virtual void Awake()
+        protected override void LoadComponents()
+        {
+            base.LoadComponents();
+            LoadInstance();
+        }
+
+        void LoadInstance()
         {
             if (_instance == null)
             {

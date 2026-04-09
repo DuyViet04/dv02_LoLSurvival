@@ -6,15 +6,15 @@ namespace VyesBase.Systems.Input
 {
     public class InputManager : VyesPersistentSingleton<InputManager>, IInputProvider
     {
-        private VyesBaseInput _inputActions;
+        private VyesBaseInput inputActions;
 
-        public Vector2 MoveInput => _inputActions.Player.Move.ReadValue<Vector2>();
-        public Vector2 MousePosition => _inputActions.Player.Look.ReadValue<Vector2>();
-        public bool Jump => _inputActions.Player.Jump.IsPressed();
-        public bool Attack => _inputActions.Player.Attack.IsPressed();
+        public Vector2 MoveInput => inputActions.Player.Move.ReadValue<Vector2>();
+        public Vector2 MousePosition => inputActions.Player.Look.ReadValue<Vector2>();
+        public bool Jump => inputActions.Player.Jump.IsPressed();
+        public bool Attack => inputActions.Player.Attack.IsPressed();
 
-        public Vector2 UINavigate => _inputActions.UI.Navigate.ReadValue<Vector2>();
-        public bool UISubmit => _inputActions.UI.Submit.IsPressed();
+        public Vector2 UINavigate => inputActions.UI.Navigate.ReadValue<Vector2>();
+        public bool UISubmit => inputActions.UI.Submit.IsPressed();
 
         public event Action OnJumpPressed;
         public event Action OnAttackPressed;
@@ -22,10 +22,10 @@ namespace VyesBase.Systems.Input
         protected override void Awake()
         {
             base.Awake();
-            _inputActions = new VyesBaseInput();
+            inputActions = new VyesBaseInput();
 
-            _inputActions.Player.Jump.performed += ctx => OnJumpPressed?.Invoke();
-            _inputActions.Player.Attack.performed += ctx => OnAttackPressed?.Invoke();
+            inputActions.Player.Jump.performed += ctx => OnJumpPressed?.Invoke();
+            inputActions.Player.Attack.performed += ctx => OnAttackPressed?.Invoke();
 
             TogglePlayerInput(true);
             ToggleUIInput(false);
@@ -33,19 +33,19 @@ namespace VyesBase.Systems.Input
 
         public void TogglePlayerInput(bool enabled)
         {
-            if (enabled) _inputActions.Player.Enable();
-            else _inputActions.Player.Disable();
+            if (enabled) inputActions.Player.Enable();
+            else inputActions.Player.Disable();
         }
 
         public void ToggleUIInput(bool enabled)
         {
-            if (enabled) _inputActions.UI.Enable();
-            else _inputActions.UI.Disable();
+            if (enabled) inputActions.UI.Enable();
+            else inputActions.UI.Disable();
         }
 
         private void OnDisable()
         {
-            _inputActions?.Disable();
+            inputActions?.Disable();
         }
     }
 }

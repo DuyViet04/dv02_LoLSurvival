@@ -2,11 +2,11 @@ namespace VyesBase.Core.Architecture.Model
 {
     public class BaseSoRuntime
     {
-        protected BaseSo BaseSo;
+        protected BaseSo baseSo;
 
-        public BaseSoRuntime(BaseSo baseSo)
+        protected BaseSoRuntime(BaseSo baseSo)
         {
-            BaseSo = baseSo;
+            this.baseSo = baseSo;
         }
     }
 }

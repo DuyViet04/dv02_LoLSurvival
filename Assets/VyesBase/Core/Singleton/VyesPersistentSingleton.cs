@@ -1,8 +1,6 @@
-using UnityEngine;
-
 namespace VyesBase.Core.Singleton
 {
-    public class VyesPersistentSingleton<T> : VyesSingleton<T> where T : MonoBehaviour
+    public class VyesPersistentSingleton<T> : VyesSingleton<T> where T : VyesBehaviour
     {
         protected override void Awake()
         {

@@ -1,8 +1,6 @@
-using UnityEngine;
-
 namespace VyesBase.Core.Architecture
 {
-    public abstract class BaseController : MonoBehaviour
+    public abstract class BaseController : VyesBehaviour
     {
     }
 }
