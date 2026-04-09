@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using VyesBase.Core.Singleton;
 
 public class EndGameManager : VyesPersistentSingleton<EndGameManager>
 {

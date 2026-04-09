@@ -1,6 +1,6 @@
 ﻿namespace _Data.Refactor.Enums.Players
 {
-    public enum AnimParam
+    public enum PlayerAnimParam
     {
         MoveSpeed
     }

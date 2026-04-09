@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using VyesBase.Core.Singleton;
 
 public class CSDisplay : VyesSingleton<CSDisplay>
 {

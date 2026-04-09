@@ -1,7 +1,7 @@
 ﻿namespace _Data.Refactor.Enums.Players
 {
-    public class PlayerName
+    public enum PlayerName
     {
-        
+        Yasuo
     }
 }

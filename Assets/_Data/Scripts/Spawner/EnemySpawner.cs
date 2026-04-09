@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Data.Refactor.Managers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,7 +13,7 @@ public class EnemySpawner : SpawnerSingleton<EnemySpawner>
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.enemyStatsList = SOManager.Instance.GetEnemyStatsList();
+        // this.enemyStatsList = SoManager.Instance.GetEnemyStatsList();
     }
 
     private void Start()

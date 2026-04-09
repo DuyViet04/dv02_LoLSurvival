@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using VyesBase.Core.Singleton;
 
 public class SettingDisplay : VyesPersistentSingleton<SettingDisplay>
 {

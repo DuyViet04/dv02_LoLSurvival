@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using _Data.Refactor.Models.Runtimes.Players;
+using UnityEngine;
 using VyesBase.Core.Architecture.Model;
 
-namespace _Data.Refactor.Models.SOs
+namespace _Data.Refactor.Models.SOs.Players
 {
     public abstract class BasePlayerSo : BaseSo
     {
@@ -25,5 +26,10 @@ namespace _Data.Refactor.Models.SOs
         public float expMultiplier;
 
         protected abstract override void Init();
+
+        public override BaseSoRuntime CreateRuntime()
+        {
+            return new BasePlayerSoRuntime(this);
+        }
     }
 }

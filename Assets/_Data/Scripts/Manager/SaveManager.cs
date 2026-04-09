@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using VyesBase.Core.Singleton;
 
 public class SaveManager : VyesSingleton<SaveManager>
 {

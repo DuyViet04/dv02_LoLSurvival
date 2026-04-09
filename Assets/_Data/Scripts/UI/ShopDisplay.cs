@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using VyesBase.Core.Singleton;
 using Random = UnityEngine.Random;
 
 public class ShopDisplay : VyesSingleton<ShopDisplay>

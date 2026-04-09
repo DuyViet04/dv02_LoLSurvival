@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using VyesBase.Core.Singleton;
 
 public class SceneLevelManager : VyesPersistentSingleton<SceneLevelManager>
 {

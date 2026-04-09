@@ -5,6 +5,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using VyesBase.Core.Singleton;
 
 public class StatsDisplay : VyesSingleton<StatsDisplay>
 {
@@ -21,7 +22,7 @@ public class StatsDisplay : VyesSingleton<StatsDisplay>
     protected override void Awake()
     {
         base.Awake();
-        this.levelUp = FindObjectOfType<LevelUp>();
+        this.levelUp = FindFirstObjectByType<LevelUp>();
         this.mainStatsData = new List<TMP_Text>();
         this.secondStatsData = new List<TMP_Text>();
 

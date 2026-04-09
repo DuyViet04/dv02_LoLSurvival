@@ -39,9 +39,9 @@ public class TornadoBehaviour : DealingDamage
             this.omnivamp = this.yasuoStats.omnivamp;
             this.healingPower = this.yasuoStats.healingPower;
 
-            AttackData attackData = FindObjectOfType<Skill1Attack>().GetAttackData();
+            AttackData attackData = FindFirstObjectByType<Skill1Attack>().GetAttackData();
             this.DealDamage(parent.transform, attackData);
-            this.Heal(FindObjectOfType<PlayerTakingDamage>());
+            this.Heal(FindFirstObjectByType<PlayerTakingDamage>());
         }
     }
 }

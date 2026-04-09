@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using _Data.Refactor.Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VyesBase.Core.Singleton;
 
 public class GameManager : VyesPersistentSingleton<GameManager>
 {
@@ -66,10 +68,10 @@ public class GameManager : VyesPersistentSingleton<GameManager>
         this.yasuoStats.ResetStats(this.talentTable);
         this.rarityTable.ResetRarityTable();
 
-        List<MainEnemyStats> list = SOManager.Instance.GetEnemyStatsList();
-        foreach (MainEnemyStats item in list)
+        // List<MainEnemyStats> list = SoManager.Instance.GetEnemyStatsList();
+        // foreach (MainEnemyStats item in list)
         {
-            item.ResetStats();
+            // item.ResetStats();
         }
 
         this.isLoad = true;

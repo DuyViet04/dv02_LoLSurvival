@@ -33,7 +33,7 @@ public class PlayerLooking : VyesBehaviour
     void LoadFindClosest()
     {
         if (this.findClosest != null) return;
-        this.findClosest = FindObjectOfType<FindClosestEnemy>();
+        this.findClosest = FindFirstObjectByType<FindClosestEnemy>();
         Debug.LogWarning(this.transform.name + ": LoadFindClosest", this.gameObject);
     }
 }

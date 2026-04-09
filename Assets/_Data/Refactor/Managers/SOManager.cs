@@ -1,48 +1,62 @@
 using System.Collections.Generic;
+using _Data.Refactor.Models.SOs.Players;
 using UnityEngine;
 using VyesBase.Core.Singleton;
+using VyesBase.Utils.GameLogger;
 
-public class SOManager : VyesPersistentSingleton<SOManager>
+namespace _Data.Refactor.Managers
 {
-    [SerializeField] private List<MainEnemyStats> enemyStatsList;
-    [SerializeField] private List<MainBossStats> bossStatsList;
-    [SerializeField] private YasuoStats yasuoStats;
-    [SerializeField] private YasuoSkill yasuoSkill;
-
-    public MainEnemyStats GetEnemyStatsByType(string type)
+    public class SoManager : VyesSingleton<SoManager>
     {
-        foreach (MainEnemyStats item in this.enemyStatsList)
+        [SerializeField] private List<BasePlayerSo> playerSos;
+
+        private readonly string playerSosPath = "SOs/Players";
+
+        public BasePlayerSo GetPlayerSoByName(string playerName)
         {
-            string typeName = item.type.ToString();
-            if (typeName == type) return item;
+            foreach (BasePlayerSo so in this.playerSos)
+            {
+                if (so.characterName == playerName)
+                {
+                    return so;
+                }
+            }
+
+            GameLogger.LogError($"PlayerSo: {playerName} not found");
+            return null;
         }
 
-        return null;
-    }
+        // public MainBossStats GetBossStatsByType(string type)
+        // {
+        //     foreach (var item in this.bossStatsList)
+        //     {
+        //         string typeName = item.bossType.ToString();
+        //         if (typeName == type) return item;
+        //     }
+        //
+        //     return null;
+        // }
+        //
+        // public List<MainEnemyStats> GetEnemyStatsList()
+        // {
+        //     return this.enemyStatsList;
+        // }
+        //
+        // public YasuoStats GetYasuoStats()
+        // {
+        //     return this.yasuoStats;
+        // }
+        //
+        // public YasuoSkill GetYasuoSkill()
+        // {
+        //     return this.yasuoSkill;
+        // }
 
-    public MainBossStats GetBossStatsByType(string type)
-    {
-        foreach (var item in this.bossStatsList)
+        protected override void LoadComponents()
         {
-            string typeName = item.bossType.ToString();
-            if (typeName == type) return item;
+            base.LoadComponents();
+            var player = Resources.LoadAll<BasePlayerSo>(playerSosPath);
+            if (playerSos.Count != player.Length) playerSos.AddRange(player);
         }
-
-        return null;
-    }
-
-    public List<MainEnemyStats> GetEnemyStatsList()
-    {
-        return this.enemyStatsList;
-    }
-
-    public YasuoStats GetYasuoStats()
-    {
-        return this.yasuoStats;
-    }
-
-    public YasuoSkill GetYasuoSkill()
-    {
-        return this.yasuoSkill;
     }
 }

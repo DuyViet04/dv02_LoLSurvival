@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using VyesBase.Core.Singleton;
 
-public class AudioManager : VyesPersistentSingleton<AudioManager>
+public abstract class AudioManager : VyesPersistentSingleton<AudioManager>
 {
     [SerializeField] private List<AudioClip> audioClips;
     [SerializeField] private AudioSource musicSource;

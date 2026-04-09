@@ -25,10 +25,10 @@ public class PauseManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            this.PauseGame();
-        }
+        // if (Input.GetKeyDown(KeyCode.Escape))
+        // {
+        //     this.PauseGame();
+        // }
     }
 
     void PauseGame()
