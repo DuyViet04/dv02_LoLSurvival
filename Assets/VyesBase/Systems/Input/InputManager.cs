@@ -12,6 +12,7 @@ namespace VyesBase.Systems.Input
         public Vector2 MousePosition => inputActions.Player.Look.ReadValue<Vector2>();
         public bool Jump => inputActions.Player.Jump.IsPressed();
         public bool Attack => inputActions.Player.Attack.IsPressed();
+        public bool Attack2 => inputActions.Player.Attack2.IsPressed();
 
         public Vector2 UINavigate => inputActions.UI.Navigate.ReadValue<Vector2>();
         public bool UISubmit => inputActions.UI.Submit.IsPressed();

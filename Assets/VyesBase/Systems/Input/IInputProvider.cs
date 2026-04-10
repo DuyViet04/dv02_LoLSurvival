@@ -7,5 +7,7 @@ namespace VyesBase.Systems.Input
         Vector2 MoveInput { get; }
         Vector2 MousePosition { get; }
         bool Jump { get; }
+        bool Attack { get; }
+        bool Attack2 { get; }
     }
 }

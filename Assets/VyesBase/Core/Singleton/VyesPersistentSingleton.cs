@@ -1,3 +1,5 @@
+using VyesBase.Utils;
+
 namespace VyesBase.Core.Singleton
 {
     public class VyesPersistentSingleton<T> : VyesSingleton<T> where T : VyesBehaviour

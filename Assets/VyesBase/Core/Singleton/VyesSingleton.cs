@@ -1,4 +1,5 @@
-﻿using VyesBase.Utils.GameLogger;
+﻿using VyesBase.Utils;
+using VyesBase.Utils.GameLogger;
 
 namespace VyesBase.Core.Singleton
 {
