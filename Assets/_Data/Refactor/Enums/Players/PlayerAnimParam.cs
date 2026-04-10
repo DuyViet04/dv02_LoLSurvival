@@ -2,6 +2,9 @@
 {
     public enum PlayerAnimParam
     {
-        MoveSpeed
+        MoveSpeed,
+        NormalAttack,
+        Skill1,
+        Skill2,
     }
 }

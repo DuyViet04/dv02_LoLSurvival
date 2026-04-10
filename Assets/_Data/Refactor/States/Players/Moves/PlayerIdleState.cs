@@ -3,8 +3,9 @@ using _Data.Refactor.Enums.Players;
 using UnityEngine;
 using VyesBase.Core.StateMachine;
 using VyesBase.Systems.Input;
+using VyesBase.Utils.GameLogger;
 
-namespace _Data.Refactor.States.Players
+namespace _Data.Refactor.States.Players.Moves
 {
     public class PlayerIdleState : BasePlayerState
     {
@@ -15,6 +16,7 @@ namespace _Data.Refactor.States.Players
 
         public override void OnEnter()
         {
+            // GameLogger.Log("Enter idle state");
             animator.SetFloat(nameof(PlayerAnimParam.MoveSpeed), 0);
         }
 

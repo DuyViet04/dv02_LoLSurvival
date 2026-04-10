@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using _Data.Refactor.Managers;
+using UnityEngine;
 
 namespace _Data.Refactor.Models.SOs.Players
 {
@@ -25,6 +26,7 @@ namespace _Data.Refactor.Models.SOs.Players
             healingPower = 0f;
             pickUpRange = 1f;
             expMultiplier = 0f;
+            skills = SoManager.Instance.GetSkillsSoByName(characterName);
         }
     }
 }

@@ -3,8 +3,9 @@ using _Data.Refactor.Enums.Players;
 using UnityEngine;
 using VyesBase.Core.StateMachine;
 using VyesBase.Systems.Input;
+using VyesBase.Utils.GameLogger;
 
-namespace _Data.Refactor.States.Players
+namespace _Data.Refactor.States.Players.Moves
 {
     public class PlayerMoveState : BasePlayerState
     {
@@ -15,15 +16,16 @@ namespace _Data.Refactor.States.Players
 
         public override void OnEnter()
         {
+            // GameLogger.Log("Enter move state");
             animator.SetFloat(nameof(PlayerAnimParam.MoveSpeed), 1);
         }
 
         public override void OnUpdate()
         {
             var moveInput = InputManager.Instance.MoveInput;
-            
+
             Move(moveInput);
-            
+
             if (moveInput.magnitude < 0.1f)
             {
                 stateMachine.ChangeState(PlayerState.Idle);

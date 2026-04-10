@@ -2,13 +2,13 @@
 
 namespace _Data.Refactor.Models.Runtimes.Skills.Yasuo
 {
-    public class NormalAttackSoRuntime : BasePlayerSkillSoRuntime
+    public class Skill1SoRuntime : BasePlayerSkillSoRuntime
     {
-        private NormalAttackSo normalAttackSo;
-        
-        public NormalAttackSoRuntime(NormalAttackSo baseSo) : base(baseSo)
+        private Skill1So skill1So;
+
+        public Skill1SoRuntime(Skill1So baseSo) : base(baseSo)
         {
-            normalAttackSo = baseSo;
+            skill1So = baseSo;
         }
     }
 }

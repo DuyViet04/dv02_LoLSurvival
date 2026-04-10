@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using VyesBase.Utils;
 
 public class StatsEndgameDisplay : VyesBehaviour
 {

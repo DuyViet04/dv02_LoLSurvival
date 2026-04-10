@@ -1,6 +1,8 @@
-﻿using _Data.Refactor.Models.Runtimes.Players;
+﻿using System.Collections.Generic;
+using _Data.Refactor.Models.Runtimes.Players;
 using UnityEngine;
 using VyesBase.Core.Architecture.Model;
+using VyesBase.Systems.Skills;
 
 namespace _Data.Refactor.Models.SOs.Players
 {
@@ -24,8 +26,7 @@ namespace _Data.Refactor.Models.SOs.Players
         public float healingPower;
         [Header("Secondary Stats")] public float pickUpRange;
         public float expMultiplier;
-
-        protected abstract override void Init();
+        [Header("Skills")] public List<BaseSkillSo> skills;
 
         public override BaseSoRuntime CreateRuntime()
         {

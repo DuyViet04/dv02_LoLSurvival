@@ -1,4 +1,5 @@
 using UnityEngine;
+using VyesBase.Utils;
 
 public class BossScaling : VyesBehaviour
 {
@@ -31,11 +32,5 @@ public class BossScaling : VyesBehaviour
         stat.omnivamp = baseStat.omnivamp * (1 + level * rate);
         stat.haste = baseStat.haste * (1 + level * rate);
         stat.healingPower = baseStat.healingPower * (1 + level * rate);
-    }
-
-    protected override void ResetValues()
-    {
-        base.ResetValues();
-        this.baseStats = this.stats.GetBaseStats();
     }
 }

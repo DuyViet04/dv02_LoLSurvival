@@ -2,6 +2,9 @@
 {
     public enum SkillType
     {
-        
+        Passive,
+        NormalAttack,
+        Skill1,
+        Skill2
     }
 }

@@ -30,3 +30,7 @@ MonoBehaviour:
   healingPower: 0
   pickUpRange: 1
   expMultiplier: 0
+  skills:
+  - {fileID: 11400000, guid: dd4bfe1d0ff73ac48871a2c48a4fe320, type: 2}
+  - {fileID: 11400000, guid: 688b3a44a82354d4d905f18fc92b0be5, type: 2}
+  - {fileID: 11400000, guid: 624f8b7979020994fbaaa326aea342e2, type: 2}

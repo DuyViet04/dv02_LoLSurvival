@@ -1,7 +1,8 @@
-﻿namespace _Data.Refactor.States.Players.Attacks
+﻿using VyesBase.Core.StateMachine;
+
+namespace _Data.Refactor.States.Players.Attacks
 {
-    public class AttackStateMachine
+    public class AttackStateMachine<T> : StateMachine<T>
     {
-        
     }
 }
