@@ -1,4 +1,5 @@
 using UnityEngine;
+using VyesBase.Utils;
 
 public class EnemyScaleStats : VyesBehaviour
 {
@@ -23,11 +24,5 @@ public class EnemyScaleStats : VyesBehaviour
         stat.magicResistance = baseStat.magicResistance * (1 + level * rate);
         stat.expValue = baseStat.expValue * (1 + level * rate);
         stat.goldValue = baseStat.goldValue * (1 + level * rate);
-    }
-
-    protected override void ResetValues()
-    {
-        base.ResetValues();
-        this.baseStats = this.stats.GetBaseStats();
     }
 }
