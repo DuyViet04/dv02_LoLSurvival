@@ -1,9 +1,7 @@
-﻿using _Data.Refactor.Controllers.Players;
+using _Data.Refactor.Controllers.Animations;
+using _Data.Refactor.Controllers.Players;
 using _Data.Refactor.Enums.Players;
-using _Data.Refactor.Enums.Skills;
 using _Data.Refactor.Models.Runtimes.Skills;
-using _Data.Refactor.Models.SOs.Skills;
-using UnityEngine;
 using VyesBase.Core.StateMachine;
 using VyesBase.Utils.GameLogger;
 
@@ -12,37 +10,43 @@ namespace _Data.Refactor.States.Players.Attacks
     public class PlayerSkill1State : BasePlayerState
     {
         private readonly BasePlayerSkillSoRuntime skillSoRuntime;
+        private readonly AnimEventController eventController;
 
         public PlayerSkill1State(PlayerController playerController, StateMachine<PlayerState> stateMachine) :
             base(playerController, stateMachine)
         {
-            skillSoRuntime = (BasePlayerSkillSoRuntime)skills
-                .Find(s => ((BasePlayerSkillSo)s).skillType == SkillType.Skill1).CreateRuntime();
+            skillSoRuntime = playerController.Skill1Runtime;
+            eventController = playerController.EventController;
         }
 
         public override void OnEnter()
         {
+            eventController.OnEventEnd += EventEnd;
+
+            if (skillSoRuntime.TryUse())
+            {
+                Attack();
+                // GameLogger.Log("Skill1");
+            }
         }
 
         public override void OnUpdate()
         {
-            skillSoRuntime.UpdateCooldown(Time.deltaTime);
-            if (skillSoRuntime.TryUse())
-            {
-                Attack();
-                GameLogger.Log("Skill1");
-            }
-
-            stateMachine.ChangeState(PlayerState.NormalAttack);
         }
 
         public override void OnExit()
         {
+            eventController.OnEventEnd -= EventEnd;
         }
 
         void Attack()
         {
             animator.SetTrigger(nameof(PlayerAnimParam.Skill1));
+        }
+
+        void EventEnd()
+        {
+            stateMachine.ChangeState(PlayerState.NormalAttack);
         }
     }
 }

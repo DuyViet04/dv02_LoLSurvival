@@ -26,7 +26,7 @@ namespace VyesBase.Core.StateMachine
             CurrentState.OnEnter();
         }
 
-        public void UpdateSate()
+        public void UpdateState()
         {
             CurrentState?.OnUpdate();
         }

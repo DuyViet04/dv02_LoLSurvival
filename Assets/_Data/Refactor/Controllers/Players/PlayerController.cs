@@ -1,6 +1,11 @@
-﻿using _Data.Refactor.Enums.Players;
+using _Data.Refactor.Controllers.Animations;
+using _Data.Refactor.Enums.Players;
+using _Data.Refactor.Enums.Skills;
 using _Data.Refactor.Managers;
+using _Data.Refactor.Models.Runtimes.Players;
+using _Data.Refactor.Models.Runtimes.Skills;
 using _Data.Refactor.Models.SOs.Players;
+using _Data.Refactor.Models.SOs.Skills;
 using _Data.Refactor.Services.LookAtMouse;
 using _Data.Refactor.States.Players;
 using _Data.Refactor.States.Players.Attacks;
@@ -20,11 +25,23 @@ namespace _Data.Refactor.Controllers.Players
         public Rigidbody Rigidbody => rigidBody;
         [SerializeField] private Camera mainCamera;
         public Camera MainCamera => mainCamera;
+        [SerializeField] private AnimEventController eventController;
+        public AnimEventController EventController => eventController;
         [SerializeField] private BasePlayerSo basePlayerSo;
         public BasePlayerSo BasePlayerSo => basePlayerSo;
 
         private MoveStateMachine<PlayerState> moveStateMachine;
         private AttackStateMachine<PlayerState> attackStateMachine;
+
+        private BasePlayerSoRuntime characterRuntime;
+        public BasePlayerSoRuntime Runtime => characterRuntime;
+
+        private BasePlayerSkillSoRuntime normalAttackRuntime;
+        public BasePlayerSkillSoRuntime NormalAttackRuntime => normalAttackRuntime;
+        private BasePlayerSkillSoRuntime skill1Runtime;
+        public BasePlayerSkillSoRuntime Skill1Runtime => skill1Runtime;
+        private BasePlayerSkillSoRuntime skill2Runtime;
+        public BasePlayerSkillSoRuntime Skill2Runtime => skill2Runtime;
 
         private readonly ILookAtMouseService lookAtMouseService = new LookAtMouseService();
 
@@ -36,23 +53,49 @@ namespace _Data.Refactor.Controllers.Players
 
         private void Update()
         {
-            moveStateMachine.UpdateSate();
-            attackStateMachine.UpdateSate();
+            UpdateSkillCooldowns();
+
+            moveStateMachine.UpdateState();
+            attackStateMachine.UpdateState();
 
             LookAtMouse();
+            HandleAttackInput();
+        }
 
+        private void UpdateSkillCooldowns()
+        {
+            float dt = Time.deltaTime;
+            normalAttackRuntime?.UpdateCooldown(dt);
+            skill1Runtime?.UpdateCooldown(dt);
+            skill2Runtime?.UpdateCooldown(dt);
+        }
+
+        private void HandleAttackInput()
+        {
             var attack = InputManager.Instance.Attack;
             var attack2 = InputManager.Instance.Attack2;
+
             if (attack)
             {
                 attackStateMachine.ChangeState(PlayerState.Skill1);
             }
-
-            if (attack2)
+            else if (attack2)
             {
                 attackStateMachine.ChangeState(PlayerState.Skill2);
             }
+            else
+            {
+                attackStateMachine.ChangeState(PlayerState.NormalAttack);
+            }
         }
+
+        void LookAtMouse()
+        {
+            var mousePos = InputManager.Instance.MousePosition;
+            lookAtMouseService.LookAtMouse(mainCamera, mousePos, transform);
+        }
+
+        #region Init
 
         void InitStateMachine()
         {
@@ -69,19 +112,43 @@ namespace _Data.Refactor.Controllers.Players
             attackStateMachine.SetInitState(PlayerState.NormalAttack);
         }
 
-        void LookAtMouse()
-        {
-            var mousePos = InputManager.Instance.MousePosition;
-            lookAtMouseService.LookAtMouse(mainCamera, mousePos, transform);
-        }
-
         protected override void LoadComponents()
         {
             base.LoadComponents();
             if (animator == null) animator = GetComponentInChildren<Animator>();
             if (rigidBody == null) rigidBody = GetComponent<Rigidbody>();
             if (mainCamera == null) mainCamera = Camera.main;
+            if (eventController == null) eventController = GetComponentInChildren<AnimEventController>();
             if (basePlayerSo == null) basePlayerSo = SoManager.Instance.GetPlayerSoByName(nameof(PlayerName.Yasuo));
+
+            InitializeRuntimes();
         }
+
+        private void InitializeRuntimes()
+        {
+            characterRuntime = (BasePlayerSoRuntime)basePlayerSo.CreateRuntime();
+
+            foreach (var skillSo in basePlayerSo.skills)
+            {
+                if (skillSo is BasePlayerSkillSo playerSkillSo)
+                {
+                    var runtime = (BasePlayerSkillSoRuntime)playerSkillSo.CreateRuntime();
+                    switch (playerSkillSo.skillType)
+                    {
+                        case SkillType.NormalAttack:
+                            normalAttackRuntime = runtime;
+                            break;
+                        case SkillType.Skill1:
+                            skill1Runtime = runtime;
+                            break;
+                        case SkillType.Skill2:
+                            skill2Runtime = runtime;
+                            break;
+                    }
+                }
+            }
+        }
+
+        #endregion
     }
 }

@@ -1,9 +1,7 @@
-﻿using _Data.Refactor.Controllers.Players;
+using _Data.Refactor.Controllers.Animations;
+using _Data.Refactor.Controllers.Players;
 using _Data.Refactor.Enums.Players;
-using _Data.Refactor.Enums.Skills;
 using _Data.Refactor.Models.Runtimes.Skills;
-using _Data.Refactor.Models.SOs.Skills;
-using UnityEngine;
 using VyesBase.Core.StateMachine;
 
 namespace _Data.Refactor.States.Players.Attacks
@@ -11,36 +9,42 @@ namespace _Data.Refactor.States.Players.Attacks
     public class PlayerSkill2State : BasePlayerState
     {
         private readonly BasePlayerSkillSoRuntime skillSoRuntime;
+        private readonly AnimEventController eventController;
 
         public PlayerSkill2State(PlayerController playerController, StateMachine<PlayerState> stateMachine) :
             base(playerController, stateMachine)
         {
-            skillSoRuntime = (BasePlayerSkillSoRuntime)skills
-                .Find(s => ((BasePlayerSkillSo)s).skillType == SkillType.Skill2).CreateRuntime();
+            skillSoRuntime = playerController.Skill2Runtime;
+            eventController = playerController.EventController;
         }
 
         public override void OnEnter()
         {
-        }
+            eventController.OnEventEnd += EventEnd;
 
-        public override void OnUpdate()
-        {
-            skillSoRuntime.UpdateCooldown(Time.deltaTime);
             if (skillSoRuntime.TryUse())
             {
                 Attack();
             }
+        }
 
-            stateMachine.ChangeState(PlayerState.NormalAttack);
+        public override void OnUpdate()
+        {
         }
 
         public override void OnExit()
         {
+            eventController.OnEventEnd -= EventEnd;
         }
 
         void Attack()
         {
             animator.SetTrigger(nameof(PlayerAnimParam.Skill2));
+        }
+
+        private void EventEnd()
+        {
+            stateMachine.ChangeState(PlayerState.NormalAttack);
         }
     }
 }

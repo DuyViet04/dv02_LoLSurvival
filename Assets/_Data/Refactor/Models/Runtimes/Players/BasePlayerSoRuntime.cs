@@ -1,4 +1,4 @@
-﻿using _Data.Refactor.Models.SOs.Players;
+using _Data.Refactor.Models.SOs.Players;
 using VyesBase.Core.Architecture.Model;
 
 namespace _Data.Refactor.Models.Runtimes.Players
