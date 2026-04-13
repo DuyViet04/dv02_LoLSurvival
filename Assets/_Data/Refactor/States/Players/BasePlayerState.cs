@@ -1,8 +1,8 @@
 using _Data.Refactor.Controllers.Players;
 using _Data.Refactor.Models.Runtimes.Players;
-using _Data.Refactor.Models.SOs.Players;
 using UnityEngine;
 using VyesBase.Core.StateMachine;
+using VyesBase.Systems.Animation;
 
 namespace _Data.Refactor.States.Players
 {
@@ -12,8 +12,7 @@ namespace _Data.Refactor.States.Players
         protected readonly StateMachine<PlayerState> stateMachine;
         protected readonly Animator animator;
         protected readonly Rigidbody rigidbody;
-        protected readonly BasePlayerSo so;
-
+        protected readonly AnimEventController eventController;
         protected readonly BasePlayerSoRuntime runtime;
 
         protected BasePlayerState(PlayerController playerController, StateMachine<PlayerState> stateMachine)
@@ -22,7 +21,7 @@ namespace _Data.Refactor.States.Players
             this.stateMachine = stateMachine;
             animator = playerController.Animator;
             rigidbody = playerController.Rigidbody;
-            so = playerController.BasePlayerSo;
+            eventController = playerController.EventController;
             runtime = playerController.Runtime;
         }
 

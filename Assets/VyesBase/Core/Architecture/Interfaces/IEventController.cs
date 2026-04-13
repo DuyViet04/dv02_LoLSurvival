@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _Data.Refactor.Controllers.Animations
+namespace VyesBase.Core.Architecture.Interfaces
 {
     public interface IEventController
     {

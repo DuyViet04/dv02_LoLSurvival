@@ -1,4 +1,3 @@
-using _Data.Refactor.Controllers.Animations;
 using _Data.Refactor.Controllers.Players;
 using _Data.Refactor.Enums.Players;
 using _Data.Refactor.Models.Runtimes.Skills;
@@ -9,13 +8,11 @@ namespace _Data.Refactor.States.Players.Attacks
     public class PlayerSkill2State : BasePlayerState
     {
         private readonly BasePlayerSkillSoRuntime skillSoRuntime;
-        private readonly AnimEventController eventController;
 
         public PlayerSkill2State(PlayerController playerController, StateMachine<PlayerState> stateMachine) :
             base(playerController, stateMachine)
         {
             skillSoRuntime = playerController.Skill2Runtime;
-            eventController = playerController.EventController;
         }
 
         public override void OnEnter()

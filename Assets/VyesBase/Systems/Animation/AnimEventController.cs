@@ -2,7 +2,7 @@
 using VyesBase.Core.Architecture.Interfaces;
 using VyesBase.Utils;
 
-namespace _Data.Refactor.Controllers.Animations
+namespace VyesBase.Systems.Animation
 {
     public class AnimEventController : VyesBehaviour, IEventController
     {

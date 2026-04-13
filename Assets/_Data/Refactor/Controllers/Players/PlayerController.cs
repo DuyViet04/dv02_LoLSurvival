@@ -1,4 +1,3 @@
-using _Data.Refactor.Controllers.Animations;
 using _Data.Refactor.Enums.Players;
 using _Data.Refactor.Enums.Skills;
 using _Data.Refactor.Managers;
@@ -12,6 +11,7 @@ using _Data.Refactor.States.Players.Attacks;
 using _Data.Refactor.States.Players.Moves;
 using UnityEngine;
 using VyesBase.Core.Architecture;
+using VyesBase.Systems.Animation;
 using VyesBase.Systems.Input;
 
 namespace _Data.Refactor.Controllers.Players
@@ -24,11 +24,9 @@ namespace _Data.Refactor.Controllers.Players
         [SerializeField] private Rigidbody rigidBody;
         public Rigidbody Rigidbody => rigidBody;
         [SerializeField] private Camera mainCamera;
-        public Camera MainCamera => mainCamera;
         [SerializeField] private AnimEventController eventController;
         public AnimEventController EventController => eventController;
         [SerializeField] private BasePlayerSo basePlayerSo;
-        public BasePlayerSo BasePlayerSo => basePlayerSo;
 
         private MoveStateMachine<PlayerState> moveStateMachine;
         private AttackStateMachine<PlayerState> attackStateMachine;
