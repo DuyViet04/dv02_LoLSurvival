@@ -1,31 +1,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using VyesBase.Utils;
-using VyesBase.Utils.AutoBind;
 
 namespace VyesBase.Systems.Spawner
 {
     public abstract class BaseSpawner : VyesBehaviour
     {
-        [AutoBind(BindScope.Children, "Holder")]
         [SerializeField] private Transform holder;
         [SerializeField] private List<Transform> prefabs;
-        
-        private readonly Dictionary<string, Transform> _prefabsDict = new();
-        private readonly Dictionary<string, Stack<Transform>> _poolDict = new();
+
+        private readonly Dictionary<string, Transform> prefabsDict = new();
+        private readonly Dictionary<string, Stack<Transform>> poolDict = new();
 
         protected override void Awake()
         {
             base.Awake();
-            this.InitPrefabsDict();
+            InitPrefabsDict();
         }
 
         private Transform GetObjectFromPool(Transform prefab)
         {
-            if (!_poolDict.TryGetValue(prefab.name, out Stack<Transform> pool))
+            if (!poolDict.TryGetValue(prefab.name, out Stack<Transform> pool))
             {
                 pool = new Stack<Transform>();
-                _poolDict.Add(prefab.name, pool);
+                poolDict.Add(prefab.name, pool);
             }
 
             if (pool.Count > 0)
@@ -59,7 +57,7 @@ namespace VyesBase.Systems.Spawner
             return newObj;
         }
 
-        public Transform[] Spawn(string prefabName, Vector3 position, Quaternion rotation, float count)
+        public Transform[] Spawn(string prefabName, Vector3 position, Quaternion rotation, int count)
         {
             Transform prefab = GetPrefabByName(prefabName);
             if (prefab == null)
@@ -71,39 +69,30 @@ namespace VyesBase.Systems.Spawner
             return Spawn(prefab, position, rotation, count);
         }
 
-        private Transform[] Spawn(Transform prefab, Vector3 position, Quaternion rotation, float count)
+        protected virtual Transform[] Spawn(Transform prefab, Vector3 position, Quaternion rotation, int count)
         {
-            Transform[] newObjs = new Transform[Mathf.RoundToInt(count)];
+            Transform[] newObjs = new Transform[count];
 
             for (int i = 0; i < count; i++)
             {
-                float xPos = Random.Range(position.x - count * 2f, position.x + count * 2f);
-                float zPos = Random.Range(position.z - count * 2f, position.z + count * 2f);
-                Vector3 newPos = new Vector3(xPos, position.y, zPos);
-
-                Transform obj = this.GetObjectFromPool(prefab);
-                obj.SetPositionAndRotation(newPos, rotation);
-                obj.SetParent(this.holder);
-                obj.gameObject.SetActive(true);
-                newObjs[i] = obj;
+                newObjs[i] = Spawn(prefab, position, rotation);
             }
 
             return newObjs;
         }
 
-        private Transform GetPrefabByName(string prefabName)
+        protected virtual Vector3 GetRandomPosition(Vector3 center, float rangeX, float rangeZ)
         {
-            if (_prefabsDict.TryGetValue(prefabName, out Transform prefab))
+            float xPos = Random.Range(center.x - rangeX, center.x + rangeX);
+            float zPos = Random.Range(center.z - rangeZ, center.z + rangeZ);
+            return new Vector3(xPos, center.y, zPos);
+        }
+
+        public virtual Transform GetPrefabByName(string prefabName)
+        {
+            if (prefabsDict.TryGetValue(prefabName, out Transform prefab))
             {
                 return prefab;
-            }
-
-            foreach (Transform p in prefabs)
-            {
-                if (p.name == prefabName)
-                {
-                    return p;
-                }
             }
 
             return null;
@@ -112,28 +101,35 @@ namespace VyesBase.Systems.Spawner
         public virtual void Despawn(Transform obj)
         {
             obj.gameObject.SetActive(false);
-            
-            if (!_poolDict.TryGetValue(obj.name, out Stack<Transform> pool))
+
+            if (!poolDict.TryGetValue(obj.name, out Stack<Transform> pool))
             {
                 pool = new Stack<Transform>();
-                _poolDict.Add(obj.name, pool);
+                poolDict.Add(obj.name, pool);
             }
-            
+
             pool.Push(obj);
         }
 
         private void InitPrefabsDict()
         {
-            foreach (Transform prefab in this.prefabs)
+            foreach (Transform prefab in prefabs)
             {
                 if (prefab == null) continue;
-                _prefabsDict.TryAdd(prefab.name, prefab);
+                prefabsDict.TryAdd(prefab.name, prefab);
             }
+        }
+
+        protected override void LoadComponents()
+        {
+            base.LoadComponents();
+            LoadPrefabs();
+            if (holder == null) holder = transform.Find(nameof(SpawnerEnum.Holder));
         }
 
         private void LoadPrefabs()
         {
-            Transform prefabsContainer = this.transform.Find("Prefabs");
+            Transform prefabsContainer = transform.Find(nameof(SpawnerEnum.Prefabs));
             if (prefabsContainer == null) return;
 
             foreach (Transform prefab in prefabsContainer)
@@ -145,18 +141,12 @@ namespace VyesBase.Systems.Spawner
             HidePrefabs();
         }
 
-        void HidePrefabs()
+        protected virtual void HidePrefabs()
         {
-            foreach (Transform prefab in this.prefabs)
+            foreach (Transform prefab in prefabs)
             {
                 prefab.gameObject.SetActive(false);
             }
-        }
-
-        protected override void LoadComponents()
-        {
-            base.LoadComponents();
-            LoadPrefabs();
         }
     }
 }
