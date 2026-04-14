@@ -1,3 +1,4 @@
+using _Data.Refactor.Enums.Enemies;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SuperEnemyStats", menuName = "Stats/Enemy/SuperEnemy")]

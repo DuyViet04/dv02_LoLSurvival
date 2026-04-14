@@ -1,3 +1,4 @@
+using _Data.Refactor.Enums.Enemies;
 using UnityEngine;
 
 public abstract class MainEnemyStats : ScriptableObject

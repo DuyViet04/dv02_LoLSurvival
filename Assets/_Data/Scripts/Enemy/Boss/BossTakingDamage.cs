@@ -1,3 +1,4 @@
+using _Data.Refactor.Enums;
 using UnityEngine;
 using UnityEngine.UI;
 

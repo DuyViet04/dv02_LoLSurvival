@@ -1,4 +1,5 @@
 using System;
+using _Data.Refactor.Enums.Enemies;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "RangeEnemyStats", menuName = "Stats/Enemy/RangeEnemy")]

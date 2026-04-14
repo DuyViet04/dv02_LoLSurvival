@@ -1,3 +1,4 @@
+using _Data.Refactor.Enums;
 using UnityEngine;
 
 public class BossAttacking : MonoBehaviour

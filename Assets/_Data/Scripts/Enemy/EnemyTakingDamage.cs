@@ -1,3 +1,5 @@
+using _Data.Refactor.Enums;
+using _Data.Refactor.Enums.Enemies;
 using UnityEngine;
 
 [RequireComponent(typeof(CapsuleCollider))]
