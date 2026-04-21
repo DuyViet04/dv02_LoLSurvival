@@ -11,15 +11,15 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c97d1cb4e726994bbf10218349d916e, type: 3}
   m_Name: RangeEnemyStats
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::RangeEnemyStats
   type: 1
-  health: 36.388103
-  damage: 147.51933
-  attackSpeed: 0.667
-  moveSpeed: 1.5343992
-  armor: 0
-  magicResistance: 0
-  expValue: 37.371563
-  goldValue: 1.7210588
-  spawnDelay: 10
+  health: 28.4
+  attackSpeed: 0.25
+  moveSpeed: 1.5
+  armor: 1
+  magicResistance: 1
+  expValue: 30.4
+  goldValue: 14
+  csValue: 1
+  spawnDelay: 6
   spawnCount: 3

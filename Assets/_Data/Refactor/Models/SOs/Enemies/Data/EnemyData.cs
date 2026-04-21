@@ -1,26 +1,34 @@
-﻿using System;
+using System;
 using _Data.Refactor.Enums.Enemies;
+using UnityEngine;
 
 namespace _Data.Refactor.Models.SOs.Enemies.Data
 {
     [Serializable]
     public class EnemyData
     {
-        public EnemyType Type { get; private set; }
-        public float ExpValue { get; private set; }
-        public float GoldValue { get; private set; }
-        public float CsValue { get; private set; }
-        public float SpawnDelay { get; private set; }
-        public float SpawnCount { get; private set; }
+        [SerializeField] private EnemyType enemyType;
+        [SerializeField] private float expValue;
+        [SerializeField] private float goldValue;
+        [SerializeField] private float csValue;
+        [SerializeField] private float spawnDelay;
+        [SerializeField] private float spawnCount;
+
+        public EnemyType Type => enemyType;
+        public float ExpValue => expValue;
+        public float GoldValue => goldValue;
+        public float CsValue => csValue;
+        public float SpawnDelay => spawnDelay;
+        public float SpawnCount => spawnCount;
 
         public EnemyData(EnemyData enemyData)
         {
-            Type = enemyData.Type;
-            ExpValue = enemyData.ExpValue;
-            GoldValue = enemyData.GoldValue;
-            CsValue = enemyData.CsValue;
-            SpawnDelay = enemyData.SpawnDelay;
-            SpawnCount = enemyData.SpawnCount;
+            enemyType = enemyData.enemyType;
+            expValue = enemyData.expValue;
+            goldValue = enemyData.goldValue;
+            csValue = enemyData.csValue;
+            spawnDelay = enemyData.spawnDelay;
+            spawnCount = enemyData.spawnCount;
         }
     }
 }

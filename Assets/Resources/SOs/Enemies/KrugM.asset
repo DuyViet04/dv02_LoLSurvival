@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beeeba7306eb4170b4ba0f82eede95b7, type: 3}
+  m_Name: KrugM
+  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Models.SOs.Enemies.BaseEnemySo
+  defensiveData:
+    health: 65
+    healthRegen: 0
+    healPower: 0
+    armor: 20
+    magicResist: 20
+    tenacity: 0
+    slowResist: 0
+  offensiveData:
+    attackSpeed: 0
+    attackDamage: 20
+    abilityPower: 0
+    critChance: 0
+    critDamage: 0
+    armorPenetration: 0
+    magicPenetration: 0
+    lifeSteal: 0
+    physicalVamp: 0
+    omnivamp: 0
+  utilityData:
+    haste: 0
+    resourceData:
+      resourceType: 0
+      resourceRegen: 0
+    moveSpeed: 3.5
+  enemyData:
+    enemyType: 10
+    expValue: 10
+    goldValue: 10
+    csValue: 0.5
+    spawnDelay: 300
+    spawnCount: 2
+  attackData:
+    damage: 20
+    canCrit: 0
+    critDamage: 0
+    damageType: 1
+    skillType: 0
