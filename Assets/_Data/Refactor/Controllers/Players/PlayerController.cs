@@ -90,7 +90,7 @@ namespace _Data.Refactor.Controllers.Players
 
         void LookAtMouse()
         {
-            var mousePos = InputManager.Ins.Look;
+            var mousePos = InputManager.Ins.Mouse;
             lookAtMouseService.LookAtMouse(mainCamera, mousePos, transform);
         }
 
