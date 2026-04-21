@@ -1,3 +1,5 @@
+using Base.Systems.Combat;
+using Base.Systems.Skill;
 using UnityEngine;
 
 public abstract class DealingDamage : MonoBehaviour
@@ -44,36 +46,36 @@ public abstract class DealingDamage : MonoBehaviour
     //Tính lượng damage gây ra
     protected virtual float GetDamageDealt(TakingDamage takingDamage, AttackData attackData)
     {
-        switch (attackData.damageType)
+        switch (attackData.DamageType)
         {
             // Tính toán lượng damage dựa trên loại sát thương
-            case DamageType.PhysicDamage:
+            case DamageType.Physical:
                 float atkDmgMulti = takingDamage.GetAttackDamageMultiplier(this.armorPenetration);
-                if (attackData.isCritical)
+                if (attackData.CanCrit)
                 {
                     float roll = Random.Range(0f, 100f);
                     if (roll > this.criticalChance)
                     {
-                        this.damageDealt = attackData.GetDamage(this.attackDamage, this.abilityPower) * atkDmgMulti;
+                        // this.damageDealt = attackData.GetDamage(this.attackDamage, this.abilityPower) * atkDmgMulti;
                     }
                     else
                     {
-                        this.damageDealt = attackData.GetDamage(this.attackDamage, this.abilityPower) *
-                                           (this.criticalDamage / 100) * atkDmgMulti;
+                        // this.damageDealt = attackData.GetDamage(this.attackDamage, this.abilityPower) *
+                        //                    (this.criticalDamage / 100) * atkDmgMulti;
                     }
                 }
                 else
                 {
-                    this.damageDealt = attackData.GetDamage(this.attackDamage, this.abilityPower) * atkDmgMulti;
+                    // this.damageDealt = attackData.GetDamage(this.attackDamage, this.abilityPower) * atkDmgMulti;
                 }
 
                 break;
-            case DamageType.MagicDamage:
+            case DamageType.Magical:
                 float magicDmgMulti = takingDamage.GetAbilityPowerMultiplier(this.magicPenetration);
-                this.damageDealt = attackData.GetDamage(this.attackDamage, this.abilityPower) * magicDmgMulti;
+                // this.damageDealt = attackData.GetDamage(this.attackDamage, this.abilityPower) * magicDmgMulti;
                 break;
-            case DamageType.TrueDamage:
-                this.damageDealt = attackData.GetDamage(this.attackDamage, this.abilityPower);
+            case DamageType.Pure:
+                // this.damageDealt = attackData.GetDamage(this.attackDamage, this.abilityPower);
                 break;
         }
 

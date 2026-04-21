@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Base.Core.Singleton;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using VyesBase.Core.Singleton;
 
 public class StatsDisplay : VyesSingleton<StatsDisplay>
 {
@@ -33,7 +31,7 @@ public class StatsDisplay : VyesSingleton<StatsDisplay>
 
     public void ShowMainStats()
     {
-        AudioManager.Instance.PlaySFXClip("Click");
+        AudioManager.Ins.PlaySFXClip("Click");
 
         this.mainStatsPanel.SetActive(true);
         Color mainColor = this.mainStats.color;
@@ -48,7 +46,7 @@ public class StatsDisplay : VyesSingleton<StatsDisplay>
 
     public void ShowSecondStats()
     {
-        AudioManager.Instance.PlaySFXClip("Click");
+        AudioManager.Ins.PlaySFXClip("Click");
 
         this.mainStatsPanel.SetActive(false);
         Color mainColor = this.mainStats.color;

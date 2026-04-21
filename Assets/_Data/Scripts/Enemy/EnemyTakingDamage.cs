@@ -1,5 +1,6 @@
 using _Data.Refactor.Enums;
 using _Data.Refactor.Enums.Enemies;
+using Base.Systems.Combat;
 using UnityEngine;
 
 [RequireComponent(typeof(CapsuleCollider))]
@@ -37,7 +38,7 @@ public class EnemyTakingDamage : TakingDamage
         }
 
         this.goldDisplay.GetGoldFromKill(this.stats.goldValue); //Cộng vàng cho người chơi
-        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.GetGold));
+        AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.GetGold));
         this.CreateExp();
         this.ResetStats();
         EnemySpawner.Instance.Despawn(this.transform.parent);
@@ -62,8 +63,8 @@ public class EnemyTakingDamage : TakingDamage
     {
         if (other.CompareTag(nameof(TagEnum.Weapon)))
         {
-            AttackData attackData = other.GetComponent<YasuoWeapon>().GetAttackData();
-            other.GetComponent<YasuoWeapon>().DealDamage(this.transform, attackData);
+            // AttackData attackData = other.GetComponent<YasuoWeapon>().GetAttackData();
+            // other.GetComponent<YasuoWeapon>().DealDamage(this.transform, attackData);
         }
     }
 }

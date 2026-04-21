@@ -1,21 +1,12 @@
-﻿using _Data.Refactor.Enums.Enemies;
-using VyesBase.Core.Architecture.Model;
+﻿using _Data.Refactor.Models.SOs.Enemies.Data;
+using Base.Core.Architecture.Model;
+using Base.Systems.Combat;
 
 namespace _Data.Refactor.Models.SOs.Enemies
 {
     public abstract class BaseEnemySo : BaseSo
     {
-        public EnemyType type;
-        public float health;
+        public EnemyData enemyData;
         public AttackData attackData;
-        public float attackSpeed;
-        public float moveSpeed;
-        public float armor;
-        public float magicResistance;
-        public float expValue;
-        public float goldValue;
-        public float csValue;
-        public float spawnDelay;
-        public float spawnCount;
     }
 }

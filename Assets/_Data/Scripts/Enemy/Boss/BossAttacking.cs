@@ -54,7 +54,7 @@ public class BossAttacking : MonoBehaviour
         if (this.isCooldown) return;
         this.animator.SetTrigger(nameof(AnimationParams.IsAttack));
         this.isCooldown = true;
-        this.cooldownTimer = this.bossAatroxSkill.bossAatroxSkillData[0].cooldown;
+        // this.cooldownTimer = this.bossAatroxSkill.bossAatroxSkillData[0].cooldown;
     }
 
     // Tính khoảng cách từ Boss đến target

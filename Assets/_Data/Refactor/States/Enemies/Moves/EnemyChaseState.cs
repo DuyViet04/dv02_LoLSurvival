@@ -1,6 +1,6 @@
 ﻿using _Data.Refactor.Controllers.Enemies;
+using Base.Core.StateMachine;
 using UnityEngine;
-using VyesBase.Core.StateMachine;
 
 namespace _Data.Refactor.States.Enemies.Moves
 {
@@ -16,6 +16,10 @@ namespace _Data.Refactor.States.Enemies.Moves
         }
 
         public override void OnUpdate()
+        {
+        }
+
+        public override void OnFixedUpdate()
         {
         }
 

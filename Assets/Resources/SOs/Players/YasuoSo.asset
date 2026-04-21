@@ -9,28 +9,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8a4fa07642f4d74938243a5f6d4f278, type: 3}
+  m_Script: {fileID: 11500000, guid: d19e5c31bdc246b3be2c50676792e756, type: 3}
   m_Name: YasuoSo
-  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Models.SOs.Players.YasuoSo
-  characterName: Yasuo
-  health: 590
-  healthRegen: 5
-  attackDamage: 60
-  abilityPower: 0
-  armor: 32
-  magicResistance: 32
-  moveSpeed: 3.45
-  criticalChance: 0
-  criticalDamage: 175
-  armorPenetration: 0
-  magicPenetration: 0
-  lifeSteal: 0
-  omnivamp: 0
-  haste: 0
-  healingPower: 0
-  pickUpRange: 1
-  expMultiplier: 0
+  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Models.SOs.Players.BasePlayerSo
+  defensiveData:
+    health: 590
+    healthRegen: 5
+    healPower: 0
+    armor: 32
+    magicResist: 32
+    tenacity: 0
+    slowResist: 0
+  offensiveData:
+    attackSpeed: 0
+    attackDamage: 60
+    abilityPower: 0
+    critChance: 0
+    critDamage: 175
+    armorPenetration: 0
+    magicPenetration: 0
+    lifeSteal: 0
+    physicalVamp: 0
+    omnivamp: 0
+  utilityData:
+    haste: 0
+    resourceData:
+      resourceType: 0
+      resourceRegen: 0
+    moveSpeed: 3.45
+  playerData:
+    charName: Yasuo
+    pickUpRange: 1
+    expMultiplier: 0
   skills:
-  - {fileID: 11400000, guid: dd4bfe1d0ff73ac48871a2c48a4fe320, type: 2}
-  - {fileID: 11400000, guid: 688b3a44a82354d4d905f18fc92b0be5, type: 2}
-  - {fileID: 11400000, guid: 624f8b7979020994fbaaa326aea342e2, type: 2}
+  - {fileID: 11400000, guid: 8abbe22fd15b6e34ab2eb9be162a76fd, type: 2}
+  - {fileID: 11400000, guid: 5fda805175eb7ae41aa0f013beb71e91, type: 2}
+  - {fileID: 11400000, guid: dcb753673e9ceed4797f5779ff3db13a, type: 2}

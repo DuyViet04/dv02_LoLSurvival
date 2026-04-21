@@ -1,7 +1,7 @@
 ﻿using _Data.Refactor.States.Enemies;
 using _Data.Refactor.States.Enemies.Moves;
+using Base.Core.Architecture;
 using UnityEngine;
-using VyesBase.Core.Architecture;
 
 namespace _Data.Refactor.Controllers.Enemies
 {

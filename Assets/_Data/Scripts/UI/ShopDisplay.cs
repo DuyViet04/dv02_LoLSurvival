@@ -1,11 +1,8 @@
-using System;
 using System.Collections.Generic;
+using Base.Core.Singleton;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
-using VyesBase.Core.Singleton;
 using Random = UnityEngine.Random;
 
 public class ShopDisplay : VyesSingleton<ShopDisplay>
@@ -33,7 +30,7 @@ public class ShopDisplay : VyesSingleton<ShopDisplay>
 
     public void ShowItemChoices()
     {
-        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.Click));
+        AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.Click));
         
         foreach (GameObject core in this.listCores)
         {

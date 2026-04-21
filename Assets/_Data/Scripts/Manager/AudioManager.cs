@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using Base.Core.Singleton;
 using UnityEngine;
-using VyesBase.Core.Singleton;
 
 public abstract class AudioManager : VyesPersistentSingleton<AudioManager>
 {
@@ -16,9 +16,9 @@ public abstract class AudioManager : VyesPersistentSingleton<AudioManager>
 
     private void Update()
     {
-        float totalVolume = SettingDisplay.Instance.TotalVolumeSlider.value;
-        float musicVolume = SettingDisplay.Instance.MusicVolumeSlider.value;
-        float sfxVolume = SettingDisplay.Instance.SFXVolumeSlider.value;
+        float totalVolume = SettingDisplay.Ins.TotalVolumeSlider.value;
+        float musicVolume = SettingDisplay.Ins.MusicVolumeSlider.value;
+        float sfxVolume = SettingDisplay.Ins.SFXVolumeSlider.value;
 
         this.musicSource.volume = totalVolume * musicVolume;
         this.sfxSource.volume = totalVolume * sfxVolume;

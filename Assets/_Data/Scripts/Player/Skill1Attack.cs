@@ -19,8 +19,8 @@ public class Skill1Attack : MonoBehaviour
         if (Time.timeScale == 0) return;
 
         // Tính thời gian hồi chiêu dựa trên chỉ số Haste của Yasuo
-        this.cooldownTime =
-            CooldownCalculator.GetCooldown(this.yasuoSkill.yasuoSkillData[1].cooldown, this.yasuoStats.haste);
+        // this.cooldownTime =
+            // CooldownCalculator.GetCooldown(this.yasuoSkill.yasuoSkillData[1].cooldown, this.yasuoStats.haste);
 
         // Kiểm tra nếu đang trong thời gian hồi chiêu
         if (this.isCooldown)
@@ -46,7 +46,7 @@ public class Skill1Attack : MonoBehaviour
     void Attack()
     {
         if (this.isCooldown) return;
-        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.YasuoSkill1));
+        AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.YasuoSkill1));
         this.yasuoSkill.lastSkillIndex = 1; // Lưu chỉ số kỹ năng cuối cùng đã sử dụng
         this.animator.SetInteger(nameof(AnimationParams.currentSkill), 1);
         Quaternion rotation = Quaternion.Euler(-90, this.transform.parent.eulerAngles.y, 0); 
@@ -56,11 +56,11 @@ public class Skill1Attack : MonoBehaviour
     }
 
     // Lấy AttackData từ YasuoSkill dựa trên chỉ số kỹ năng 1
-    public AttackData GetAttackData()
-    {
-        AttackData skill1 = this.yasuoSkill.yasuoSkillData[1];
-        return skill1;
-    }
+    // public AttackData GetAttackData()
+    // {
+    //     AttackData skill1 = this.yasuoSkill.yasuoSkillData[1];
+    //     return skill1;
+    // }
 
     // Cập nhật giao diện hồi chiêu
     void UICooldown()

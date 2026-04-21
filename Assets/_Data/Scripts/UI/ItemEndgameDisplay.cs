@@ -21,7 +21,7 @@ public class ItemEndgameDisplay : MonoBehaviour
 
     void UpdateItemSlots()
     {
-        List<Sprite> itemSlots = GameManager.Instance.ItemSprites;
+        List<Sprite> itemSlots = GameManager.Ins.ItemSprites;
         for (int i = 0; i < itemSlots.Count; i++)
         {
             if (i < this.itemSlots.Count)

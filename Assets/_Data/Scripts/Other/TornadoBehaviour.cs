@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using _Data.Refactor.Enums;
+using Base.Systems.Combat;
 using UnityEngine;
 
 public class TornadoBehaviour : DealingDamage
@@ -40,8 +41,8 @@ public class TornadoBehaviour : DealingDamage
             this.omnivamp = this.yasuoStats.omnivamp;
             this.healingPower = this.yasuoStats.healingPower;
 
-            AttackData attackData = FindFirstObjectByType<Skill1Attack>().GetAttackData();
-            this.DealDamage(parent.transform, attackData);
+            // AttackData attackData = FindFirstObjectByType<Skill1Attack>().GetAttackData();
+            // this.DealDamage(parent.transform, attackData);
             this.Heal(FindFirstObjectByType<PlayerTakingDamage>());
         }
     }

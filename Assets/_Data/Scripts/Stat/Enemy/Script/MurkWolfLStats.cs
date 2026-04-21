@@ -8,16 +8,16 @@ public class MurkWolfLStats : MainEnemyStats
     {
         this.type = EnemyType.MurkWolfL;
         this.health = 160f;
-        this.attackData = new AttackData()
-        {
-            attackType = AttackType.NormalAttack,
-            damageType = DamageType.MagicDamage,
-            baseDamage = 30f,
-            bonusAD = 0f,
-            bonusAP = 0f,
-            isCritical = false,
-            cooldown = 0f
-        };
+        // this.attackData = new AttackData()
+        // {
+        //     attackType = AttackType.NormalAttack,
+        //     damageType = DamageType.MagicDamage,
+        //     baseDamage = 30f,
+        //     bonusAD = 0f,
+        //     bonusAP = 0f,
+        //     isCritical = false,
+        //     cooldown = 0f
+        // };
         this.moveSpeed = 5.25f;
         this.armor = 42f;
         this.magicResistance = 42f;
@@ -39,16 +39,16 @@ public class MurkWolfLStats : MainEnemyStats
     {
         this.type = EnemyType.MurkWolfL;
         this.health = 160f;
-        this.attackData = new AttackData()
-        {
-            attackType = AttackType.NormalAttack,
-            damageType = DamageType.MagicDamage,
-            baseDamage = 30f,
-            bonusAD = 0f,
-            bonusAP = 0f,
-            isCritical = false,
-            cooldown = 0f
-        };
+        // this.attackData = new AttackData()
+        // {
+        //     attackType = AttackType.NormalAttack,
+        //     damageType = DamageType.MagicDamage,
+        //     baseDamage = 30f,
+        //     bonusAD = 0f,
+        //     bonusAP = 0f,
+        //     isCritical = false,
+        //     cooldown = 0f
+        // };
         this.moveSpeed = 5.25f;
         this.armor = 42f;
         this.magicResistance = 42f;

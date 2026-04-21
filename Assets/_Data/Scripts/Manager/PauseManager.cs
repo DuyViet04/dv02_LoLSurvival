@@ -40,10 +40,10 @@ public class PauseManager : MonoBehaviour
         if (this.isShopping) this.shopPanel.SetActive(false);
 
         this.pauseGamePanel.SetActive(true);
-        StatsDisplay.Instance.mainStatsPanel.SetActive(true);
+        StatsDisplay.Ins.mainStatsPanel.SetActive(true);
         Time.timeScale = 0;
-        StatsDisplay.Instance.UpdateMainData();
-        StatsDisplay.Instance.UpdateSecondData();
+        StatsDisplay.Ins.UpdateMainData();
+        StatsDisplay.Ins.UpdateSecondData();
 
         this.UpdateItem();
         this.LoadSettingPanel();
@@ -51,7 +51,7 @@ public class PauseManager : MonoBehaviour
 
     public void ContinueGame()
     {
-        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.Click));
+        AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.Click));
         this.pauseGamePanel.SetActive(false);
         Time.timeScale = 1;
 
@@ -70,24 +70,24 @@ public class PauseManager : MonoBehaviour
 
     public void OpenSetting()
     {
-        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.Click));
+        AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.Click));
         this.settingPanel.SetActive(true);
     }
 
     public void ExitToMainMenu()
     {
-        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.Click));
+        AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.Click));
         Time.timeScale = 1;
-        GameManager.Instance.CSCount = CSDisplay.Instance.CSCount;
-        GameManager.Instance.MainStatsData = StatsDisplay.Instance.GetLastMainData();
-        GameManager.Instance.SecondStatsData = StatsDisplay.Instance.GetLastSecondData();
-        GameManager.Instance.ItemSprites = ShopManager.Instance.GetLastItem();
-        SceneLevelManager.Instance.GoToScene(nameof(ScenesEnum.GameOver));
+        GameManager.Ins.CSCount = CSDisplay.Ins.CSCount;
+        GameManager.Ins.MainStatsData = StatsDisplay.Ins.GetLastMainData();
+        GameManager.Ins.SecondStatsData = StatsDisplay.Ins.GetLastSecondData();
+        GameManager.Ins.ItemSprites = ShopManager.Ins.GetLastItem();
+        SceneLevelManager.Ins.GoToScene(nameof(ScenesEnum.GameOver));
     }
 
     void UpdateItem()
     {
-        List<Sprite> itemSlots = ShopManager.Instance.GetLastItem();
+        List<Sprite> itemSlots = ShopManager.Ins.GetLastItem();
         for (int i = 0; i < itemSlots.Count; i++)
         {
             if (i < this.itemSlots.Count)
@@ -112,7 +112,7 @@ public class PauseManager : MonoBehaviour
     void LoadSettingPanel()
     {
         if (this.settingPanel != null) return;
-        this.settingPanel = SettingDisplay.Instance.SettingPanel;
+        this.settingPanel = SettingDisplay.Ins.SettingPanel;
         Debug.LogWarning(this.transform.name + ": LoadSettingPanel", this.gameObject);
     }
 }

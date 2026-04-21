@@ -2,9 +2,9 @@
 
 namespace _Data.Refactor.Models.Runtimes.Players
 {
-    public class BaseYasuoSoRuntime : BasePlayerSoRuntime
+    public class BaseYasuoRuntime : BasePlayerRuntime
     {
-        public BaseYasuoSoRuntime(BasePlayerSo baseSo) : base(baseSo)
+        public BaseYasuoRuntime(BasePlayerSo baseSo) : base(baseSo)
         {
         }
     }

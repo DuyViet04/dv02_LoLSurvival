@@ -1,4 +1,4 @@
-﻿using VyesBase.Core.StateMachine;
+﻿using Base.Core.StateMachine;
 
 namespace _Data.Refactor.States.Enemies.Moves
 {

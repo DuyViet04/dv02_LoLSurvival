@@ -1,4 +1,5 @@
 using _Data.Refactor.Enums;
+using Base.Systems.Combat;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,20 +45,20 @@ public class BossTakingDamage : TakingDamage
     {
         if (other.CompareTag(nameof(TagEnum.Weapon)))
         {
-            AttackData attackData = other.GetComponent<YasuoWeapon>().GetAttackData();
-            other.GetComponent<YasuoWeapon>().DealDamage(this.transform, attackData);
+            // AttackData attackData = other.GetComponent<YasuoWeapon>().GetAttackData();
+            // other.GetComponent<YasuoWeapon>().DealDamage(this.transform, attackData);
         }
     }
 
     // Xử lý khi chết
     protected override void Despawn()
     {
-        GameManager.Instance.CSCount = CSDisplay.Instance.CSCount; // Lưu số lính đã tiêu diệt
-        GameManager.Instance.MainStatsData =
-            StatsDisplay.Instance.GetLastMainData(); // Lưu lại stats cuối cùng của người chơi
-        GameManager.Instance.SecondStatsData =
-            StatsDisplay.Instance.GetLastSecondData(); // Lưu lại stats cuối cùng của người chơi
-        GameManager.Instance.ItemSprites = ShopManager.Instance.GetLastItem(); // Lưu lại item cuối cùng của người chơi
-        SceneLevelManager.Instance.GoToScene(nameof(ScenesEnum.GameVictory)); // Chuyển đến màn hình chiến thắng
+        GameManager.Ins.CSCount = CSDisplay.Ins.CSCount; // Lưu số lính đã tiêu diệt
+        GameManager.Ins.MainStatsData =
+            StatsDisplay.Ins.GetLastMainData(); // Lưu lại stats cuối cùng của người chơi
+        GameManager.Ins.SecondStatsData =
+            StatsDisplay.Ins.GetLastSecondData(); // Lưu lại stats cuối cùng của người chơi
+        GameManager.Ins.ItemSprites = ShopManager.Ins.GetLastItem(); // Lưu lại item cuối cùng của người chơi
+        SceneLevelManager.Ins.GoToScene(nameof(ScenesEnum.GameVictory)); // Chuyển đến màn hình chiến thắng
     }
 }

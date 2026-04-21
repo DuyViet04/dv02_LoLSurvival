@@ -1,26 +1,28 @@
+using System.Linq;
 using _Data.Refactor.Controllers.Players;
 using _Data.Refactor.Enums.Players;
 using _Data.Refactor.Models.Runtimes.Skills;
-using VyesBase.Core.StateMachine;
-using VyesBase.Utils.GameLogger;
+using Base.Core.StateMachine;
+using Base.Systems.Animation;
+using Base.Systems.Skill;
 
 namespace _Data.Refactor.States.Players.Attacks
 {
     public class PlayerSkill1State : BasePlayerState
     {
-        private readonly BasePlayerSkillSoRuntime skillSoRuntime;
+        private BasePlayerSkillRuntime skillRuntime;
 
         public PlayerSkill1State(PlayerController playerController, StateMachine<PlayerState> stateMachine) :
             base(playerController, stateMachine)
         {
-            skillSoRuntime = playerController.Skill1Runtime;
         }
 
         public override void OnEnter()
         {
-            eventController.OnEventEnd += EventEnd;
+            eventController.OnEvent += OnEventTrigger;
 
-            if (skillSoRuntime.TryUse())
+            skillRuntime = skillsRuntime.FirstOrDefault(s => s.SkillData.SkillType == SkillType.Skill1);
+            if (skillRuntime!.TryUseSkill())
             {
                 Attack();
                 // GameLogger.Log("Skill1");
@@ -31,9 +33,13 @@ namespace _Data.Refactor.States.Players.Attacks
         {
         }
 
+        public override void OnFixedUpdate()
+        {
+        }
+
         public override void OnExit()
         {
-            eventController.OnEventEnd -= EventEnd;
+            eventController.OnEvent -= OnEventTrigger;
         }
 
         void Attack()
@@ -41,7 +47,7 @@ namespace _Data.Refactor.States.Players.Attacks
             animator.SetTrigger(nameof(PlayerAnimParam.Skill1));
         }
 
-        void EventEnd()
+        void OnEventTrigger(EventType eventType)
         {
             stateMachine.ChangeState(PlayerState.NormalAttack);
         }

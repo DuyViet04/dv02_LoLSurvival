@@ -1,4 +1,5 @@
 using _Data.Refactor.Enums;
+using Base.Systems.Combat;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
@@ -12,7 +13,7 @@ public class BossAatroxWeapon : DealingDamage
     private void Awake()
     {
         this.bossAttacking = this.transform.root.GetComponentInChildren<BossAttacking>();
-        this.attackData = new AttackData();
+        // this.attackData = new AttackData();
     }
 
     private void Update()
@@ -36,7 +37,7 @@ public class BossAatroxWeapon : DealingDamage
         if (parent != null && parent.CompareTag(nameof(TagEnum.Player)))
         {
             this.GetAttackData();
-            this.DealDamage(parent.GetComponentInChildren<PlayerTakingDamage>(), this.attackData);
+            // this.DealDamage(parent.GetComponentInChildren<PlayerTakingDamage>(), this.attackData);
         }
     }
 
@@ -45,16 +46,16 @@ public class BossAatroxWeapon : DealingDamage
         switch (this.bossAttacking.CurrentAnim)
         {
             case "Skill1":
-                this.attackData = this.bossAatroxSkill.bossAatroxSkillData[0];
+                // this.attackData = this.bossAatroxSkill.bossAatroxSkillData[0];
                 break;
             case "Skill1_1":
-                this.attackData = this.bossAatroxSkill.bossAatroxSkillData[1];
+                // this.attackData = this.bossAatroxSkill.bossAatroxSkillData[1];
                 break;
             case "Skill1_2":
-                this.attackData = this.bossAatroxSkill.bossAatroxSkillData[2];
+                // this.attackData = this.bossAatroxSkill.bossAatroxSkillData[2];
                 break;
             default:
-                this.attackData = new AttackData();
+                // this.attackData = new AttackData();
                 break;
         }
     }

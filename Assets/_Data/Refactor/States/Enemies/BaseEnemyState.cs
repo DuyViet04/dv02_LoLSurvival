@@ -1,6 +1,6 @@
 ﻿using _Data.Refactor.Controllers.Enemies;
+using Base.Core.StateMachine;
 using UnityEngine;
-using VyesBase.Core.StateMachine;
 
 namespace _Data.Refactor.States.Enemies
 {
@@ -8,7 +8,7 @@ namespace _Data.Refactor.States.Enemies
     {
         protected EnemyController controller;
         protected StateMachine<EnemyState> stateMachine;
-        
+
         protected readonly Rigidbody rigidbody;
         protected readonly Transform target;
         protected readonly Transform self;
@@ -24,6 +24,7 @@ namespace _Data.Refactor.States.Enemies
 
         public abstract void OnEnter();
         public abstract void OnUpdate();
+        public abstract void OnFixedUpdate();
         public abstract void OnExit();
     }
 }

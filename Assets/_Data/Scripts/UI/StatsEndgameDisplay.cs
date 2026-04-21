@@ -1,8 +1,8 @@
 using System.Collections.Generic;
+using Base.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using VyesBase.Utils;
 
 public class StatsEndgameDisplay : VyesBehaviour
 {
@@ -57,7 +57,7 @@ public class StatsEndgameDisplay : VyesBehaviour
 
     void UpdateMainData()
     {
-        List<TMP_Text> mainStats = GameManager.Instance.MainStatsData;
+        List<TMP_Text> mainStats = GameManager.Ins.MainStatsData;
         for (int i = 0; i < mainStats.Count; i++)
         {
             if (i < this.mainStatsData.Count)
@@ -69,7 +69,7 @@ public class StatsEndgameDisplay : VyesBehaviour
 
     void UpdateSecondData()
     {
-        List<TMP_Text> secondStats = GameManager.Instance.SecondStatsData;
+        List<TMP_Text> secondStats = GameManager.Ins.SecondStatsData;
         for (int i = 0; i < secondStats.Count; i++)
         {
             if (i < this.secondStatsData.Count)

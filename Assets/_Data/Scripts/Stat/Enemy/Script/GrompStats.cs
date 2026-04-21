@@ -8,16 +8,16 @@ public class GrompStats : MainEnemyStats
     {
         this.type = EnemyType.Gromp;
         this.health = 205f;
-        this.attackData = new AttackData()
-        {
-            attackType = AttackType.NormalAttack,
-            damageType = DamageType.MagicDamage,
-            baseDamage = 70f,
-            bonusAD = 0f,
-            bonusAP = 0f,
-            isCritical = false,
-            cooldown = 0f
-        };
+        // this.attackData = new AttackData()
+        // {
+        //     attackType = AttackType.NormalAttack,
+        //     damageType = DamageType.MagicDamage,
+        //     baseDamage = 70f,
+        //     bonusAD = 0f,
+        //     bonusAP = 0f,
+        //     isCritical = false,
+        //     cooldown = 0f
+        // };
         this.moveSpeed = 3.3f;
         this.armor = 42f;
         this.magicResistance = 42f;
@@ -39,16 +39,16 @@ public class GrompStats : MainEnemyStats
     {
         this.type = EnemyType.Gromp;
         this.health = 205f;
-        this.attackData = new AttackData()
-        {
-            attackType = AttackType.NormalAttack,
-            damageType = DamageType.MagicDamage,
-            baseDamage = 70f,
-            bonusAD = 0f,
-            bonusAP = 0f,
-            isCritical = false,
-            cooldown = 0f
-        };
+        // this.attackData = new AttackData()
+        // {
+        //     attackType = AttackType.NormalAttack,
+        //     damageType = DamageType.MagicDamage,
+        //     baseDamage = 70f,
+        //     bonusAD = 0f,
+        //     bonusAP = 0f,
+        //     isCritical = false,
+        //     cooldown = 0f
+        // };
         this.moveSpeed = 3.3f;
         this.armor = 42f;
         this.magicResistance = 42f;

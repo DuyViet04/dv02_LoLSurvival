@@ -1,3 +1,4 @@
+using Base.Systems.Combat;
 using UnityEngine;
 
 [RequireComponent(typeof(CapsuleCollider))]
@@ -19,15 +20,15 @@ public class YasuoWeapon : DealingDamage
         this.omnivamp = this.yasuoStats.omnivamp;
         this.healingPower = this.yasuoStats.healingPower;
         
-        attackData = this.GetAttackData();
+        // attackData = this.GetAttackData();
         this.damageDealt = this.GetDamageDealt(takingDamage, attackData); // Tính toán damage gây ra
         takingDamage.TakeDamage(this.damageDealt);
         this.Heal(this.player.GetComponentInChildren<PlayerTakingDamage>()); // Hồi máu cho người chơi
     }
 
     // Lấy AttackData từ YasuoSkill dựa trên chỉ số kỹ năng cuối cùng
-    public AttackData GetAttackData()
-    {
-        return this.yasuoSkill.yasuoSkillData[this.yasuoSkill.lastSkillIndex];
-    }
+    // public AttackData GetAttackData()
+    // {
+    //     // return this.yasuoSkill.yasuoSkillData[this.yasuoSkill.lastSkillIndex];
+    // }
 }

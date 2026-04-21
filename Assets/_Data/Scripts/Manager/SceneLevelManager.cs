@@ -1,9 +1,7 @@
-using System;
+using Base.Core.Singleton;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
-using VyesBase.Core.Singleton;
 
 public class SceneLevelManager : VyesPersistentSingleton<SceneLevelManager>
 {
@@ -33,7 +31,7 @@ public class SceneLevelManager : VyesPersistentSingleton<SceneLevelManager>
     public void GoToScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
-        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.Click));
+        AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.Click));
     }
 
     public void QuitGame()

@@ -8,16 +8,16 @@ public class RaptorSStats : MainEnemyStats
     {
         this.type = EnemyType.RaptorS;
         this.health = 50;
-        this.attackData = new AttackData()
-        {
-            attackType = AttackType.NormalAttack,
-            damageType = DamageType.MagicDamage,
-            baseDamage = 7f,
-            bonusAD = 0f,
-            bonusAP = 0f,
-            isCritical = false,
-            cooldown = 0f
-        };
+        // this.attackData = new AttackData()
+        // {
+        //     attackType = AttackType.NormalAttack,
+        //     damageType = DamageType.MagicDamage,
+        //     baseDamage = 7f,
+        //     bonusAD = 0f,
+        //     bonusAP = 0f,
+        //     isCritical = false,
+        //     cooldown = 0f
+        // };
         this.moveSpeed = 5.25f;
         this.armor = 20f;
         this.magicResistance = 20f;
@@ -39,16 +39,16 @@ public class RaptorSStats : MainEnemyStats
     {
         this.type = EnemyType.RaptorS;
         this.health = 50;
-        this.attackData = new AttackData()
-        {
-            attackType = AttackType.NormalAttack,
-            damageType = DamageType.MagicDamage,
-            baseDamage = 7f,
-            bonusAD = 0f,
-            bonusAP = 0f,
-            isCritical = false,
-            cooldown = 0f
-        };
+        // this.attackData = new AttackData()
+        // {
+        //     attackType = AttackType.NormalAttack,
+        //     damageType = DamageType.MagicDamage,
+        //     baseDamage = 7f,
+        //     bonusAD = 0f,
+        //     bonusAP = 0f,
+        //     isCritical = false,
+        //     cooldown = 0f
+        // };
         this.moveSpeed = 5.25f;
         this.armor = 20f;
         this.magicResistance = 20f;

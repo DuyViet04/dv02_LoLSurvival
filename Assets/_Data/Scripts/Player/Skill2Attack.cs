@@ -22,8 +22,8 @@ public class Skill2Attack : MonoBehaviour
         if (Time.timeScale == 0) return;
 
         // Tính thời gian hồi chiêu dựa trên chỉ số Haste của Yasuo
-        this.cooldownTime = CooldownCalculator.GetCooldown(this.yasuoSkill.yasuoSkillData[2].cooldown,
-            this.yasuoStats.haste);
+        // this.cooldownTime = CooldownCalculator.GetCooldown(this.yasuoSkill.yasuoSkillData[2].cooldown,
+            // this.yasuoStats.haste);
 
         // Kiểm tra nếu đang trong thời gian hồi chiêu
         if (this.isCooldown)

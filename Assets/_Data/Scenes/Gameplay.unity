@@ -10169,8 +10169,8 @@ MonoBehaviour:
   animator: {fileID: 1679171080}
   rigidBody: {fileID: 612861174}
   mainCamera: {fileID: 368059541}
-  eventController: {fileID: 1679171081}
-  basePlayerSo: {fileID: 11400000, guid: cc1df886df7a76b49bdc505fa970d3a2, type: 2}
+  animationController: {fileID: 1679171081}
+  basePlayerSo: {fileID: 11400000, guid: 3a48f29c7a002ad47bf283c19184d1e6, type: 2}
 --- !u!1 &614345530
 GameObject:
   m_ObjectHideFlags: 0
@@ -13431,7 +13431,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1216779957}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &821670868
 MonoBehaviour:
@@ -13442,9 +13442,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 821670866}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 662d3317ee70e2e4397578af3ad12a70, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ced2930c78841f9abb282ff0e7cf214, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VyesBase.Systems.Input.InputManager
+  m_EditorClassIdentifier: Assembly-CSharp::Base.Systems.Input.InputManager
 --- !u!1 &828299481
 GameObject:
   m_ObjectHideFlags: 0
@@ -18196,6 +18196,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1438166460}
+  - {fileID: 821670867}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1226450467
@@ -21533,7 +21534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Managers.SoManager
   playerSos:
-  - {fileID: 11400000, guid: cc1df886df7a76b49bdc505fa970d3a2, type: 2}
+  - {fileID: 11400000, guid: 3a48f29c7a002ad47bf283c19184d1e6, type: 2}
 --- !u!1 &1450167839
 GameObject:
   m_ObjectHideFlags: 0
@@ -26032,9 +26033,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1679171078}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eb23f9340fd454a87c1b32665bf6326, type: 3}
+  m_Script: {fileID: 11500000, guid: 463a73458106448bb9e7f987ae3e92a1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Controllers.Animations.AnimEventController
+  m_EditorClassIdentifier: Assembly-CSharp::Base.Systems.Animation.AnimationController
 --- !u!1 &1685430855
 GameObject:
   m_ObjectHideFlags: 0
@@ -81284,5 +81285,4 @@ SceneRoots:
   - {fileID: 1662353787}
   - {fileID: 612861175}
   - {fileID: 1216779957}
-  - {fileID: 821670867}
   - {fileID: 2130530284}

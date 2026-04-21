@@ -1,9 +1,8 @@
 ﻿using _Data.Refactor.Controllers.Players;
 using _Data.Refactor.Enums.Players;
+using Base.Core.StateMachine;
+using Base.Systems.Input;
 using UnityEngine;
-using VyesBase.Core.StateMachine;
-using VyesBase.Systems.Input;
-using VyesBase.Utils.GameLogger;
 
 namespace _Data.Refactor.States.Players.Moves
 {
@@ -22,11 +21,15 @@ namespace _Data.Refactor.States.Players.Moves
 
         public override void OnUpdate()
         {
-            var moveInput = InputManager.Instance.MoveInput;
+            var moveInput = InputManager.Ins.Move;
             if (moveInput != Vector2.zero)
             {
                 stateMachine.ChangeState(PlayerState.Move);
             }
+        }
+
+        public override void OnFixedUpdate()
+        {
         }
 
         public override void OnExit()

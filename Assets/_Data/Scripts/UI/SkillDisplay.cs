@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Base.Systems.Combat;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,16 +20,16 @@ public class SkillDisplay : MonoBehaviour
         switch (index)
         {
             case 1:
-                this.skillInfoText.text =
-                    $"Yasuo tung ra một cơn lốc gây <color=red>{skill1.GetDamage(this.yasuoStats.attackDamage, this.yasuoStats.abilityPower)}" +
-                    $" = {skill1.baseDamage} + {skill1.bonusAD}% AD sát thương vật lý</color>";
-                LayoutRebuilder.ForceRebuildLayoutImmediate(infoPanel.GetComponent<RectTransform>());
+                // this.skillInfoText.text =
+                    // $"Yasuo tung ra một cơn lốc gây <color=red>{skill1.GetDamage(this.yasuoStats.attackDamage, this.yasuoStats.abilityPower)}" +
+                    // $" = {skill1.baseDamage} + {skill1.bonusAD}% AD sát thương vật lý</color>";
+                // LayoutRebuilder.ForceRebuildLayoutImmediate(infoPanel.GetComponent<RectTransform>());
                 break;
             case 2:
-                this.skillInfoText.text =
-                    $"Yasuo lướt đi 1 đoạn và gây <color=blue>{skill2.GetDamage(this.yasuoStats.attackDamage, this.yasuoStats.abilityPower)}" +
-                    $" = {skill2.baseDamage} + <color=red>{skill2.bonusAP}%  AD</color> + {skill2.bonusAP}% AP sát thương phép thuật</color>";
-                LayoutRebuilder.ForceRebuildLayoutImmediate(infoPanel.GetComponent<RectTransform>());
+                // this.skillInfoText.text =
+                    // $"Yasuo lướt đi 1 đoạn và gây <color=blue>{skill2.GetDamage(this.yasuoStats.attackDamage, this.yasuoStats.abilityPower)}" +
+                    // $" = {skill2.baseDamage} + <color=red>{skill2.bonusAP}%  AD</color> + {skill2.bonusAP}% AP sát thương phép thuật</color>";
+                // LayoutRebuilder.ForceRebuildLayoutImmediate(infoPanel.GetComponent<RectTransform>());
                 break;
             default:
                 this.skillInfoText.text =

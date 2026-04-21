@@ -1,5 +1,5 @@
+using Base.Utilities;
 using UnityEngine;
-using VyesBase.Utils;
 
 public class EnemyAttacking : VyesBehaviour
 {
@@ -34,7 +34,7 @@ public class EnemyAttacking : VyesBehaviour
     {
         Transform newBullet =
             BulletSpawner.Instance.Spawn(BulletName, this.transform.position, this.GetRandomRotation());
-        newBullet.GetComponentInChildren<BulletDealingDamage>().SetAttackDamage(this.stats.attackData.baseDamage);
+        // newBullet.GetComponentInChildren<BulletDealingDamage>().SetAttackDamage(this.stats.attackData.baseDamage);
         this.animator.speed = this.GetAnimationSpeed(this.stats.attackSpeed);
     }
 

@@ -1,5 +1,5 @@
+using Base.Utilities;
 using UnityEngine;
-using VyesBase.Utils;
 
 public class EnemyScaleStats : VyesBehaviour
 {
@@ -18,7 +18,7 @@ public class EnemyScaleStats : VyesBehaviour
     void ScaleByLevel(float level, MainEnemyStats stat, MainEnemyStats baseStat, float rate)
     {
         stat.health = baseStat.health * (1 + level * rate);
-        stat.attackData.baseDamage = baseStat.attackData.baseDamage * (1 + level * rate);
+        // stat.attackData.baseDamage = baseStat.attackData.baseDamage * (1 + level * rate);
         stat.moveSpeed = baseStat.moveSpeed * (1 + level * rate / 10);
         stat.armor = baseStat.armor * (1 + level * rate);
         stat.magicResistance = baseStat.magicResistance * (1 + level * rate);

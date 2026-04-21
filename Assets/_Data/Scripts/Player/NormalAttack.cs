@@ -14,8 +14,8 @@ public class NormalAttack : MonoBehaviour
         if (Time.timeScale == 0) return;
 
         // Tính thời gian hồi chiêu dựa trên chỉ số Haste của Yasuo
-        this.cooldownTime =
-            CooldownCalculator.GetCooldown(this.yasuoSkill.yasuoSkillData[0].cooldown, this.yasuoStats.haste);
+        // this.cooldownTime =
+            // CooldownCalculator.GetCooldown(this.yasuoSkill.yasuoSkillData[0].cooldown, this.yasuoStats.haste);
 
         // Kiểm tra nếu đang trong thời gian hồi chiêu
         if (this.isCooldown && (!Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1)))
@@ -37,7 +37,7 @@ public class NormalAttack : MonoBehaviour
     void Attack()
     {
         if (this.isCooldown) return;
-        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.YasuoNormalAttack));
+        AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.YasuoNormalAttack));
         this.yasuoSkill.lastSkillIndex = 0;
         this.animator.SetInteger(nameof(AnimationParams.currentSkill), 0);
         this.isCooldown = true;

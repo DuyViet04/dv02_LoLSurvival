@@ -55,6 +55,6 @@ public class EnemySpawner : SpawnerSingleton<EnemySpawner>
     public override void Despawn(Transform prefab)
     {
         base.Despawn(prefab);
-        CSDisplay.Instance.IncreaseCsCount();
+        CSDisplay.Ins.IncreaseCsCount();
     }
 }

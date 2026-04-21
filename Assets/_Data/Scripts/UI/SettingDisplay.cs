@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Base.Core.Singleton;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using VyesBase.Core.Singleton;
 
 public class SettingDisplay : VyesPersistentSingleton<SettingDisplay>
 {
@@ -41,13 +38,13 @@ public class SettingDisplay : VyesPersistentSingleton<SettingDisplay>
     public void OpenSettingPanel()
     {
         this.settingPanel.SetActive(true);
-        AudioManager.Instance.PlaySFXClip("Click");
+        AudioManager.Ins.PlaySFXClip("Click");
     }
 
     public void CloseSettingPanel()
     {
         this.settingPanel.SetActive(false);
-        AudioManager.Instance.PlaySFXClip("Click");
+        AudioManager.Ins.PlaySFXClip("Click");
     }
 
     void LoadSettingButton()

@@ -1,5 +1,5 @@
+using Base.Utilities;
 using UnityEngine;
-using VyesBase.Utils;
 
 public class BossScaling : VyesBehaviour
 {

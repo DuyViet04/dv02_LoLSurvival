@@ -5,7 +5,7 @@ public abstract class MainEnemyStats : ScriptableObject
 {
     public EnemyType type;
     public float health;
-    public AttackData attackData;
+    // public AttackData attackData;
     public float attackSpeed;
     public float moveSpeed;
     public float armor;

@@ -1,3 +1,4 @@
+
 [submodule "Assets/VyesBase"]
 	path = Assets/VyesBase
-	url = https://github.com/DuyViet04/dv_CoreBase.git
+	url = https://github.com/DuyViet04/dv_VyesBase.git

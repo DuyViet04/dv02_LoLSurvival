@@ -1,4 +1,4 @@
-﻿using VyesBase.Systems.Spawner;
+﻿using Base.Systems.Spawner;
 
 namespace _Data.Refactor.Controllers.Spawners
 {

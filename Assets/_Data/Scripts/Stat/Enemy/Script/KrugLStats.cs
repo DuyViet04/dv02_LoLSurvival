@@ -8,16 +8,16 @@ public class KrugLStats : MainEnemyStats
     {
         this.type = EnemyType.KrugL;
         this.health = 135f;
-        this.attackData = new AttackData()
-        {
-            attackType = AttackType.NormalAttack,
-            damageType = DamageType.MagicDamage,
-            baseDamage = 57f,
-            bonusAD = 0,
-            bonusAP = 0,
-            cooldown = 0,
-            isCritical = false
-        };
+        // this.attackData = new AttackData()
+        // {
+        //     attackType = AttackType.NormalAttack,
+        //     damageType = DamageType.MagicDamage,
+        //     baseDamage = 57f,
+        //     bonusAD = 0,
+        //     bonusAP = 0,
+        //     cooldown = 0,
+        //     isCritical = false
+        // };
         this.moveSpeed = 2.5f;
         this.armor = 42f;
         this.magicResistance = 42f;
@@ -39,16 +39,16 @@ public class KrugLStats : MainEnemyStats
     {
         this.type = EnemyType.KrugL;
         this.health = 135f;
-        this.attackData = new AttackData()
-        {
-            attackType = AttackType.NormalAttack,
-            damageType = DamageType.MagicDamage,
-            baseDamage = 57f,
-            bonusAD = 0,
-            bonusAP = 0,
-            cooldown = 0,
-            isCritical = false
-        };
+        // this.attackData = new AttackData()
+        // {
+        //     attackType = AttackType.NormalAttack,
+        //     damageType = DamageType.MagicDamage,
+        //     baseDamage = 57f,
+        //     bonusAD = 0,
+        //     bonusAP = 0,
+        //     cooldown = 0,
+        //     isCritical = false
+        // };
         this.moveSpeed = 2.5f;
         this.armor = 42f;
         this.magicResistance = 42f;

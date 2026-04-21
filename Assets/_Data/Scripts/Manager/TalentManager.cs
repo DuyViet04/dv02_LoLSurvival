@@ -1,9 +1,8 @@
 using System.Collections.Generic;
+using Base.Core.Singleton;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
-using VyesBase.Core.Singleton;
 
 public class TalentManager : VyesSingleton<TalentManager>
 {
@@ -27,7 +26,7 @@ public class TalentManager : VyesSingleton<TalentManager>
 
     public void LevelUpTalent(int index)
     {
-        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.Click));
+        AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.Click));
         if (this.talentTable.csPoint > this.talentTable.talents[index].pointCost)
         {
             this.talentTable.talents[index].currentLevel++;
@@ -46,11 +45,11 @@ public class TalentManager : VyesSingleton<TalentManager>
 
     public void ShowTalentPanel()
     {
-        SaveManager.Instance.LoadGame();
-        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.Click));
-        this.talentTable.csPoint += GameManager.Instance.CSCount;
+        SaveManager.Ins.LoadGame();
+        AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.Click));
+        this.talentTable.csPoint += GameManager.Ins.CSCount;
         this.csPointText.text = $"Điểm CS: {this.talentTable.csPoint}";
-        GameManager.Instance.CSCount = 0;
+        GameManager.Ins.CSCount = 0;
         for (int i = 0; i < this.talentsList.Count; i++)
         {
             this.talentLevel[i].text = $"Cấp độ: {this.talentTable.talents[i].currentLevel}";
@@ -64,8 +63,8 @@ public class TalentManager : VyesSingleton<TalentManager>
 
     public void CloseTalentPanel()
     {
-        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.Click));
+        AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.Click));
         this.talentPanel.SetActive(false);
-        SaveManager.Instance.SaveGame();
+        SaveManager.Ins.SaveGame();
     }
 }

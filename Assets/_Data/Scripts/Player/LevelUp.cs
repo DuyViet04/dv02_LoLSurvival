@@ -41,7 +41,7 @@ public class LevelUp : MonoBehaviour
 
         this.levelUpPanel.SetActive(true); // Hiển thị bảng nâng cấp
         Time.timeScale = 0; // Dừng thời gian để người chơi có thể chọn nâng cấp
-        LevelUpDisplay.Instance.ShowUpgradeChoices(); // Hiển thị các lựa chọn nâng cấp
+        LevelUpDisplay.Ins.ShowUpgradeChoices(); // Hiển thị các lựa chọn nâng cấp
 
         //Tính toán kinh nghiệm cho level tiếp theo
         this.currentLv++;

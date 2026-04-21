@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using UnityEditor;
+using Base.Core.Singleton;
 using UnityEngine;
 using UnityEngine.UI;
-using VyesBase.Core.Singleton;
 
 public class ShopManager : VyesSingleton<ShopManager>
 {
@@ -28,31 +27,31 @@ public class ShopManager : VyesSingleton<ShopManager>
 
     public void OpenShop()
     {
-        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.OpenShop));
+        AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.OpenShop));
         this.shopPanel.SetActive(true);
         Time.timeScale = 0;
-        ShopDisplay.Instance.ShowItemChoices();
+        ShopDisplay.Ins.ShowItemChoices();
     }
 
     public void ExitShop()
     {
-        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.CloseShop));
+        AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.CloseShop));
         this.shopPanel.SetActive(false);
         Time.timeScale = 1;
     }
 
     public void BuyItem(int index)
     {
-        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.BuyItem));
+        AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.BuyItem));
         this.itemSlots = this.LoadItemSlots();
-        ItemData item = ShopDisplay.Instance.choices[index];
+        ItemData item = ShopDisplay.Ins.choices[index];
         if (this.IsCanBuy(item, this.inventory))
         {
             this.goldDisplay.GiveGold(item.cost);
             this.inventory.Add(item);
             this.itemCount++;
             this.yasuoStats.ApplyItem(item);
-            ShopDisplay.Instance.ListCores[index].SetActive(false);
+            ShopDisplay.Ins.ListCores[index].SetActive(false);
             this.itemSlots[this.itemCount - 1].sprite = item.icon;
             this.itemSprites.Add(item.icon);
         }
@@ -66,7 +65,7 @@ public class ShopManager : VyesSingleton<ShopManager>
 
     public void SellItem()
     {
-        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.SellItem));
+        AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.SellItem));
         ItemData item = this.inventory[this.indexItem];
         this.goldDisplay.Sell(item.cost);
         this.itemCount--;

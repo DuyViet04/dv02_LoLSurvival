@@ -1,4 +1,5 @@
 using _Data.Refactor.Enums;
+using Base.Systems.Combat;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -94,10 +95,10 @@ public class PlayerTakingDamage : TakingDamage
     // Khi máu về 0, sẽ gọi hàm Despawn để xử lý kết thúc trò chơi
     protected override void Despawn()
     {
-        GameManager.Instance.CSCount = CSDisplay.Instance.CSCount; // Lưu số lính đã tiêu diệt
-        GameManager.Instance.MainStatsData = StatsDisplay.Instance.GetLastMainData(); // Lưu dữ liệu thống kê chính
-        GameManager.Instance.SecondStatsData = StatsDisplay.Instance.GetLastSecondData(); // Lưu dữ liệu thống kê phụ
-        GameManager.Instance.ItemSprites = ShopManager.Instance.GetLastItem(); // Lưu dữ liệu vật phẩm đã mua
+        GameManager.Ins.CSCount = CSDisplay.Ins.CSCount; // Lưu số lính đã tiêu diệt
+        GameManager.Ins.MainStatsData = StatsDisplay.Ins.GetLastMainData(); // Lưu dữ liệu thống kê chính
+        GameManager.Ins.SecondStatsData = StatsDisplay.Ins.GetLastSecondData(); // Lưu dữ liệu thống kê phụ
+        GameManager.Ins.ItemSprites = ShopManager.Ins.GetLastItem(); // Lưu dữ liệu vật phẩm đã mua
         SceneManager.LoadScene(nameof(ScenesEnum.GameOver));
     }
 
@@ -108,8 +109,8 @@ public class PlayerTakingDamage : TakingDamage
 
         if (parent != null && parent.CompareTag(nameof(TagEnum.Enemy)))
         {
-            AttackData attackData = parent.GetComponentInChildren<EnemyDealingDamage>().GetAttackData();
-            parent.GetComponentInChildren<EnemyDealingDamage>().DealDamage(this.transform.parent, attackData);
+            // AttackData attackData = parent.GetComponentInChildren<EnemyDealingDamage>().GetAttackData();
+            // parent.GetComponentInChildren<EnemyDealingDamage>().DealDamage(this.transform.parent, attackData);
         }
     }
 }

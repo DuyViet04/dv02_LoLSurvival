@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
-using _Data.Refactor.Managers;
+using Base.Core.Singleton;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using VyesBase.Core.Singleton;
 
 public class GameManager : VyesPersistentSingleton<GameManager>
 {

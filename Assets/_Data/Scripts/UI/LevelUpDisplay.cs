@@ -1,9 +1,8 @@
 using System.Collections.Generic;
+using Base.Core.Singleton;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using VyesBase.Core.Singleton;
 
 public class LevelUpDisplay : VyesSingleton<LevelUpDisplay>
 {
@@ -57,7 +56,7 @@ public class LevelUpDisplay : VyesSingleton<LevelUpDisplay>
 
     public void ApplyUpgrade(int index)
     {
-        AudioManager.Instance.PlaySFXClip(nameof(AudioNameEnum.Click));
+        AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.Click));
         
         UpgradeData chosen = this.choicesList[index];
         float finalValue = chosen.value * this.power;
