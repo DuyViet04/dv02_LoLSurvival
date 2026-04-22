@@ -1,4 +1,5 @@
-﻿using _Data.Refactor.Controllers.Enemies;
+﻿using _Data.Refactor.Controllers;
+using _Data.Refactor.Controllers.Enemies;
 using _Data.Refactor.Enums.Enemies;
 using Base.Core.StateMachine;
 using Base.Systems.Combat;
@@ -69,7 +70,8 @@ namespace _Data.Refactor.States.Enemies.Moves
             if (attackTimer < attackDelay) return;
             attackTimer = 0f;
             Vector3 spawnPos = new Vector3(self.position.x, self.position.y + .5f, self.position.z);
-            bulletSpawner.Spawn("Bullet", spawnPos, self.rotation);
+            var newBullet = bulletSpawner.Spawn("Bullet", spawnPos, self.rotation);
+            newBullet.GetComponent<BulletController>().AttackData = runtime.AttackData;
             // Debug.Log(runtime.EnemyData.EnemyType + " Attack");
         }
     }

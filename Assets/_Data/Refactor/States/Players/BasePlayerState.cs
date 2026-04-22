@@ -5,6 +5,7 @@ using _Data.Refactor.Models.Runtimes.Skills;
 using Base.Core.StateMachine;
 using Base.Systems.Animation;
 using UnityEngine;
+using EventType = Base.Systems.Animation.EventType;
 
 namespace _Data.Refactor.States.Players
 {
@@ -14,6 +15,7 @@ namespace _Data.Refactor.States.Players
         protected readonly Animator animator;
         protected readonly Rigidbody rigidbody;
         protected readonly AnimationController eventController;
+        protected readonly Collider weaponCollider;
         protected readonly BasePlayerRuntime runtime;
         protected readonly List<BasePlayerSkillRuntime> skillsRuntime;
 
@@ -23,6 +25,7 @@ namespace _Data.Refactor.States.Players
             animator = playerController.Animator;
             rigidbody = playerController.Rigidbody;
             eventController = playerController.AnimationController;
+            weaponCollider = playerController.WeaponCollider;
             runtime = playerController.CharacterRuntime;
             skillsRuntime = playerController.SkillsRuntime;
         }
@@ -31,5 +34,17 @@ namespace _Data.Refactor.States.Players
         public abstract void OnUpdate();
         public abstract void OnFixedUpdate();
         public abstract void OnExit();
+
+        protected void TriggerWeaponCollider(EventType eventType)
+        {
+            if (eventType == EventType.Start)
+            {
+                weaponCollider.enabled = true;
+            }
+            else if (eventType == EventType.End)
+            {
+                weaponCollider.enabled = false;
+            }
+        }
     }
 }

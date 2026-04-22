@@ -6,6 +6,7 @@ using _Data.Refactor.Models.SOs.Enemies;
 using _Data.Refactor.States.Enemies;
 using _Data.Refactor.States.Enemies.Moves;
 using Base.Core.Architecture;
+using Base.Systems.Combat;
 using UnityEngine;
 
 namespace _Data.Refactor.Controllers.Enemies
@@ -43,6 +44,15 @@ namespace _Data.Refactor.Controllers.Enemies
             moveStateMachine.FixedUpdateState();
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag(nameof(TagEnum.Player)))
+            {
+                IDamageable damageable = other.GetComponent<IDamageable>();
+                damageable.TakeDamage(baseEnemyRuntime.AttackData);
+            }
+        }
+
         void InitState()
         {
             moveStateMachine = new EnemyMoveStateMachine<EnemyState>();
@@ -55,26 +65,26 @@ namespace _Data.Refactor.Controllers.Enemies
             base.LoadComponents();
             if (rigid == null)
             {
-                Debug.LogWarning($"Load {rigid}", gameObject);
                 rigid = GetComponent<Rigidbody>();
+                Debug.LogWarning($"Load {rigid}", gameObject);
             }
 
             if (target == null)
             {
-                Debug.LogWarning($"Load {target}", gameObject);
                 target = GameObject.FindGameObjectWithTag(nameof(TagEnum.Player)).transform;
+                Debug.LogWarning($"Load {target}", gameObject);
             }
 
             if (baseEnemySo == null)
             {
-                Debug.LogWarning($"Load {baseEnemySo}", gameObject);
                 baseEnemySo = SoManager.Ins.GetEnemySoByName(transform.name);
+                Debug.LogWarning($"Load {baseEnemySo}", gameObject);
             }
 
             if (bulletSpawner == null)
             {
-                Debug.LogWarning($"Load {bulletSpawner}", gameObject);
                 bulletSpawner = FindFirstObjectByType<BulletSpawner>();
+                Debug.LogWarning($"Load {bulletSpawner}", gameObject);
             }
         }
     }

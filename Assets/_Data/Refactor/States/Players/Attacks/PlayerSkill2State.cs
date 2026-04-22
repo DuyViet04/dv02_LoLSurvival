@@ -20,6 +20,7 @@ namespace _Data.Refactor.States.Players.Attacks
         public override void OnEnter()
         {
             eventController.OnEvent += OnEventTrigger;
+            eventController.OnEvent += TriggerWeaponCollider;
 
             skillRuntime = skillsRuntime.FirstOrDefault(s => s.SkillData.SkillType == SkillType.Skill2);
             if (skillRuntime!.TryUseSkill())
@@ -39,6 +40,7 @@ namespace _Data.Refactor.States.Players.Attacks
         public override void OnExit()
         {
             eventController.OnEvent -= OnEventTrigger;
+            eventController.OnEvent -= TriggerWeaponCollider;
         }
 
         void Attack()

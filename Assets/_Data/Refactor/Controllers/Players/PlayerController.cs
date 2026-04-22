@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using _Data.Refactor.Enums.Players;
 using _Data.Refactor.Managers;
@@ -17,20 +16,23 @@ using UnityEngine;
 namespace _Data.Refactor.Controllers.Players
 {
     // Todo: Attack, Cooldown
+    [DefaultExecutionOrder(-100)]
     public class PlayerController : BaseController
     {
         [SerializeField] private Animator animator;
-        public Animator Animator => animator;
         [SerializeField] private Rigidbody rigidBody;
-        public Rigidbody Rigidbody => rigidBody;
         [SerializeField] private Camera mainCamera;
         [SerializeField] private AnimationController animationController;
-        public AnimationController AnimationController => animationController;
         [SerializeField] private BasePlayerSo basePlayerSo;
-
+        [SerializeField] private Collider weaponCollider;
         private BasePlayerRuntime characterRuntime;
-        public BasePlayerRuntime CharacterRuntime => characterRuntime;
         private List<BasePlayerSkillRuntime> skillsRuntime = new List<BasePlayerSkillRuntime>();
+
+        public Animator Animator => animator;
+        public Rigidbody Rigidbody => rigidBody;
+        public AnimationController AnimationController => animationController;
+        public Collider WeaponCollider => weaponCollider;
+        public BasePlayerRuntime CharacterRuntime => characterRuntime;
         public List<BasePlayerSkillRuntime> SkillsRuntime => skillsRuntime;
 
         private MoveStateMachine<PlayerState> moveStateMachine;
@@ -41,6 +43,7 @@ namespace _Data.Refactor.Controllers.Players
         protected override void Awake()
         {
             base.Awake();
+            InitializeRuntimes();
             InitStateMachine();
         }
 
@@ -116,35 +119,33 @@ namespace _Data.Refactor.Controllers.Players
             base.LoadComponents();
             if (animator == null)
             {
-                Debug.LogWarning($"{animator} is null");
                 animator = GetComponentInChildren<Animator>();
+                Debug.LogWarning($"{animator} is null", gameObject);
             }
 
             if (rigidBody == null)
             {
-                Debug.LogWarning($"{rigidBody} is null");
                 rigidBody = GetComponent<Rigidbody>();
+                Debug.LogWarning($"{rigidBody} is null", gameObject);
             }
 
             if (mainCamera == null)
             {
-                Debug.LogWarning($"{mainCamera} is null");
                 mainCamera = Camera.main;
+                Debug.LogWarning($"{mainCamera} is null", gameObject);
             }
 
             if (animationController == null)
             {
-                Debug.LogWarning($"{animationController} is null");
                 animationController = GetComponentInChildren<AnimationController>();
+                Debug.LogWarning($"{animationController} is null", gameObject);
             }
 
             if (basePlayerSo == null)
             {
-                Debug.LogWarning($"{basePlayerSo} is null");
                 basePlayerSo = SoManager.Ins.GetPlayerSoByName(nameof(PlayerName.Yasuo));
+                Debug.LogWarning($"{basePlayerSo} is null", gameObject);
             }
-
-            InitializeRuntimes();
         }
 
         private void InitializeRuntimes()

@@ -19,8 +19,7 @@ namespace _Data.Refactor.States.Players.Attacks
         public override void OnEnter()
         {
             skillRuntime = skillsRuntime.FirstOrDefault(s => s.SkillData.SkillType == SkillType.Normal);
-            // GameLogger.Log("Enter normal attack state");
-            // GameLogger.Log($"{runtime.CurrentCooldown}");
+            eventController.OnEvent += TriggerWeaponCollider;
         }
 
         public override void OnUpdate()
@@ -37,6 +36,7 @@ namespace _Data.Refactor.States.Players.Attacks
 
         public override void OnExit()
         {
+            eventController.OnEvent -= TriggerWeaponCollider;
         }
 
         void Attack()
