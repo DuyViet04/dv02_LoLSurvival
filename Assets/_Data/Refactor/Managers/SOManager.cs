@@ -10,6 +10,8 @@ namespace _Data.Refactor.Managers
     {
         [SerializeField] private List<BasePlayerSo> playerSos;
         [SerializeField] private List<BaseEnemySo> enemySos;
+        
+        public List<BaseEnemySo> EnemySos => enemySos;
 
         private readonly string playerSosPath = "SOs/Players";
         private readonly string enemySosPath = "SOs/Enemies";
@@ -25,6 +27,20 @@ namespace _Data.Refactor.Managers
             }
 
             Debug.LogError($"PlayerSo: {playerName} not found");
+            return null;
+        }
+
+        public BaseEnemySo GetEnemySoByName(string enemyName)
+        {
+            foreach (BaseEnemySo so in enemySos)
+            {
+                if (so.enemyData.EnemyType.ToString() == enemyName)
+                {
+                    return so;
+                }
+            }
+
+            Debug.LogError($"EnemySo: {enemyName} not found");
             return null;
         }
 

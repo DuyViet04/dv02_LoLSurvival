@@ -7,7 +7,7 @@ public class Despawn : MonoBehaviour
     {
         bool isOnScreen = this.IsOnScreen();
         if (isOnScreen) return;
-        BulletSpawner.Instance.Despawn(this.transform.parent);
+        // BulletSpawner.Instance.Despawn(this.transform.parent);
     }
 
     bool IsOnScreen()

@@ -1,3 +1,4 @@
+using _Data.Refactor.Controllers.Spawners;
 using _Data.Refactor.Enums;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ public class BulletDealingDamage : DealingDamage
         if (parent != null && parent.CompareTag(nameof(TagEnum.Player)))
         {
             parent.GetComponentInChildren<PlayerTakingDamage>().TakeDamage(this.attackDamage);
-            BulletSpawner.Instance.Despawn(this.transform.parent);
+            // BulletSpawner.Instance.Despawn(this.transform.parent);
         }
     }
 }

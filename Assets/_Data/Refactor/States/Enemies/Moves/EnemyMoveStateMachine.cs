@@ -2,7 +2,7 @@
 
 namespace _Data.Refactor.States.Enemies.Moves
 {
-    public abstract class EnemyMoveStateMachine<T> : StateMachine<T>
+    public class EnemyMoveStateMachine<T> : StateMachine<T>
     {
     }
 }

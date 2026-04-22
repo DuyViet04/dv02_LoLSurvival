@@ -21,7 +21,7 @@ MonoBehaviour:
     tenacity: 0
     slowResist: 0
   offensiveData:
-    attackSpeed: 0
+    attackSpeed: 0.25
     attackDamage: 21
     abilityPower: 0
     critChance: 0
@@ -49,4 +49,3 @@ MonoBehaviour:
     canCrit: 0
     critDamage: 0
     damageType: 0
-    skillType: 0

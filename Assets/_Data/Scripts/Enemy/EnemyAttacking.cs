@@ -32,10 +32,10 @@ public class EnemyAttacking : VyesBehaviour
     //Spawn bullet mỗi khi attack
     private void Attack()
     {
-        Transform newBullet =
-            BulletSpawner.Instance.Spawn(BulletName, this.transform.position, this.GetRandomRotation());
+        // Transform newBullet =
+            // BulletSpawner.Instance.Spawn(BulletName, this.transform.position, this.GetRandomRotation());
         // newBullet.GetComponentInChildren<BulletDealingDamage>().SetAttackDamage(this.stats.attackData.baseDamage);
-        this.animator.speed = this.GetAnimationSpeed(this.stats.attackSpeed);
+        // this.animator.speed = this.GetAnimationSpeed(this.stats.attackSpeed);
     }
 
     Quaternion GetRandomRotation()

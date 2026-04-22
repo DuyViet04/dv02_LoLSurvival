@@ -12,14 +12,14 @@ namespace _Data.Refactor.Models.SOs.Enemies.Data
         [SerializeField] private float goldValue;
         [SerializeField] private float csValue;
         [SerializeField] private float spawnDelay;
-        [SerializeField] private float spawnCount;
+        [SerializeField] private int spawnCount;
 
-        public EnemyType Type => enemyType;
+        public EnemyType EnemyType => enemyType;
         public float ExpValue => expValue;
         public float GoldValue => goldValue;
         public float CsValue => csValue;
         public float SpawnDelay => spawnDelay;
-        public float SpawnCount => spawnCount;
+        public int SpawnCount => spawnCount;
 
         public EnemyData(EnemyData enemyData)
         {

@@ -36,7 +36,7 @@ public abstract class Spawner : VyesBehaviour
         return Spawn(prefab, position, rotation);
     }
 
-    protected Transform Spawn(Transform prefab, Vector3 position, Quaternion rotation)
+    public Transform Spawn(Transform prefab, Vector3 position, Quaternion rotation)
     {
         Transform newObj = this.GetObjectFromPool(prefab);
         newObj.SetPositionAndRotation(position, rotation);
@@ -57,7 +57,7 @@ public abstract class Spawner : VyesBehaviour
         return Spawn(prefab, position, rotation, count);
     }
 
-    protected Transform[] Spawn(Transform prefab, Vector3 position, Quaternion rotation, float count)
+    public Transform[] Spawn(Transform prefab, Vector3 position, Quaternion rotation, float count)
     {
         Transform[] newObjs = new Transform[Mathf.RoundToInt(count)];
 
