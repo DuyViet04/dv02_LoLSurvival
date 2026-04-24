@@ -11,11 +11,12 @@ namespace _Data.Refactor.States.Players.Attacks
 {
     public class PlayerSkill1State : BasePlayerState
     {
-        private BasePlayerSkillRuntime skillRuntime;
+        private readonly BasePlayerSkillRuntime skillRuntime;
 
         public PlayerSkill1State(PlayerController playerController, StateMachine<PlayerState> stateMachine) :
             base(playerController, stateMachine)
         {
+            skillRuntime = skillsRuntime.FirstOrDefault(s => s.SkillData.SkillType == SkillType.Skill1);
         }
 
         public override void OnEnter()
@@ -23,7 +24,8 @@ namespace _Data.Refactor.States.Players.Attacks
             eventController.OnEvent += OnEventTrigger;
             eventController.OnEvent += TriggerWeaponCollider;
 
-            skillRuntime = skillsRuntime.FirstOrDefault(s => s.SkillData.SkillType == SkillType.Skill1);
+            attackData.SetAttackData(skillRuntime.GetDamage(), skillRuntime.SkillData.CanCrit,
+                runtime.OffensiveData.CritDamage, skillRuntime.SkillData.DamageType);
             if (skillRuntime!.TryUseSkill())
             {
                 Attack();

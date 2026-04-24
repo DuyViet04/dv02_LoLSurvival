@@ -12,7 +12,7 @@ namespace _Data.Refactor.States.Players.Attacks
 {
     public class PlayerSkill2State : BasePlayerState
     {
-        private BasePlayerSkillRuntime skillRuntime;
+        private readonly BasePlayerSkillRuntime skillRuntime;
         private Coroutine dashCoroutine;
         private float dashDuration = 0.5f;
         private float dashSpeed = 10f;
@@ -21,6 +21,7 @@ namespace _Data.Refactor.States.Players.Attacks
         public PlayerSkill2State(PlayerController playerController, StateMachine<PlayerState> stateMachine) :
             base(playerController, stateMachine)
         {
+            skillRuntime = skillsRuntime.FirstOrDefault(s => s.SkillData.SkillType == SkillType.Skill2);
         }
 
         public override void OnEnter()
@@ -30,7 +31,8 @@ namespace _Data.Refactor.States.Players.Attacks
 
             if (isDashing) return;
 
-            skillRuntime = skillsRuntime.FirstOrDefault(s => s.SkillData.SkillType == SkillType.Skill2);
+            attackData.SetAttackData(skillRuntime.GetDamage(), skillRuntime.SkillData.CanCrit,
+                runtime.OffensiveData.CritDamage, skillRuntime.SkillData.DamageType);
             if (skillRuntime!.TryUseSkill())
             {
                 Attack();

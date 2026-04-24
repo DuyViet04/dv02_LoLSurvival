@@ -3230,7 +3230,7 @@ GameObject:
   - component: {fileID: 185532090}
   m_Layer: 0
   m_Name: RangeEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3642,7 +3642,7 @@ GameObject:
   - component: {fileID: 209628120}
   m_Layer: 0
   m_Name: KrugL
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10597,7 +10597,7 @@ GameObject:
   - component: {fileID: 566465002}
   m_Layer: 0
   m_Name: Red
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11023,7 +11023,7 @@ GameObject:
   - component: {fileID: 608639059}
   m_Layer: 0
   m_Name: CannonEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13491,7 +13491,7 @@ GameObject:
   - component: {fileID: 747926843}
   m_Layer: 0
   m_Name: KrugM
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16925,7 +16925,7 @@ GameObject:
   - component: {fileID: 972473760}
   m_Layer: 0
   m_Name: MurkWolfS
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18009,7 +18009,7 @@ GameObject:
   - component: {fileID: 1009774485}
   m_Layer: 0
   m_Name: Blue
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18946,7 +18946,7 @@ GameObject:
   - component: {fileID: 1092323515}
   m_Layer: 0
   m_Name: MeleeEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21238,7 +21238,7 @@ GameObject:
   - component: {fileID: 1243437858}
   m_Layer: 0
   m_Name: Gromp
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26865,7 +26865,7 @@ GameObject:
   - component: {fileID: 1580161219}
   m_Layer: 0
   m_Name: RaptorS
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27855,7 +27855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1613400393}
   - component: {fileID: 1613400395}
-  - component: {fileID: 1613400394}
+  - component: {fileID: 1613400396}
   m_Layer: 0
   m_Name: Weapon_2
   m_TagString: Weapon
@@ -27879,21 +27879,6 @@ Transform:
   - {fileID: 2031188240}
   m_Father: {fileID: 1721517246}
   m_LocalEulerAnglesHint: {x: -24.87188, y: 104.77822, z: -110.76453}
---- !u!114 &1613400394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1613400392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b2658788b03ea64084363cdae5cbe36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  yasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
-  yasuoSkill: {fileID: 11400000, guid: 49bf0f88d7507624c85f0cc32e59398a, type: 2}
-  player: {fileID: 612861175}
 --- !u!136 &1613400395
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -27917,6 +27902,19 @@ CapsuleCollider:
   m_Height: 110
   m_Direction: 1
   m_Center: {x: 0, y: 75, z: 0}
+--- !u!114 &1613400396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613400392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034c2003f168483cbf44519c049aba5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Controllers.WeaponController
+  playerController: {fileID: 612861176}
 --- !u!1 &1619962246
 GameObject:
   m_ObjectHideFlags: 0
@@ -32572,7 +32570,7 @@ GameObject:
   - component: {fileID: 1826487262}
   m_Layer: 0
   m_Name: RaptorL
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32748,7 +32746,7 @@ GameObject:
   - component: {fileID: 1835941281}
   m_Layer: 0
   m_Name: KrugS
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32987,7 +32985,7 @@ GameObject:
   - component: {fileID: 1847077329}
   m_Layer: 0
   m_Name: SuperEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33331,7 +33329,7 @@ GameObject:
   - component: {fileID: 1863386692}
   m_Layer: 0
   m_Name: MurkWolfL
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

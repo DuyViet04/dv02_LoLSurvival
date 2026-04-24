@@ -5,6 +5,7 @@ using _Data.Refactor.Models.Runtimes.Players;
 using _Data.Refactor.Models.Runtimes.Skills;
 using Base.Core.StateMachine;
 using Base.Systems.Animation;
+using Base.Systems.Combat;
 using UnityEngine;
 using EventType = Base.Systems.Animation.EventType;
 
@@ -22,6 +23,7 @@ namespace _Data.Refactor.States.Players
         protected readonly List<BasePlayerSkillRuntime> skillsRuntime;
         protected readonly VfxSpawner vfxSpawner;
         protected readonly Transform self;
+        protected readonly AttackData attackData;
 
         protected BasePlayerState(PlayerController playerController, StateMachine<PlayerState> stateMachine)
         {
@@ -35,6 +37,7 @@ namespace _Data.Refactor.States.Players
             skillsRuntime = playerController.SkillsRuntime;
             vfxSpawner = playerController.VfxSpawner;
             self = playerController.transform;
+            attackData = playerController.SkillAttackData;
         }
 
         public abstract void OnEnter();

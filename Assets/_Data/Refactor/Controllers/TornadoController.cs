@@ -1,4 +1,6 @@
 using _Data.Refactor.Controllers.Players;
+using _Data.Refactor.Enums;
+using Base.Systems.Combat;
 using Base.Utilities;
 using UnityEngine;
 
@@ -7,7 +9,6 @@ namespace _Data.Refactor.Controllers
     public class TornadoController : VyesBehaviour
     {
         [SerializeField] private PlayerController playerController;
-        [SerializeField] private YasuoStats yasuoStats;
         [SerializeField] private float distance = 15f;
         private float currentDis = 0f;
 
@@ -24,6 +25,17 @@ namespace _Data.Refactor.Controllers
             {
                 currentDis = 0f;
                 playerController.VfxSpawner.Despawn(transform);
+            }
+        }
+        
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag(nameof(TagEnum.Enemy)))
+            {
+                IDamageable damageable = other.GetComponent<IDamageable>();
+                AttackData attackData = playerController.SkillAttackData;
+                Debug.Log(attackData.Damage);
+                damageable.TakeDamage(attackData);
             }
         }
 

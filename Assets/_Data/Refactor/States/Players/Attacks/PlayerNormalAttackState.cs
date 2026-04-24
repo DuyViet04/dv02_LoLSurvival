@@ -9,17 +9,19 @@ namespace _Data.Refactor.States.Players.Attacks
 {
     public class PlayerNormalAttackState : BasePlayerState
     {
-        private BasePlayerSkillRuntime skillRuntime;
+        private readonly BasePlayerSkillRuntime skillRuntime;
 
         public PlayerNormalAttackState(PlayerController playerController, StateMachine<PlayerState> stateMachine) :
             base(playerController, stateMachine)
         {
+            skillRuntime = skillsRuntime.FirstOrDefault(s => s.SkillData.SkillType == SkillType.Normal);
         }
 
         public override void OnEnter()
         {
-            skillRuntime = skillsRuntime.FirstOrDefault(s => s.SkillData.SkillType == SkillType.Normal);
             eventController.OnEvent += TriggerWeaponCollider;
+            attackData.SetAttackData(skillRuntime.GetDamage(), skillRuntime.SkillData.CanCrit,
+                runtime.OffensiveData.CritDamage, skillRuntime.SkillData.DamageType);
         }
 
         public override void OnUpdate()

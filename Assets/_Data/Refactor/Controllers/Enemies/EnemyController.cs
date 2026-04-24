@@ -12,13 +12,16 @@ using UnityEngine;
 namespace _Data.Refactor.Controllers.Enemies
 {
     // TODO: Spawner, EnemyData
-    public class EnemyController : BaseController
+    public class EnemyController : BaseController, IDamageable
     {
         [SerializeField] private Rigidbody rigid;
         [SerializeField] private Transform target;
         [SerializeField] private BaseEnemySo baseEnemySo;
         [SerializeField] private BulletSpawner bulletSpawner;
         private BaseEnemyRuntime baseEnemyRuntime;
+        private DefenseData defenseData = new DefenseData();
+        private float currentHealth;
+        private float maxHealth;
 
         public Rigidbody Rigidbody => rigid;
         public Transform Target => target;
@@ -27,11 +30,19 @@ namespace _Data.Refactor.Controllers.Enemies
 
         private EnemyMoveStateMachine<EnemyState> moveStateMachine;
 
+        private ICombatService combatService = new CombatService();
+
         protected override void Awake()
         {
             base.Awake();
             baseEnemyRuntime = new BaseEnemyRuntime(baseEnemySo);
             InitState();
+        }
+
+        void Start()
+        {
+            maxHealth = baseEnemyRuntime.DefensiveData.Health;
+            currentHealth = maxHealth;
         }
 
         private void Update()
@@ -50,6 +61,21 @@ namespace _Data.Refactor.Controllers.Enemies
             {
                 IDamageable damageable = other.GetComponent<IDamageable>();
                 damageable.TakeDamage(baseEnemyRuntime.AttackData);
+            }
+        }
+
+        public void TakeDamage(AttackData attackData)
+        {
+            defenseData.SetDefenseData(baseEnemyRuntime.DefensiveData.Armor,
+                baseEnemyRuntime.DefensiveData.MagicResist);
+            float damage = combatService.DamageCalculate(attackData, defenseData);
+
+            currentHealth -= damage;
+            currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+            if (currentHealth <= 0)
+            {
+                Debug.Log("Die");
             }
         }
 

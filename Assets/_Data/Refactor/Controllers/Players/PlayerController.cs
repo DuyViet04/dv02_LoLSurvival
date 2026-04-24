@@ -11,6 +11,7 @@ using _Data.Refactor.States.Players.Attacks;
 using _Data.Refactor.States.Players.Moves;
 using Base.Core.Architecture;
 using Base.Systems.Animation;
+using Base.Systems.Combat;
 using Base.Systems.Input;
 using UnityEngine;
 
@@ -29,6 +30,7 @@ namespace _Data.Refactor.Controllers.Players
         [SerializeField] private VfxSpawner vfxSpawner;
         private BasePlayerRuntime characterRuntime;
         private List<BasePlayerSkillRuntime> skillsRuntime = new List<BasePlayerSkillRuntime>();
+        private AttackData skillAttackData = new AttackData();
 
         public Animator Animator => animator;
         public Rigidbody Rigidbody => rigidBody;
@@ -37,6 +39,7 @@ namespace _Data.Refactor.Controllers.Players
         public BasePlayerRuntime CharacterRuntime => characterRuntime;
         public List<BasePlayerSkillRuntime> SkillsRuntime => skillsRuntime;
         public VfxSpawner VfxSpawner => vfxSpawner;
+        public AttackData SkillAttackData => skillAttackData;
 
         private MoveStateMachine<PlayerState> moveStateMachine;
         private AttackStateMachine<PlayerState> attackStateMachine;
