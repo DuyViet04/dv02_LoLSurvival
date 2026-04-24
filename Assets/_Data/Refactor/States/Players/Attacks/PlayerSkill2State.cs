@@ -1,16 +1,22 @@
+using System.Collections;
 using System.Linq;
 using _Data.Refactor.Controllers.Players;
 using _Data.Refactor.Enums.Players;
 using _Data.Refactor.Models.Runtimes.Skills;
 using Base.Core.StateMachine;
-using Base.Systems.Animation;
 using Base.Systems.Skill;
+using UnityEngine;
+using EventType = Base.Systems.Animation.EventType;
 
 namespace _Data.Refactor.States.Players.Attacks
 {
     public class PlayerSkill2State : BasePlayerState
     {
         private BasePlayerSkillRuntime skillRuntime;
+        private Coroutine dashCoroutine;
+        private float dashDuration = 0.5f;
+        private float dashSpeed = 10f;
+        private bool isDashing;
 
         public PlayerSkill2State(PlayerController playerController, StateMachine<PlayerState> stateMachine) :
             base(playerController, stateMachine)
@@ -21,6 +27,8 @@ namespace _Data.Refactor.States.Players.Attacks
         {
             eventController.OnEvent += OnEventTrigger;
             eventController.OnEvent += TriggerWeaponCollider;
+
+            if (isDashing) return;
 
             skillRuntime = skillsRuntime.FirstOrDefault(s => s.SkillData.SkillType == SkillType.Skill2);
             if (skillRuntime!.TryUseSkill())
@@ -35,6 +43,10 @@ namespace _Data.Refactor.States.Players.Attacks
 
         public override void OnFixedUpdate()
         {
+            if (isDashing)
+            {
+                rigidbody.linearVelocity = self.forward * dashSpeed;
+            }
         }
 
         public override void OnExit()
@@ -46,6 +58,16 @@ namespace _Data.Refactor.States.Players.Attacks
         void Attack()
         {
             animator.SetTrigger(nameof(PlayerAnimParam.Skill2));
+            dashCoroutine = playerController.StartCoroutine(Dash());
+        }
+
+        private IEnumerator Dash()
+        {
+            isDashing = true;
+            yield return new WaitForSeconds(dashDuration);
+            isDashing = false;
+            rigidbody.linearVelocity = Vector3.zero;
+            dashCoroutine = null;
         }
 
         private void OnEventTrigger(EventType eventType)

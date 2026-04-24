@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Data.Refactor.Controllers.Spawners;
 using _Data.Refactor.Enums.Players;
 using _Data.Refactor.Managers;
 using _Data.Refactor.Models.Runtimes.Players;
@@ -25,6 +26,7 @@ namespace _Data.Refactor.Controllers.Players
         [SerializeField] private AnimationController animationController;
         [SerializeField] private BasePlayerSo basePlayerSo;
         [SerializeField] private Collider weaponCollider;
+        [SerializeField] private VfxSpawner vfxSpawner;
         private BasePlayerRuntime characterRuntime;
         private List<BasePlayerSkillRuntime> skillsRuntime = new List<BasePlayerSkillRuntime>();
 
@@ -34,6 +36,7 @@ namespace _Data.Refactor.Controllers.Players
         public Collider WeaponCollider => weaponCollider;
         public BasePlayerRuntime CharacterRuntime => characterRuntime;
         public List<BasePlayerSkillRuntime> SkillsRuntime => skillsRuntime;
+        public VfxSpawner VfxSpawner => vfxSpawner;
 
         private MoveStateMachine<PlayerState> moveStateMachine;
         private AttackStateMachine<PlayerState> attackStateMachine;
@@ -61,6 +64,7 @@ namespace _Data.Refactor.Controllers.Players
         private void FixedUpdate()
         {
             moveStateMachine.FixedUpdateState();
+            attackStateMachine.FixedUpdateState();
         }
 
         private void UpdateSkillCooldowns()
@@ -145,6 +149,12 @@ namespace _Data.Refactor.Controllers.Players
             {
                 basePlayerSo = SoManager.Ins.GetPlayerSoByName(nameof(PlayerName.Yasuo));
                 Debug.LogWarning($"{basePlayerSo} is null", gameObject);
+            }
+
+            if (vfxSpawner == null)
+            {
+                vfxSpawner = FindFirstObjectByType<VfxSpawner>();
+                Debug.LogWarning($"{vfxSpawner} is null", gameObject);
             }
         }
 

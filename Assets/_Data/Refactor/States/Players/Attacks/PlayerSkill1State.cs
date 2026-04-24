@@ -1,10 +1,11 @@
 using System.Linq;
 using _Data.Refactor.Controllers.Players;
+using _Data.Refactor.Controllers.Spawners;
 using _Data.Refactor.Enums.Players;
 using _Data.Refactor.Models.Runtimes.Skills;
 using Base.Core.StateMachine;
-using Base.Systems.Animation;
 using Base.Systems.Skill;
+using EventType = Base.Systems.Animation.EventType;
 
 namespace _Data.Refactor.States.Players.Attacks
 {
@@ -46,6 +47,7 @@ namespace _Data.Refactor.States.Players.Attacks
         void Attack()
         {
             animator.SetTrigger(nameof(PlayerAnimParam.Skill1));
+            vfxSpawner.Spawn(nameof(VFXType.YasuoSkill1), self.position, self.rotation);
         }
 
         void OnEventTrigger(EventType eventType)

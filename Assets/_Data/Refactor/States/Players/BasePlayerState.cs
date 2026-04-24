@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using _Data.Refactor.Controllers.Players;
+using _Data.Refactor.Controllers.Spawners;
 using _Data.Refactor.Models.Runtimes.Players;
 using _Data.Refactor.Models.Runtimes.Skills;
 using Base.Core.StateMachine;
@@ -11,6 +12,7 @@ namespace _Data.Refactor.States.Players
 {
     public abstract class BasePlayerState : IState
     {
+        protected readonly PlayerController playerController;
         protected readonly StateMachine<PlayerState> stateMachine;
         protected readonly Animator animator;
         protected readonly Rigidbody rigidbody;
@@ -18,9 +20,12 @@ namespace _Data.Refactor.States.Players
         protected readonly Collider weaponCollider;
         protected readonly BasePlayerRuntime runtime;
         protected readonly List<BasePlayerSkillRuntime> skillsRuntime;
+        protected readonly VfxSpawner vfxSpawner;
+        protected readonly Transform self;
 
         protected BasePlayerState(PlayerController playerController, StateMachine<PlayerState> stateMachine)
         {
+            this.playerController = playerController;
             this.stateMachine = stateMachine;
             animator = playerController.Animator;
             rigidbody = playerController.Rigidbody;
@@ -28,6 +33,8 @@ namespace _Data.Refactor.States.Players
             weaponCollider = playerController.WeaponCollider;
             runtime = playerController.CharacterRuntime;
             skillsRuntime = playerController.SkillsRuntime;
+            vfxSpawner = playerController.VfxSpawner;
+            self = playerController.transform;
         }
 
         public abstract void OnEnter();

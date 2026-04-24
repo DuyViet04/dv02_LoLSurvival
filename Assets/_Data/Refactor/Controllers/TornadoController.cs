@@ -1,49 +1,40 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using _Data.Refactor.Enums;
-using Base.Systems.Combat;
+using _Data.Refactor.Controllers.Players;
+using Base.Utilities;
 using UnityEngine;
 
-public class TornadoBehaviour : DealingDamage
+namespace _Data.Refactor.Controllers
 {
-    [SerializeField] private YasuoStats yasuoStats;
-    [SerializeField] private float distance = 15f;
-    private float currentDis = 0f;
-
-    private void Update()
+    public class TornadoController : VyesBehaviour
     {
-        this.Move();
-    }
+        [SerializeField] private PlayerController playerController;
+        [SerializeField] private YasuoStats yasuoStats;
+        [SerializeField] private float distance = 15f;
+        private float currentDis = 0f;
 
-    void Move()
-    {
-        this.transform.Translate(Vector3.down * Time.deltaTime * 12f);
-        this.currentDis += (Vector3.down * Time.deltaTime * 12f).magnitude;
-        if (this.currentDis >= this.distance)
+        private void Update()
         {
-            Destroy(this.gameObject);
+            Move();
         }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Transform parent = other.transform.parent;
-        if (parent != null && (parent.CompareTag(nameof(TagEnum.Enemy)) || parent.CompareTag(nameof(TagEnum.Boss))))
+        void Move()
         {
-            this.attackDamage = this.yasuoStats.attackDamage;
-            this.abilityPower = this.yasuoStats.abilityPower;
-            this.armorPenetration = this.yasuoStats.armorPenetration;
-            this.magicPenetration = this.yasuoStats.magicPenetration;
-            this.criticalChance = this.yasuoStats.criticalChance;
-            this.criticalDamage = this.yasuoStats.criticalDamage;
-            this.lifeSteal = this.yasuoStats.lifeSteal;
-            this.omnivamp = this.yasuoStats.omnivamp;
-            this.healingPower = this.yasuoStats.healingPower;
+            transform.Translate(Vector3.forward * Time.deltaTime * 12f);
+            currentDis += (Vector3.forward * Time.deltaTime * 12f).magnitude;
+            if (currentDis >= distance)
+            {
+                currentDis = 0f;
+                playerController.VfxSpawner.Despawn(transform);
+            }
+        }
 
-            // AttackData attackData = FindFirstObjectByType<Skill1Attack>().GetAttackData();
-            // this.DealDamage(parent.transform, attackData);
-            this.Heal(FindFirstObjectByType<PlayerTakingDamage>());
+        protected override void LoadComponents()
+        {
+            base.LoadComponents();
+            if (playerController == null)
+            {
+                playerController = FindFirstObjectByType<PlayerController>();
+                Debug.LogWarning($"Load {playerController}", gameObject);
+            }
         }
     }
 }

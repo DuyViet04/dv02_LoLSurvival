@@ -1,7 +1,13 @@
+using Base.Systems.Spawner;
+
 namespace _Data.Refactor.Controllers.Spawners
 {
-    public class VfxSpawner
+    public enum VFXType
     {
-        
+        YasuoSkill1
+    }
+    
+    public class VfxSpawner : BaseSpawner
+    {
     }
 }
