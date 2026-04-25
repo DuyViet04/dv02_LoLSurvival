@@ -1,5 +1,7 @@
 ﻿using System.Collections;
+using _Data.Refactor.Controllers.Enemies;
 using _Data.Refactor.Managers;
+using _Data.Refactor.States.Enemies;
 using Base.Systems.Spawner;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -12,6 +14,12 @@ namespace _Data.Refactor.Controllers.Spawners
         [SerializeField] private int maxEnemies = 100;
 
         private int enemyCount;
+
+        public int EnemyCount
+        {
+            get => enemyCount;
+            set => enemyCount = value;
+        }
 
         private void Start()
         {
@@ -38,7 +46,12 @@ namespace _Data.Refactor.Controllers.Spawners
             {
                 yield return new WaitForSeconds(delay);
                 yield return new WaitUntil(() => enemyCount < maxEnemies);
-                SpawnMultiple(enemyName, GetRandomPosition(), Quaternion.identity, count);
+                var enemies = SpawnMultiple(enemyName, GetRandomPosition(), Quaternion.identity, count);
+                foreach (var item in enemies)
+                {
+                    item.gameObject.GetComponent<EnemyController>().MoveStateMachine.ChangeState(EnemyState.Chase);
+                }
+
                 enemyCount += count;
             }
         }

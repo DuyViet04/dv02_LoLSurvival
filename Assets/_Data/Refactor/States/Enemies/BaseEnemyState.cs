@@ -13,6 +13,8 @@ namespace _Data.Refactor.States.Enemies
         protected readonly Transform target;
         protected readonly Transform self;
         protected readonly BulletSpawner bulletSpawner;
+        protected readonly ExpSpawner expSpawner;
+        protected readonly EnemySpawner enemySpawner;
         protected readonly BaseEnemyRuntime runtime;
 
         protected BaseEnemyState(EnemyController controller, StateMachine<EnemyState> stateMachine)
@@ -22,6 +24,8 @@ namespace _Data.Refactor.States.Enemies
             target = controller.Target;
             self = controller.transform;
             bulletSpawner = controller.BulletSpawner;
+            expSpawner = controller.ExpSpawner;
+            enemySpawner = controller.EnemySpawner;
             runtime = controller.BaseEnemyRuntime;
         }
 

@@ -18,17 +18,21 @@ namespace _Data.Refactor.Controllers.Enemies
         [SerializeField] private Transform target;
         [SerializeField] private BaseEnemySo baseEnemySo;
         [SerializeField] private BulletSpawner bulletSpawner;
+        [SerializeField] private ExpSpawner expSpawner;
+        [SerializeField] private EnemySpawner enemySpawner;
         private BaseEnemyRuntime baseEnemyRuntime;
         private DefenseData defenseData = new DefenseData();
         private float currentHealth;
         private float maxHealth;
+        private EnemyMoveStateMachine<EnemyState> moveStateMachine;
 
         public Rigidbody Rigidbody => rigid;
         public Transform Target => target;
         public BulletSpawner BulletSpawner => bulletSpawner;
+        public ExpSpawner ExpSpawner => expSpawner;
+        public EnemySpawner EnemySpawner => enemySpawner;
         public BaseEnemyRuntime BaseEnemyRuntime => baseEnemyRuntime;
-
-        private EnemyMoveStateMachine<EnemyState> moveStateMachine;
+        public EnemyMoveStateMachine<EnemyState> MoveStateMachine => moveStateMachine;
 
         private ICombatService combatService = new CombatService();
 
@@ -75,7 +79,7 @@ namespace _Data.Refactor.Controllers.Enemies
 
             if (currentHealth <= 0)
             {
-                Debug.Log("Die");
+                moveStateMachine.ChangeState(EnemyState.Die);
             }
         }
 
@@ -83,6 +87,7 @@ namespace _Data.Refactor.Controllers.Enemies
         {
             moveStateMachine = new EnemyMoveStateMachine<EnemyState>();
             moveStateMachine.AddState(EnemyState.Chase, new EnemyChaseState(this, moveStateMachine));
+            moveStateMachine.AddState(EnemyState.Die, new EnemyDieState(this, moveStateMachine));
             moveStateMachine.SetInitState(EnemyState.Chase);
         }
 
@@ -111,6 +116,18 @@ namespace _Data.Refactor.Controllers.Enemies
             {
                 bulletSpawner = FindFirstObjectByType<BulletSpawner>();
                 Debug.LogWarning($"Load {bulletSpawner}", gameObject);
+            }
+
+            if (expSpawner == null)
+            {
+                expSpawner = FindFirstObjectByType<ExpSpawner>();
+                Debug.LogWarning($"Load {expSpawner}", gameObject);
+            }
+
+            if (enemySpawner == null)
+            {
+                enemySpawner = FindFirstObjectByType<EnemySpawner>();
+                Debug.LogWarning($"Load {enemySpawner}", gameObject);
             }
         }
     }

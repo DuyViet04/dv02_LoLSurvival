@@ -4,5 +4,6 @@
     {
         Chase,
         Attack,
+        Die
     }
 }

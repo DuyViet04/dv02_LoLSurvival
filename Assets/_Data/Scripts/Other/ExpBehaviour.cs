@@ -33,7 +33,7 @@ public class ExpBehaviour : MonoBehaviour
     private void PickUp()
     {
         LevelUp levelUp = FindFirstObjectByType<LevelUp>();
-        ExpSpawner.Instance.Despawn(this.transform.parent);
+        // ExpSpawner.Instance.Despawn(this.transform.parent);
         levelUp.IncreaseExp(this.expValue);
     }
 

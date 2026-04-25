@@ -1,3 +1,4 @@
+using _Data.Refactor.Controllers.Spawners;
 using _Data.Refactor.Enums;
 using _Data.Refactor.Enums.Enemies;
 using Base.Systems.Combat;
@@ -28,12 +29,12 @@ public class EnemyTakingDamage : TakingDamage
         switch (this.transform.parent.name)
         {
             case nameof(EnemyType.KrugL):
-                EnemySpawner.Instance.Spawn(nameof(EnemyType.KrugM), this.transform.parent.position,
-                    Quaternion.identity, 2);
+                // EnemySpawner.Instance.Spawn(nameof(EnemyType.KrugM), this.transform.parent.position,
+                    // Quaternion.identity, 2);
                 break;
             case nameof(EnemyType.KrugM):
-                EnemySpawner.Instance.Spawn(nameof(EnemyType.KrugS), this.transform.parent.position,
-                    Quaternion.identity, 2);
+                // EnemySpawner.Instance.Spawn(nameof(EnemyType.KrugS), this.transform.parent.position,
+                    // Quaternion.identity, 2);
                 break;
         }
 
@@ -41,14 +42,14 @@ public class EnemyTakingDamage : TakingDamage
         AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.GetGold));
         this.CreateExp();
         this.ResetStats();
-        EnemySpawner.Instance.Despawn(this.transform.parent);
+        // EnemySpawner.Instance.Despawn(this.transform.parent);
     }
 
     //Tạo exp khi chết
     void CreateExp()
     {
-        Transform exp = ExpSpawner.Instance.Spawn("Exp", this.transform.parent.position, Quaternion.identity);
-        exp.GetComponentInChildren<ExpBehaviour>().SetExpValue(this.stats.expValue);
+        // Transform exp = ExpSpawner.Instance.Spawn("Exp", this.transform.parent.position, Quaternion.identity);
+        // exp.GetComponentInChildren<ExpBehaviour>().SetExpValue(this.stats.expValue);
     }
 
     //Khởi tạo tại currentHp bằng giá trị hp mới nhất

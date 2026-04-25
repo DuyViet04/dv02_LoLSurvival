@@ -16,7 +16,7 @@ namespace _Data.Refactor.Controllers
             {
                 IDamageable damageable = other.GetComponent<IDamageable>();
                 AttackData attackData = playerController.SkillAttackData;
-                Debug.Log(attackData.Damage);
+                // Debug.Log(attackData.Damage);
                 damageable.TakeDamage(attackData);
             }
         }
