@@ -27,6 +27,7 @@ namespace _Data.Refactor.Controllers.Players
         [SerializeField] private AnimationController animationController;
         [SerializeField] private BasePlayerSo basePlayerSo;
         [SerializeField] private Collider weaponCollider;
+        [SerializeField] private SphereCollider sphereCollider;
         [SerializeField] private VfxSpawner vfxSpawner;
         private BasePlayerRuntime characterRuntime;
         private List<BasePlayerSkillRuntime> skillsRuntime = new List<BasePlayerSkillRuntime>();
@@ -51,6 +52,11 @@ namespace _Data.Refactor.Controllers.Players
             base.Awake();
             InitializeRuntimes();
             InitStateMachine();
+        }
+
+        private void Start()
+        {
+            sphereCollider.radius = characterRuntime.PlayerData.PickUpRange;
         }
 
         private void Update()

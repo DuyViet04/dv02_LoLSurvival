@@ -41,6 +41,10 @@ MonoBehaviour:
     charName: Yasuo
     pickUpRange: 1
     expMultiplier: 0
+  levelData:
+    currentLevel: 1
+    maxExp: 0
+    currentExp: 0
   skills:
   - {fileID: 11400000, guid: 8abbe22fd15b6e34ab2eb9be162a76fd, type: 2}
   - {fileID: 11400000, guid: 5fda805175eb7ae41aa0f013beb71e91, type: 2}

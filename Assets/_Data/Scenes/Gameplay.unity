@@ -4377,7 +4377,7 @@ GameObject:
   - component: {fileID: 255831237}
   - component: {fileID: 255831236}
   m_Layer: 5
-  m_Name: MainCanvas
+  m_Name: DynamicCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6378,7 +6378,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '1
+  m_text: '10
 
 '
   m_isRightToLeft: 0
@@ -11368,8 +11368,10 @@ GameObject:
   - component: {fileID: 612861175}
   - component: {fileID: 612861176}
   - component: {fileID: 612861178}
+  - component: {fileID: 612861180}
   - component: {fileID: 612861174}
   - component: {fileID: 612861177}
+  - component: {fileID: 612861179}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -11438,6 +11440,7 @@ MonoBehaviour:
   animationController: {fileID: 1679171081}
   basePlayerSo: {fileID: 11400000, guid: 3a48f29c7a002ad47bf283c19184d1e6, type: 2}
   weaponCollider: {fileID: 1613400395}
+  sphereCollider: {fileID: 612861179}
   vfxSpawner: {fileID: 1286614727}
 --- !u!136 &612861177
 CapsuleCollider:
@@ -11479,6 +11482,44 @@ MonoBehaviour:
   healthRegen: 0
   armor: 0
   magicResist: 0
+  playerController: {fileID: 612861176}
+--- !u!135 &612861179
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612861172}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &612861180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612861172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fe66fa37aa1474f9ec5d63a23812906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Controllers.Players.PlayerLevel
+  currentLevel: 0
+  maxExp: 0
+  currentExp: 0
+  expMultiplier: 0
   playerController: {fileID: 612861176}
 --- !u!1 &614345530
 GameObject:
@@ -25526,6 +25567,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1502191663}
+  - component: {fileID: 1502191665}
   - component: {fileID: 1502191664}
   m_Layer: 0
   m_Name: Exp
@@ -25571,6 +25613,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1502191665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502191662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 011f3024665241d797d61fe4a0e2bbb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Controllers.ExpController
+  expSpawner: {fileID: 1978036368}
+  expValue: 0
 --- !u!1 &1502486625
 GameObject:
   m_ObjectHideFlags: 0
@@ -25906,13 +25962,14 @@ GameObject:
   - component: {fileID: 1533184272}
   - component: {fileID: 1533184274}
   - component: {fileID: 1533184273}
+  - component: {fileID: 1533184275}
   m_Layer: 5
   m_Name: Avatar and Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1533184272
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25973,6 +26030,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533184271}
   m_CullTransparentMesh: 1
+--- !u!114 &1533184275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533184271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec4654de65e4810b08a0f61ea69173d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Views.Players.LevelUi
+  playerLevel: {fileID: 612861180}
+  expBar: {fileID: 820831924}
+  levelText: {fileID: 330535255}
 --- !u!1 &1533925686
 GameObject:
   m_ObjectHideFlags: 0
@@ -28157,7 +28229,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1627862022}
-  - component: {fileID: 1627862023}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -28182,37 +28253,6 @@ Transform:
   - {fileID: 800742216}
   m_Father: {fileID: 186346268}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1627862023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627862020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7866b489f66dfb478f8e6ed2c27c3d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  holder: {fileID: 800742216}
-  prefabs:
-  - {fileID: 332849395}
-  - {fileID: 77254041}
-  - {fileID: 1788637389}
-  - {fileID: 2004764454}
-  - {fileID: 724773063}
-  - {fileID: 1499681424}
-  - {fileID: 1697925678}
-  - {fileID: 669799165}
-  - {fileID: 154300182}
-  - {fileID: 256009698}
-  - {fileID: 893540307}
-  - {fileID: 505828941}
-  - {fileID: 288897773}
-  - {fileID: 730982317}
-  prefabsPool: []
-  spawnRange: 10
-  enemyStatsList: []
 --- !u!1 &1629997446
 GameObject:
   m_ObjectHideFlags: 0
