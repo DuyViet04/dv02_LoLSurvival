@@ -20,7 +20,9 @@ namespace _Data.Refactor.States.Players.Attacks
         public override void OnEnter()
         {
             eventController.OnEvent += TriggerWeaponCollider;
-            attackData.SetAttackData(skillRuntime.GetDamage(), skillRuntime.SkillData.CanCrit,
+            attackData.SetAttackData(
+                skillRuntime.GetDamage(runtime.CurrentAttackDamage, runtime.OffensiveData.AbilityPower.Value),
+                skillRuntime.SkillData.CanCrit,
                 runtime.OffensiveData.CritDamage.Value, skillRuntime.SkillData.DamageType);
         }
 

@@ -24,7 +24,9 @@ namespace _Data.Refactor.States.Players.Attacks
             eventController.OnEvent += OnEventTrigger;
             eventController.OnEvent += TriggerWeaponCollider;
 
-            attackData.SetAttackData(skillRuntime.GetDamage(), skillRuntime.SkillData.CanCrit,
+            attackData.SetAttackData(
+                skillRuntime.GetDamage(runtime.CurrentAttackDamage, runtime.OffensiveData.AbilityPower.Value),
+                skillRuntime.SkillData.CanCrit,
                 runtime.OffensiveData.CritDamage.Value, skillRuntime.SkillData.DamageType);
             if (skillRuntime!.TryUseSkill())
             {
