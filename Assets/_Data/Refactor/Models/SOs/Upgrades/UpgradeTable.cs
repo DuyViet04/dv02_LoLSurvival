@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Data.Refactor.Models.SOs.Upgrades.Data;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "UpgradeData", menuName = "UpgradeData")]
