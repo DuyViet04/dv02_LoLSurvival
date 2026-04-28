@@ -11,5 +11,6 @@ namespace _Data.Refactor.Models.SOs.Upgrades.Data
         public StatType type;
         public string name;
         public float value;
+        public StatModifier statModifier;
     }
 }

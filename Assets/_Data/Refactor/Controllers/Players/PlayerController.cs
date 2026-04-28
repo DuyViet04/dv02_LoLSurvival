@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using _Data.Refactor.Controllers.Spawners;
 using _Data.Refactor.Enums.Players;
@@ -13,6 +14,7 @@ using Base.Core.Architecture;
 using Base.Systems.Animation;
 using Base.Systems.Combat;
 using Base.Systems.Input;
+using Base.Systems.Stat;
 using UnityEngine;
 
 namespace _Data.Refactor.Controllers.Players
@@ -46,6 +48,16 @@ namespace _Data.Refactor.Controllers.Players
 
         private readonly ILookAtMouseService lookAtMouseService = new LookAtMouseService();
 
+        private void OnEnable()
+        {
+            characterRuntime.PlayerData.PickUpRange.OnValueChange += UpdatePickUpRange;
+        }
+
+        private void OnDisable()
+        {
+            characterRuntime.PlayerData.PickUpRange.OnValueChange -= UpdatePickUpRange;
+        }
+
         protected override void Awake()
         {
             base.Awake();
@@ -56,6 +68,10 @@ namespace _Data.Refactor.Controllers.Players
         private void Start()
         {
             sphereCollider.radius = characterRuntime.PlayerData.PickUpRange.Value;
+
+            // Passive
+            characterRuntime.OffensiveData.CritChance.AddModifier(new StatModifier(2, ModifierType.PercentMult));
+            characterRuntime.OffensiveData.CritDamage.AddModifier(new StatModifier(0.9f, ModifierType.PercentMult));
         }
 
         private void Update()
@@ -107,6 +123,11 @@ namespace _Data.Refactor.Controllers.Players
         {
             var mousePos = InputManager.Ins.Mouse;
             lookAtMouseService.LookAtMouse(mainCamera, mousePos, transform);
+        }
+
+        void UpdatePickUpRange()
+        {
+            sphereCollider.radius = characterRuntime.PlayerData.PickUpRange.Value;
         }
 
         #region Init

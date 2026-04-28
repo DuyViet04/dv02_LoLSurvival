@@ -25,11 +25,11 @@ namespace _Data.Refactor.Models.SOs.Enemies.Data
         public EnemyData(EnemyData enemyData)
         {
             enemyType = enemyData.enemyType;
-            expValue = enemyData.expValue;
-            goldValue = enemyData.goldValue;
-            csValue = enemyData.csValue;
-            spawnDelay = enemyData.spawnDelay;
-            spawnCount = enemyData.spawnCount;
+            expValue = new Stat(enemyData.expValue);
+            goldValue = new Stat(enemyData.goldValue);
+            csValue = new Stat(enemyData.csValue);
+            spawnDelay = new Stat(enemyData.spawnDelay);
+            spawnCount = new Stat(enemyData.spawnCount);
         }
     }
 }

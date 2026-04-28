@@ -84,10 +84,8 @@ namespace _Data.Refactor.Views.UIs
         {
             var upgrade = upgradeChoices[choice];
             var stat = levelService.FindStat(upgrade.type, playerController.CharacterRuntime);
-            Debug.Log(stat.Value);
-            stat.AddModifier(new StatModifier(upgrade.value, ModifierType.Flat));
-            Debug.Log(stat.Value);
-            
+            stat.AddModifier(upgrade.statModifier);
+
             HidePanel();
         }
 
