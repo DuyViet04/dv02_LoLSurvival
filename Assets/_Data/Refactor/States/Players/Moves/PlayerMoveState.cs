@@ -44,7 +44,7 @@ namespace _Data.Refactor.States.Players.Moves
             Vector3 moveDir = new Vector3(moveInput.x, 0, moveInput.y).normalized;
 
             var moveSpeed = runtime.UtilityData.MoveSpeed;
-            rigidbody.linearVelocity = moveDir * moveSpeed;
+            rigidbody.linearVelocity = moveDir * moveSpeed.Value;
         }
     }
 }

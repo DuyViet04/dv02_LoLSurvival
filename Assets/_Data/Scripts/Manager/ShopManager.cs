@@ -50,7 +50,7 @@ public class ShopManager : VyesSingleton<ShopManager>
             this.goldDisplay.GiveGold(item.cost);
             this.inventory.Add(item);
             this.itemCount++;
-            this.yasuoStats.ApplyItem(item);
+            // this.yasuoStats.ApplyItem(item);
             ShopDisplay.Ins.ListCores[index].SetActive(false);
             this.itemSlots[this.itemCount - 1].sprite = item.icon;
             this.itemSprites.Add(item.icon);
@@ -69,7 +69,7 @@ public class ShopManager : VyesSingleton<ShopManager>
         ItemData item = this.inventory[this.indexItem];
         this.goldDisplay.Sell(item.cost);
         this.itemCount--;
-        this.yasuoStats.RemoveItem(this.inventory[this.indexItem]);
+        // this.yasuoStats.RemoveItem(this.inventory[this.indexItem]);
         this.inventory.Remove(this.inventory[this.indexItem]);
         this.itemSprites.Remove(this.itemSlots[this.indexItem].sprite);
         for (int i = this.indexItem; i < this.itemSprites.Count; i++)

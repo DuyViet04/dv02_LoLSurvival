@@ -28,8 +28,8 @@ namespace _Data.Refactor.Controllers.Spawners
             foreach (var enemySo in enemySos)
             {
                 string enemyName = enemySo.enemyData.EnemyType.ToString();
-                float delay = enemySo.enemyData.SpawnDelay;
-                int count = enemySo.enemyData.SpawnCount;
+                float delay = enemySo.enemyData.SpawnDelay.Value;
+                int count = (int)enemySo.enemyData.SpawnCount.Value;
                 StartCoroutine(Spawn(enemyName, delay, count));
             }
         }

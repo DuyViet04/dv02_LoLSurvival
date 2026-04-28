@@ -17,7 +17,7 @@ public class SaveManager : VyesSingleton<SaveManager>
             csPoint = this.talentTable.csPoint,
             talents = this.talentTable.talents.Select(t => new TalentForSave
             {
-                type = t.type,
+                // type = t.type,
                 currentLevel = t.currentLevel,
                 effectValue = t.effectValue,
                 pointCost = t.pointCost
@@ -42,13 +42,13 @@ public class SaveManager : VyesSingleton<SaveManager>
         this.talentTable.csPoint = saveData.csPoint;
         foreach (var data in saveData.talents)
         {
-            var talent = this.talentTable.talents.FirstOrDefault(t => t.type == data.type);
-            if (talent != null)
-            {
-                talent.currentLevel = data.currentLevel;
-                talent.effectValue = data.effectValue;
-                talent.pointCost = data.pointCost;
-            }
+            // var talent = this.talentTable.talents.FirstOrDefault(t => t.type == data.type);
+            // if (talent != null)
+            // {
+            //     talent.currentLevel = data.currentLevel;
+            //     talent.effectValue = data.effectValue;
+            //     talent.pointCost = data.pointCost;
+            // }
         }
     }
 

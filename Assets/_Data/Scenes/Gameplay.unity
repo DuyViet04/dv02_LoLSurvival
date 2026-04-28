@@ -4370,6 +4370,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 255831239}
+  - component: {fileID: 255831244}
   - component: {fileID: 255831240}
   - component: {fileID: 255831241}
   - component: {fileID: 255831243}
@@ -4526,6 +4527,38 @@ MonoBehaviour:
   mainStatsPanel: {fileID: 51300467}
   secondStatsPanel: {fileID: 803668062}
   yasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
+--- !u!114 &255831244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255831235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be9bdba2b15d0d4aafb4dad37e6dc6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Views.UIs.LevelUpUi
+  playerController: {fileID: 612861176}
+  playerLevel: {fileID: 612861180}
+  upgradeTable: {fileID: 11400000, guid: 7bf756567195b724c9ec8f3d35a7ce41, type: 2}
+  levelUpPanel: {fileID: 901364038}
+  cores:
+  - {fileID: 1492168209}
+  - {fileID: 861841860}
+  - {fileID: 1571278831}
+  icons:
+  - {fileID: 719306990}
+  - {fileID: 549146049}
+  - {fileID: 1838245439}
+  names:
+  - {fileID: 2077334977}
+  - {fileID: 1918093779}
+  - {fileID: 521919215}
+  values:
+  - {fileID: 1908893703}
+  - {fileID: 1590422532}
+  - {fileID: 685804162}
 --- !u!1 &256009697
 GameObject:
   m_ObjectHideFlags: 0
@@ -15752,9 +15785,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LevelUpManager, Assembly-CSharp
-        m_MethodName: ApplyUpgrade
+      - m_Target: {fileID: 255831244}
+        m_TargetAssemblyTypeName: _Data.Refactor.Views.UIs.LevelUpUi, Assembly-CSharp
+        m_MethodName: SelectUpgrade
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16316,7 +16349,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &901364039
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20924,6 +20957,7 @@ Transform:
   m_Children:
   - {fileID: 1438166460}
   - {fileID: 821670867}
+  - {fileID: 1226972561}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1226450467
@@ -21094,6 +21128,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -3124914424127336872, guid: 2fe31851ac813e24fab83f6baee9a2ec, type: 3}
   m_PrefabInstance: {fileID: 1226773995}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1226972560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1226972561}
+  - component: {fileID: 1226972562}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1226972561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226972560}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1216779957}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1226972562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226972560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f68b95b4587b4afb9cf3aae82a9b9430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VyesBase.Assets.Base.Systems.Game.GameManager
 --- !u!1 &1227197082
 GameObject:
   m_ObjectHideFlags: 0
@@ -24683,6 +24761,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cf6ae957b7218d74480a85dae834fa85, type: 2}
   - {fileID: 11400000, guid: eefabcb86be5a2647936e354ccda0c2b, type: 2}
   - {fileID: 11400000, guid: 4f34e4ce8c4abd441b95406a73476162, type: 2}
+  upgradeTable: {fileID: 11400000, guid: 7bf756567195b724c9ec8f3d35a7ce41, type: 2}
 --- !u!1 &1450167839
 GameObject:
   m_ObjectHideFlags: 0
@@ -25435,9 +25514,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LevelUpManager, Assembly-CSharp
-        m_MethodName: ApplyUpgrade
+      - m_Target: {fileID: 255831244}
+        m_TargetAssemblyTypeName: _Data.Refactor.Views.UIs.LevelUpUi, Assembly-CSharp
+        m_MethodName: SelectUpgrade
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26916,9 +26995,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LevelUpManager, Assembly-CSharp
-        m_MethodName: ApplyUpgrade
+      - m_Target: {fileID: 255831244}
+        m_TargetAssemblyTypeName: _Data.Refactor.Views.UIs.LevelUpUi, Assembly-CSharp
+        m_MethodName: SelectUpgrade
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -13,40 +13,92 @@ MonoBehaviour:
   m_Name: SuperEnemy
   m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Models.SOs.Enemies.BaseEnemySo
   defensiveData:
-    health: 160
-    healthRegen: 0
-    healPower: 0
-    armor: 100
-    magicResist: -30
-    tenacity: 0
-    slowResist: 0
+    health:
+      statType: 1
+      value: 160
+    healthRegen:
+      statType: 2
+      value: 0
+    healPower:
+      statType: 3
+      value: 0
+    armor:
+      statType: 4
+      value: 100
+    magicResist:
+      statType: 5
+      value: -30
+    tenacity:
+      statType: 6
+      value: 0
+    slowResist:
+      statType: 7
+      value: 0
   offensiveData:
-    attackSpeed: 0
-    attackDamage: 215
-    abilityPower: 0
-    critChance: 0
-    critDamage: 0
-    armorPenetration: 0
-    magicPenetration: 0
-    lifeSteal: 0
-    physicalVamp: 0
-    omnivamp: 0
+    attackSpeed:
+      statType: 8
+      value: 0
+    attackDamage:
+      statType: 9
+      value: 215
+    abilityPower:
+      statType: 10
+      value: 0
+    critChance:
+      statType: 11
+      value: 0
+    critDamage:
+      statType: 12
+      value: 0
+    armorPenetration:
+      statType: 13
+      value: 0
+    magicPenetration:
+      statType: 14
+      value: 0
+    lifeSteal:
+      statType: 15
+      value: 0
+    physicalVamp:
+      statType: 16
+      value: 0
+    omnivamp:
+      statType: 17
+      value: 0
   utilityData:
-    haste: 0
+    haste:
+      statType: 21
+      value: 0
     resourceData:
       resourceType: 0
-      resourceRegen: 0
-    moveSpeed: 1.5
+      resource:
+        statType: 19
+        value: 0
+      resourceRegen:
+        statType: 20
+        value: 0
+    moveSpeed:
+      statType: 18
+      value: 1.5
   enemyData:
     enemyType: 3
-    expValue: 95
-    goldValue: 60
-    csValue: 1
-    spawnDelay: 60
-    spawnCount: 1
+    expValue:
+      statType: 24
+      value: 95
+    goldValue:
+      statType: 25
+      value: 60
+    csValue:
+      statType: 26
+      value: 1
+    spawnDelay:
+      statType: 27
+      value: 60
+    spawnCount:
+      statType: 28
+      value: 1
   attackData:
     damage: 215
     canCrit: 0
     critDamage: 0
     damageType: 0
-    skillType: 0

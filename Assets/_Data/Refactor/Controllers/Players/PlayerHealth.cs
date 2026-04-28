@@ -9,8 +9,8 @@ namespace _Data.Refactor.Controllers.Players
 
         protected override void Awake()
         {
-            health = playerController.CharacterRuntime.DefensiveData.Health;
-            healthRegen = playerController.CharacterRuntime.DefensiveData.HealthRegen;
+            health = playerController.CharacterRuntime.DefensiveData.Health.Value;
+            healthRegen = playerController.CharacterRuntime.DefensiveData.HealthRegen.Value;
             base.Awake();
         }
 

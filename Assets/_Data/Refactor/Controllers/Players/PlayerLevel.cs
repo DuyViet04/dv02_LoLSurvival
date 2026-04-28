@@ -11,7 +11,7 @@ namespace _Data.Refactor.Controllers.Players
         {
             base.Awake();
             currentLevel = playerController.CharacterRuntime.LevelData.CurrentLevel;
-            expMultiplier = playerController.CharacterRuntime.PlayerData.ExpMultiplier;
+            expMultiplier = playerController.CharacterRuntime.PlayerData.ExpMultiplier.Value;
         }
 
         protected override void MaxExpCalculate(int currentLevel)

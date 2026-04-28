@@ -1,3 +1,4 @@
+using _Data.Scripts.Manager;
 using Base.Core.Singleton;
 using TMPro;
 using UnityEngine;

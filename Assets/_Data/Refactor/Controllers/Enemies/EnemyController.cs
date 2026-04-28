@@ -11,7 +11,6 @@ using UnityEngine;
 
 namespace _Data.Refactor.Controllers.Enemies
 {
-    // TODO: Spawner, EnemyData
     public class EnemyController : BaseController, IDamageable
     {
         [SerializeField] private Rigidbody rigid;
@@ -45,7 +44,7 @@ namespace _Data.Refactor.Controllers.Enemies
 
         void Start()
         {
-            maxHealth = baseEnemyRuntime.DefensiveData.Health;
+            maxHealth = baseEnemyRuntime.DefensiveData.Health.Value;
             currentHealth = maxHealth;
         }
 
@@ -70,8 +69,8 @@ namespace _Data.Refactor.Controllers.Enemies
 
         public void TakeDamage(AttackData attackData)
         {
-            defenseData.SetDefenseData(baseEnemyRuntime.DefensiveData.Armor,
-                baseEnemyRuntime.DefensiveData.MagicResist);
+            defenseData.SetDefenseData(baseEnemyRuntime.DefensiveData.Armor.Value,
+                baseEnemyRuntime.DefensiveData.MagicResist.Value);
             float damage = combatService.DamageCalculate(attackData, defenseData);
 
             currentHealth -= damage;

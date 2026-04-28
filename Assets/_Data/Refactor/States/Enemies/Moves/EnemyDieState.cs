@@ -16,7 +16,7 @@ namespace _Data.Refactor.States.Enemies.Moves
         public override void OnEnter()
         {
             var exp = expSpawner.Spawn(nameof(ExpType.Exp), self.position, self.rotation);
-            exp.gameObject.GetComponent<ExpController>().SetExpValue(runtime.EnemyData.ExpValue);
+            exp.gameObject.GetComponent<ExpController>().SetExpValue(runtime.EnemyData.ExpValue.Value);
             enemySpawner.Despawn(self);
             enemySpawner.EnemyCount--;
         }

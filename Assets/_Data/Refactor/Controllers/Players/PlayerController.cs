@@ -17,7 +17,6 @@ using UnityEngine;
 
 namespace _Data.Refactor.Controllers.Players
 {
-    // Todo: Attack, Cooldown
     [DefaultExecutionOrder(-100)]
     public class PlayerController : BaseController
     {
@@ -56,7 +55,7 @@ namespace _Data.Refactor.Controllers.Players
 
         private void Start()
         {
-            sphereCollider.radius = characterRuntime.PlayerData.PickUpRange;
+            sphereCollider.radius = characterRuntime.PlayerData.PickUpRange.Value;
         }
 
         private void Update()

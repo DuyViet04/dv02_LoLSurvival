@@ -1,11 +1,15 @@
+using System;
+using Base.Systems.Stat;
 using UnityEngine;
-using UnityEngine.UI;
 
-[System.Serializable]
-public class UpgradeData
+namespace _Data.Refactor.Models.SOs.Upgrades.Data
 {
-    public Sprite icon;
-    public UpgradeType type;
-    public string name;
-    public float value;
+    [Serializable]
+    public class UpgradeData
+    {
+        public Sprite icon;
+        public StatType type;
+        public string name;
+        public float value;
+    }
 }

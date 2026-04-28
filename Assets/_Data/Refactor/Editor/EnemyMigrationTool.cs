@@ -9,6 +9,7 @@ using _Data.Refactor.Models.SOs.Enemies.Data;
 using Base.Core.Architecture.Model.Data;
 using Base.Systems.Combat;
 using Base.Systems.Skill;
+using Base.Systems.Stat;
 
 namespace _Data.Refactor.Editor
 {
@@ -50,25 +51,40 @@ namespace _Data.Refactor.Editor
             // 1. Initialize EnemyData via Reflection (no parameterless constructor available)
             so.enemyData = (EnemyData)System.Runtime.Serialization.FormatterServices.GetUninitializedObject(typeof(EnemyData));
             SetPrivateField(so.enemyData, "enemyType", data.Type);
-            SetPrivateField(so.enemyData, "expValue", data.Exp);
-            SetPrivateField(so.enemyData, "goldValue", data.Gold);
-            SetPrivateField(so.enemyData, "csValue", data.Cs);
-            SetPrivateField(so.enemyData, "spawnDelay", data.SpawnDelay);
-            SetPrivateField(so.enemyData, "spawnCount", data.SpawnCount);
+            SetPrivateField(so.enemyData, "expValue", CreateStat(StatType.ExpValue, data.Exp));
+            SetPrivateField(so.enemyData, "goldValue", CreateStat(StatType.GoldValue, data.Gold));
+            SetPrivateField(so.enemyData, "csValue", CreateStat(StatType.CsValue, data.Cs));
+            SetPrivateField(so.enemyData, "spawnDelay", CreateStat(StatType.SpawnDelay, data.SpawnDelay));
+            SetPrivateField(so.enemyData, "spawnCount", CreateStat(StatType.SpawnValue, data.SpawnCount));
 
             // 2. Initialize DefensiveData
             so.defensiveData = (BaseDefensiveData)System.Runtime.Serialization.FormatterServices.GetUninitializedObject(typeof(BaseDefensiveData));
-            SetPrivateField(so.defensiveData, "health", data.Health);
-            SetPrivateField(so.defensiveData, "armor", data.Armor);
-            SetPrivateField(so.defensiveData, "magicResist", data.MR);
+            SetPrivateField(so.defensiveData, "health", CreateStat(StatType.Health, data.Health));
+            SetPrivateField(so.defensiveData, "healthRegen", CreateStat(StatType.HealthRegen, 0f));
+            SetPrivateField(so.defensiveData, "healPower", CreateStat(StatType.HealPower, 0f));
+            SetPrivateField(so.defensiveData, "armor", CreateStat(StatType.Armor, data.Armor));
+            SetPrivateField(so.defensiveData, "magicResist", CreateStat(StatType.MagicResist, data.MR));
+            SetPrivateField(so.defensiveData, "tenacity", CreateStat(StatType.Tenacity, 0f));
+            SetPrivateField(so.defensiveData, "slowResist", CreateStat(StatType.SlowResist, 0f));
 
             // 3. Initialize UtilityData
             so.utilityData = (BaseUtilityData)System.Runtime.Serialization.FormatterServices.GetUninitializedObject(typeof(BaseUtilityData));
-            SetPrivateField(so.utilityData, "moveSpeed", data.MoveSpeed);
+            SetPrivateField(so.utilityData, "haste", CreateStat(StatType.Haste, 0f));
+            SetPrivateField(so.utilityData, "resourceData", CreateResourceData());
+            SetPrivateField(so.utilityData, "moveSpeed", CreateStat(StatType.MoveSpeed, data.MoveSpeed));
 
             // 4. Initialize OffensiveData
             so.offensiveData = (BaseOffensiveData)System.Runtime.Serialization.FormatterServices.GetUninitializedObject(typeof(BaseOffensiveData));
-            SetPrivateField(so.offensiveData, "attackDamage", data.Damage);
+            SetPrivateField(so.offensiveData, "attackSpeed", CreateStat(StatType.AttackSpeed, 0f));
+            SetPrivateField(so.offensiveData, "attackDamage", CreateStat(StatType.AttackDamage, data.Damage));
+            SetPrivateField(so.offensiveData, "abilityPower", CreateStat(StatType.AbilityPower, 0f));
+            SetPrivateField(so.offensiveData, "critChance", CreateStat(StatType.CritChance, 0f));
+            SetPrivateField(so.offensiveData, "critDamage", CreateStat(StatType.CritDamage, 0f));
+            SetPrivateField(so.offensiveData, "armorPenetration", CreateStat(StatType.ArmorPenetration, 0f));
+            SetPrivateField(so.offensiveData, "magicPenetration", CreateStat(StatType.MagicPenetration, 0f));
+            SetPrivateField(so.offensiveData, "lifeSteal", CreateStat(StatType.LifeSteal, 0f));
+            SetPrivateField(so.offensiveData, "physicalVamp", CreateStat(StatType.PhysicalVamp, 0f));
+            SetPrivateField(so.offensiveData, "omnivamp", CreateStat(StatType.Omnivamp, 0f));
 
             // 5. Initialize AttackData (Using the only available constructor)
             so.attackData = new AttackData(data.Damage, false, 0, data.DmgType);
@@ -87,6 +103,22 @@ namespace _Data.Refactor.Editor
             {
                 Debug.LogWarning($"Field {fieldName} not found in {target.GetType().Name}");
             }
+        }
+
+        private static Stat CreateStat(StatType type, float value)
+        {
+            Stat stat = new Stat(value);
+            SetPrivateField(stat, "statType", type);
+            return stat;
+        }
+
+        private static ResourceData CreateResourceData()
+        {
+            ResourceData data = (ResourceData)System.Runtime.Serialization.FormatterServices.GetUninitializedObject(typeof(ResourceData));
+            SetPrivateField(data, "resourceType", ResourceType.Mana);
+            SetPrivateField(data, "resource", CreateStat(StatType.Resource, 0f));
+            SetPrivateField(data, "resourceRegen", CreateStat(StatType.ResourceRegen, 0f));
+            return data;
         }
 
         private static List<MigrationData> GetEnemyMigrationData()

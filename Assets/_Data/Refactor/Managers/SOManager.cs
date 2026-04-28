@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using _Data.Refactor.Models.SOs.Enemies;
 using _Data.Refactor.Models.SOs.Players;
+using _Data.Refactor.Models.SOs.Upgrades;
 using Base.Core.Singleton;
 using UnityEngine;
 
@@ -10,11 +11,14 @@ namespace _Data.Refactor.Managers
     {
         [SerializeField] private List<BasePlayerSo> playerSos;
         [SerializeField] private List<BaseEnemySo> enemySos;
-        
+        [SerializeField] private UpgradeTable upgradeTable;
+
         public List<BaseEnemySo> EnemySos => enemySos;
+        public UpgradeTable UpgradeTable => upgradeTable;
 
         private readonly string playerSosPath = "SOs/Players";
         private readonly string enemySosPath = "SOs/Enemies";
+        private readonly string upgradeTablePath = "SOs/Upgrades";
 
         public BasePlayerSo GetPlayerSoByName(string playerName)
         {
@@ -50,15 +54,21 @@ namespace _Data.Refactor.Managers
             var player = Resources.LoadAll<BasePlayerSo>(playerSosPath);
             if (playerSos.Count != player.Length)
             {
-                Debug.LogWarning($"Load {playerSos}");
                 playerSos.AddRange(player);
+                Debug.LogWarning($"Load {playerSos}");
             }
 
             var enemy = Resources.LoadAll<BaseEnemySo>(enemySosPath);
             if (enemySos.Count != enemy.Length)
             {
-                Debug.LogWarning($"Load {enemySos}");
                 enemySos.AddRange(enemy);
+                Debug.LogWarning($"Load {enemySos}");
+            }
+
+            if (upgradeTable == null)
+            {
+                upgradeTable = Resources.LoadAll<UpgradeTable>(upgradeTablePath)[0];
+                Debug.LogWarning($"Load {upgradeTable}", gameObject);
             }
         }
     }

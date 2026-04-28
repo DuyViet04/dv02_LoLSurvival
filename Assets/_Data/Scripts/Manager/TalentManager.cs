@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using _Data.Refactor.Models.SOs.Upgrades;
+using _Data.Refactor.Models.SOs.Upgrades.Data;
+using _Data.Scripts.Manager;
 using Base.Core.Singleton;
 using TMPro;
 using UnityEngine;

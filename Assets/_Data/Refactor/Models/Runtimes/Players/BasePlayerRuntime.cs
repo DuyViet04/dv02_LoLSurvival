@@ -14,6 +14,16 @@ namespace _Data.Refactor.Models.Runtimes.Players
         {
             PlayerData = new PlayerData(baseSo.playerData);
             LevelData = new LevelData(baseSo.levelData);
+            Init();
+        }
+
+        protected override void AddData()
+        {
+            data.Add(DefensiveData);
+            data.Add(OffensiveData);
+            data.Add(UtilityData);
+            data.Add(PlayerData);
+            data.Add(LevelData);
         }
     }
 }

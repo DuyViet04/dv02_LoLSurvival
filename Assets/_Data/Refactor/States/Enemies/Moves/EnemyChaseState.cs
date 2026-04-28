@@ -33,7 +33,7 @@ namespace _Data.Refactor.States.Enemies.Moves
         public override void OnFixedUpdate()
         {
             var moveSpeed = runtime.UtilityData.MoveSpeed;
-            MoveToTarget(target, moveSpeed);
+            MoveToTarget(target, moveSpeed.Value);
         }
 
         public override void OnExit()
@@ -65,7 +65,7 @@ namespace _Data.Refactor.States.Enemies.Moves
 
         void Attack()
         {
-            var attackDelay = combatService.AttackDelayCalculate(runtime.OffensiveData.AttackSpeed);
+            var attackDelay = combatService.AttackDelayCalculate(runtime.OffensiveData.AttackSpeed.Value);
             attackTimer += Time.deltaTime;
             if (attackTimer < attackDelay) return;
             attackTimer = 0f;

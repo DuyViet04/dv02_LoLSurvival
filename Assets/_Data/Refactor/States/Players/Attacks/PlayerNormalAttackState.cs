@@ -21,7 +21,7 @@ namespace _Data.Refactor.States.Players.Attacks
         {
             eventController.OnEvent += TriggerWeaponCollider;
             attackData.SetAttackData(skillRuntime.GetDamage(), skillRuntime.SkillData.CanCrit,
-                runtime.OffensiveData.CritDamage, skillRuntime.SkillData.DamageType);
+                runtime.OffensiveData.CritDamage.Value, skillRuntime.SkillData.DamageType);
         }
 
         public override void OnUpdate()

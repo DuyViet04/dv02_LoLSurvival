@@ -1,4 +1,5 @@
 ﻿using System;
+using Base.Systems.Stat;
 using UnityEngine;
 
 namespace _Data.Refactor.Models.SOs.Players.Data
@@ -7,12 +8,12 @@ namespace _Data.Refactor.Models.SOs.Players.Data
     public class PlayerData
     {
         [SerializeField] private string charName;
-        [SerializeField] private int pickUpRange;
-        [SerializeField] private float expMultiplier;
+        [SerializeField] private Stat pickUpRange;
+        [SerializeField] private Stat expMultiplier;
 
         public string CharName => charName;
-        public float PickUpRange => pickUpRange;
-        public float ExpMultiplier => expMultiplier;
+        public Stat PickUpRange => pickUpRange;
+        public Stat ExpMultiplier => expMultiplier;
 
         public PlayerData(PlayerData playerData)
         {

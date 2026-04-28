@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using _Data.Refactor.Models.SOs.Upgrades;
+using _Data.Refactor.Models.SOs.Upgrades.Data;
 using Base.Core.Singleton;
 using TMPro;
 using UnityEngine;
@@ -60,7 +62,7 @@ public class LevelUpDisplay : VyesSingleton<LevelUpDisplay>
         
         UpgradeData chosen = this.choicesList[index];
         float finalValue = chosen.value * this.power;
-        this.yasuoStats.ApplyUpgrade(chosen.type, finalValue);
+        // this.yasuoStats.ApplyUpgrade(chosen.type, finalValue);
 
         this.levelUpPanel.SetActive(false);
         Time.timeScale = 1;

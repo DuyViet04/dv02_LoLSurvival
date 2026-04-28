@@ -13,40 +13,92 @@ MonoBehaviour:
   m_Name: RaptorL
   m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Models.SOs.Enemies.BaseEnemySo
   defensiveData:
-    health: 120
-    healthRegen: 0
-    healPower: 0
-    armor: 42
-    magicResist: 42
-    tenacity: 0
-    slowResist: 0
+    health:
+      statType: 1
+      value: 120
+    healthRegen:
+      statType: 2
+      value: 0
+    healPower:
+      statType: 3
+      value: 0
+    armor:
+      statType: 4
+      value: 42
+    magicResist:
+      statType: 5
+      value: 42
+    tenacity:
+      statType: 6
+      value: 0
+    slowResist:
+      statType: 7
+      value: 0
   offensiveData:
-    attackSpeed: 0
-    attackDamage: 17
-    abilityPower: 0
-    critChance: 0
-    critDamage: 0
-    armorPenetration: 0
-    magicPenetration: 0
-    lifeSteal: 0
-    physicalVamp: 0
-    omnivamp: 0
+    attackSpeed:
+      statType: 8
+      value: 0
+    attackDamage:
+      statType: 9
+      value: 17
+    abilityPower:
+      statType: 10
+      value: 0
+    critChance:
+      statType: 11
+      value: 0
+    critDamage:
+      statType: 12
+      value: 0
+    armorPenetration:
+      statType: 13
+      value: 0
+    magicPenetration:
+      statType: 14
+      value: 0
+    lifeSteal:
+      statType: 15
+      value: 0
+    physicalVamp:
+      statType: 16
+      value: 0
+    omnivamp:
+      statType: 17
+      value: 0
   utilityData:
-    haste: 0
+    haste:
+      statType: 21
+      value: 0
     resourceData:
       resourceType: 0
-      resourceRegen: 0
-    moveSpeed: 4.5
+      resource:
+        statType: 19
+        value: 0
+      resourceRegen:
+        statType: 20
+        value: 0
+    moveSpeed:
+      statType: 18
+      value: 4.5
   enemyData:
     enemyType: 7
-    expValue: 20
-    goldValue: 30
-    csValue: 2
-    spawnDelay: 240
-    spawnCount: 1
+    expValue:
+      statType: 24
+      value: 20
+    goldValue:
+      statType: 25
+      value: 30
+    csValue:
+      statType: 26
+      value: 2
+    spawnDelay:
+      statType: 27
+      value: 240
+    spawnCount:
+      statType: 28
+      value: 1
   attackData:
     damage: 17
     canCrit: 0
     critDamage: 0
     damageType: 1
-    skillType: 0

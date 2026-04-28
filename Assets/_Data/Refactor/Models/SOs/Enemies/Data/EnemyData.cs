@@ -1,5 +1,6 @@
 using System;
 using _Data.Refactor.Enums.Enemies;
+using Base.Systems.Stat;
 using UnityEngine;
 
 namespace _Data.Refactor.Models.SOs.Enemies.Data
@@ -8,18 +9,18 @@ namespace _Data.Refactor.Models.SOs.Enemies.Data
     public class EnemyData
     {
         [SerializeField] private EnemyType enemyType;
-        [SerializeField] private float expValue;
-        [SerializeField] private float goldValue;
-        [SerializeField] private float csValue;
-        [SerializeField] private float spawnDelay;
-        [SerializeField] private int spawnCount;
+        [SerializeField] private Stat expValue;
+        [SerializeField] private Stat goldValue;
+        [SerializeField] private Stat csValue;
+        [SerializeField] private Stat spawnDelay;
+        [SerializeField] private Stat spawnCount;
 
         public EnemyType EnemyType => enemyType;
-        public float ExpValue => expValue;
-        public float GoldValue => goldValue;
-        public float CsValue => csValue;
-        public float SpawnDelay => spawnDelay;
-        public int SpawnCount => spawnCount;
+        public Stat ExpValue => expValue;
+        public Stat GoldValue => goldValue;
+        public Stat CsValue => csValue;
+        public Stat SpawnDelay => spawnDelay;
+        public Stat SpawnCount => spawnCount;
 
         public EnemyData(EnemyData enemyData)
         {

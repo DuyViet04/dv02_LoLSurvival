@@ -11,17 +11,26 @@ namespace _Data.Refactor.Controllers
     {
         [SerializeField] private ExpSpawner expSpawner;
         [SerializeField] private float expValue;
+        
+        private bool isCollected;
 
         private readonly ILevelService levelService = new LevelService();
 
+        protected virtual void OnEnable()
+        {
+            isCollected = false;
+        }
+
         private void OnTriggerEnter(Collider other)
         {
+            if (isCollected) return;
+
             if (other.CompareTag(nameof(TagEnum.Player)))
             {
+                isCollected = true;
                 StartCoroutine(MoveTo(other.transform));
                 ILevelUpAble levelUpAble = other.GetComponent<ILevelUpAble>();
                 levelUpAble.AddExp(expValue);
-                StopCoroutine(MoveTo(other.transform));
                 expSpawner.Despawn(transform);
             }
         }

@@ -14,6 +14,15 @@ namespace _Data.Refactor.Models.Runtimes.Enemies
         {
             EnemyData = baseSo.enemyData;
             AttackData = baseSo.attackData;
+            Init();
+        }
+
+        protected override void AddData()
+        {
+            data.Add(DefensiveData);
+            data.Add(OffensiveData);
+            data.Add(UtilityData);
+            data.Add(EnemyData);
         }
     }
 }

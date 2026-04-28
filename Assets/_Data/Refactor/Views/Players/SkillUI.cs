@@ -63,8 +63,8 @@ namespace _Data.Refactor.Views.Players
         {
             infoPanel.SetActive(true);
             var offensive = playerController.CharacterRuntime.OffensiveData;
-            float ad = offensive.AttackDamage;
-            float ap = offensive.AbilityPower;
+            float ad = offensive.AttackDamage.Value;
+            float ap = offensive.AbilityPower.Value;
             switch (index)
             {
                 case 1:
