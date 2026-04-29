@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Data.Refactor.Models.SOs.Upgrades;
 using Base.Core.Singleton;
 using TMPro;
 using UnityEngine;
@@ -9,7 +10,7 @@ namespace _Data.Scripts.Manager
     public class GameManager : VyesPersistentSingleton<GameManager>
     {
         [SerializeField] private YasuoStats yasuoStats;
-        [SerializeField] private RarityTable rarityTable;
+        [SerializeField] private RaritySo raritySo;
         [SerializeField] private TalentTable talentTable;
         private int csCount;
         private List<Sprite> itemSprites;
@@ -66,7 +67,7 @@ namespace _Data.Scripts.Manager
         void ResetStats()
         {
             this.yasuoStats.ResetStats(this.talentTable);
-            this.rarityTable.ResetRarityTable();
+            // this.rarityTable.ResetRarityTable();
 
             // List<MainEnemyStats> list = SoManager.Instance.GetEnemyStatsList();
             // foreach (MainEnemyStats item in list)

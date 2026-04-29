@@ -10,8 +10,8 @@ public class LevelUpDisplay : VyesSingleton<LevelUpDisplay>
 {
     [SerializeField] private GameObject levelUpPanel;
     [SerializeField] private YasuoStats yasuoStats;
-    [SerializeField] private RarityTable rarityTable;
-    [SerializeField] private UpgradeTable upgradeTable;
+    [SerializeField] private RaritySo raritySo;
+    [SerializeField] private UpgradeSo upgradeSo;
     [SerializeField] private List<GameObject> listCores;
     private RarityType chosenRarity;
     private int power;
@@ -32,9 +32,9 @@ public class LevelUpDisplay : VyesSingleton<LevelUpDisplay>
 
     public void ShowUpgradeChoices()
     {
-        this.chosenRarity = this.rarityTable.GetRandomRarity();
-        Color color = this.rarityTable.GetColorByRarity(chosenRarity);
-        this.power = this.rarityTable.GetPowerByRarity(chosenRarity);
+        // this.chosenRarity = this.raritySo.GetRandomRarity();
+        // Color color = this.raritySo.GetColorByRarity(chosenRarity);
+        // this.power = this.raritySo.GetPowerByRarity(chosenRarity);
         this.choicesList = GetRandomUpgrades(3);
 
         this.iconList[0].sprite = this.choicesList[0].icon;
@@ -42,18 +42,18 @@ public class LevelUpDisplay : VyesSingleton<LevelUpDisplay>
         this.iconList[2].sprite = this.choicesList[2].icon;
 
         this.namesList[0].text = this.choicesList[0].name;
-        this.namesList[0].color = color;
+        // this.namesList[0].color = color;
         this.namesList[1].text = this.choicesList[1].name;
-        this.namesList[1].color = color;
+        // this.namesList[1].color = color;
         this.namesList[2].text = this.choicesList[2].name;
-        this.namesList[2].color = color;
+        // this.namesList[2].color = color;
 
         this.valuesList[0].text = (this.choicesList[0].value * power).ToString();
-        this.valuesList[0].color = color;
+        // this.valuesList[0].color = color;
         this.valuesList[1].text = (this.choicesList[1].value * power).ToString();
-        this.valuesList[1].color = color;
+        // this.valuesList[1].color = color;
         this.valuesList[2].text = (this.choicesList[2].value * power).ToString();
-        this.valuesList[2].color = color;
+        // this.valuesList[2].color = color;
     }
 
     public void ApplyUpgrade(int index)
@@ -70,7 +70,7 @@ public class LevelUpDisplay : VyesSingleton<LevelUpDisplay>
 
     private List<UpgradeData> GetRandomUpgrades(int count)
     {
-        List<UpgradeData> copy = new List<UpgradeData>(this.upgradeTable.upgrades);
+        List<UpgradeData> copy = new List<UpgradeData>(this.upgradeSo.upgrades);
         List<UpgradeData> result = new List<UpgradeData>();
 
         for (int i = 0; i < count && copy.Count > 0; i++)

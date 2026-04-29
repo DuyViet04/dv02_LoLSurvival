@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using _Data.Refactor.Controllers.Players;
 using _Data.Refactor.Managers;
+using _Data.Refactor.Models.Runtimes.Upgrades;
 using _Data.Refactor.Models.SOs.Upgrades;
 using _Data.Refactor.Models.SOs.Upgrades.Data;
 using Base.Systems.Stat;
@@ -24,14 +25,18 @@ namespace _Data.Refactor.Views.UIs
     {
         [SerializeField] private PlayerController playerController;
         [SerializeField] private PlayerLevel playerLevel;
-        [SerializeField] private UpgradeTable upgradeTable;
+        [SerializeField] private UpgradeSo upgradeSo;
+        [SerializeField] private RaritySo raritySo;
         [SerializeField] private GameObject levelUpPanel;
         [SerializeField] private List<GameObject> cores;
         [SerializeField] private List<Image> icons;
         [SerializeField] private List<TMP_Text> names;
         [SerializeField] private List<TMP_Text> values;
+
         private List<UpgradeData> upgrades;
         private List<UpgradeData> upgradeChoices;
+        private RarityRuntime rarityRuntime;
+        private RarityData chosenRarity;
 
         private readonly IStatService levelService = new StatService();
 
@@ -48,7 +53,8 @@ namespace _Data.Refactor.Views.UIs
         protected override void Awake()
         {
             base.Awake();
-            upgrades = new List<UpgradeData>(upgradeTable.upgrades);
+            upgrades = new List<UpgradeData>(upgradeSo.upgrades);
+            rarityRuntime = new RarityRuntime(raritySo);
         }
 
         void ShowPanel()
@@ -67,24 +73,33 @@ namespace _Data.Refactor.Views.UIs
         void ShowUpgrades()
         {
             GetUpgrades(3);
+            chosenRarity = rarityRuntime.GetRandomRarity();
             icons[0].sprite = upgradeChoices[0].icon;
             icons[1].sprite = upgradeChoices[1].icon;
             icons[2].sprite = upgradeChoices[2].icon;
 
             names[0].text = upgradeChoices[0].name;
+            names[0].color = chosenRarity.color;
             names[1].text = upgradeChoices[1].name;
+            names[1].color = chosenRarity.color;
             names[2].text = upgradeChoices[2].name;
+            names[2].color = chosenRarity.color;
 
-            values[0].text = upgradeChoices[0].value.ToString();
-            values[1].text = upgradeChoices[1].value.ToString();
-            values[2].text = upgradeChoices[2].value.ToString();
+            values[0].text = (upgradeChoices[0].value * chosenRarity.power).ToString();
+            values[0].color = chosenRarity.color;
+            values[1].text = (upgradeChoices[1].value * chosenRarity.power).ToString();
+            values[1].color = chosenRarity.color;
+            values[2].text = (upgradeChoices[2].value * chosenRarity.power).ToString();
+            values[2].color = chosenRarity.color;
         }
 
         public void SelectUpgrade(int choice)
         {
             var upgrade = upgradeChoices[choice];
             var stat = levelService.FindStat(upgrade.type, playerController.CharacterRuntime);
-            stat.AddModifier(upgrade.statModifier);
+            var mod = upgrade.statModifier;
+            var newMod = new StatModifier(mod.Value * chosenRarity.power, mod.Type);
+            stat.AddModifier(newMod);
 
             HidePanel();
         }
@@ -110,10 +125,16 @@ namespace _Data.Refactor.Views.UIs
                 Debug.LogWarning($"Load {playerLevel}", gameObject);
             }
 
-            if (upgradeTable == null)
+            if (upgradeSo == null)
             {
-                upgradeTable = SoManager.Ins.UpgradeTable;
-                Debug.LogWarning($"Load {upgradeTable}", gameObject);
+                upgradeSo = SoManager.Ins.UpgradeSo;
+                Debug.LogWarning($"Load {upgradeSo}", gameObject);
+            }
+
+            if (raritySo == null)
+            {
+                raritySo = SoManager.Ins.RaritySo;
+                Debug.LogWarning($"Load {raritySo}", gameObject);
             }
 
             if (levelUpPanel == null)

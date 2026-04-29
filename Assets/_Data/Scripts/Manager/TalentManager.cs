@@ -13,7 +13,7 @@ public class TalentManager : VyesSingleton<TalentManager>
     [SerializeField] private TMP_Text csPointText;
     [SerializeField] private Transform talentsContent;
     [SerializeField] private TalentTable talentTable;
-    [SerializeField] private UpgradeTable upgradeTable;
+    [SerializeField] private UpgradeSo upgradeSo;
     [SerializeField] private List<Transform> talentsList;
     [SerializeField] private List<Image> talentIcons;
     [SerializeField] private List<TMP_Text> talentEffect;
@@ -35,7 +35,7 @@ public class TalentManager : VyesSingleton<TalentManager>
             this.talentTable.talents[index].currentLevel++;
             this.talentTable.csPoint -= this.talentTable.talents[index].pointCost;
             this.csPointText.text = $"Điểm CS: {this.talentTable.csPoint}";
-            UpgradeData upgrade = this.upgradeTable.upgrades[index];
+            UpgradeData upgrade = this.upgradeSo.upgrades[index];
             this.talentTable.talents[index].effectValue += upgrade.value;
             this.talentTable.talents[index].pointCost += 50;
 

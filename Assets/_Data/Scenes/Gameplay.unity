@@ -4541,7 +4541,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Views.UIs.LevelUpUi
   playerController: {fileID: 612861176}
   playerLevel: {fileID: 612861180}
-  upgradeTable: {fileID: 11400000, guid: 7bf756567195b724c9ec8f3d35a7ce41, type: 2}
+  upgradeSo: {fileID: 11400000, guid: 7bf756567195b724c9ec8f3d35a7ce41, type: 2}
+  raritySo: {fileID: 11400000, guid: fb9a5e75218471c418eb35aaec4ee915, type: 2}
   levelUpPanel: {fileID: 901364038}
   cores:
   - {fileID: 1492168209}
@@ -14480,7 +14481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee8f5b9092042d44ea8c2bd27e3912bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseRarityTable: {fileID: 11400000, guid: fff28aaf87e59cf48ba6a17caa461b54, type: 2}
+  baseRaritySo: {fileID: 0}
   yasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   levelUpPanel: {fileID: 901364038}
   expBar: {fileID: 820831924}
@@ -24761,7 +24762,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cf6ae957b7218d74480a85dae834fa85, type: 2}
   - {fileID: 11400000, guid: eefabcb86be5a2647936e354ccda0c2b, type: 2}
   - {fileID: 11400000, guid: 4f34e4ce8c4abd441b95406a73476162, type: 2}
-  upgradeTable: {fileID: 11400000, guid: 7bf756567195b724c9ec8f3d35a7ce41, type: 2}
+  upgradeSo: {fileID: 11400000, guid: 7bf756567195b724c9ec8f3d35a7ce41, type: 2}
+  raritySo: {fileID: 11400000, guid: fb9a5e75218471c418eb35aaec4ee915, type: 2}
 --- !u!1 &1450167839
 GameObject:
   m_ObjectHideFlags: 0

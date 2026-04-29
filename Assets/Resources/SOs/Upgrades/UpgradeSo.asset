@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e50364cb0a67aa40b532a28faaca45b, type: 3}
-  m_Name: UpgradeTable
+  m_Name: UpgradeSo
   m_EditorClassIdentifier: 
   upgrades:
   - icon: {fileID: 21300000, guid: 71273279a3ff9944c8b2474d1837dbfa, type: 3}
@@ -123,7 +123,7 @@ MonoBehaviour:
     name: "T\u1EA7m nh\u1EB7t(%):"
     value: 10
     statModifier:
-      value: 10
+      value: 0.1
       type: 200
   - icon: {fileID: 21300000, guid: 489ac8b39bb91734da93e97da99858ad, type: 3}
     type: 23

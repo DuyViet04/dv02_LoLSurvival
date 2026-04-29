@@ -11,14 +11,16 @@ namespace _Data.Refactor.Managers
     {
         [SerializeField] private List<BasePlayerSo> playerSos;
         [SerializeField] private List<BaseEnemySo> enemySos;
-        [SerializeField] private UpgradeTable upgradeTable;
+        [SerializeField] private UpgradeSo upgradeSo;
+        [SerializeField] private RaritySo raritySo;
 
         public List<BaseEnemySo> EnemySos => enemySos;
-        public UpgradeTable UpgradeTable => upgradeTable;
+        public UpgradeSo UpgradeSo => upgradeSo;
+        public RaritySo RaritySo => raritySo;
 
         private readonly string playerSosPath = "SOs/Players";
         private readonly string enemySosPath = "SOs/Enemies";
-        private readonly string upgradeTablePath = "SOs/Upgrades";
+        private readonly string upgradeSosPath = "SOs/Upgrades";
 
         public BasePlayerSo GetPlayerSoByName(string playerName)
         {
@@ -65,10 +67,16 @@ namespace _Data.Refactor.Managers
                 Debug.LogWarning($"Load {enemySos}");
             }
 
-            if (upgradeTable == null)
+            if (upgradeSo == null)
             {
-                upgradeTable = Resources.LoadAll<UpgradeTable>(upgradeTablePath)[0];
-                Debug.LogWarning($"Load {upgradeTable}", gameObject);
+                upgradeSo = Resources.LoadAll<UpgradeSo>(upgradeSosPath)[0];
+                Debug.LogWarning($"Load {upgradeSo}", gameObject);
+            }
+
+            if (raritySo == null)
+            {
+                raritySo = Resources.LoadAll<RaritySo>(upgradeSosPath)[0];
+                Debug.LogWarning($"Load {raritySo}", gameObject);
             }
         }
     }

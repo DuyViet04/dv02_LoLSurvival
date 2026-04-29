@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace _Data.Refactor.Models.SOs.Upgrades
 {
-    [CreateAssetMenu(fileName = "UpgradeTable", menuName = "SOs/Upgrades/UpgradeTable")]
-    public class UpgradeTable : ScriptableObject
+    [CreateAssetMenu(fileName = "UpgradeSo", menuName = "SOs/Upgrades/UpgradeSo")]
+    public class UpgradeSo : ScriptableObject
     {
         public List<UpgradeData> upgrades;
     }

@@ -1,10 +1,11 @@
+using _Data.Refactor.Models.SOs.Upgrades;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelUp : MonoBehaviour
 {
-    [SerializeField] private RarityTable baseRarityTable;
+    [SerializeField] private RaritySo baseRaritySo;
     [SerializeField] private YasuoStats yasuoStats;
     [SerializeField] private GameObject levelUpPanel;
     [SerializeField] private Image expBar;
@@ -37,7 +38,7 @@ public class LevelUp : MonoBehaviour
     // Tăng cấp độ và hiển thị bảng nâng cấp
     void IncreaseLevel()
     {
-        this.IncreaseRarity(this.baseRarityTable); // Tăng tỉ lệ hiếm của nâng cấp
+        this.IncreaseRarity(this.baseRaritySo); // Tăng tỉ lệ hiếm của nâng cấp
 
         this.levelUpPanel.SetActive(true); // Hiển thị bảng nâng cấp
         Time.timeScale = 0; // Dừng thời gian để người chơi có thể chọn nâng cấp
@@ -57,15 +58,15 @@ public class LevelUp : MonoBehaviour
     }
 
     // Xử lý tăng tỉ lệ theo cấp
-    void IncreaseRarity(RarityTable table)
+    void IncreaseRarity(RaritySo so)
     {
         float progress = (float)1 / 49;
 
         if (this.currentLv > 50) return;
-        table.rarities[0].chance -= progress * 10 / 15;
-        table.rarities[1].chance += progress * 4 / 15;
-        table.rarities[2].chance += progress * 3 / 15;
-        table.rarities[3].chance += progress * 2 / 15;
-        table.rarities[4].chance += progress * 1 / 15;
+        so.rarities[0].chance -= progress * 10 / 15;
+        so.rarities[1].chance += progress * 4 / 15;
+        so.rarities[2].chance += progress * 3 / 15;
+        so.rarities[3].chance += progress * 2 / 15;
+        so.rarities[4].chance += progress * 1 / 15;
     }
 }
