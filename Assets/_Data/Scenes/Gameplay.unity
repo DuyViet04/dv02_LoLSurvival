@@ -4541,8 +4541,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Views.UIs.LevelUpUi
   playerController: {fileID: 612861176}
   playerLevel: {fileID: 612861180}
-  upgradeSo: {fileID: 11400000, guid: 7bf756567195b724c9ec8f3d35a7ce41, type: 2}
-  raritySo: {fileID: 11400000, guid: fb9a5e75218471c418eb35aaec4ee915, type: 2}
   levelUpPanel: {fileID: 901364038}
   cores:
   - {fileID: 1492168209}
@@ -11555,6 +11553,8 @@ MonoBehaviour:
   currentExp: 0
   expMultiplier: 0
   playerController: {fileID: 612861176}
+  upgradeSo: {fileID: 11400000, guid: 7bf756567195b724c9ec8f3d35a7ce41, type: 2}
+  raritySo: {fileID: 11400000, guid: fb9a5e75218471c418eb35aaec4ee915, type: 2}
 --- !u!1 &614345530
 GameObject:
   m_ObjectHideFlags: 0

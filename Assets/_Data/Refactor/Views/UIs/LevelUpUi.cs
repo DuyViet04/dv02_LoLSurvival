@@ -1,8 +1,5 @@
 using System.Collections.Generic;
 using _Data.Refactor.Controllers.Players;
-using _Data.Refactor.Managers;
-using _Data.Refactor.Models.Runtimes.Upgrades;
-using _Data.Refactor.Models.SOs.Upgrades;
 using _Data.Refactor.Models.SOs.Upgrades.Data;
 using Base.Systems.Input;
 using Base.Systems.Stat;
@@ -26,17 +23,13 @@ namespace _Data.Refactor.Views.UIs
     {
         [SerializeField] private PlayerController playerController;
         [SerializeField] private PlayerLevel playerLevel;
-        [SerializeField] private UpgradeSo upgradeSo;
-        [SerializeField] private RaritySo raritySo;
         [SerializeField] private GameObject levelUpPanel;
         [SerializeField] private List<GameObject> cores;
         [SerializeField] private List<Image> icons;
         [SerializeField] private List<TMP_Text> names;
         [SerializeField] private List<TMP_Text> values;
 
-        private List<UpgradeData> upgrades;
         private List<UpgradeData> upgradeChoices;
-        private RarityRuntime rarityRuntime;
         private RarityData chosenRarity;
 
         private readonly IStatService levelService = new StatService();
@@ -49,13 +42,6 @@ namespace _Data.Refactor.Views.UIs
         private void OnDisable()
         {
             playerLevel.OnLevelUpEvent -= ShowPanel;
-        }
-
-        protected override void Awake()
-        {
-            base.Awake();
-            upgrades = new List<UpgradeData>(upgradeSo.upgrades);
-            rarityRuntime = new RarityRuntime(raritySo);
         }
 
         void ShowPanel()
@@ -75,8 +61,8 @@ namespace _Data.Refactor.Views.UIs
 
         void ShowUpgrades()
         {
-            GetUpgrades(3);
-            chosenRarity = rarityRuntime.GetRandomRarity();
+            upgradeChoices = playerLevel.GetUpgrades(3);
+            chosenRarity = playerLevel.RarityRuntime.GetRandomRarity();
             icons[0].sprite = upgradeChoices[0].icon;
             icons[1].sprite = upgradeChoices[1].icon;
             icons[2].sprite = upgradeChoices[2].icon;
@@ -107,12 +93,6 @@ namespace _Data.Refactor.Views.UIs
             HidePanel();
         }
 
-        List<UpgradeData> GetUpgrades(int value)
-        {
-            ListUtility.Shuffle(upgrades);
-            return upgradeChoices = upgrades.GetRange(0, value);
-        }
-
         protected override void LoadComponents()
         {
             base.LoadComponents();
@@ -126,18 +106,6 @@ namespace _Data.Refactor.Views.UIs
             {
                 playerLevel = FindFirstObjectByType<PlayerLevel>();
                 Debug.LogWarning($"Load {playerLevel}", gameObject);
-            }
-
-            if (upgradeSo == null)
-            {
-                upgradeSo = SoManager.Ins.UpgradeSo;
-                Debug.LogWarning($"Load {upgradeSo}", gameObject);
-            }
-
-            if (raritySo == null)
-            {
-                raritySo = SoManager.Ins.RaritySo;
-                Debug.LogWarning($"Load {raritySo}", gameObject);
             }
 
             if (levelUpPanel == null)

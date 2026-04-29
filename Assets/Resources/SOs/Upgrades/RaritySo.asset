@@ -16,20 +16,20 @@ MonoBehaviour:
   - rarity: 0
     color: {r: 1, g: 1, b: 1, a: 1}
     power: 1
-    chance: 0.33333334
+    chance: 1
   - rarity: 1
     color: {r: 0, g: 1, b: 0, a: 1}
     power: 2
-    chance: 0.26666668
+    chance: 0
   - rarity: 2
     color: {r: 0, g: 0, b: 1, a: 1}
     power: 3
-    chance: 0.2
+    chance: 0
   - rarity: 3
     color: {r: 1, g: 0, b: 1, a: 1}
     power: 4
-    chance: 0.13333334
+    chance: 0
   - rarity: 4
     color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
     power: 5
-    chance: 0.06666667
+    chance: 0

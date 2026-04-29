@@ -8,6 +8,8 @@ namespace _Data.Refactor.Models.Runtimes.Upgrades
     public class RarityRuntime
     {
         private readonly List<RarityData> rarities;
+        
+        public List<RarityData> Rarities => rarities;
 
         public RarityRuntime(RaritySo baseSo)
         {
