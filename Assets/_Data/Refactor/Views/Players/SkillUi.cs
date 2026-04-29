@@ -14,7 +14,7 @@ namespace _Data.Refactor.Views.Players
         CdTime
     }
 
-    public class SkillUI : BaseView
+    public class SkillUi : BaseView
     {
         [SerializeField] private PlayerController playerController;
         [Header("Skill1")] [SerializeField] private Image cd1;
@@ -39,12 +39,14 @@ namespace _Data.Refactor.Views.Players
         {
             skill1Runtime.OnCooldownUpdated += UpdateCooldownUI1;
             skill2Runtime.OnCooldownUpdated += UpdateCooldownUI2;
+            playerController.CharacterRuntime.UtilityData.Haste.OnValueChange += UpdateHaste;
         }
 
         private void OnDisable()
         {
             skill1Runtime.OnCooldownUpdated -= UpdateCooldownUI1;
             skill2Runtime.OnCooldownUpdated -= UpdateCooldownUI2;
+            playerController.CharacterRuntime.UtilityData.Haste.OnValueChange -= UpdateHaste;
         }
 
         private void UpdateCooldownUI1(float currentCdTime, float cdTime)
@@ -59,6 +61,12 @@ namespace _Data.Refactor.Views.Players
             cdText2.text = currentCdTime > 0.01f ? $"{currentCdTime:0.0}s" : "";
         }
 
+        void UpdateHaste()
+        {
+            skill1Runtime.OnHasteUpdate(playerController.CharacterRuntime.UtilityData.Haste.Value);
+            skill2Runtime.OnHasteUpdate(playerController.CharacterRuntime.UtilityData.Haste.Value);
+        }
+
         public void ShowSkillInfo(int index)
         {
             infoPanel.SetActive(true);
@@ -69,19 +77,22 @@ namespace _Data.Refactor.Views.Players
             {
                 case 1:
                     var d1 = skill1Runtime.SkillData;
-                    float total1 = d1.BaseDamage + (ad * d1.BonusAd / 100f);
+                    float total1 = skill1Runtime.GetDamage(ad, ap);
                     skillInfoText.text =
-                        $"Yasuo tung ra một cơn lốc gây <color=red>{total1} = {d1.BaseDamage} + {d1.BonusAd}% AD sát thương vật lý</color>";
+                        $"Yasuo tung ra một cơn lốc gây <color=red>{total1} = {d1.BaseDamage} + {d1.BonusAd / 100f * ad} AD" +
+                        $" + {d1.BonusAp / 100f * ap} AP sát thương vật lý</color>";
                     break;
                 case 2:
                     var d2 = skill2Runtime.SkillData;
-                    float total2 = d2.BaseDamage + (ap * d2.BonusAp / 100f);
+                    float total2 = skill2Runtime.GetDamage(ad, ap);
                     skillInfoText.text =
-                        $"Yasuo lướt đi 1 đoạn và gây <color=blue>{total2} = {d2.BaseDamage} + {d2.BonusAp}% AP sát thương phép thuật</color>";
+                        $"Yasuo lướt đi 1 đoạn và gây <color=blue>{total2} = {d2.BaseDamage} + {d2.BonusAd / 100f * ad} AD" +
+                        $" + {d2.BonusAp / 100f * ap} AP sát thương phép thuật</color>";
                     break;
                 default:
                     skillInfoText.text =
-                        "Yasuo nhận gấp đôi tỉ lệ chí mạng, mỗi 1% tỉ lệ chí mạng vượt quá 100% sẽ chuyển thành <color=red>0.5 sức mạnh vật lý</color>";
+                        "Yasuo nhận gấp đôi tỉ lệ chí mạng, mỗi 1% tỉ lệ chí mạng vượt quá 100% sẽ chuyển thành " +
+                        "<color=red>0.5 sức mạnh vật lý</color>";
                     break;
             }
         }

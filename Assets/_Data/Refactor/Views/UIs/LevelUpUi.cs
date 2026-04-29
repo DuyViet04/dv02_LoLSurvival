@@ -4,6 +4,7 @@ using _Data.Refactor.Managers;
 using _Data.Refactor.Models.Runtimes.Upgrades;
 using _Data.Refactor.Models.SOs.Upgrades;
 using _Data.Refactor.Models.SOs.Upgrades.Data;
+using Base.Systems.Input;
 using Base.Systems.Stat;
 using Base.Utilities;
 using TMPro;
@@ -62,12 +63,14 @@ namespace _Data.Refactor.Views.UIs
             levelUpPanel.SetActive(true);
             GameManager.Ins.PauseGame();
             ShowUpgrades();
+            InputManager.Ins.ChangeUiInput();
         }
 
-        public void HidePanel()
+        void HidePanel()
         {
             levelUpPanel.SetActive(false);
             GameManager.Ins.ResumeGame();
+            InputManager.Ins.ChangePlayerInput();
         }
 
         void ShowUpgrades()
