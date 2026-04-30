@@ -1,8 +1,5 @@
-using System;
 using System.Collections.Generic;
 using _Data.Refactor.Controllers.Spawners;
-using _Data.Refactor.Enums.Players;
-using _Data.Refactor.Managers;
 using _Data.Refactor.Models.Runtimes.Players;
 using _Data.Refactor.Models.Runtimes.Skills;
 using _Data.Refactor.Models.SOs.Players;
@@ -22,21 +19,23 @@ namespace _Data.Refactor.Controllers.Players
     [DefaultExecutionOrder(-100)]
     public class PlayerController : BaseController
     {
+        [SerializeField] private PlayerHealth playerHealth;
+        [SerializeField] private AnimationController animationController;
         [SerializeField] private Animator animator;
         [SerializeField] private Rigidbody rigidBody;
         [SerializeField] private Camera mainCamera;
-        [SerializeField] private AnimationController animationController;
         [SerializeField] private BasePlayerSo basePlayerSo;
         [SerializeField] private Collider weaponCollider;
         [SerializeField] private SphereCollider sphereCollider;
         [SerializeField] private VfxSpawner vfxSpawner;
         private BasePlayerRuntime characterRuntime;
-        private List<BasePlayerSkillRuntime> skillsRuntime = new List<BasePlayerSkillRuntime>();
-        private AttackData skillAttackData = new AttackData();
+        private readonly List<BasePlayerSkillRuntime> skillsRuntime = new List<BasePlayerSkillRuntime>();
+        private readonly AttackData skillAttackData = new AttackData();
 
+        public PlayerHealth PlayerHealth => playerHealth;
+        public AnimationController AnimationController => animationController;
         public Animator Animator => animator;
         public Rigidbody Rigidbody => rigidBody;
-        public AnimationController AnimationController => animationController;
         public Collider WeaponCollider => weaponCollider;
         public BasePlayerRuntime CharacterRuntime => characterRuntime;
         public List<BasePlayerSkillRuntime> SkillsRuntime => skillsRuntime;
@@ -145,46 +144,6 @@ namespace _Data.Refactor.Controllers.Players
             attackStateMachine.AddState(PlayerState.Skill1, new PlayerSkill1State(this, attackStateMachine));
             attackStateMachine.AddState(PlayerState.Skill2, new PlayerSkill2State(this, attackStateMachine));
             attackStateMachine.SetInitState(PlayerState.NormalAttack);
-        }
-
-        protected override void LoadComponents()
-        {
-            base.LoadComponents();
-            if (animator == null)
-            {
-                animator = GetComponentInChildren<Animator>();
-                Debug.LogWarning($"{animator} is null", gameObject);
-            }
-
-            if (rigidBody == null)
-            {
-                rigidBody = GetComponent<Rigidbody>();
-                Debug.LogWarning($"{rigidBody} is null", gameObject);
-            }
-
-            if (mainCamera == null)
-            {
-                mainCamera = Camera.main;
-                Debug.LogWarning($"{mainCamera} is null", gameObject);
-            }
-
-            if (animationController == null)
-            {
-                animationController = GetComponentInChildren<AnimationController>();
-                Debug.LogWarning($"{animationController} is null", gameObject);
-            }
-
-            if (basePlayerSo == null)
-            {
-                basePlayerSo = SoManager.Ins.GetPlayerSoByName(nameof(PlayerName.Yasuo));
-                Debug.LogWarning($"{basePlayerSo} is null", gameObject);
-            }
-
-            if (vfxSpawner == null)
-            {
-                vfxSpawner = FindFirstObjectByType<VfxSpawner>();
-                Debug.LogWarning($"{vfxSpawner} is null", gameObject);
-            }
         }
 
         private void InitializeRuntimes()

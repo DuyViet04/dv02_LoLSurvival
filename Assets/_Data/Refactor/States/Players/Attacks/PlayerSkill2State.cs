@@ -14,8 +14,8 @@ namespace _Data.Refactor.States.Players.Attacks
     {
         private readonly BasePlayerSkillRuntime skillRuntime;
         private Coroutine dashCoroutine;
-        private float dashDuration = 0.5f;
-        private float dashSpeed = 10f;
+        private readonly float dashDuration = 0.5f;
+        private readonly float dashSpeed = 10f;
         private bool isDashing;
 
         public PlayerSkill2State(PlayerController playerController, StateMachine<PlayerState> stateMachine) :
@@ -31,10 +31,14 @@ namespace _Data.Refactor.States.Players.Attacks
 
             if (isDashing) return;
 
+            attackData.SetPenetration(runtime.OffensiveData.ArmorPenetration.Value,
+                runtime.OffensiveData.ArmorPenetrationPercent.Value,
+                runtime.OffensiveData.MagicPenetration.Value,
+                runtime.OffensiveData.MagicPenetrationPercent.Value);
             attackData.SetAttackData(
                 skillRuntime.GetDamage(runtime.CurrentAttackDamage, runtime.OffensiveData.AbilityPower.Value),
                 skillRuntime.SkillData.CanCrit,
-                runtime.OffensiveData.CritDamage.Value, skillRuntime.SkillData.DamageType);
+                runtime.OffensiveData.CritDamage.Value, skillRuntime.SkillData.DamageType, skillRuntime.SkillData.SkillType);
             if (skillRuntime!.TryUseSkill())
             {
                 Attack();

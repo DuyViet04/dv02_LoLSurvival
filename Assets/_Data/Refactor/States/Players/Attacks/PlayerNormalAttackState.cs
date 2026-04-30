@@ -20,10 +20,14 @@ namespace _Data.Refactor.States.Players.Attacks
         public override void OnEnter()
         {
             eventController.OnEvent += TriggerWeaponCollider;
+            attackData.SetPenetration(runtime.OffensiveData.ArmorPenetration.Value,
+                runtime.OffensiveData.ArmorPenetrationPercent.Value,
+                runtime.OffensiveData.MagicPenetration.Value,
+                runtime.OffensiveData.MagicPenetrationPercent.Value);
             attackData.SetAttackData(
                 skillRuntime.GetDamage(runtime.CurrentAttackDamage, runtime.OffensiveData.AbilityPower.Value),
                 skillRuntime.SkillData.CanCrit,
-                runtime.OffensiveData.CritDamage.Value, skillRuntime.SkillData.DamageType);
+                runtime.OffensiveData.CritDamage.Value, skillRuntime.SkillData.DamageType, skillRuntime.SkillData.SkillType);
         }
 
         public override void OnUpdate()

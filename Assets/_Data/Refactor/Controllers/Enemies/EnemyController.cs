@@ -1,6 +1,5 @@
 using _Data.Refactor.Controllers.Spawners;
 using _Data.Refactor.Enums;
-using _Data.Refactor.Managers;
 using _Data.Refactor.Models.Runtimes.Enemies;
 using _Data.Refactor.Models.SOs.Enemies;
 using _Data.Refactor.States.Enemies;
@@ -20,7 +19,7 @@ namespace _Data.Refactor.Controllers.Enemies
         [SerializeField] private ExpSpawner expSpawner;
         [SerializeField] private EnemySpawner enemySpawner;
         private BaseEnemyRuntime baseEnemyRuntime;
-        private DefenseData defenseData = new DefenseData();
+        private readonly DefenseData defenseData = new DefenseData();
         private float currentHealth;
         private float maxHealth;
         private EnemyMoveStateMachine<EnemyState> moveStateMachine;
@@ -33,7 +32,7 @@ namespace _Data.Refactor.Controllers.Enemies
         public BaseEnemyRuntime BaseEnemyRuntime => baseEnemyRuntime;
         public EnemyMoveStateMachine<EnemyState> MoveStateMachine => moveStateMachine;
 
-        private ICombatService combatService = new CombatService();
+        private readonly ICombatService combatService = new CombatService();
 
         protected override void Awake()
         {
@@ -63,11 +62,11 @@ namespace _Data.Refactor.Controllers.Enemies
             if (other.CompareTag(nameof(TagEnum.Player)))
             {
                 IDamageable damageable = other.GetComponent<IDamageable>();
-                damageable.TakeDamage(baseEnemyRuntime.AttackData);
+                var damage = damageable.TakeDamage(baseEnemyRuntime.AttackData);
             }
         }
 
-        public void TakeDamage(AttackData attackData)
+        public float TakeDamage(AttackData attackData)
         {
             defenseData.SetDefenseData(baseEnemyRuntime.DefensiveData.Armor.Value,
                 baseEnemyRuntime.DefensiveData.MagicResist.Value);
@@ -80,6 +79,8 @@ namespace _Data.Refactor.Controllers.Enemies
             {
                 moveStateMachine.ChangeState(EnemyState.Die);
             }
+
+            return damage;
         }
 
         void InitState()
@@ -88,46 +89,6 @@ namespace _Data.Refactor.Controllers.Enemies
             moveStateMachine.AddState(EnemyState.Chase, new EnemyChaseState(this, moveStateMachine));
             moveStateMachine.AddState(EnemyState.Die, new EnemyDieState(this, moveStateMachine));
             moveStateMachine.SetInitState(EnemyState.Chase);
-        }
-
-        protected override void LoadComponents()
-        {
-            base.LoadComponents();
-            if (rigid == null)
-            {
-                rigid = GetComponent<Rigidbody>();
-                Debug.LogWarning($"Load {rigid}", gameObject);
-            }
-
-            if (target == null)
-            {
-                target = GameObject.FindGameObjectWithTag(nameof(TagEnum.Player)).transform;
-                Debug.LogWarning($"Load {target}", gameObject);
-            }
-
-            if (baseEnemySo == null)
-            {
-                baseEnemySo = SoManager.Ins.GetEnemySoByName(transform.name);
-                Debug.LogWarning($"Load {baseEnemySo}", gameObject);
-            }
-
-            if (bulletSpawner == null)
-            {
-                bulletSpawner = FindFirstObjectByType<BulletSpawner>();
-                Debug.LogWarning($"Load {bulletSpawner}", gameObject);
-            }
-
-            if (expSpawner == null)
-            {
-                expSpawner = FindFirstObjectByType<ExpSpawner>();
-                Debug.LogWarning($"Load {expSpawner}", gameObject);
-            }
-
-            if (enemySpawner == null)
-            {
-                enemySpawner = FindFirstObjectByType<EnemySpawner>();
-                Debug.LogWarning($"Load {enemySpawner}", gameObject);
-            }
         }
     }
 }

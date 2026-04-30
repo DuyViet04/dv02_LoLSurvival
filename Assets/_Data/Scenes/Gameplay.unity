@@ -11466,10 +11466,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d005c934f84137a87e31615dec19cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Controllers.Players.PlayerController
+  playerHealth: {fileID: 612861178}
+  animationController: {fileID: 1679171081}
   animator: {fileID: 1679171080}
   rigidBody: {fileID: 612861174}
   mainCamera: {fileID: 368059541}
-  animationController: {fileID: 1679171081}
   basePlayerSo: {fileID: 11400000, guid: 3a48f29c7a002ad47bf283c19184d1e6, type: 2}
   weaponCollider: {fileID: 1613400395}
   sphereCollider: {fileID: 612861179}
@@ -11514,6 +11515,11 @@ MonoBehaviour:
   healthRegen: 0
   armor: 0
   magicResist: 0
+  healData:
+    <LifeSteal>k__BackingField: 0
+    <PhysicalVamp>k__BackingField: 0
+    <Omnivamp>k__BackingField: 0
+    <HealPower>k__BackingField: 0
   playerController: {fileID: 612861176}
 --- !u!135 &612861179
 SphereCollider:

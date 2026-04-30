@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using _Data.Refactor.Managers;
 using _Data.Refactor.Models.Runtimes.Upgrades;
 using _Data.Refactor.Models.SOs.Upgrades;
 using _Data.Refactor.Models.SOs.Upgrades.Data;
@@ -65,30 +64,6 @@ namespace _Data.Refactor.Controllers.Players
             rarityRuntime.Rarities[2].chance += rareValue;
             rarityRuntime.Rarities[1].chance += uncommonValue;
             rarityRuntime.Rarities[0].chance -= uncommonValue + rareValue + epicValue + legendValue;
-            
-            Debug.Log(rarityRuntime.Rarities[4].chance);
-        }
-
-        protected override void LoadComponents()
-        {
-            base.LoadComponents();
-            if (playerController == null)
-            {
-                playerController = GetComponent<PlayerController>();
-                Debug.LogWarning($"Load {playerController}", gameObject);
-            }
-
-            if (upgradeSo == null)
-            {
-                upgradeSo = SoManager.Ins.UpgradeSo;
-                Debug.LogWarning($"Load {upgradeSo}", gameObject);
-            }
-
-            if (raritySo == null)
-            {
-                raritySo = SoManager.Ins.RaritySo;
-                Debug.LogWarning($"Load {raritySo}", gameObject);
-            }
         }
     }
 }

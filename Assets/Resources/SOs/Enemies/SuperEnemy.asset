@@ -98,7 +98,7 @@ MonoBehaviour:
       statType: 28
       value: 1
   attackData:
-    damage: 215
-    canCrit: 0
-    critDamage: 0
-    damageType: 0
+    <Damage>k__BackingField: 215
+    <CanCrit>k__BackingField: 0
+    <CritDamage>k__BackingField: 0
+    <DamageType>k__BackingField: 0
