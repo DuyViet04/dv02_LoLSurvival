@@ -1,4 +1,5 @@
 using _Data.Refactor.Enums;
+using _Data.Refactor.Views.UIs;
 using _Data.Scripts.Manager;
 using Base.Systems.Combat;
 using TMPro;
@@ -96,7 +97,7 @@ public class PlayerTakingDamage : TakingDamage
     // Khi máu về 0, sẽ gọi hàm Despawn để xử lý kết thúc trò chơi
     protected override void Despawn()
     {
-        GameManager.Ins.CSCount = CSDisplay.Ins.CSCount; // Lưu số lính đã tiêu diệt
+        // GameManager.Ins.CSCount = CsUi.Ins.CSCount; // Lưu số lính đã tiêu diệt
         GameManager.Ins.MainStatsData = StatsDisplay.Ins.GetLastMainData(); // Lưu dữ liệu thống kê chính
         GameManager.Ins.SecondStatsData = StatsDisplay.Ins.GetLastSecondData(); // Lưu dữ liệu thống kê phụ
         GameManager.Ins.ItemSprites = ShopManager.Ins.GetLastItem(); // Lưu dữ liệu vật phẩm đã mua

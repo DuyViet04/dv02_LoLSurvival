@@ -931,7 +931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 02cc82f93b9cf7640bc1fc6dd3c5a229, type: 2}
-  goldDisplay: {fileID: 794445066}
+  goldUi: {fileID: 0}
 --- !u!1 &40967086
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,7 +981,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec545fef85a887143a0fd844355de889, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Views.UIs.TimeUi
   text: {fileID: 1128104425}
 --- !u!1001 &50539341
 PrefabInstance:
@@ -2199,7 +2199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &116606857
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2446,7 +2446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: d20b4d6978c49c74383dc018195b58ec, type: 2}
-  goldDisplay: {fileID: 794445066}
+  goldUi: {fileID: 0}
 --- !u!1 &136835965
 GameObject:
   m_ObjectHideFlags: 0
@@ -3296,6 +3296,9 @@ MonoBehaviour:
   bulletSpawner: {fileID: 902215367}
   expSpawner: {fileID: 1978036368}
   enemySpawner: {fileID: 258509601}
+  playerLevel: {fileID: 612861180}
+  scaleValue: 0.1
+  csUi: {fileID: 1619962248}
 --- !u!136 &185532090
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3710,6 +3713,9 @@ MonoBehaviour:
   bulletSpawner: {fileID: 902215367}
   expSpawner: {fileID: 1978036368}
   enemySpawner: {fileID: 258509601}
+  playerLevel: {fileID: 612861180}
+  scaleValue: 0.1
+  csUi: {fileID: 1619962248}
 --- !u!136 &209628120
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4505,7 +4511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
   shopPanel: {fileID: 142802630}
-  goldDisplay: {fileID: 794445066}
+  goldUi: {fileID: 0}
   itemSlot: {fileID: 1995927525}
   sellButton: {fileID: 1931450587}
   itemBackground: {fileID: -1485911640, guid: 3f2e6d8ba3470b144929a5b34b03182c, type: 3}
@@ -4789,10 +4795,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Controllers.Spawners.EnemySpawner
   holder: {fileID: 1478513646}
   prefabs:
+  - {fileID: 1009774482}
+  - {fileID: 608639056}
+  - {fileID: 1243437855}
+  - {fileID: 209628117}
+  - {fileID: 747926840}
+  - {fileID: 1835941278}
   - {fileID: 1092323512}
-  minRadius: 1
-  maxRadius: 3
-  spawnRange: 5
+  - {fileID: 1863386689}
+  - {fileID: 972473757}
+  - {fileID: 185532087}
+  - {fileID: 1826487259}
+  - {fileID: 1580161216}
+  - {fileID: 566464999}
+  - {fileID: 1847077326}
+  minRadius: 0.5
+  maxRadius: 1.5
+  spawnRange: 1
   maxEnemies: 100
 --- !u!1 &259776558
 GameObject:
@@ -7220,6 +7239,53 @@ MonoBehaviour:
   cooldownImage: {fileID: 309853156}
   cooldownText: {fileID: 1666991772}
   prefab: {fileID: 7966731087305637596, guid: 460babe280fe4aa41adc3fefd46f0c0b, type: 3}
+--- !u!1 &379493929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 379493930}
+  - component: {fileID: 379493931}
+  m_Layer: 0
+  m_Name: GoldManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &379493930
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379493929}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1216779957}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &379493931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379493929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c9f33017f64b13ac549c331bddef99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Base.Systems.Economy.GoldManager
+  startingGold: 500
+  goldGrowth: 20.4
+  timeGrowth: 10
 --- !u!1 &384588964
 GameObject:
   m_ObjectHideFlags: 0
@@ -8275,7 +8341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: b23e71d908e090a448d7610efb0d5a6c, type: 2}
-  goldDisplay: {fileID: 794445066}
+  goldUi: {fileID: 0}
 --- !u!1 &465225234
 GameObject:
   m_ObjectHideFlags: 0
@@ -8986,7 +9052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 8b518f4da9b4f394c9734819bd42bced, type: 2}
-  goldDisplay: {fileID: 794445066}
+  goldUi: {fileID: 0}
 --- !u!1 &500862244
 GameObject:
   m_ObjectHideFlags: 0
@@ -10730,6 +10796,9 @@ MonoBehaviour:
   bulletSpawner: {fileID: 902215367}
   expSpawner: {fileID: 1978036368}
   enemySpawner: {fileID: 258509601}
+  playerLevel: {fileID: 612861180}
+  scaleValue: 0.1
+  csUi: {fileID: 1619962248}
 --- !u!136 &566465002
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10749,10 +10818,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 1
+  m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!1 &580081054
 GameObject:
   m_ObjectHideFlags: 0
@@ -10916,7 +10985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: fa54444c713597042a739af459e1e860, type: 2}
-  goldDisplay: {fileID: 794445066}
+  goldUi: {fileID: 0}
 --- !u!1 &601374837
 GameObject:
   m_ObjectHideFlags: 0
@@ -11158,6 +11227,9 @@ MonoBehaviour:
   bulletSpawner: {fileID: 902215367}
   expSpawner: {fileID: 1978036368}
   enemySpawner: {fileID: 258509601}
+  playerLevel: {fileID: 612861180}
+  scaleValue: 0.1
+  csUi: {fileID: 1619962248}
 --- !u!136 &608639059
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13709,6 +13781,9 @@ MonoBehaviour:
   bulletSpawner: {fileID: 902215367}
   expSpawner: {fileID: 1978036368}
   enemySpawner: {fileID: 258509601}
+  playerLevel: {fileID: 612861180}
+  scaleValue: 0.1
+  csUi: {fileID: 1619962248}
 --- !u!136 &747926843
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -14028,7 +14103,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 470231257}
@@ -14956,8 +15031,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldText: {fileID: 1179153995}
-  startingGold: 500
-  goldGeneration: 20.4
 --- !u!114 &794445067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16930,7 +17003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: bfbd444a9b3c0ff4fa5f7a6efe1ca06a, type: 2}
-  goldDisplay: {fileID: 794445066}
+  goldUi: {fileID: 0}
 --- !u!1 &953258881
 GameObject:
   m_ObjectHideFlags: 0
@@ -17207,6 +17280,9 @@ MonoBehaviour:
   bulletSpawner: {fileID: 902215367}
   expSpawner: {fileID: 1978036368}
   enemySpawner: {fileID: 258509601}
+  playerLevel: {fileID: 612861180}
+  scaleValue: 0.1
+  csUi: {fileID: 1619962248}
 --- !u!136 &972473760
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -18293,6 +18369,9 @@ MonoBehaviour:
   bulletSpawner: {fileID: 902215367}
   expSpawner: {fileID: 1978036368}
   enemySpawner: {fileID: 258509601}
+  playerLevel: {fileID: 612861180}
+  scaleValue: 0.1
+  csUi: {fileID: 1619962248}
 --- !u!136 &1009774485
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -19232,6 +19311,9 @@ MonoBehaviour:
   bulletSpawner: {fileID: 902215367}
   expSpawner: {fileID: 1978036368}
   enemySpawner: {fileID: 258509601}
+  playerLevel: {fileID: 612861180}
+  scaleValue: 0.1
+  csUi: {fileID: 1619962248}
 --- !u!136 &1092323515
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -20373,7 +20455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: b9314edd5923361478f623ea4c260e57, type: 2}
-  goldDisplay: {fileID: 794445066}
+  goldUi: {fileID: 0}
 --- !u!1 &1172691612
 GameObject:
   m_ObjectHideFlags: 0
@@ -20932,7 +21014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 0e3416247dd7151488532d8b71a98f26, type: 2}
-  goldDisplay: {fileID: 794445066}
+  goldUi: {fileID: 0}
 --- !u!1 &1216779956
 GameObject:
   m_ObjectHideFlags: 0
@@ -20965,6 +21047,7 @@ Transform:
   - {fileID: 1438166460}
   - {fileID: 821670867}
   - {fileID: 1226972561}
+  - {fileID: 379493930}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1226450467
@@ -21571,6 +21654,9 @@ MonoBehaviour:
   bulletSpawner: {fileID: 902215367}
   expSpawner: {fileID: 1978036368}
   enemySpawner: {fileID: 258509601}
+  playerLevel: {fileID: 612861180}
+  scaleValue: 0.1
+  csUi: {fileID: 1619962248}
 --- !u!136 &1243437858
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -22586,7 +22672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 8d5602f28803513488bd0d746beb7a7f, type: 2}
-  goldDisplay: {fileID: 794445066}
+  goldUi: {fileID: 0}
 --- !u!1 &1311095493
 GameObject:
   m_ObjectHideFlags: 0
@@ -26201,7 +26287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 50242d0f8c0c00d46bd9d5358485e742, type: 2}
-  goldDisplay: {fileID: 794445066}
+  goldUi: {fileID: 0}
 --- !u!1 &1535684480
 GameObject:
   m_ObjectHideFlags: 0
@@ -27270,6 +27356,9 @@ MonoBehaviour:
   bulletSpawner: {fileID: 902215367}
   expSpawner: {fileID: 1978036368}
   enemySpawner: {fileID: 258509601}
+  playerLevel: {fileID: 612861180}
+  scaleValue: 0.1
+  csUi: {fileID: 1619962248}
 --- !u!136 &1580161219
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -27686,7 +27775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 8b79c76d51715cc4b9fb726fdb282eaa, type: 2}
-  goldDisplay: {fileID: 794445066}
+  goldUi: {fileID: 0}
 --- !u!1 &1594170597
 GameObject:
   m_ObjectHideFlags: 0
@@ -30828,7 +30917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1743122811
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31207,7 +31296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 8f4567748d0534846b22d4440a553d0b, type: 2}
-  goldDisplay: {fileID: 794445066}
+  goldUi: {fileID: 0}
 --- !u!136 &1754654434
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -32946,6 +33035,9 @@ MonoBehaviour:
   bulletSpawner: {fileID: 902215367}
   expSpawner: {fileID: 1978036368}
   enemySpawner: {fileID: 258509601}
+  playerLevel: {fileID: 612861180}
+  scaleValue: 0.1
+  csUi: {fileID: 1619962248}
 --- !u!136 &1826487262
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -33156,6 +33248,9 @@ MonoBehaviour:
   bulletSpawner: {fileID: 902215367}
   expSpawner: {fileID: 1978036368}
   enemySpawner: {fileID: 258509601}
+  playerLevel: {fileID: 612861180}
+  scaleValue: 0.1
+  csUi: {fileID: 1619962248}
 --- !u!136 &1835941281
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -33397,6 +33492,9 @@ MonoBehaviour:
   bulletSpawner: {fileID: 902215367}
   expSpawner: {fileID: 1978036368}
   enemySpawner: {fileID: 258509601}
+  playerLevel: {fileID: 612861180}
+  scaleValue: 0.1
+  csUi: {fileID: 1619962248}
 --- !u!136 &1847077329
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -33743,6 +33841,9 @@ MonoBehaviour:
   bulletSpawner: {fileID: 902215367}
   expSpawner: {fileID: 1978036368}
   enemySpawner: {fileID: 258509601}
+  playerLevel: {fileID: 612861180}
+  scaleValue: 0.1
+  csUi: {fileID: 1619962248}
 --- !u!136 &1863386692
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -36119,7 +36220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 03029fda8e66b6846bf2b9bdcfa93a32, type: 2}
-  goldDisplay: {fileID: 794445066}
+  goldUi: {fileID: 0}
 --- !u!1 &2004133172
 GameObject:
   m_ObjectHideFlags: 0
@@ -38175,7 +38276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 6796d090ecc48a8438c93728bcf1e73c, type: 2}
-  goldDisplay: {fileID: 794445066}
+  goldUi: {fileID: 0}
 --- !u!1 &2142541673
 GameObject:
   m_ObjectHideFlags: 0

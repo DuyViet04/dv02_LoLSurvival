@@ -1,23 +1,32 @@
+using _Data.Refactor.Controllers.Players;
 using _Data.Refactor.Controllers.Spawners;
 using _Data.Refactor.Enums;
 using _Data.Refactor.Models.Runtimes.Enemies;
 using _Data.Refactor.Models.SOs.Enemies;
 using _Data.Refactor.States.Enemies;
 using _Data.Refactor.States.Enemies.Moves;
+using _Data.Refactor.Views.UIs;
 using Base.Core.Architecture;
 using Base.Systems.Combat;
+using Base.Systems.Economy;
+using Base.Systems.Stat;
 using UnityEngine;
 
 namespace _Data.Refactor.Controllers.Enemies
 {
     public class EnemyController : BaseController, IDamageable
     {
-        [SerializeField] private Rigidbody rigid;
+        [Header("Components")] [SerializeField]
+        private Rigidbody rigid;
+
         [SerializeField] private Transform target;
         [SerializeField] private BaseEnemySo baseEnemySo;
-        [SerializeField] private BulletSpawner bulletSpawner;
+        [Header("Spawner")] [SerializeField] private BulletSpawner bulletSpawner;
         [SerializeField] private ExpSpawner expSpawner;
         [SerializeField] private EnemySpawner enemySpawner;
+        [Header("Scale")] [SerializeField] private PlayerLevel playerLevel;
+        [SerializeField] private float scaleValue = 0.1f;
+        [SerializeField] private CsUi csUi;
         private BaseEnemyRuntime baseEnemyRuntime;
         private readonly DefenseData defenseData = new DefenseData();
         private float currentHealth;
@@ -41,6 +50,16 @@ namespace _Data.Refactor.Controllers.Enemies
             InitState();
         }
 
+        private void OnEnable()
+        {
+            playerLevel.OnLevelUpEvent += UpdateEnemyStats;
+        }
+
+        private void OnDisable()
+        {
+            playerLevel.OnLevelUpEvent -= UpdateEnemyStats;
+        }
+
         void Start()
         {
             maxHealth = baseEnemyRuntime.DefensiveData.Health.Value;
@@ -62,7 +81,7 @@ namespace _Data.Refactor.Controllers.Enemies
             if (other.CompareTag(nameof(TagEnum.Player)))
             {
                 IDamageable damageable = other.GetComponent<IDamageable>();
-                var damage = damageable.TakeDamage(baseEnemyRuntime.AttackData);
+                damageable.TakeDamage(baseEnemyRuntime.AttackData);
             }
         }
 
@@ -77,6 +96,8 @@ namespace _Data.Refactor.Controllers.Enemies
 
             if (currentHealth <= 0)
             {
+                GoldManager.Ins.AddGold(baseEnemyRuntime.EnemyData.GoldValue.Value);
+                csUi.UpdateCsCount(baseEnemyRuntime.EnemyData.CsValue.Value);
                 moveStateMachine.ChangeState(EnemyState.Die);
             }
 
@@ -89,6 +110,24 @@ namespace _Data.Refactor.Controllers.Enemies
             moveStateMachine.AddState(EnemyState.Chase, new EnemyChaseState(this, moveStateMachine));
             moveStateMachine.AddState(EnemyState.Die, new EnemyDieState(this, moveStateMachine));
             moveStateMachine.SetInitState(EnemyState.Chase);
+        }
+
+        void UpdateEnemyStats()
+        {
+            baseEnemyRuntime.DefensiveData.Health.AddModifier(new StatModifier(scaleValue, ModifierType.PercentAdd));
+            baseEnemyRuntime.DefensiveData.Armor.AddModifier(new StatModifier(scaleValue, ModifierType.PercentAdd));
+            baseEnemyRuntime.DefensiveData.MagicResist.AddModifier(
+                new StatModifier(scaleValue, ModifierType.PercentAdd));
+            baseEnemyRuntime.EnemyData.ExpValue.AddModifier(new StatModifier(scaleValue, ModifierType.PercentAdd));
+            baseEnemyRuntime.EnemyData.GoldValue.AddModifier(new StatModifier(scaleValue, ModifierType.PercentAdd));
+            baseEnemyRuntime.UtilityData.MoveSpeed.AddModifier(new StatModifier(scaleValue / 10,
+                ModifierType.PercentAdd));
+            baseEnemyRuntime.AttackData.SetAttackData(
+                baseEnemyRuntime.AttackData.Damage * (1 + scaleValue),
+                baseEnemyRuntime.AttackData.CanCrit,
+                baseEnemyRuntime.AttackData.CritDamage,
+                baseEnemyRuntime.AttackData.DamageType,
+                baseEnemyRuntime.AttackData.Source);
         }
     }
 }

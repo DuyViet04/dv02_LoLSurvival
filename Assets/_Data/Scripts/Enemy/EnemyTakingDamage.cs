@@ -1,6 +1,7 @@
 using _Data.Refactor.Controllers.Spawners;
 using _Data.Refactor.Enums;
 using _Data.Refactor.Enums.Enemies;
+using _Data.Refactor.Views.UIs;
 using Base.Systems.Combat;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ using UnityEngine;
 public class EnemyTakingDamage : TakingDamage
 {
     [SerializeField] private MainEnemyStats stats;
-    [SerializeField] private GoldDisplay goldDisplay;
+    [SerializeField] private GoldUi goldUi;
 
     private void Start()
     {
@@ -38,7 +39,7 @@ public class EnemyTakingDamage : TakingDamage
                 break;
         }
 
-        this.goldDisplay.GetGoldFromKill(this.stats.goldValue); //Cộng vàng cho người chơi
+        // this.goldUi.GetGoldFromKill(this.stats.goldValue); //Cộng vàng cho người chơi
         AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.GetGold));
         this.CreateExp();
         this.ResetStats();

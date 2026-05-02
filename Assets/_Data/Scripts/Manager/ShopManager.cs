@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Data.Refactor.Views.UIs;
 using Base.Core.Singleton;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +8,7 @@ public class ShopManager : VyesSingleton<ShopManager>
 {
     [SerializeField] private YasuoStats yasuoStats;
     [SerializeField] private GameObject shopPanel;
-    [SerializeField] private GoldDisplay goldDisplay;
+    [SerializeField] private GoldUi goldUi;
     [SerializeField] private GameObject itemSlot;
     [SerializeField] private GameObject sellButton;
     [SerializeField] private Sprite itemBackground;
@@ -47,7 +48,7 @@ public class ShopManager : VyesSingleton<ShopManager>
         ItemData item = ShopDisplay.Ins.choices[index];
         if (this.IsCanBuy(item, this.inventory))
         {
-            this.goldDisplay.GiveGold(item.cost);
+            // this.goldUi.GiveGold(item.cost);
             this.inventory.Add(item);
             this.itemCount++;
             // this.yasuoStats.ApplyItem(item);
@@ -67,7 +68,7 @@ public class ShopManager : VyesSingleton<ShopManager>
     {
         AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.SellItem));
         ItemData item = this.inventory[this.indexItem];
-        this.goldDisplay.Sell(item.cost);
+        // this.goldUi.Sell(item.cost);
         this.itemCount--;
         // this.yasuoStats.RemoveItem(this.inventory[this.indexItem]);
         this.inventory.Remove(this.inventory[this.indexItem]);
@@ -83,7 +84,7 @@ public class ShopManager : VyesSingleton<ShopManager>
 
     bool IsCanBuy(ItemData item, List<ItemData> inv)
     {
-        if (item.cost > this.goldDisplay.GetCurrentGold()) return false;
+        // if (item.cost > this.goldUi.GetCurrentGold()) return false;
         if (inv.Count >= 6) return false;
         return true;
     }

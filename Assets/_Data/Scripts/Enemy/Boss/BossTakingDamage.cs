@@ -1,4 +1,5 @@
 using _Data.Refactor.Enums;
+using _Data.Refactor.Views.UIs;
 using _Data.Scripts.Manager;
 using Base.Systems.Combat;
 using UnityEngine;
@@ -54,7 +55,7 @@ public class BossTakingDamage : TakingDamage
     // Xử lý khi chết
     protected override void Despawn()
     {
-        GameManager.Ins.CSCount = CSDisplay.Ins.CSCount; // Lưu số lính đã tiêu diệt
+        // GameManager.Ins.CSCount = CsUi.Ins.CSCount; // Lưu số lính đã tiêu diệt
         GameManager.Ins.MainStatsData =
             StatsDisplay.Ins.GetLastMainData(); // Lưu lại stats cuối cùng của người chơi
         GameManager.Ins.SecondStatsData =

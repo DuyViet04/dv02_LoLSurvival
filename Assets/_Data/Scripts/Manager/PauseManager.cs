@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Data.Refactor.Views.UIs;
 using _Data.Scripts.Manager;
 using UnityEngine;
 using UnityEngine.UI;
@@ -79,7 +80,7 @@ public class PauseManager : MonoBehaviour
     {
         AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.Click));
         Time.timeScale = 1;
-        GameManager.Ins.CSCount = CSDisplay.Ins.CSCount;
+        // GameManager.Ins.CSCount = CsUi.Ins.CSCount;
         GameManager.Ins.MainStatsData = StatsDisplay.Ins.GetLastMainData();
         GameManager.Ins.SecondStatsData = StatsDisplay.Ins.GetLastSecondData();
         GameManager.Ins.ItemSprites = ShopManager.Ins.GetLastItem();

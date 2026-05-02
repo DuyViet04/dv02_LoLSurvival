@@ -37,7 +37,7 @@ MonoBehaviour:
   offensiveData:
     attackSpeed:
       statType: 8
-      value: 0
+      value: 0.25
     attackDamage:
       statType: 9
       value: 21
@@ -53,52 +53,62 @@ MonoBehaviour:
     armorPenetration:
       statType: 13
       value: 0
-    magicPenetration:
+    armorPenetrationPercent:
       statType: 14
       value: 0
-    lifeSteal:
+    magicPenetration:
       statType: 15
       value: 0
-    physicalVamp:
+    magicPenetrationPercent:
       statType: 16
       value: 0
-    omnivamp:
+    lifeSteal:
       statType: 17
+      value: 0
+    physicalVamp:
+      statType: 18
+      value: 0
+    omnivamp:
+      statType: 19
       value: 0
   utilityData:
     haste:
-      statType: 21
+      statType: 23
       value: 0
     resourceData:
       resourceType: 0
       resource:
-        statType: 19
+        statType: 21
         value: 0
       resourceRegen:
-        statType: 20
+        statType: 22
         value: 0
     moveSpeed:
-      statType: 18
+      statType: 20
       value: 1.5
   enemyData:
-    enemyType: 1
-    expValue:
-      statType: 24
-      value: 30.4
-    goldValue:
-      statType: 25
-      value: 14
-    csValue:
+    <EnemyType>k__BackingField: 1
+    <ExpValue>k__BackingField:
       statType: 26
-      value: 1
-    spawnDelay:
+      value: 30.4
+    <GoldValue>k__BackingField:
       statType: 27
-      value: 6
-    spawnCount:
+      value: 14
+    <CsValue>k__BackingField:
       statType: 28
+      value: 1
+    <SpawnDelay>k__BackingField:
+      statType: 29
+      value: 6
+    <SpawnCount>k__BackingField:
+      statType: 30
       value: 3
   attackData:
     <Damage>k__BackingField: 21
     <CanCrit>k__BackingField: 0
     <CritDamage>k__BackingField: 0
+    <ArmorPen>k__BackingField: 0
+    <ArmorPenPercent>k__BackingField: 0
+    <MagicPen>k__BackingField: 0
+    <MagicPenPercent>k__BackingField: 0
     <DamageType>k__BackingField: 0
