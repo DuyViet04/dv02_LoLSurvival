@@ -13,7 +13,7 @@ namespace _Data.Refactor.Controllers
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag(nameof(TagEnum.Enemy)))
+            if (other.CompareTag(nameof(TagEnum.Enemy)) || other.CompareTag(nameof(TagEnum.Boss)))
             {
                 IDamageable damageable = other.GetComponent<IDamageable>();
                 AttackData attackData = playerController.SkillAttackData;

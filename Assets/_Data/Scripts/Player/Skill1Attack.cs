@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using _Data.Refactor.Enums;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,7 +31,7 @@ public class Skill1Attack : MonoBehaviour
             {
                 this.cooldownTimer = 0;
                 this.isCooldown = false;
-                this.animator.SetInteger(nameof(AnimationParams.currentSkill), 3);
+                this.animator.SetInteger(nameof(AnimationParams.CurrentSkill), 3);
             }
         }
 
@@ -48,7 +49,7 @@ public class Skill1Attack : MonoBehaviour
         if (this.isCooldown) return;
         AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.YasuoSkill1));
         this.yasuoSkill.lastSkillIndex = 1; // Lưu chỉ số kỹ năng cuối cùng đã sử dụng
-        this.animator.SetInteger(nameof(AnimationParams.currentSkill), 1);
+        this.animator.SetInteger(nameof(AnimationParams.CurrentSkill), 1);
         Quaternion rotation = Quaternion.Euler(-90, this.transform.parent.eulerAngles.y, 0); 
         Instantiate(this.prefab, this.transform.parent.position, rotation);
         this.isCooldown = true;

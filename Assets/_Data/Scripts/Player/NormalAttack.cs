@@ -1,3 +1,4 @@
+using _Data.Refactor.Enums;
 using UnityEngine;
 
 public class NormalAttack : MonoBehaviour
@@ -20,7 +21,7 @@ public class NormalAttack : MonoBehaviour
         // Kiểm tra nếu đang trong thời gian hồi chiêu
         if (this.isCooldown && (!Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1)))
         {
-            this.animator.SetInteger(nameof(AnimationParams.currentSkill), 3);
+            this.animator.SetInteger(nameof(AnimationParams.CurrentSkill), 3);
             this.cooldownTimer -= Time.deltaTime;
             if (this.cooldownTimer <= 0)
             {
@@ -39,7 +40,7 @@ public class NormalAttack : MonoBehaviour
         if (this.isCooldown) return;
         AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.YasuoNormalAttack));
         this.yasuoSkill.lastSkillIndex = 0;
-        this.animator.SetInteger(nameof(AnimationParams.currentSkill), 0);
+        this.animator.SetInteger(nameof(AnimationParams.CurrentSkill), 0);
         this.isCooldown = true;
         this.cooldownTimer = this.cooldownTime;
     }

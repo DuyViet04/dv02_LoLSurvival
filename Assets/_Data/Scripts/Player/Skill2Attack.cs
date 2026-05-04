@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using _Data.Refactor.Enums;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,7 +34,7 @@ public class Skill2Attack : MonoBehaviour
             {
                 this.cooldownTimer = 0;
                 this.isCooldown = false;
-                this.animator.SetInteger(nameof(AnimationParams.currentSkill), 3);
+                this.animator.SetInteger(nameof(AnimationParams.CurrentSkill), 3);
             }
         }
 
@@ -68,7 +69,7 @@ public class Skill2Attack : MonoBehaviour
         this.dashTimer = this.dashDuration;
         this.dashDirection = Vector3.forward;
 
-        this.animator.SetInteger(nameof(AnimationParams.currentSkill), 2);
+        this.animator.SetInteger(nameof(AnimationParams.CurrentSkill), 2);
         this.isCooldown = true;
         this.cooldownTimer = this.cooldownTime;
     }
