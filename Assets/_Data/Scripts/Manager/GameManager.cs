@@ -11,7 +11,7 @@ namespace _Data.Scripts.Manager
     {
         [SerializeField] private YasuoStats yasuoStats;
         [SerializeField] private RaritySo raritySo;
-        [SerializeField] private TalentTable talentTable;
+        // [SerializeField] private TalentTable talentTable;
         private int csCount;
         private List<Sprite> itemSprites;
         private List<TMP_Text> mainStatsData;
@@ -66,7 +66,7 @@ namespace _Data.Scripts.Manager
         // Reset các SO về giá trị ban đầu
         void ResetStats()
         {
-            this.yasuoStats.ResetStats(this.talentTable);
+            // this.yasuoStats.ResetStats(this.talentTable);
             // this.rarityTable.ResetRarityTable();
 
             // List<MainEnemyStats> list = SoManager.Instance.GetEnemyStatsList();

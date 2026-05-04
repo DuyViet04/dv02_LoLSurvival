@@ -6,6 +6,7 @@ using _Data.Refactor.Models.Runtimes.Players;
 using _Data.Refactor.Models.Runtimes.Skills;
 using _Data.Refactor.Models.SOs.Players;
 using _Data.Refactor.Services.LookAtMouse;
+using _Data.Refactor.Services.Talents;
 using _Data.Refactor.States.Players;
 using _Data.Refactor.States.Players.Attacks;
 using _Data.Refactor.States.Players.Moves;
@@ -175,6 +176,7 @@ namespace _Data.Refactor.Controllers.Players
         private void InitializeRuntimes()
         {
             characterRuntime = new BasePlayerRuntime(basePlayerSo);
+            TalentService.Ins.ApplyTalentsToRuntime(characterRuntime);
 
             foreach (var skillSo in basePlayerSo.skills)
             {

@@ -4,5 +4,5 @@
 public class GameSaveData
 {
     public int csPoint;
-    public List<TalentForSave> talents;
+    // public List<TalentForSave> talents;
 }

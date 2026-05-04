@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using _Data.Refactor.Models.Runtimes.Players;
 using _Data.Refactor.Models.SOs.Items;
+using _Data.Refactor.Services.Talents;
 using Base.Core.Singleton;
 using Base.Systems.Sound;
 using TMPro;
@@ -88,15 +89,19 @@ namespace _Data.Refactor.Managers
             TMP_Text csPointText = GameObject.Find("CSPoint").GetComponent<TMP_Text>();
 
             csPointText.text = $"Điểm CS: +{csCount:N0}";
-            
+
             exitButton.onClick.RemoveAllListeners();
-            exitButton.onClick.AddListener(() => GameManager.Ins.LoadScene(GameState.MainMenu));
+            exitButton.onClick.AddListener(() =>
+            {
+                TalentService.Ins.AddCsPoints((int)csCount);
+                GameManager.Ins.LoadScene(GameState.MainMenu);
+            });
 
             for (int i = 0; i < 6; i++)
             {
                 GameObject itemObj = GameObject.Find($"Item_{i}");
                 if (itemObj == null) continue;
-                
+
                 Image img = itemObj.GetComponent<Image>();
                 if (i < savedItems.Count)
                 {
@@ -106,6 +111,7 @@ namespace _Data.Refactor.Managers
                 {
                     img.sprite = defaultItemSprite;
                 }
+
                 img.color = Color.white;
             }
 

@@ -4,13 +4,14 @@ using _Data.Refactor.Models.SOs.Bosses;
 using _Data.Refactor.Models.SOs.Enemies;
 using _Data.Refactor.Models.SOs.Items;
 using _Data.Refactor.Models.SOs.Players;
+using _Data.Refactor.Models.SOs.Talents;
 using _Data.Refactor.Models.SOs.Upgrades;
 using Base.Core.Singleton;
 using UnityEngine;
 
 namespace _Data.Refactor.Managers
 {
-    public class SoManager : VyesSingleton<SoManager>
+    public class SoManager : VyesPersistentSingleton<SoManager>
     {
         [SerializeField] private List<BasePlayerSo> playerSos;
         [SerializeField] private List<BaseBossSo> bossSos;
@@ -19,6 +20,7 @@ namespace _Data.Refactor.Managers
         [SerializeField] private RaritySo raritySo;
         [SerializeField] private List<ItemSo> itemSos;
         [SerializeField] private ItemRaritySo itemRaritySo;
+        [SerializeField] private TalentGroupSo talentGroupSo;
 
         public List<BaseEnemySo> EnemySos => enemySos;
         public List<BaseBossSo> BossSos => bossSos;
@@ -26,6 +28,7 @@ namespace _Data.Refactor.Managers
         public RaritySo RaritySo => raritySo;
         public List<ItemSo> ItemSos => itemSos;
         public ItemRaritySo ItemRaritySo => itemRaritySo;
+        public TalentGroupSo TalentGroupSo => talentGroupSo;
 
         private readonly string playerSosPath = "SOs/Players";
         private readonly string enemySosPath = "SOs/Enemies";
