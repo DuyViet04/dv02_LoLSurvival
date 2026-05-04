@@ -31,6 +31,7 @@ namespace _Data.Refactor.Controllers.Players
         [SerializeField] private Collider weaponCollider;
         [SerializeField] private SphereCollider sphereCollider;
         [SerializeField] private VfxSpawner vfxSpawner;
+        [SerializeField] private ShopSpawner shopSpawner;
         [SerializeField] private ShopPanel shopPanel;
         private BasePlayerRuntime characterRuntime;
         private readonly List<BasePlayerSkillRuntime> skillsRuntime = new List<BasePlayerSkillRuntime>();
@@ -98,6 +99,7 @@ namespace _Data.Refactor.Controllers.Players
         {
             if (other.CompareTag(nameof(TagEnum.Shop)))
             {
+                shopPanel.SetCurrentShop(other.transform, shopSpawner);
                 shopPanel.gameObject.SetActive(true);
                 GameManager.Ins.PauseGame();
             }

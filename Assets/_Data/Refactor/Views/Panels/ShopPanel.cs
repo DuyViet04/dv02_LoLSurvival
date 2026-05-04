@@ -8,8 +8,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using _Data.Refactor.Controllers.Players;
+using _Data.Refactor.Controllers.Spawners;
 using Base.Systems.Economy;
 using Base.Systems.Stat;
+using VyesBase.Assets.Base.Systems.Game;
 
 namespace _Data.Refactor.Views.Panels
 {
@@ -30,6 +32,11 @@ namespace _Data.Refactor.Views.Panels
         private List<ItemSo> itemChoices = new List<ItemSo>();
         private List<ItemSo> playerItems = new List<ItemSo>(6);
         private int itemIndex;
+        private Transform activeShop;
+        private ShopSpawner spawner;
+
+        public List<ItemSo> PlayerItems => playerItems;
+        public Sprite DefaultItemIcon => defaultItemIcon;
 
         private readonly IStatService statService = new StatService();
 
@@ -92,14 +99,23 @@ namespace _Data.Refactor.Views.Panels
             sellButton.gameObject.SetActive(false);
         }
 
+        public void SetCurrentShop(Transform shop, ShopSpawner spawner)
+        {
+            activeShop = shop;
+            this.spawner = spawner;
+        }
+
         public void Exit()
         {
             gameObject.SetActive(false);
+            GameManager.Ins.ResumeGame();
+            spawner.Despawn(activeShop);
+            activeShop = null;
         }
 
         public void OnItemIndexClick(int index)
         {
-            if (index <= playerItems.Count)
+            if (index < playerItems.Count)
             {
                 itemIndex = index;
                 sellButton.gameObject.SetActive(true);

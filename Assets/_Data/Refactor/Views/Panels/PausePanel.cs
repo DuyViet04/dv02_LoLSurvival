@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using Base.Core.Architecture;
 using Base.Systems.Input;
 using UnityEngine;
+using UnityEngine.UI;
 using VyesBase.Assets.Base.Systems.Game;
 
 namespace _Data.Refactor.Views.Panels
@@ -11,6 +13,8 @@ namespace _Data.Refactor.Views.Panels
         [SerializeField] private GameObject levelUpPanel;
         [SerializeField] private GameObject shopPanel;
         [SerializeField] private GameObject settingPanel;
+        [SerializeField] private List<Image> playerItemIcons;
+        [SerializeField] private ShopPanel shopPanelComponent;
         private bool isLevelUpOpen;
         private bool isShopOpen;
         private bool isSettingOpen;
@@ -53,6 +57,23 @@ namespace _Data.Refactor.Views.Panels
             }
 
             pausePanel.SetActive(true);
+            UpdateItemView();
+        }
+
+        private void UpdateItemView()
+        {
+            var items = shopPanelComponent.PlayerItems;
+            for (int i = 0; i < playerItemIcons.Count; i++)
+            {
+                if (i < items.Count)
+                {
+                    playerItemIcons[i].sprite = items[i].itemData.icon;
+                }
+                else
+                {
+                    playerItemIcons[i].sprite = shopPanelComponent.DefaultItemIcon;
+                }
+            }
         }
 
         public void HidePanel()
@@ -76,6 +97,17 @@ namespace _Data.Refactor.Views.Panels
             }
 
             pausePanel.SetActive(false);
+        }
+
+        public void OpenSettingPanel()
+        {
+            settingPanel.SetActive(true);
+        }
+
+        public void GoToMainMenu()
+        {
+            GameManager.Ins.ResumeGame();
+            GameManager.Ins.LoadScene(GameState.MainMenu);
         }
     }
 }
