@@ -1,3 +1,4 @@
+using _Data.Scripts.Spawner;
 using UnityEngine;
 
 public class ArrowToShop : MonoBehaviour

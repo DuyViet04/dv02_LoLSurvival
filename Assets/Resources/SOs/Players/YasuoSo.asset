@@ -53,40 +53,46 @@ MonoBehaviour:
     armorPenetration:
       statType: 13
       value: 0
-    magicPenetration:
+    armorPenetrationPercent:
       statType: 14
       value: 0
-    lifeSteal:
+    magicPenetration:
       statType: 15
       value: 0
-    physicalVamp:
+    magicPenetrationPercent:
       statType: 16
       value: 0
-    omnivamp:
+    lifeSteal:
       statType: 17
+      value: 0
+    physicalVamp:
+      statType: 18
+      value: 0
+    omnivamp:
+      statType: 19
       value: 0
   utilityData:
     haste:
-      statType: 21
+      statType: 23
       value: 0
     resourceData:
       resourceType: 0
       resource:
-        statType: 19
+        statType: 21
         value: 0
       resourceRegen:
-        statType: 20
+        statType: 22
         value: 0
     moveSpeed:
-      statType: 18
+      statType: 20
       value: 3.45
   playerData:
     charName: Yasuo
     pickUpRange:
-      statType: 22
+      statType: 24
       value: 1
     expMultiplier:
-      statType: 23
+      statType: 25
       value: 0
   levelData:
     currentLevel: 1

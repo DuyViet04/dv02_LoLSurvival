@@ -1,17 +1,20 @@
 using UnityEngine;
 
-public class BossSpawner : SpawnerSingleton<BossSpawner>
+namespace _Data.Scripts.Spawner
 {
-    Vector3 spawnPosition = new Vector3(60, 0, 60);
-    private float timer = 0f;
-
-    private void Update()
+    public class BossSpawner : SpawnerSingleton<BossSpawner>
     {
-        this.timer += Time.deltaTime;
-        if (this.timer >= 15 * 60f)
+        Vector3 spawnPosition = new Vector3(60, 0, 60);
+        private float timer = 0f;
+
+        private void Update()
         {
-            this.Spawn("BossAatrox", this.spawnPosition, Quaternion.identity, 1);
-            this.timer = 0f;
+            this.timer += Time.deltaTime;
+            if (this.timer >= 15 * 60f)
+            {
+                this.Spawn("BossAatrox", this.spawnPosition, Quaternion.identity, 1);
+                this.timer = 0f;
+            }
         }
     }
 }

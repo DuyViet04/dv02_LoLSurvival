@@ -5,6 +5,7 @@
         Player,
         Weapon,
         Enemy,
-        Boss
+        Boss,
+        Shop
     }
 }

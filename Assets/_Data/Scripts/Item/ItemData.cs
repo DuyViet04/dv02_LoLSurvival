@@ -1,21 +1,25 @@
 using System.Collections.Generic;
+using _Data.Refactor.Models.SOs.Items.Data;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewItem", menuName = "Item/NewItem")]
-public class ItemData : ScriptableObject
+namespace _Data.Scripts.Item
 {
-    public ItemType type;
-    public ItemRarityType rarity;
+    [CreateAssetMenu(fileName = "NewItem", menuName = "Item/NewItem")]
+    public class ItemData : ScriptableObject
+    {
+        public ItemType type;
+        public ItemRarityType rarity;
 
-    public string itemName;
-    public Sprite icon;
-    public float cost;
-    public float craftCost;
+        public string itemName;
+        public Sprite icon;
+        public float cost;
+        public float craftCost;
     
-    [TextArea]
-    public string displayText;
+        [TextArea]
+        public string displayText;
     
-    public List<ItemUpgradeEffect> effects;
+        public List<ItemUpgradeEffect> effects;
 
-    public List<ScriptableObject> requiredItems;
+        public List<ScriptableObject> requiredItems;
+    }
 }

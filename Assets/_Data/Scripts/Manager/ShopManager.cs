@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using _Data.Refactor.Models.SOs.Items.Data;
 using _Data.Refactor.Views.UIs;
 using Base.Core.Singleton;
 using UnityEngine;
 using UnityEngine.UI;
+using ItemData = _Data.Scripts.Item.ItemData;
 
 public class ShopManager : VyesSingleton<ShopManager>
 {
@@ -45,16 +47,16 @@ public class ShopManager : VyesSingleton<ShopManager>
     {
         AudioManager.Ins.PlaySFXClip(nameof(AudioNameEnum.BuyItem));
         this.itemSlots = this.LoadItemSlots();
-        ItemData item = ShopDisplay.Ins.choices[index];
-        if (this.IsCanBuy(item, this.inventory))
+        // ItemData item = ShopDisplay.Ins.choices[index];
+        // if (this.IsCanBuy(item, this.inventory))/
         {
             // this.goldUi.GiveGold(item.cost);
-            this.inventory.Add(item);
+            // this.inventory.Add(item);
             this.itemCount++;
             // this.yasuoStats.ApplyItem(item);
             ShopDisplay.Ins.ListCores[index].SetActive(false);
-            this.itemSlots[this.itemCount - 1].sprite = item.icon;
-            this.itemSprites.Add(item.icon);
+            // this.itemSlots[this.itemCount - 1].sprite = item.icon;/
+            // this.itemSprites.Add(item.icon);
         }
     }
 

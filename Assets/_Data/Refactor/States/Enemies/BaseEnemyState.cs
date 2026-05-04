@@ -1,4 +1,4 @@
-﻿using _Data.Refactor.Controllers.Enemies;
+using _Data.Refactor.Controllers.Enemies;
 using _Data.Refactor.Controllers.Spawners;
 using _Data.Refactor.Models.Runtimes.Enemies;
 using Base.Core.StateMachine;
@@ -15,18 +15,19 @@ namespace _Data.Refactor.States.Enemies
         protected readonly BulletSpawner bulletSpawner;
         protected readonly ExpSpawner expSpawner;
         protected readonly EnemySpawner enemySpawner;
-        protected readonly BaseEnemyRuntime runtime;
+        protected readonly EnemyController controller;
+        protected BaseEnemyRuntime runtime => controller.BaseEnemyRuntime;
 
         protected BaseEnemyState(EnemyController controller, StateMachine<EnemyState> stateMachine)
         {
             this.stateMachine = stateMachine;
+            this.controller = controller;
             rigidbody = controller.Rigidbody;
             target = controller.Target;
             self = controller.transform;
             bulletSpawner = controller.BulletSpawner;
             expSpawner = controller.ExpSpawner;
             enemySpawner = controller.EnemySpawner;
-            runtime = controller.BaseEnemyRuntime;
         }
 
         public abstract void OnEnter();

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using _Data.Refactor.Models.SOs.Enemies;
+using _Data.Refactor.Models.SOs.Items;
 using _Data.Refactor.Models.SOs.Players;
 using _Data.Refactor.Models.SOs.Upgrades;
 using Base.Core.Singleton;
@@ -13,14 +14,19 @@ namespace _Data.Refactor.Managers
         [SerializeField] private List<BaseEnemySo> enemySos;
         [SerializeField] private UpgradeSo upgradeSo;
         [SerializeField] private RaritySo raritySo;
+        [SerializeField] private List<ItemSo> itemSos;
+        [SerializeField] private ItemRaritySo itemRaritySo;
 
         public List<BaseEnemySo> EnemySos => enemySos;
         public UpgradeSo UpgradeSo => upgradeSo;
         public RaritySo RaritySo => raritySo;
+        public List<ItemSo> ItemSos => itemSos;
+        public ItemRaritySo ItemRaritySo => itemRaritySo;
 
         private readonly string playerSosPath = "SOs/Players";
         private readonly string enemySosPath = "SOs/Enemies";
         private readonly string upgradeSosPath = "SOs/Upgrades";
+        private readonly string raritySosPath = "SOs/Items";
 
         public BasePlayerSo GetPlayerSoByName(string playerName)
         {
@@ -77,6 +83,13 @@ namespace _Data.Refactor.Managers
             {
                 raritySo = Resources.LoadAll<RaritySo>(upgradeSosPath)[0];
                 Debug.LogWarning($"Load {raritySo}", gameObject);
+            }
+
+            var item = Resources.LoadAll<ItemSo>(raritySosPath);
+            if (item.Length != itemSos.Count)
+            {
+                itemSos.AddRange(item);
+                Debug.LogWarning($"Load {itemSos}", gameObject);
             }
         }
     }

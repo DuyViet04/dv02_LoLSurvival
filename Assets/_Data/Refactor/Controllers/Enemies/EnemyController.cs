@@ -46,13 +46,22 @@ namespace _Data.Refactor.Controllers.Enemies
         protected override void Awake()
         {
             base.Awake();
-            baseEnemyRuntime = new BaseEnemyRuntime(baseEnemySo);
             InitState();
         }
 
         private void OnEnable()
         {
+            baseEnemyRuntime = new BaseEnemyRuntime(baseEnemySo);
+
             playerLevel.OnLevelUpEvent += UpdateEnemyStats;
+
+            if (playerLevel.CurrentLevel > 1)
+            {
+                ScaleEnemyStatsToLevel(playerLevel.CurrentLevel - 1);
+            }
+
+            maxHealth = baseEnemyRuntime.DefensiveData.Health.Value;
+            currentHealth = maxHealth;
         }
 
         private void OnDisable()
@@ -60,11 +69,6 @@ namespace _Data.Refactor.Controllers.Enemies
             playerLevel.OnLevelUpEvent -= UpdateEnemyStats;
         }
 
-        void Start()
-        {
-            maxHealth = baseEnemyRuntime.DefensiveData.Health.Value;
-            currentHealth = maxHealth;
-        }
 
         private void Update()
         {
@@ -114,16 +118,31 @@ namespace _Data.Refactor.Controllers.Enemies
 
         void UpdateEnemyStats()
         {
-            baseEnemyRuntime.DefensiveData.Health.AddModifier(new StatModifier(scaleValue, ModifierType.PercentAdd));
-            baseEnemyRuntime.DefensiveData.Armor.AddModifier(new StatModifier(scaleValue, ModifierType.PercentAdd));
-            baseEnemyRuntime.DefensiveData.MagicResist.AddModifier(
-                new StatModifier(scaleValue, ModifierType.PercentAdd));
-            baseEnemyRuntime.EnemyData.ExpValue.AddModifier(new StatModifier(scaleValue, ModifierType.PercentAdd));
-            baseEnemyRuntime.EnemyData.GoldValue.AddModifier(new StatModifier(scaleValue, ModifierType.PercentAdd));
-            baseEnemyRuntime.UtilityData.MoveSpeed.AddModifier(new StatModifier(scaleValue / 10,
+            ScaleEnemyStatsToLevel(1);
+
+            float newMaxHealth = baseEnemyRuntime.DefensiveData.Health.Value;
+            float healthDiff = newMaxHealth - maxHealth;
+            maxHealth = newMaxHealth;
+            currentHealth += healthDiff;
+        }
+
+        void ScaleEnemyStatsToLevel(int levelDifference)
+        {
+            if (levelDifference <= 0) return;
+
+            float statScale = scaleValue * levelDifference;
+            baseEnemyRuntime.DefensiveData.Health.AddModifier(new StatModifier(statScale, ModifierType.PercentAdd));
+            baseEnemyRuntime.DefensiveData.Armor.AddModifier(new StatModifier(statScale, ModifierType.PercentAdd));
+            baseEnemyRuntime.DefensiveData.MagicResist.AddModifier(new StatModifier(statScale,
                 ModifierType.PercentAdd));
+            baseEnemyRuntime.EnemyData.ExpValue.AddModifier(new StatModifier(statScale, ModifierType.PercentAdd));
+            baseEnemyRuntime.EnemyData.GoldValue.AddModifier(new StatModifier(statScale, ModifierType.PercentAdd));
+            baseEnemyRuntime.UtilityData.MoveSpeed.AddModifier(new StatModifier((scaleValue / 10) * levelDifference,
+                ModifierType.PercentAdd));
+
+            float attackScale = Mathf.Pow(1 + scaleValue, levelDifference);
             baseEnemyRuntime.AttackData.SetAttackData(
-                baseEnemyRuntime.AttackData.Damage * (1 + scaleValue),
+                baseEnemyRuntime.AttackData.Damage * attackScale,
                 baseEnemyRuntime.AttackData.CanCrit,
                 baseEnemyRuntime.AttackData.CritDamage,
                 baseEnemyRuntime.AttackData.DamageType,

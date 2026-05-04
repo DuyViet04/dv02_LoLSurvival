@@ -1,4 +1,4 @@
-﻿using _Data.Refactor.Models.SOs.Enemies;
+using _Data.Refactor.Models.SOs.Enemies;
 using _Data.Refactor.Models.SOs.Enemies.Data;
 using Base.Core.Architecture.Model;
 using Base.Systems.Combat;
@@ -12,8 +12,8 @@ namespace _Data.Refactor.Models.Runtimes.Enemies
 
         public BaseEnemyRuntime(BaseEnemySo baseSo) : base(baseSo)
         {
-            EnemyData = baseSo.enemyData;
-            AttackData = baseSo.attackData;
+            EnemyData = new EnemyData(baseSo.enemyData);
+            AttackData = new AttackData(baseSo.attackData);
             Init();
         }
 

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using _Data.Refactor.Controllers.Spawners;
+using _Data.Refactor.Enums;
 using _Data.Refactor.Models.Runtimes.Players;
 using _Data.Refactor.Models.Runtimes.Skills;
 using _Data.Refactor.Models.SOs.Players;
@@ -7,12 +8,14 @@ using _Data.Refactor.Services.LookAtMouse;
 using _Data.Refactor.States.Players;
 using _Data.Refactor.States.Players.Attacks;
 using _Data.Refactor.States.Players.Moves;
+using _Data.Refactor.Views.Panels;
 using Base.Core.Architecture;
 using Base.Systems.Animation;
 using Base.Systems.Combat;
 using Base.Systems.Input;
 using Base.Systems.Stat;
 using UnityEngine;
+using VyesBase.Assets.Base.Systems.Game;
 
 namespace _Data.Refactor.Controllers.Players
 {
@@ -28,6 +31,7 @@ namespace _Data.Refactor.Controllers.Players
         [SerializeField] private Collider weaponCollider;
         [SerializeField] private SphereCollider sphereCollider;
         [SerializeField] private VfxSpawner vfxSpawner;
+        [SerializeField] private ShopPanel shopPanel;
         private BasePlayerRuntime characterRuntime;
         private readonly List<BasePlayerSkillRuntime> skillsRuntime = new List<BasePlayerSkillRuntime>();
         private readonly AttackData skillAttackData = new AttackData();
@@ -69,8 +73,8 @@ namespace _Data.Refactor.Controllers.Players
             sphereCollider.radius = characterRuntime.PlayerData.PickUpRange.Value;
 
             // Passive
-            characterRuntime.OffensiveData.CritChance.AddModifier(new StatModifier(2, ModifierType.PercentMult));
-            characterRuntime.OffensiveData.CritDamage.AddModifier(new StatModifier(0.9f, ModifierType.PercentMult));
+            characterRuntime.OffensiveData.CritChance.AddModifier(new StatModifier(1, ModifierType.PercentMult));
+            characterRuntime.OffensiveData.CritDamage.AddModifier(new StatModifier(-0.1f, ModifierType.PercentMult));
         }
 
         private void Update()
@@ -88,6 +92,15 @@ namespace _Data.Refactor.Controllers.Players
         {
             moveStateMachine.FixedUpdateState();
             attackStateMachine.FixedUpdateState();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag(nameof(TagEnum.Shop)))
+            {
+                shopPanel.gameObject.SetActive(true);
+                GameManager.Ins.PauseGame();
+            }
         }
 
         private void UpdateSkillCooldowns()

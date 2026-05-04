@@ -1,33 +1,36 @@
 using Base.Utilities;
 using UnityEngine;
 
-public abstract class SpawnerSingleton<T> : Spawner where T : VyesBehaviour
+namespace _Data.Scripts.Spawner
 {
-    private static T _instance;
-
-    public static T Instance
+    public abstract class SpawnerSingleton<T> : Spawner where T : VyesBehaviour
     {
-        get
+        private static T _instance;
+
+        public static T Instance
         {
-            if (_instance == null) Debug.LogError("SpawnerSingleton<" + typeof(T).Name + "> is null");
-            return _instance;
-        }
-    }
-
-    protected override void Awake()
-    {
-        base.Awake();
-        this.LoadInstance();
-    }
-
-    void LoadInstance()
-    {
-        if (_instance == null)
-        {
-            _instance = this as T;
+            get
+            {
+                if (_instance == null) Debug.LogError("SpawnerSingleton<" + typeof(T).Name + "> is null");
+                return _instance;
+            }
         }
 
-        if (_instance != this)
-            Debug.LogError("SpawnerSingleton<" + typeof(T).Name + "> already exists.");
+        protected override void Awake()
+        {
+            base.Awake();
+            this.LoadInstance();
+        }
+
+        void LoadInstance()
+        {
+            if (_instance == null)
+            {
+                _instance = this as T;
+            }
+
+            if (_instance != this)
+                Debug.LogError("SpawnerSingleton<" + typeof(T).Name + "> already exists.");
+        }
     }
 }

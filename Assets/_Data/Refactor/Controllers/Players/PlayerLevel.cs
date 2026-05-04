@@ -47,7 +47,7 @@ namespace _Data.Refactor.Controllers.Players
 
         public List<UpgradeData> GetUpgrades(int value)
         {
-            ListUtility.Shuffle(upgrades);
+            upgrades.Shuffle();
             return upgrades.GetRange(0, value);
         }
 
