@@ -21,6 +21,8 @@ namespace _Data.Refactor.Views.Panels
             quitButton.onClick.AddListener(QuitGame);
             talentButton.onClick.AddListener(OpenTalentPanel);
             settingButton.onClick.AddListener(OpenSettingPanel);
+
+            SoundManager.Ins.PlayMusic("ThemeGame");
         }
 
         private void OnDisable()

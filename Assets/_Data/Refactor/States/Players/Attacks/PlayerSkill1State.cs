@@ -5,6 +5,7 @@ using _Data.Refactor.Enums.Players;
 using _Data.Refactor.Models.Runtimes.Skills;
 using Base.Core.StateMachine;
 using Base.Systems.Skill;
+using Base.Systems.Sound;
 using EventType = Base.Systems.Animation.EventType;
 
 namespace _Data.Refactor.States.Players.Attacks
@@ -54,6 +55,7 @@ namespace _Data.Refactor.States.Players.Attacks
 
         void Attack()
         {
+            SoundManager.Ins.PlaySfx("YasuoSkill1");
             animator.SetTrigger(nameof(PlayerAnimParam.Skill1));
             vfxSpawner.Spawn(nameof(VFXType.YasuoSkill1), self.position, self.rotation);
         }

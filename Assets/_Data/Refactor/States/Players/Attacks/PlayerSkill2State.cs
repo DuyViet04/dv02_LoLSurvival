@@ -5,6 +5,7 @@ using _Data.Refactor.Enums.Players;
 using _Data.Refactor.Models.Runtimes.Skills;
 using Base.Core.StateMachine;
 using Base.Systems.Skill;
+using Base.Systems.Sound;
 using UnityEngine;
 using EventType = Base.Systems.Animation.EventType;
 
@@ -65,6 +66,7 @@ namespace _Data.Refactor.States.Players.Attacks
 
         void Attack()
         {
+            SoundManager.Ins.PlaySfx("YasuoSkill2");
             animator.SetTrigger(nameof(PlayerAnimParam.Skill2));
             dashCoroutine = playerController.StartCoroutine(Dash());
         }

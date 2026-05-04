@@ -2,6 +2,7 @@ using _Data.Refactor.Controllers;
 using _Data.Refactor.Controllers.Enemies;
 using _Data.Refactor.Controllers.Spawners;
 using Base.Core.StateMachine;
+using Base.Systems.Sound;
 
 namespace _Data.Refactor.States.Enemies.Moves
 {
@@ -15,6 +16,7 @@ namespace _Data.Refactor.States.Enemies.Moves
 
         public override void OnEnter()
         {
+            SoundManager.Ins.PlaySfx("GetGold");
             var exp = expSpawner.Spawn(nameof(ExpType.Exp), self.position, self.rotation);
             exp.gameObject.GetComponent<ExpController>().SetExpValue(runtime.EnemyData.ExpValue.Value);
             enemySpawner.Despawn(self);

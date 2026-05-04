@@ -2,11 +2,15 @@ using System;
 using System.Collections.Generic;
 using _Data.Refactor.Managers;
 using _Data.Refactor.Models.SOs.Talents;
+using _Data.Refactor.Models.Persistences;
+using _Data.Refactor.Services.SaveLoad;
 using Base.Core.Singleton;
 using Base.Systems.Stat;
+using UnityEngine;
 
 namespace _Data.Refactor.Services.Talents
 {
+    [DefaultExecutionOrder(-90)]
     public class TalentService : VyesPersistentSingleton<TalentService>
     {
         private int csPoints;
@@ -27,6 +31,7 @@ namespace _Data.Refactor.Services.Talents
         {
             csPoints += amount;
             OnDataChanged?.Invoke();
+            SaveService.Ins.SaveGame();
         }
 
         public bool CanUpgrade(TalentSo talent)
@@ -46,6 +51,7 @@ namespace _Data.Refactor.Services.Talents
             talentLevels[talent.talentId] = currentLevel + 1;
 
             OnDataChanged?.Invoke();
+            SaveService.Ins.SaveGame();
         }
 
         public void ApplyTalentsToRuntime(Base.Core.Architecture.Model.BaseRuntime runtime)
@@ -60,5 +66,40 @@ namespace _Data.Refactor.Services.Talents
                 runtime.Stats[talent.statType].AddModifier(modifier);
             }
         }
+
+        #region Persistence
+
+        public TalentPersistenceData GetPersistenceData()
+        {
+            var data = new TalentPersistenceData
+            {
+                csPoints = this.csPoints
+            };
+
+            foreach (var kvp in talentLevels)
+            {
+                data.talentLevels.Add(new TalentLevelData
+                {
+                    talentId = kvp.Key,
+                    level = kvp.Value
+                });
+            }
+
+            return data;
+        }
+
+        public void LoadFromPersistenceData(TalentPersistenceData data)
+        {
+            this.csPoints = data.csPoints;
+            this.talentLevels.Clear();
+            foreach (var talentData in data.talentLevels)
+            {
+                this.talentLevels[talentData.talentId] = talentData.level;
+            }
+
+            OnDataChanged?.Invoke();
+        }
+
+        #endregion
     }
 }

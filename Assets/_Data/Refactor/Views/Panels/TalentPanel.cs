@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using _Data.Refactor.Services.Talents;
 using _Data.Refactor.Views.UIs;
 using Base.Core.Architecture;
+using Base.Systems.Sound;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -64,6 +65,7 @@ namespace _Data.Refactor.Views.Panels
 
         private void ClosePanel()
         {
+            SoundManager.Ins.PlaySfx("Click");
             gameObject.SetActive(false);
         }
     }

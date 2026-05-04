@@ -4,6 +4,7 @@ using _Data.Refactor.Enums.Players;
 using _Data.Refactor.Models.Runtimes.Skills;
 using Base.Core.StateMachine;
 using Base.Systems.Skill;
+using Base.Systems.Sound;
 
 namespace _Data.Refactor.States.Players.Attacks
 {
@@ -49,6 +50,7 @@ namespace _Data.Refactor.States.Players.Attacks
 
         void Attack()
         {
+            SoundManager.Ins.PlaySfx("YasuoNormalAttack");
             animator.SetTrigger(nameof(PlayerAnimParam.NormalAttack));
         }
     }

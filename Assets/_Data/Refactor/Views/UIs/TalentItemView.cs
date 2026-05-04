@@ -1,6 +1,7 @@
 using _Data.Refactor.Models.SOs.Talents;
 using _Data.Refactor.Services.Talents;
 using TMPro;
+using Base.Systems.Sound;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -58,6 +59,7 @@ namespace _Data.Refactor.Views.UIs
 
         private void OnUpgradeClick()
         {
+            SoundManager.Ins.PlaySfx("Click");
             TalentService.Ins.UpgradeTalent(talentSo);
         }
     }

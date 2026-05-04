@@ -28,6 +28,7 @@ namespace _Data.Refactor.Views.Panels
 
         public void Exit()
         {
+            SoundManager.Ins.PlaySfx("Click");
             gameObject.SetActive(false);
         }
     }

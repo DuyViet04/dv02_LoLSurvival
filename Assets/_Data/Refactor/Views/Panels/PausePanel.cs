@@ -3,6 +3,7 @@ using Base.Core.Architecture;
 using Base.Systems.Input;
 using UnityEngine;
 using UnityEngine.UI;
+using Base.Systems.Sound;
 using VyesBase.Assets.Base.Systems.Game;
 
 namespace _Data.Refactor.Views.Panels
@@ -56,6 +57,7 @@ namespace _Data.Refactor.Views.Panels
                 settingPanel.SetActive(false);
             }
 
+            SoundManager.Ins.PlaySfx("Click");
             pausePanel.SetActive(true);
             UpdateItemView();
         }
@@ -96,16 +98,19 @@ namespace _Data.Refactor.Views.Panels
                 GameManager.Ins.PauseGame();
             }
 
+            SoundManager.Ins.PlaySfx("Click");
             pausePanel.SetActive(false);
         }
 
         public void OpenSettingPanel()
         {
+            SoundManager.Ins.PlaySfx("Click");
             settingPanel.SetActive(true);
         }
 
         public void GoToMainMenu()
         {
+            SoundManager.Ins.PlaySfx("Click");
             GameManager.Ins.ResumeGame();
             GameManager.Ins.LoadScene(GameState.MainMenu);
         }
