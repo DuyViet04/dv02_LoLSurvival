@@ -15,7 +15,6 @@ namespace _Data.Refactor.Enums.Enemies
         KrugM,
         KrugS,
         Blue,
-        Red,
-        Boss
+        Red
     }
 }

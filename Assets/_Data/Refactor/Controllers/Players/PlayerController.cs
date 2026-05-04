@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using _Data.Refactor.Controllers.Spawners;
 using _Data.Refactor.Enums;
+using _Data.Refactor.Managers;
 using _Data.Refactor.Models.Runtimes.Players;
 using _Data.Refactor.Models.Runtimes.Skills;
 using _Data.Refactor.Models.SOs.Players;
@@ -9,6 +10,7 @@ using _Data.Refactor.States.Players;
 using _Data.Refactor.States.Players.Attacks;
 using _Data.Refactor.States.Players.Moves;
 using _Data.Refactor.Views.Panels;
+using _Data.Refactor.Views.UIs;
 using Base.Core.Architecture;
 using Base.Systems.Animation;
 using Base.Systems.Combat;
@@ -55,11 +57,13 @@ namespace _Data.Refactor.Controllers.Players
         private void OnEnable()
         {
             characterRuntime.PlayerData.PickUpRange.OnValueChange += UpdatePickUpRange;
+            playerHealth.OnDead += PlayerDead;
         }
 
         private void OnDisable()
         {
             characterRuntime.PlayerData.PickUpRange.OnValueChange -= UpdatePickUpRange;
+            playerHealth.OnDead -= PlayerDead;
         }
 
         protected override void Awake()
@@ -142,6 +146,13 @@ namespace _Data.Refactor.Controllers.Players
         void UpdatePickUpRange()
         {
             sphereCollider.radius = characterRuntime.PlayerData.PickUpRange.Value;
+        }
+
+        void PlayerDead()
+        {
+            GameResultManager.Ins.SaveResult(characterRuntime, FindFirstObjectByType<CsUi>().CsCount,
+                shopPanel.PlayerItems, shopPanel.DefaultItemIcon);
+            GameManager.Ins.LoadScene(GameState.GameLose);
         }
 
         #region Init

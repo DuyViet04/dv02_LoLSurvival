@@ -1,6 +1,6 @@
-using _Data.Refactor.Controllers.Enemies;
+using _Data.Refactor.Controllers.Bosses;
 using _Data.Refactor.Enums.Bosses;
-using _Data.Refactor.Models.Runtimes.Enemies;
+using _Data.Refactor.Models.Runtimes.Bosses;
 using Base.Core.StateMachine;
 using UnityEngine;
 

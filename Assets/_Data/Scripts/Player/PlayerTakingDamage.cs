@@ -101,7 +101,7 @@ public class PlayerTakingDamage : TakingDamage
         GameManager.Ins.MainStatsData = StatsDisplay.Ins.GetLastMainData(); // Lưu dữ liệu thống kê chính
         GameManager.Ins.SecondStatsData = StatsDisplay.Ins.GetLastSecondData(); // Lưu dữ liệu thống kê phụ
         GameManager.Ins.ItemSprites = ShopManager.Ins.GetLastItem(); // Lưu dữ liệu vật phẩm đã mua
-        SceneManager.LoadScene(nameof(ScenesEnum.GameOver));
+        // SceneManager.LoadScene(nameof(ScenesEnum.GameOver));
     }
 
     // Xử lý va chạm với kẻ địch

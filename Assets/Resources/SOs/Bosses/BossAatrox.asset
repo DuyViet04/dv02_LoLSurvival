@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 455773ca799f5c64e9e81c71a272aecc, type: 3}
+  m_Script: {fileID: 11500000, guid: 39a933c5cbfb0fe4cb755bc23628f644, type: 3}
   m_Name: BossAatrox
-  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Models.SOs.Enemies.BaseBossSo
+  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Models.SOs.Bosses.BaseBossSo
   defensiveData:
     health:
       statType: 0
@@ -86,23 +86,8 @@ MonoBehaviour:
     moveSpeed:
       statType: 0
       value: 3
-  enemyData:
-    <EnemyType>k__BackingField: 14
-    <ExpValue>k__BackingField:
-      statType: 0
-      value: 500
-    <GoldValue>k__BackingField:
-      statType: 0
-      value: 1000
-    <CsValue>k__BackingField:
-      statType: 0
-      value: 1
-    <SpawnDelay>k__BackingField:
-      statType: 0
-      value: 0
-    <SpawnCount>k__BackingField:
-      statType: 0
-      value: 0
+  bossData:
+    <BossType>k__BackingField: 1
   attackData:
     <Damage>k__BackingField: 120
     <CanCrit>k__BackingField: 0

@@ -3,7 +3,7 @@ using Base.Systems.Combat;
 using Base.Utilities;
 using UnityEngine;
 
-namespace _Data.Refactor.Controllers.Enemies
+namespace _Data.Refactor.Controllers.Bosses
 {
     public class BossWeaponController : VyesBehaviour
     {

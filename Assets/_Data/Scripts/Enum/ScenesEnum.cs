@@ -1,7 +1,7 @@
-﻿public enum ScenesEnum
+public enum ScenesEnum
 {
     MainMenu,
     GamePlay,
-    GameOver,
-    GameVictory
+    GameLose,
+    GameWin
 }

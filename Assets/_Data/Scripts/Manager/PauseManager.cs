@@ -84,7 +84,7 @@ public class PauseManager : MonoBehaviour
         GameManager.Ins.MainStatsData = StatsDisplay.Ins.GetLastMainData();
         GameManager.Ins.SecondStatsData = StatsDisplay.Ins.GetLastSecondData();
         GameManager.Ins.ItemSprites = ShopManager.Ins.GetLastItem();
-        SceneLevelManager.Ins.GoToScene(nameof(ScenesEnum.GameOver));
+        // SceneLevelManager.Ins.GoToScene(nameof(ScenesEnum.GameOver));
     }
 
     void UpdateItem()

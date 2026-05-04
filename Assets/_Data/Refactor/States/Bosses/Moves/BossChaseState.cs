@@ -1,4 +1,4 @@
-using _Data.Refactor.Controllers.Enemies;
+using _Data.Refactor.Controllers.Bosses;
 using _Data.Refactor.Enums.Bosses;
 using _Data.Refactor.Enums;
 using Base.Core.StateMachine;

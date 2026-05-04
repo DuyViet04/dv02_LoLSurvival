@@ -9,6 +9,8 @@ namespace _Data.Refactor.Views.UIs
         [SerializeField] private TMP_Text csText;
         private float csCount = 0;
 
+        public float CsCount => csCount;
+
         public void UpdateCsCount(float value)
         {
             csCount += value;

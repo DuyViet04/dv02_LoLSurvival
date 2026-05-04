@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using System.Collections;
 using Base.Systems.Spawner;
 using UnityEngine;
 
-namespace _Data.Refactor.Controllers.Spawners
+namespace _Data.Refactor.Controllers.Spawners.Bosses
 {
     public class BossSpawner : BaseSpawner
     {

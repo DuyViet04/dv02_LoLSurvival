@@ -11442,6 +11442,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSos: []
+  enemySos: []
+  upgradeSo: {fileID: 0}
+  raritySo: {fileID: 0}
+  itemSos: []
+  itemRaritySo: {fileID: 0}
 --- !u!4 &1091525653
 Transform:
   m_ObjectHideFlags: 0
@@ -15402,7 +15407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yasuoStats: {fileID: 11400000, guid: 2ba9f37b0031a0d489b6502d50d0c8b2, type: 2}
-  rarityTable: {fileID: 11400000, guid: fff28aaf87e59cf48ba6a17caa461b54, type: 2}
+  raritySo: {fileID: 0}
   talentTable: {fileID: 11400000, guid: 79f349b1436451a42b367f8d2951acc2, type: 2}
 --- !u!4 &1421296620
 Transform:
@@ -16139,28 +16144,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1508671826}
-  - component: {fileID: 1508671825}
+  - component: {fileID: 1508671827}
   m_Layer: 0
-  m_Name: EndGameManager
+  m_Name: GameResultManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1508671825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1508671824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6505140419d07254c9d259803992b0e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  exitButton: {fileID: 0}
-  csPointText: {fileID: 0}
 --- !u!4 &1508671826
 Transform:
   m_ObjectHideFlags: 0
@@ -16176,6 +16167,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1508671827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508671824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d701b1ecb728b24d9ca4e0423f61058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Managers.GameResultManager
 --- !u!1 &1517468021
 GameObject:
   m_ObjectHideFlags: 0
@@ -17458,7 +17461,7 @@ MonoBehaviour:
   csPointText: {fileID: 478361270}
   talentsContent: {fileID: 835576593}
   talentTable: {fileID: 11400000, guid: 79f349b1436451a42b367f8d2951acc2, type: 2}
-  upgradeTable: {fileID: 11400000, guid: 7bf756567195b724c9ec8f3d35a7ce41, type: 2}
+  upgradeSo: {fileID: 0}
   talentsList:
   - {fileID: 1143124082}
   - {fileID: 960716605}

@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using _Data.Refactor.Enums.Bosses;
+using _Data.Refactor.Models.SOs.Bosses;
 using _Data.Refactor.Models.SOs.Enemies;
 using _Data.Refactor.Models.SOs.Items;
 using _Data.Refactor.Models.SOs.Players;
@@ -11,6 +13,7 @@ namespace _Data.Refactor.Managers
     public class SoManager : VyesSingleton<SoManager>
     {
         [SerializeField] private List<BasePlayerSo> playerSos;
+        [SerializeField] private List<BaseBossSo> bossSos;
         [SerializeField] private List<BaseEnemySo> enemySos;
         [SerializeField] private UpgradeSo upgradeSo;
         [SerializeField] private RaritySo raritySo;
@@ -18,6 +21,7 @@ namespace _Data.Refactor.Managers
         [SerializeField] private ItemRaritySo itemRaritySo;
 
         public List<BaseEnemySo> EnemySos => enemySos;
+        public List<BaseBossSo> BossSos => bossSos;
         public UpgradeSo UpgradeSo => upgradeSo;
         public RaritySo RaritySo => raritySo;
         public List<ItemSo> ItemSos => itemSos;
@@ -25,6 +29,7 @@ namespace _Data.Refactor.Managers
 
         private readonly string playerSosPath = "SOs/Players";
         private readonly string enemySosPath = "SOs/Enemies";
+        private readonly string bossSosPath = "SOs/Bosses";
         private readonly string upgradeSosPath = "SOs/Upgrades";
         private readonly string raritySosPath = "SOs/Items";
 
@@ -56,6 +61,20 @@ namespace _Data.Refactor.Managers
             return null;
         }
 
+        public BaseBossSo GetBossSoByType(BossType bossType)
+        {
+            foreach (BaseBossSo so in bossSos)
+            {
+                if (so.bossData.BossType == bossType)
+                {
+                    return so;
+                }
+            }
+
+            Debug.LogError($"BossSo: {bossType} not found");
+            return null;
+        }
+
         protected override void LoadComponents()
         {
             base.LoadComponents();
@@ -69,8 +88,17 @@ namespace _Data.Refactor.Managers
             var enemy = Resources.LoadAll<BaseEnemySo>(enemySosPath);
             if (enemySos.Count != enemy.Length)
             {
+                enemySos.Clear();
                 enemySos.AddRange(enemy);
                 Debug.LogWarning($"Load {enemySos}");
+            }
+
+            var boss = Resources.LoadAll<BaseBossSo>(bossSosPath);
+            if (bossSos.Count != boss.Length)
+            {
+                bossSos.Clear();
+                bossSos.AddRange(boss);
+                Debug.LogWarning($"Load {bossSos}");
             }
 
             if (upgradeSo == null)

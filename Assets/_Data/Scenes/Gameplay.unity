@@ -4149,12 +4149,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 201820543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb97c2d017b4aa479e8cfd145dab183, type: 3}
+  m_Script: {fileID: 11500000, guid: 37770026614f03947807c202601b6fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Views.Enemies.BossHpView
-  hpPanel: {fileID: 627790456}
-  hpBar: {fileID: 1833327987}
-  currentBoss: {fileID: 394608069}
+  hpBar: {fileID: 627790456}
+  hpImg: {fileID: 1833327987}
 --- !u!1 &202753322
 GameObject:
   m_ObjectHideFlags: 0
@@ -5553,7 +5552,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &258509600
 Transform:
   m_ObjectHideFlags: 0
@@ -8230,12 +8229,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379493929}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1216779957}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &379493931
 MonoBehaviour:
@@ -8382,9 +8381,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 394608067}
-  - component: {fileID: 394608069}
   - component: {fileID: 394608068}
   - component: {fileID: 394608070}
+  - component: {fileID: 394608071}
   m_Layer: 0
   m_Name: BossAatrox
   m_TagString: Boss
@@ -8435,25 +8434,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &394608069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394608066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bacbba7e6415ba44da731e48b14f0f07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Controllers.Enemies.BossController
-  rigidBody: {fileID: 394608068}
-  animator: {fileID: 6403265509418599674}
-  target: {fileID: 612861175}
-  baseBossSo: {fileID: 11400000, guid: a19d74ad54861e942abac82e04b4112b, type: 2}
-  playerLevel: {fileID: 612861180}
-  hpView: {fileID: 201820548}
-  scaleValue: 0.2
 --- !u!136 &394608070
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8477,6 +8457,25 @@ CapsuleCollider:
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 2.5, z: 0}
+--- !u!114 &394608071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394608066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1bafe9601b93a84d8ce4be5e6e4d5e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Controllers.Bosses.BossController
+  rigidBody: {fileID: 394608068}
+  animator: {fileID: 6403265509418599674}
+  target: {fileID: 612861175}
+  baseBossSo: {fileID: 11400000, guid: 5a9794dc34f5e7c4aa3ff1d933ea8eaf, type: 2}
+  playerLevel: {fileID: 612861180}
+  hpView: {fileID: 201820548}
+  scaleValue: 0.2
 --- !u!1 &395115919
 GameObject:
   m_ObjectHideFlags: 0
@@ -17467,6 +17466,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1721517246}
   m_LocalEulerAnglesHint: {x: 0.0024729217, y: 179.99753, z: 0.0024728149}
+--- !u!1 &808279794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 808279796}
+  - component: {fileID: 808279795}
+  m_Layer: 0
+  m_Name: GameResultManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &808279795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808279794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d701b1ecb728b24d9ca4e0423f61058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Managers.GameResultManager
+--- !u!4 &808279796
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808279794}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &809148886
 GameObject:
   m_ObjectHideFlags: 0
@@ -17701,7 +17744,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1216779957}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &821670868
 MonoBehaviour:
@@ -20333,16 +20376,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 984641908}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a001ae2ee16d8de46924e80cc98f46ea, type: 3}
+  m_Script: {fileID: 11500000, guid: dd396b28109338c4cb8b0204710dc1f8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Controllers.Spawners.BossSpawner
+  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Controllers.Spawners.Bosses.BossSpawner
   holder: {fileID: 1002900973}
   prefabs:
   - {fileID: 394608067}
   minRadius: 0
   maxRadius: 0
   bossName: BossAatrox
-  spawnDelay: 1
+  spawnDelay: 900
 --- !u!1 &985127336
 GameObject:
   m_ObjectHideFlags: 0
@@ -22535,14 +22578,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104210829}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2036780756}
   - {fileID: 1097123886}
-  m_Father: {fileID: 1216779957}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1104210831
 MonoBehaviour:
@@ -24851,42 +24894,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 0e3416247dd7151488532d8b71a98f26, type: 2}
   goldUi: {fileID: 0}
---- !u!1 &1216779956
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1216779957}
-  m_Layer: 0
-  m_Name: ===Manager===
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1216779957
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1216779956}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1438166460}
-  - {fileID: 821670867}
-  - {fileID: 1226972561}
-  - {fileID: 379493930}
-  - {fileID: 1104210830}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1226450467
 GameObject:
   m_ObjectHideFlags: 0
@@ -25080,12 +25087,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226972560}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1216779957}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1226972562
 MonoBehaviour:
@@ -29465,12 +29472,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1438166459}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1216779957}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1438166461
 MonoBehaviour:
@@ -29486,9 +29493,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Managers.SoManager
   playerSos:
   - {fileID: 11400000, guid: 3a48f29c7a002ad47bf283c19184d1e6, type: 2}
+  bossSos:
+  - {fileID: 0}
   enemySos:
   - {fileID: 11400000, guid: 6f0dce2106831464daf388effff4a941, type: 2}
-  - {fileID: 11400000, guid: a19d74ad54861e942abac82e04b4112b, type: 2}
   - {fileID: 11400000, guid: 5cb58ca30edd63540a48f3ab0401a1be, type: 2}
   - {fileID: 11400000, guid: bcb6b1c1528c48549ba7781628b9c0b5, type: 2}
   - {fileID: 11400000, guid: 05f11702ea02c5c4eaec607198ede5f0, type: 2}
@@ -29509,7 +29517,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 500ae04d9b28fa247bb9d6ee3bd67619, type: 2}
   - {fileID: 11400000, guid: 94ced93809566514fb4219170bb8ca2f, type: 2}
   - {fileID: 11400000, guid: 6e6e8f37551877444921b9bc12304edb, type: 2}
-  itemRaritySo: {fileID: 0}
+  itemRaritySo: {fileID: 11400000, guid: 6a35acc3cb3d0004eab4ae9736bf2a47, type: 2}
 --- !u!1 &1448650912
 GameObject:
   m_ObjectHideFlags: 0
@@ -70842,10 +70850,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3157729869487628268}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f30ce65cae4321459aeb70ef4bab572, type: 3}
+  m_Script: {fileID: 11500000, guid: 14d1607de166e4443ab0765c8e0a0bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Controllers.Enemies.BossWeaponController
-  bossController: {fileID: 394608069}
+  bossController: {fileID: 394608071}
 --- !u!1 &5197606603232696704
 GameObject:
   m_ObjectHideFlags: 0
@@ -90474,7 +90482,12 @@ SceneRoots:
   - {fileID: 186346268}
   - {fileID: 1662353787}
   - {fileID: 612861175}
-  - {fileID: 1216779957}
   - {fileID: 2130530284}
   - {fileID: 255831239}
   - {fileID: 201820547}
+  - {fileID: 1226972561}
+  - {fileID: 379493930}
+  - {fileID: 1104210830}
+  - {fileID: 808279796}
+  - {fileID: 1438166460}
+  - {fileID: 821670867}

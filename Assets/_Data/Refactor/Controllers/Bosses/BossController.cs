@@ -1,19 +1,23 @@
 using _Data.Refactor.Controllers.Players;
 using _Data.Refactor.Enums.Bosses;
-using _Data.Refactor.Models.Runtimes.Enemies;
-using _Data.Refactor.Models.SOs.Enemies;
+using _Data.Refactor.Models.Runtimes.Bosses;
+using _Data.Refactor.Models.SOs.Bosses;
 using _Data.Refactor.States.Bosses;
 using _Data.Refactor.States.Bosses.Attacks;
 using _Data.Refactor.States.Bosses.Moves;
 using Base.Core.Architecture;
 using Base.Systems.Combat;
 using Base.Systems.Stat;
-using _Data.Refactor.Views.Enemies;
+using _Data.Refactor.Views.Bosses;
 using UnityEngine;
 using System;
 using _Data.Refactor.Enums;
+using _Data.Refactor.Managers;
+using _Data.Refactor.Views.Panels;
+using _Data.Refactor.Views.UIs;
+using VyesBase.Assets.Base.Systems.Game;
 
-namespace _Data.Refactor.Controllers.Enemies
+namespace _Data.Refactor.Controllers.Bosses
 {
     public class BossController : BaseController, IDamageable
     {
@@ -155,8 +159,10 @@ namespace _Data.Refactor.Controllers.Enemies
         private void Die()
         {
             hpView.HideBossHp();
-            animator.SetTrigger("Die");
-            gameObject.SetActive(false);
+            PlayerController player = FindFirstObjectByType<PlayerController>();
+            ShopPanel shopPanel = FindFirstObjectByType<ShopPanel>();
+            GameResultManager.Ins.SaveResult(player.CharacterRuntime, FindFirstObjectByType<CsUi>().CsCount, shopPanel.PlayerItems, shopPanel.DefaultItemIcon);
+            GameManager.Ins.LoadScene(GameState.GameWin);
         }
     }
 }

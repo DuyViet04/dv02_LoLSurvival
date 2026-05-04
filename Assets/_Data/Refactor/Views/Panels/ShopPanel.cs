@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 using _Data.Refactor.Managers;
 using _Data.Refactor.Models.SOs.Items;
 using Base.Core.Architecture;
-using Base.Utilities;
+using Base.Systems.Sound;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +10,7 @@ using _Data.Refactor.Controllers.Players;
 using _Data.Refactor.Controllers.Spawners;
 using Base.Systems.Economy;
 using Base.Systems.Stat;
+using Base.Utilities;
 using VyesBase.Assets.Base.Systems.Game;
 
 namespace _Data.Refactor.Views.Panels
@@ -50,6 +50,7 @@ namespace _Data.Refactor.Views.Panels
         {
             ShowItems();
             sellButton.gameObject.SetActive(false);
+            SoundManager.Ins.PlaySfx("OpenShop");
         }
 
         public void ShowItems()
@@ -83,11 +84,13 @@ namespace _Data.Refactor.Views.Panels
             playerItems.Add(selectedItem);
             UpdateItemView();
             itemViews[index].SetActive(false);
+            SoundManager.Ins.PlaySfx("BuyItem");
         }
 
         public void Roll()
         {
             ShowItems();
+            SoundManager.Ins.PlaySfx("Click");
         }
 
         public void Sell()
@@ -97,6 +100,7 @@ namespace _Data.Refactor.Views.Panels
             playerItems.RemoveAt(itemIndex);
             UpdateItemView();
             sellButton.gameObject.SetActive(false);
+            SoundManager.Ins.PlaySfx("SellItem");
         }
 
         public void SetCurrentShop(Transform shop, ShopSpawner spawner)
@@ -111,6 +115,7 @@ namespace _Data.Refactor.Views.Panels
             GameManager.Ins.ResumeGame();
             spawner.Despawn(activeShop);
             activeShop = null;
+            SoundManager.Ins.PlaySfx("CloseShop");
         }
 
         public void OnItemIndexClick(int index)

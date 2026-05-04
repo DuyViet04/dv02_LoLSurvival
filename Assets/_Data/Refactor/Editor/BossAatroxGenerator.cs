@@ -1,12 +1,12 @@
 using UnityEditor;
 using UnityEngine;
-using _Data.Refactor.Models.SOs.Enemies;
+using _Data.Refactor.Models.SOs.Bosses;
 using Base.Systems.Skill;
 using System.Collections.Generic;
-using _Data.Refactor.Models.SOs.Enemies.Data;
+using _Data.Refactor.Models.SOs.Bosses.Data;
 using Base.Systems.Combat;
 using Base.Systems.Stat;
-using _Data.Refactor.Enums.Enemies;
+using _Data.Refactor.Enums.Bosses;
 
 namespace _Data.Refactor.Editor
 {
@@ -15,7 +15,7 @@ namespace _Data.Refactor.Editor
         [MenuItem("Tools/Generate Boss Aatrox SO")]
         public static void Generate()
         {
-            string bossPath = "Assets/Resources/SOs/Enemies/Boss/";
+            string bossPath = "Assets/Resources/SOs/Bosses/";
             string skillPath = "Assets/Resources/SOs/Skills/Boss/Aatrox/";
 
             if (!System.IO.Directory.Exists(Application.dataPath.Replace("Assets", "") + bossPath))
@@ -54,12 +54,9 @@ namespace _Data.Refactor.Editor
             var utility = so.FindProperty("utilityData");
             SetStat(utility.FindPropertyRelative("moveSpeed"), 3);
             
-            // Enemy Data (Exp, Gold, etc. - default values)
-            var enemyData = so.FindProperty("enemyData");
-            enemyData.FindPropertyRelative("<EnemyType>k__BackingField").enumValueIndex = (int)EnemyType.Boss;
-            SetStat(enemyData.FindPropertyRelative("<ExpValue>k__BackingField"), 500);
-            SetStat(enemyData.FindPropertyRelative("<GoldValue>k__BackingField"), 1000);
-            SetStat(enemyData.FindPropertyRelative("<CsValue>k__BackingField"), 1);
+            // Boss Data
+            var bossData = so.FindProperty("bossData");
+            bossData.FindPropertyRelative("<BossType>k__BackingField").enumValueIndex = (int)BossType.Aatrox;
             
             // Attack Data
             var attackData = so.FindProperty("attackData");
