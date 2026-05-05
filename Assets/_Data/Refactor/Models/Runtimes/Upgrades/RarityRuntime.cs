@@ -13,7 +13,11 @@ namespace _Data.Refactor.Models.Runtimes.Upgrades
 
         public RarityRuntime(RaritySo baseSo)
         {
-            rarities = new List<RarityData>(baseSo.rarities);
+            rarities = new List<RarityData>();
+            foreach (var r in baseSo.rarities)
+            {
+                rarities.Add(new RarityData(r));
+            }
         }
 
         public RarityData GetRandomRarity()

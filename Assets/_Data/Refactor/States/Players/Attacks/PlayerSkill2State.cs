@@ -39,7 +39,8 @@ namespace _Data.Refactor.States.Players.Attacks
             attackData.SetAttackData(
                 skillRuntime.GetDamage(runtime.CurrentAttackDamage, runtime.OffensiveData.AbilityPower.Value),
                 skillRuntime.SkillData.CanCrit,
-                runtime.OffensiveData.CritDamage.Value, skillRuntime.SkillData.DamageType, skillRuntime.SkillData.SkillType);
+                runtime.OffensiveData.CritDamage.Value, skillRuntime.SkillData.DamageType,
+                skillRuntime.SkillData.SkillType);
             if (skillRuntime!.TryUseSkill())
             {
                 Attack();
@@ -66,7 +67,6 @@ namespace _Data.Refactor.States.Players.Attacks
 
         void Attack()
         {
-            SoundManager.Ins.PlaySfx("YasuoSkill2");
             animator.SetTrigger(nameof(PlayerAnimParam.Skill2));
             dashCoroutine = playerController.StartCoroutine(Dash());
         }

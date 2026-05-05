@@ -6637,7 +6637,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2090307162}
-          m_TargetAssemblyTypeName: ComingSoonDisplay, Assembly-CSharp
+          m_TargetAssemblyTypeName: _Data.Refactor.Views.UIs.ComingSoonDisplay, Assembly-CSharp
           m_MethodName: OpenLockPanel
           m_Mode: 1
           m_Arguments:
@@ -6653,7 +6653,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2090307162}
-          m_TargetAssemblyTypeName: ComingSoonDisplay, Assembly-CSharp
+          m_TargetAssemblyTypeName: _Data.Refactor.Views.UIs.ComingSoonDisplay, Assembly-CSharp
           m_MethodName: CloseLockPanel
           m_Mode: 1
           m_Arguments:
@@ -8796,7 +8796,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2090307162}
-          m_TargetAssemblyTypeName: ComingSoonDisplay, Assembly-CSharp
+          m_TargetAssemblyTypeName: _Data.Refactor.Views.UIs.ComingSoonDisplay, Assembly-CSharp
           m_MethodName: OpenLockPanel
           m_Mode: 1
           m_Arguments:
@@ -8812,7 +8812,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2090307162}
-          m_TargetAssemblyTypeName: ComingSoonDisplay, Assembly-CSharp
+          m_TargetAssemblyTypeName: _Data.Refactor.Views.UIs.ComingSoonDisplay, Assembly-CSharp
           m_MethodName: CloseLockPanel
           m_Mode: 1
           m_Arguments:
@@ -22680,7 +22680,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 016f350b0f424414fb3974eacda8465d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Views.UIs.ComingSoonDisplay
   lockPanel: {fileID: 1340543541}
 --- !u!114 &2090307163
 MonoBehaviour:
