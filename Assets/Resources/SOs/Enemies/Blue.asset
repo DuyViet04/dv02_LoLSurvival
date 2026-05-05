@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beeeba7306eb4170b4ba0f82eede95b7, type: 3}
+  m_Name: Blue
+  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Models.SOs.Enemies.BaseEnemySo
+  defensiveData:
+    health:
+      statType: 1
+      value: 230
+    healthRegen:
+      statType: 2
+      value: 0
+    healPower:
+      statType: 3
+      value: 0
+    armor:
+      statType: 4
+      value: 42
+    magicResist:
+      statType: 5
+      value: 42
+    tenacity:
+      statType: 6
+      value: 0
+    slowResist:
+      statType: 7
+      value: 0
+  offensiveData:
+    attackSpeed:
+      statType: 8
+      value: 0
+    attackDamage:
+      statType: 9
+      value: 66
+    abilityPower:
+      statType: 10
+      value: 0
+    critChance:
+      statType: 11
+      value: 0
+    critDamage:
+      statType: 12
+      value: 0
+    armorPenetration:
+      statType: 13
+      value: 0
+    armorPenetrationPercent:
+      statType: 14
+      value: 0
+    magicPenetration:
+      statType: 15
+      value: 0
+    magicPenetrationPercent:
+      statType: 16
+      value: 0
+    lifeSteal:
+      statType: 17
+      value: 0
+    physicalVamp:
+      statType: 18
+      value: 0
+    omnivamp:
+      statType: 19
+      value: 0
+  utilityData:
+    haste:
+      statType: 23
+      value: 0
+    resourceData:
+      resourceType: 0
+      resource:
+        statType: 21
+        value: 0
+      resourceRegen:
+        statType: 22
+        value: 0
+    moveSpeed:
+      statType: 20
+      value: 2.75
+  enemyData:
+    <EnemyType>k__BackingField: 12
+    <ExpValue>k__BackingField:
+      statType: 26
+      value: 95
+    <GoldValue>k__BackingField:
+      statType: 27
+      value: 90
+    <CsValue>k__BackingField:
+      statType: 28
+      value: 4
+    <SpawnDelay>k__BackingField:
+      statType: 29
+      value: 360
+    <SpawnCount>k__BackingField:
+      statType: 30
+      value: 1
+  attackData:
+    <Damage>k__BackingField: 66
+    <CanCrit>k__BackingField: 0
+    <CritDamage>k__BackingField: 0
+    <ArmorPen>k__BackingField: 0
+    <ArmorPenPercent>k__BackingField: 0
+    <MagicPen>k__BackingField: 0
+    <MagicPenPercent>k__BackingField: 0
+    <DamageType>k__BackingField: 1

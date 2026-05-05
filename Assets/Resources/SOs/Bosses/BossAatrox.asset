@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a933c5cbfb0fe4cb755bc23628f644, type: 3}
+  m_Name: BossAatrox
+  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Models.SOs.Bosses.BaseBossSo
+  defensiveData:
+    health:
+      statType: 0
+      value: 1300
+    healthRegen:
+      statType: 0
+      value: 6
+    healPower:
+      statType: 0
+      value: 0
+    armor:
+      statType: 0
+      value: 76
+    magicResist:
+      statType: 0
+      value: 64
+    tenacity:
+      statType: 0
+      value: 0
+    slowResist:
+      statType: 0
+      value: 0
+  offensiveData:
+    attackSpeed:
+      statType: 0
+      value: 0
+    attackDamage:
+      statType: 0
+      value: 120
+    abilityPower:
+      statType: 0
+      value: 0
+    critChance:
+      statType: 0
+      value: 0
+    critDamage:
+      statType: 0
+      value: 0
+    armorPenetration:
+      statType: 0
+      value: 0
+    armorPenetrationPercent:
+      statType: 0
+      value: 0
+    magicPenetration:
+      statType: 0
+      value: 0
+    magicPenetrationPercent:
+      statType: 0
+      value: 0
+    lifeSteal:
+      statType: 0
+      value: 0
+    physicalVamp:
+      statType: 0
+      value: 0
+    omnivamp:
+      statType: 0
+      value: 0
+  utilityData:
+    haste:
+      statType: 0
+      value: 0
+    resourceData:
+      resourceType: 0
+      resource:
+        statType: 0
+        value: 0
+      resourceRegen:
+        statType: 0
+        value: 0
+    moveSpeed:
+      statType: 0
+      value: 3
+  bossData:
+    <BossType>k__BackingField: 1
+  attackData:
+    <Damage>k__BackingField: 120
+    <CanCrit>k__BackingField: 0
+    <CritDamage>k__BackingField: 0
+    <ArmorPen>k__BackingField: 0
+    <ArmorPenPercent>k__BackingField: 0
+    <MagicPen>k__BackingField: 0
+    <MagicPenPercent>k__BackingField: 0
+    <DamageType>k__BackingField: 0
+  skills:
+  - {fileID: 11400000, guid: 4b2e8ca26f648aa42822d35c24b8022b, type: 2}
+  - {fileID: 11400000, guid: 7ee8f1a51b759ad41a23cbb5085264c2, type: 2}
+  - {fileID: 11400000, guid: 5123a53ae8ce6fc4eb91c225adf8dce0, type: 2}

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e54c4ce0d07ac37448ffa3ed1d2743d4, type: 3}
+  m_Name: Talent_Haste
+  m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Models.SOs.Talents.TalentSo
+  talentId: Haste
+  talentName: "H\u1ED3i chi\xEAu"
+  icon: {fileID: 21300000, guid: 226cdd3f7c3c32b40973fcf77c5924d0, type: 3}
+  description: 
+  statType: 23
+  modifierType: 100
+  baseValue: 0
+  valuePerLevel: 7
+  baseCost: 50
+  costPerLevel: 50
+  maxLevel: 10
