@@ -10532,7 +10532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Controllers.Enemies.EnemyController
   rigid: {fileID: 566465000}
   target: {fileID: 612861175}
-  baseEnemySo: {fileID: 0}
+  baseEnemySo: {fileID: 11400000, guid: eefabcb86be5a2647936e354ccda0c2b, type: 2}
   bulletSpawner: {fileID: 902215367}
   expSpawner: {fileID: 1978036368}
   enemySpawner: {fileID: 258509601}
@@ -16861,7 +16861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Controllers.Enemies.EnemyController
   rigid: {fileID: 972473758}
   target: {fileID: 612861175}
-  baseEnemySo: {fileID: 0}
+  baseEnemySo: {fileID: 11400000, guid: bd2c653c30830d943b76fb068da05344, type: 2}
   bulletSpawner: {fileID: 902215367}
   expSpawner: {fileID: 1978036368}
   enemySpawner: {fileID: 258509601}
@@ -26738,7 +26738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Controllers.Enemies.EnemyController
   rigid: {fileID: 1580161217}
   target: {fileID: 612861175}
-  baseEnemySo: {fileID: 0}
+  baseEnemySo: {fileID: 11400000, guid: cf6ae957b7218d74480a85dae834fa85, type: 2}
   bulletSpawner: {fileID: 902215367}
   expSpawner: {fileID: 1978036368}
   enemySpawner: {fileID: 258509601}
@@ -31828,7 +31828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Controllers.Enemies.EnemyController
   rigid: {fileID: 1826487260}
   target: {fileID: 612861175}
-  baseEnemySo: {fileID: 0}
+  baseEnemySo: {fileID: 11400000, guid: 1e0d9bd1b31f05547a94ff6648aefc2c, type: 2}
   bulletSpawner: {fileID: 902215367}
   expSpawner: {fileID: 1978036368}
   enemySpawner: {fileID: 258509601}
@@ -32253,7 +32253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Controllers.Enemies.EnemyController
   rigid: {fileID: 1847077327}
   target: {fileID: 612861175}
-  baseEnemySo: {fileID: 0}
+  baseEnemySo: {fileID: 11400000, guid: 4f34e4ce8c4abd441b95406a73476162, type: 2}
   bulletSpawner: {fileID: 902215367}
   expSpawner: {fileID: 1978036368}
   enemySpawner: {fileID: 258509601}
@@ -32602,7 +32602,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Data.Refactor.Controllers.Enemies.EnemyController
   rigid: {fileID: 1863386690}
   target: {fileID: 612861175}
-  baseEnemySo: {fileID: 0}
+  baseEnemySo: {fileID: 11400000, guid: 39c893e591c67de4b816f92778f2e993, type: 2}
   bulletSpawner: {fileID: 902215367}
   expSpawner: {fileID: 1978036368}
   enemySpawner: {fileID: 258509601}
