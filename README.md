@@ -1,6 +1,6 @@
-# dv02_LoLSurvival (Refactored)
+# 🎮 dv02_LoLSurvival (Refactored)
 
-Một dự án game survival lấy cảm hứng từ League of Legends, được xây dựng và tối ưu hóa trên nền tảng Unity. Dự án đã qua quá trình Refactor toàn diện để đạt được kiến trúc sạch (Clean Architecture) và hiệu suất cao.
+Một dự án game survival lấy cảm hứng từ League of Legends (LoL), được xây dựng và tối ưu hóa trên nền tảng Unity. Dự án tập trung vào việc áp dụng **Clean Architecture**, tính modular cao và khả năng mở rộng thông qua hệ thống dữ liệu tập trung.
 
 ## 📺 Video Demo (Gameplay)
 
@@ -8,55 +8,72 @@ Một dự án game survival lấy cảm hứng từ League of Legends, được
 
 *Click vào hình trên để xem video demo gameplay trên YouTube.*
 
+---
 
-## 🏗 Kiến trúc dự án (Architecture)
+## 🌟 Các Tính Năng Nổi Bật (Key Features)
 
-Dự án sử dụng framework **VyesBase**, tập trung vào tính modular, dễ mở rộng và quản lý dữ liệu tập trung:
+### ⚔️ Hệ Thống Chiến Đấu (Combat System)
+*   **Chỉ số sâu (Deep Stats):** Quản lý qua `CombatService`, hỗ trợ các thuộc tính phức tạp như: *Armor Penetration, Life Steal, Omnivamp, Crit Damage, Cooldown Reduction...*
+*   **Modifier System:** Hỗ trợ tính toán đa lớp (Flat, PercentAdd, PercentMult) giúp dễ dàng cân bằng game.
+*   **Feedback trực quan:** Hiệu ứng âm thanh và hình ảnh đồng bộ với logic chiến đấu.
 
-- **Namespace Core**: `_Data.Refactor` (Mã nguồn chính) và `VyesBase` (Hệ thống nền tảng).
-- **State Machine**: Tất cả thực thể (Player, Enemy, Boss) được quản lý bằng State Machine mạnh mẽ, giúp tách biệt logic di chuyển, tấn công và trạng thái.
-- **Service-Oriented**: Các logic tính toán (Combat, Leveling, Save/Load) được đóng gói trong các Service riêng biệt.
-- **Data-Driven**: Sử dụng `ScriptableObject` (SO) để quản lý toàn bộ chỉ số, kỹ năng và vật phẩm.
+### 🧬 Hệ Thống Thăng Cấp & Talent
+*   **Deep Copy Rarity:** Sử dụng cơ chế sao chép sâu để quản lý tỷ lệ xuất hiện vật phẩm (`RarityData`) mà không làm ảnh hưởng đến dữ liệu gốc trong ScriptableObject.
+*   **Permanent Upgrades:** Hệ thống **Talent** cho phép người chơi nâng cấp vĩnh viễn các chỉ số cơ bản, được lưu trữ an toàn qua JSON.
+*   **Hệ thống Skill:** Nâng cấp kỹ năng và chỉ số động trong trận đấu thông qua `UpgradeSo`.
 
-## 📂 Cấu trúc thư mục chính
+### 💾 Hệ Thống Lưu Trữ (Persistence)
+*   **Encrypted JSON:** Dữ liệu người chơi (Tiền tệ, Talent, Tiến trình) được mã hóa và lưu dưới dạng JSON.
+*   **Auto-Save:** Tự động đồng bộ hóa tiến trình sau mỗi trận đấu.
 
-```
+### 🤖 Trí Tuệ Nhân Tạo (AI & State Machine)
+*   **Robust State Machine:** Tất cả thực thể (Player, Enemy, Boss) được vận hành bởi State Machine mạnh mẽ, tách biệt hoàn toàn logic di chuyển, tấn công và trạng thái (Idle, Move, Attack, Die).
+
+---
+
+## 🏗 Kiến Trúc Dự Án (Architecture)
+
+Dự án được xây dựng trên nền tảng framework **VyesBase**, áp dụng mô hình **Controller - View - Model**:
+
+*   **Logic Tách Biệt:** Controller xử lý logic nghiệp vụ, View xử lý hiển thị/hiệu ứng, và Model quản lý dữ liệu.
+*   **Service-Oriented:** Các module lớn (Save, Talent, Stat, Combat) được đóng gói trong các Service độc lập.
+*   **Object Pooling:** Tối ưu hiệu năng bằng cách tái sử dụng quái vật, đạn và hiệu ứng hình ảnh.
+
+### 📂 Cấu trúc thư mục chính
+```text
 Assets/
 ├── _Data/
-│   ├── Refactor/          # Toàn bộ mã nguồn mới
-│   │   ├── Controllers/   # Điều khiển thực thể (Player, Enemy, Spawner)
-│   │   ├── Models/        # Dữ liệu Runtime và ScriptableObject
-│   │   ├── Services/      # Các dịch vụ xử lý logic (Save, Talent, Stat)
-│   │   ├── States/        # Các trạng thái của thực thể (Idle, Move, Attack, Die)
-│   │   └── Views/         # Giao diện UI (Panels, UIs)
-│   ├── Scenes/            # Các màn chơi (Init, MainMenu, GamePlay...)
-│   └── Prefabs/           # Các mô hình 3D (.glb) và Prefab
+│   ├── Refactor/          # Toàn bộ mã nguồn đã Refactor
+│   │   ├── Controllers/   # Logic điều khiển thực thể (Player, Enemy, Spawner)
+│   │   ├── Models/        # Dữ liệu Runtime và ScriptableObject (SOs)
+│   │   ├── Services/      # Các dịch vụ xử lý logic lõi
+│   │   ├── States/        # Các trạng thái của thực thể (State Machine)
+│   │   └── Views/         # Giao diện UI và hiển thị trực quan
+│   ├── Scenes/            # Các màn chơi (Init -> MainMenu -> GamePlay)
+│   └── Prefabs/           # Tài nguyên 3D (.glb) và Prefab chuẩn hóa
 └── VyesBase/              # Framework kiến trúc nền tảng
 ```
 
-## 🚀 Các hệ thống lõi (Core Systems)
+---
 
-### 1. Hệ thống Chiến đấu (Combat System)
-- Quản lý sát thương qua `CombatService`.
-- Hỗ trợ các chỉ số phức tạp: Armor Pen, Life Steal, Omnivamp, Crit Damage...
+## 🚀 Hướng Dẫn Bắt Đầu (Getting Started)
 
-### 2. Hệ thống Thăng cấp & Rarity
-- `RarityRuntime` sử dụng cơ chế **Deep Copy** để đảm bảo việc thay đổi tỷ lệ khi chơi không làm ảnh hưởng đến dữ liệu gốc trong ScriptableObject.
-- Nâng cấp kỹ năng và chỉ số động thông qua `UpgradeSo`.
-
-### 3. Hệ thống Âm thanh (Sound Manager)
-- Quản lý tập trung qua `SoundManager` với `CustomDictionary`.
-- Hỗ trợ phân loại âm lượng Music và SFX riêng biệt.
-
-### 4. Hệ thống Lưu trữ (Persistence)
-- Tự động lưu trữ điểm CS và tiến trình Talent qua `SaveService`.
-- Dữ liệu được mã hóa và lưu dưới dạng JSON.
-
-## 🎮 Hướng dẫn bắt đầu
-
-1. Mở Scene: `Assets/_Data/Scenes/Init.unity`.
-2. Nhấn **Play** để khởi tạo các Singleton và chuyển sang `MainMenu`.
-3. Trong `GamePlay`, sử dụng các phím điều hướng để di chuyển và hạ gục kẻ địch.
+1.  **Khởi tạo:** Luôn bắt đầu từ Scene `Assets/_Data/Scenes/Init.unity` để hệ thống Singleton và Service được khởi tạo đúng cách.
+2.  **Điều khiển:** 
+    *   Sử dụng phím **WASD** hoặc **Mũi tên** để di chuyển.
+    *   Nhân vật sẽ tự động nhắm mục tiêu vào kẻ địch gần nhất.
+3.  **Mục tiêu:** Tiêu diệt quái vật để thu thập EXP, thăng cấp và chọn các kỹ năng nâng cấp để tồn tại lâu nhất có thể.
 
 ---
-*Dự án đã được dọn dẹp sạch sẽ (Loại bỏ hoàn toàn Legacy Code) và sẵn sàng cho việc phát triển thêm các tính năng mới.*
+
+## 🛠 Công Nghệ Sử Dụng (Tech Stack)
+
+*   **Engine:** Unity 6 (Version mới nhất).
+*   **Ngôn ngữ:** C# .NET.
+*   **Thư viện:**
+    *   **DOTween:** Xử lý các hiệu ứng chuyển động và UI mượt mà.
+    *   **JSON.NET:** Xử lý lưu trữ và cấu trúc dữ liệu.
+    *   **VyesBase:** Framework nền tảng tự phát triển.
+
+---
+*Dự án đã được dọn dẹp sạch sẽ (Loại bỏ Legacy Code) và sẵn sàng cho việc mở rộng thêm các tướng và kỹ năng mới từ vũ trụ LoL.*
