@@ -2,6 +2,13 @@
 
 Một dự án game survival lấy cảm hứng từ League of Legends, được xây dựng và tối ưu hóa trên nền tảng Unity. Dự án đã qua quá trình Refactor toàn diện để đạt được kiến trúc sạch (Clean Architecture) và hiệu suất cao.
 
+## 📺 Video Demo (Gameplay)
+
+[![LoL Survival Gameplay](https://img.youtube.com/vi/vrNMCY5JNYw/maxresdefault.jpg)](https://youtu.be/vrNMCY5JNYw)
+
+*Click vào hình trên để xem video demo gameplay trên YouTube.*
+
+
 ## 🏗 Kiến trúc dự án (Architecture)
 
 Dự án sử dụng framework **VyesBase**, tập trung vào tính modular, dễ mở rộng và quản lý dữ liệu tập trung:
